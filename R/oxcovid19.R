@@ -13,6 +13,8 @@
 #' @docType package
 #' @keywords internal
 #' @name oxcovid19
+#' @importFrom DBI dbConnect
+#' @importFrom RPostgres Postgres
 #'
 #
 ################################################################################
