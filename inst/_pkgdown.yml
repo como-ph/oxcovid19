@@ -1,0 +1,36 @@
+title: oxcovid19
+
+url: https://como-ph.github.io/oxcovid19
+
+template:
+  params:
+    bootswatch: flatly
+    ganalytics:
+
+#home:
+#  links:
+#  - text: See the DoH page for IATF Resolutions
+#    href: http://doh.gov.ph/COVID-19/IATF-Resolutions
+
+#  - text: See the Official Gazette pages for IATF Resolutions
+#    href: https://www.officialgazette.gov.ph/section/laws/other-issuances/inter-agency-task-force-for-the-management-of-emerging-infectious-diseases-resolutions/
+
+reference:
+  - title: Description
+    contents:
+    - oxcovid19
+
+  - title: Connect
+    contents:
+    - connect_oxcovid19
+    - get_table
+
+  - title: Utilities
+    contents:
+    - list_tables
+    - list_fields
+
+  - title: IATF Datasets
+    contents:
+    - data_sources
+    - data_structures
