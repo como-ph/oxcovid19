@@ -1,0 +1,58 @@
+---
+title: "OxCOVID19 Database Access"
+author: "Ernest Guevarra"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{OxCOVID19 Database Access}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  error = FALSE,
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this vinette, we show how to perform the OxCOVID19 Database access examples shown [here](https://github.com/covid19db/examples/blob/master/data-loading/data-access-postgresql.ipynb) using R and the `oxcovid19` package.
+
+## Epidemiology table
+
+### List of available sources
+
+```{r example1, echo = TRUE, eval = TRUE}
+library(oxcovid19)
+library(magrittr)
+library(dplyr)
+
+connect_oxcovid19() %>%
+  get_table(tbl_name = "epidemiology") %>%
+  arrange(source) %>%
+  select(source) %>%
+  distinct() %>%
+  pull(source)
+```      
+
+### Data for single source
+
+```{r example2, echo = TRUE, eval = TRUE}
+connect_oxcovid19() %>%
+  get_table(tbl_name = "epidemiology") %>%
+  filter(source == "GBR_PHTW") %>%
+  arrange(desc(date))
+```
+
+
+## Mobility
+
+```{r example3, echo = TRUE, eval = TRUE}
+connect_oxcovid19() %>%
+  get_table(tbl_name = "mobility") %>%
+  filter(source == "GOOGLE_MOBILITY",
+         countrycode == "GBR") %>%
+  arrange(desc(date))
+```
