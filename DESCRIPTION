@@ -15,22 +15,23 @@ Description: The OxCOVID19 Project <https://covid19.eng.ox.ac.uk> aims to increa
     This package provides an R-specific interface to the OxCOVID19 Database based
     on widely-used data handling and manipulation approaches in R.
 License: GPL-3
+Depends: 
+    R (>= 2.10)
 Imports: 
     DBI,
     RPostgres,
     dplyr,
     dbplyr
+Suggests: 
+    testthat,
+    covr,
+    knitr,
+    rmarkdown,
+    magrittr
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
 URL: https://github.com/como-ph/oxcovid19
 BugReports: https://github.com/como-ph/oxcovid19/issues
 RoxygenNote: 7.1.1
-Depends: 
-    R (>= 2.10)
-Suggests: 
-    testthat,
-    covr,
-    knitr,
-    rmarkdown
 VignetteBuilder: knitr
