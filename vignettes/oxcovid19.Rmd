@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-In this vinette, we show how to perform the OxCOVID19 Database access examples shown [here](https://github.com/covid19db/examples/blob/master/data-loading/data-access-postgresql.ipynb) using R and the `oxcovid19` package.
+In this vignette, we show how to perform the OxCOVID19 Database access examples shown [here](https://github.com/covid19db/examples/blob/master/data-loading/data-access-postgresql.ipynb) using R and the `oxcovid19` package.
 
 ## Epidemiology table
 
