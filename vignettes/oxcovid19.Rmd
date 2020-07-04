@@ -46,7 +46,6 @@ connect_oxcovid19() %>%
   arrange(desc(date))
 ```
 
-
 ## Mobility
 
 ```{r example3, echo = TRUE, eval = TRUE}
