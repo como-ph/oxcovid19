@@ -17,10 +17,13 @@ Description: The OxCOVID19 Project <https://covid19.eng.ox.ac.uk> aims to increa
 License: GPL-3
 Imports: 
     DBI,
-    RPostgres
+    RPostgres,
+    dplyr
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
 URL: https://github.com/como-ph/oxcovid19
 BugReports: https://github.com/como-ph/oxcovid19/issues
 RoxygenNote: 7.1.1
+Depends: 
+    R (>= 2.10)
