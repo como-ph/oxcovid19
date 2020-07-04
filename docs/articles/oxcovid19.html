@@ -84,7 +84,7 @@
 
     
     
-<p>In this vinette, we show how to perform the OxCOVID19 Database access examples shown <a href="https://github.com/covid19db/examples/blob/master/data-loading/data-access-postgresql.ipynb">here</a> using R and the <code>oxcovid19</code> package.</p>
+<p>In this vignette, we show how to perform the OxCOVID19 Database access examples shown <a href="https://github.com/covid19db/examples/blob/master/data-loading/data-access-postgresql.ipynb">here</a> using R and the <code>oxcovid19</code> package.</p>
 <div id="epidemiology-table" class="section level2">
 <h2 class="hasAnchor">
 <a href="#epidemiology-table" class="anchor"></a>Epidemiology table</h2>
@@ -95,25 +95,26 @@
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">magrittr</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
 
-<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>(<span class="kw">gssencmode</span> <span class="kw">=</span> <span class="st">"disable"</span>) <span class="kw">%&gt;%</span>
+<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="no">source</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">source</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(<span class="no">source</span>)
-<span class="co">#&gt;  [1] "AUS_C1A"    "BEL_WY"     "BRA_MSHM"   "CAN_GOV"    "CHE_OPGOV" </span>
-<span class="co">#&gt;  [6] "CHN_ICL"    "DEU_JPGG"   "ESP_MS"     "ESP_MSVP"   "EU_ZH"     </span>
-<span class="co">#&gt; [11] "FRA_SPF"    "FRA_SPFCG"  "GBR_PHE"    "GBR_PHTW"   "GBR_PHW"   </span>
-<span class="co">#&gt; [16] "IDN_GTPPC"  "IND_COVIND" "IRL_HSPC"   "ITA_PC"     "ITA_PCDM"  </span>
-<span class="co">#&gt; [21] "JPN_C1JACD" "KOR_DS4C"   "LAT_DSRP"   "MYS_MHYS"   "NGA_CDC"   </span>
-<span class="co">#&gt; [26] "NGA_SO"     "NLD_CW"     "PAK_GOV"    "POL_WIKI"   "PRT_MSDS"  </span>
-<span class="co">#&gt; [31] "RUS_GOV"    "SWE_GM"     "SWE_SIR"    "THA_STAT"   "TUR_MHOE"  </span>
-<span class="co">#&gt; [36] "USA_CTP"    "USA_NYT"    "WRD_ECDC"   "WRD_WHO"    "ZAF_DSFSI"</span></pre></body></html></div>
+<span class="co">#&gt;  [1] "AUS_C1A"    "BEL_SCI"    "BEL_WY"     "BRA_MSHM"   "CAN_GOV"   </span>
+<span class="co">#&gt;  [6] "CHE_OPGOV"  "CHN_ICL"    "DEU_JPGG"   "ESP_MS"     "ESP_MSVP"  </span>
+<span class="co">#&gt; [11] "EU_ZH"      "FRA_SPF"    "FRA_SPFCG"  "GBR_PHE"    "GBR_PHTW"  </span>
+<span class="co">#&gt; [16] "GBR_PHW"    "IDN_GTPPC"  "IND_COVIND" "IRL_HSPC"   "ITA_PC"    </span>
+<span class="co">#&gt; [21] "ITA_PCDM"   "JPN_C1JACD" "KOR_DS4C"   "LAT_DSRP"   "MYS_MHYS"  </span>
+<span class="co">#&gt; [26] "NGA_CDC"    "NGA_SO"     "NLD_CW"     "PAK_GOV"    "POL_WIKI"  </span>
+<span class="co">#&gt; [31] "PRT_MSDS"   "RUS_GOV"    "SWE_GM"     "SWE_SIR"    "THA_STAT"  </span>
+<span class="co">#&gt; [36] "TUR_MHOE"   "USA_CTP"    "USA_NYT"    "WRD_ECDC"   "WRD_WHO"   </span>
+<span class="co">#&gt; [41] "ZAF_DSFSI"</span></pre></body></html></div>
 </div>
 <div id="data-for-single-source" class="section level3">
 <h3 class="hasAnchor">
 <a href="#data-for-single-source" class="anchor"></a>Data for single source</h3>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>(<span class="kw">gssencmode</span> <span class="kw">=</span> <span class="st">"disable"</span>) <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"GBR_PHTW"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">date</span>))
@@ -122,16 +123,16 @@
 <span class="co">#&gt; # Ordered by: desc(date)</span>
 <span class="co">#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested</span>
 <span class="co">#&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;</span>
-<span class="co">#&gt;  1 GBR_P… 2020-07-03 United… GBR         Scotland   NHS Weste… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  2 GBR_P… 2020-07-03 United… GBR         Scotland   NHS Taysi… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  3 GBR_P… 2020-07-03 United… GBR         Scotland   NHS Shetl… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  4 GBR_P… 2020-07-03 United… GBR         Scotland   NHS Orkney &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  5 GBR_P… 2020-07-03 United… GBR         Scotland   NHS Lothi… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  6 GBR_P… 2020-07-03 United… GBR         Scotland   NHS Lanar… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  7 GBR_P… 2020-07-03 United… GBR         Scotland   NHS Highl… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  8 GBR_P… 2020-07-03 United… GBR         Scotland   NHS Great… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  9 GBR_P… 2020-07-03 United… GBR         Scotland   NHS Gramp… &lt;NA&gt;           NA</span>
-<span class="co">#&gt; 10 GBR_P… 2020-07-03 United… GBR         Scotland   NHS Forth… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  1 GBR_P… 2020-07-04 United… GBR         Scotland   NHS Weste… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  2 GBR_P… 2020-07-04 United… GBR         Scotland   NHS Taysi… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  3 GBR_P… 2020-07-04 United… GBR         Scotland   NHS Shetl… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  4 GBR_P… 2020-07-04 United… GBR         Scotland   NHS Orkney &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  5 GBR_P… 2020-07-04 United… GBR         Scotland   NHS Lothi… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  6 GBR_P… 2020-07-04 United… GBR         Scotland   NHS Lanar… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  7 GBR_P… 2020-07-04 United… GBR         Scotland   NHS Highl… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  8 GBR_P… 2020-07-04 United… GBR         Scotland   NHS Great… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  9 GBR_P… 2020-07-04 United… GBR         Scotland   NHS Gramp… &lt;NA&gt;           NA</span>
+<span class="co">#&gt; 10 GBR_P… 2020-07-04 United… GBR         Scotland   NHS Forth… &lt;NA&gt;           NA</span>
 <span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span>
 <span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span>
 <span class="co">#&gt; #   gid &lt;chr&gt;</span></pre></body></html></div>
@@ -140,7 +141,7 @@
 <div id="mobility" class="section level2">
 <h2 class="hasAnchor">
 <a href="#mobility" class="anchor"></a>Mobility</h2>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>(<span class="kw">gssencmode</span> <span class="kw">=</span> <span class="st">"disable"</span>) <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"mobility"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"GOOGLE_MOBILITY"</span>,
          <span class="no">countrycode</span> <span class="kw">==</span> <span class="st">"GBR"</span>) <span class="kw">%&gt;%</span>
