@@ -15,9 +15,6 @@
 #' @param password Password specifications. Default is \code{"covid19"}. Unless
 #'   OxCOVID19 Project changes database details, this should be kept as
 #'   default.
-#' @param gssencmode This parameter determines whether or with what priority a
-#'   secure GSS TCP/IP connection will be negotiated with the server. There are
-#'   three modes: \code{disable}, \code{prefer}, and \code{require}.
 #'
 #' @return A PostgreSQL connection to OxCOVID19 database
 #'
@@ -33,26 +30,26 @@ connect_oxcovid19 <- function(dbname = "covid19",
                               host = "covid19db.org",
                               port = 5432,
                               user = "covid19",
-                              password = "covid19",
-                              gssencmode = NULL) {
-  if(is.null(gssencmode)) {
-    ## Check OS
-    if(Sys.info()["sysname"] == "Windows") {
-      gssencmode <- "prefer"
-    } else {
-      gssencmode <- "disable"
-    }
+                              password = "covid19") {
+  ## Check OS
+  if(Sys.info()["sysname"] == "Windows") {
+    ## Start connection using available OxCOVID19 database credentials
+    con <- DBI::dbConnect(RPostgres::Postgres(),
+                          dbname     = dbname,
+                          host       = host,
+                          port       = port,
+                          user       = user,
+                          password   = password)
+  } else {
+    ## Start connection using available OxCOVID19 database credentials
+    con <- DBI::dbConnect(RPostgres::Postgres(),
+                          dbname     = dbname,
+                          host       = host,
+                          port       = port,
+                          user       = user,
+                          password   = password,
+                          gssencmode = "disable")
   }
-
-  ## Start connection using available OxCOVID19 database credentials
-  con <- DBI::dbConnect(RPostgres::Postgres(),
-                        dbname     = dbname,
-                        host       = host,
-                        port       = port,
-                        user       = user,
-                        password   = password,
-                        gssencmode = "disable",
-                        sslmode    = "disable")
 
   ## Return connection
   return(con)
