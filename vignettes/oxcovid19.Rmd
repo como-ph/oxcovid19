@@ -29,7 +29,7 @@ library(oxcovid19)
 library(magrittr)
 library(dplyr)
 
-connect_oxcovid19() %>%
+connect_oxcovid19(gssencmode = "prefer") %>%
   get_table(tbl_name = "epidemiology") %>%
   arrange(source) %>%
   select(source) %>%
@@ -40,7 +40,7 @@ connect_oxcovid19() %>%
 ### Data for single source
 
 ```{r example2, echo = TRUE, eval = TRUE}
-connect_oxcovid19() %>%
+connect_oxcovid19(gssencmode = "prefer") %>%
   get_table(tbl_name = "epidemiology") %>%
   filter(source == "GBR_PHTW") %>%
   arrange(desc(date))
@@ -49,7 +49,7 @@ connect_oxcovid19() %>%
 ## Mobility
 
 ```{r example3, echo = TRUE, eval = TRUE}
-connect_oxcovid19() %>%
+connect_oxcovid19(gssencmode = "prefer") %>%
   get_table(tbl_name = "mobility") %>%
   filter(source == "GOOGLE_MOBILITY",
          countrycode == "GBR") %>%

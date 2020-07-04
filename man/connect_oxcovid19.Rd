@@ -9,7 +9,8 @@ connect_oxcovid19(
   host = "covid19db.org",
   port = 5432,
   user = "covid19",
-  password = "covid19"
+  password = "covid19",
+  gssencmode = NULL
 )
 }
 \arguments{
@@ -30,6 +31,10 @@ OxCOVID19 Project changes database details, this should be kept as default.}
 \item{password}{Password specifications. Default is \code{"covid19"}. Unless
 OxCOVID19 Project changes database details, this should be kept as
 default.}
+
+\item{gssencmode}{This parameter determines whether or with what priority a
+secure GSS TCP/IP connection will be negotiated with the server. There are
+three modes: \code{disable}, \code{prefer}, and \code{require}.}
 }
 \value{
 A PostgreSQL connection to OxCOVID19 database
