@@ -18,7 +18,8 @@ License: GPL-3
 Imports: 
     DBI,
     RPostgres,
-    dplyr
+    dplyr,
+    dbplyr
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
