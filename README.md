@@ -9,6 +9,8 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![R build
 status](https://github.com/como-ph/oxcovid19/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/como-ph/oxcovid19?branch=master&svg=true)](https://ci.appveyor.com/project/como-ph/oxcovid19)
 [![R build
 status](https://github.com/como-ph/oxcovid19/workflows/test-coverage/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![Codecov test
@@ -114,16 +116,16 @@ The output of the workflow shown above is:
     #> # Database: postgres [covid19@covid19db.org:5432/covid19]
     #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
     #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-    #>  1 WRD_W… 2020-05-03 United… GBR         <NA>       <NA>       <NA>           NA
-    #>  2 WRD_W… 2020-05-04 United… GBR         <NA>       <NA>       <NA>           NA
-    #>  3 WRD_W… 2020-05-05 United… GBR         <NA>       <NA>       <NA>           NA
-    #>  4 WRD_W… 2020-05-06 United… GBR         <NA>       <NA>       <NA>           NA
-    #>  5 WRD_W… 2020-05-07 United… GBR         <NA>       <NA>       <NA>           NA
-    #>  6 WRD_W… 2020-05-08 United… GBR         <NA>       <NA>       <NA>           NA
-    #>  7 WRD_W… 2020-05-09 United… GBR         <NA>       <NA>       <NA>           NA
-    #>  8 WRD_W… 2020-05-10 United… GBR         <NA>       <NA>       <NA>           NA
-    #>  9 WRD_W… 2020-05-17 United… GBR         <NA>       <NA>       <NA>           NA
-    #> 10 WRD_W… 2020-05-18 United… GBR         <NA>       <NA>       <NA>           NA
+    #>  1 GBR_P… 2020-03-13 United… GBR         England    East Ridi… <NA>           NA
+    #>  2 GBR_P… 2020-03-13 United… GBR         England    East Suss… <NA>           NA
+    #>  3 GBR_P… 2020-03-13 United… GBR         England    Greenwich  <NA>           NA
+    #>  4 GBR_P… 2020-03-13 United… GBR         England    Haringey   <NA>           NA
+    #>  5 GBR_P… 2020-03-13 United… GBR         England    Havering   <NA>           NA
+    #>  6 GBR_P… 2020-03-13 United… GBR         England    Hillingdon <NA>           NA
+    #>  7 GBR_P… 2020-03-13 United… GBR         England    Kensingto… <NA>           NA
+    #>  8 GBR_P… 2020-03-13 United… GBR         England    Leicester  <NA>           NA
+    #>  9 GBR_P… 2020-03-13 United… GBR         England    Hackney    <NA>           NA
+    #> 10 GBR_P… 2020-03-13 United… GBR         England    Merton     <NA>           NA
     #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
     #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
     #> #   gid <chr>
@@ -143,16 +145,16 @@ connect_oxcovid19() %>%
 #> # Database: postgres [covid19@covid19db.org:5432/covid19]
 #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-#>  1 WRD_W… 2020-05-03 United… GBR         <NA>       <NA>       <NA>           NA
-#>  2 WRD_W… 2020-05-04 United… GBR         <NA>       <NA>       <NA>           NA
-#>  3 WRD_W… 2020-05-05 United… GBR         <NA>       <NA>       <NA>           NA
-#>  4 WRD_W… 2020-05-06 United… GBR         <NA>       <NA>       <NA>           NA
-#>  5 WRD_W… 2020-05-07 United… GBR         <NA>       <NA>       <NA>           NA
-#>  6 WRD_W… 2020-05-08 United… GBR         <NA>       <NA>       <NA>           NA
-#>  7 WRD_W… 2020-05-09 United… GBR         <NA>       <NA>       <NA>           NA
-#>  8 WRD_W… 2020-05-10 United… GBR         <NA>       <NA>       <NA>           NA
-#>  9 WRD_W… 2020-05-17 United… GBR         <NA>       <NA>       <NA>           NA
-#> 10 WRD_W… 2020-05-18 United… GBR         <NA>       <NA>       <NA>           NA
+#>  1 GBR_P… 2020-03-13 United… GBR         England    East Ridi… <NA>           NA
+#>  2 GBR_P… 2020-03-13 United… GBR         England    East Suss… <NA>           NA
+#>  3 GBR_P… 2020-03-13 United… GBR         England    Greenwich  <NA>           NA
+#>  4 GBR_P… 2020-03-13 United… GBR         England    Haringey   <NA>           NA
+#>  5 GBR_P… 2020-03-13 United… GBR         England    Havering   <NA>           NA
+#>  6 GBR_P… 2020-03-13 United… GBR         England    Hillingdon <NA>           NA
+#>  7 GBR_P… 2020-03-13 United… GBR         England    Kensingto… <NA>           NA
+#>  8 GBR_P… 2020-03-13 United… GBR         England    Leicester  <NA>           NA
+#>  9 GBR_P… 2020-03-13 United… GBR         England    Hackney    <NA>           NA
+#> 10 GBR_P… 2020-03-13 United… GBR         England    Merton     <NA>           NA
 #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
 #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
 #> #   gid <chr>
