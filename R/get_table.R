@@ -20,25 +20,16 @@
 ################################################################################
 
 get_table <- function(con, tbl_name) {
-  ##
-  dplyr::tbl(src = con, tbl_name)
+  ## Check that tbl_name is available from PostgreSQL server
+  if(!tbl_name %in% list_tables()) {
+    stop(paste(tbl_name, " is not available from OxCOVID19 Database. Please try again.", sep = ""),
+         call. = TRUE)
+  }
+
+  ## Connect to specified table name
+  tab <- dplyr::tbl(src = con, tbl_name)
+
+  ## Return tab
+  return(tab)
 }
 
-################################################################################
-#
-#'
-#'
-#'
-#'
-#'
-#
-################################################################################
-
-query_table <- function(tbl,
-                        field = NULL,
-                        query = NULL) {
-  ##
-
-  ##
-  tbl
-}
