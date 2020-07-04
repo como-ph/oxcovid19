@@ -20,6 +20,25 @@ This package provides an R-specific interface to the [OxCOVID19
 Database](https://covid19.eng.ox.ac.uk) based on widely-used data
 handling and manipulation approaches in R.
 
+## Motivation
+
+The [OxCOVID19 Project](https://covid19.eng.ox.ac.uk) team presented to
+the CoMo Consortium during its weekly meeting on the 1st of July 2020.
+During this meeting, the CoMo Consortium considered the use of the
+OxCOVID19 Database for use in filling data and information for
+country-specific parameters required in the CoMo Consortium model. Given
+that the CoMo Consortium model is R-centric, it makes logical sense to
+build an R-specific API to connect with the OxCOVID19 PostgreSQL
+database. This package aims to facilitate the possible use of the
+OxCOVID19 database for this purpose through purposefully-written
+functions that connects an R user to the database directly from R (as
+opposed to doing a manual download of the data or using separate tools
+to access PostgreSQL) and processes and structures the available
+datasets into country-specific tables structured for the requirements of
+the CoMo Consortium model. A direct link to the PostgreSQL via R is also
+advantageous as this is updated more frequently than the CSV datasets
+made available via GitHub.
+
 ## Installation
 
 `oxcovid19` is not yet available on CRAN.
