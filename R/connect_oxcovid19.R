@@ -31,14 +31,21 @@ connect_oxcovid19 <- function(dbname = "covid19",
                               port = 5432,
                               user = "covid19",
                               password = "covid19") {
+  ## Check OS
+  if(Sys.info()["sysname"] == "Windows") {
+    gssencmode <- "prefer"
+  } else {
+    gssencmode <- "disable"
+  }
+
   ## Start connection using available OxCOVID19 database credentials
   con <- DBI::dbConnect(RPostgres::Postgres(),
-                        dbname   = dbname,
-                        host     = host,
-                        port     = port,
-                        user     = user,
-                        password = password,
-                        gssencmode = "disable")
+                        dbname     = dbname,
+                        host       = host,
+                        port       = port,
+                        user       = user,
+                        password   = password,
+                        gssencmode = gssencmode)
 
   ## Return connection
   return(con)
