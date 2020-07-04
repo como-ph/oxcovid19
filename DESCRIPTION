@@ -27,3 +27,6 @@ BugReports: https://github.com/como-ph/oxcovid19/issues
 RoxygenNote: 7.1.1
 Depends: 
     R (>= 2.10)
+Suggests: 
+    testthat,
+    covr
