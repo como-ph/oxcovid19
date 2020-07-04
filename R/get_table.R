@@ -39,7 +39,6 @@ query_table <- function(tbl,
                         query = NULL) {
   ##
 
-
   ##
   tbl
 }
