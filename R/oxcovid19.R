@@ -13,8 +13,9 @@
 #' @docType package
 #' @keywords internal
 #' @name oxcovid19
-#' @importFrom DBI dbConnect
+#' @importFrom DBI dbConnect dbListTables dbListFields
 #' @importFrom RPostgres Postgres
+#' @importFrom dplyr tbl
 #'
 #
 ################################################################################
