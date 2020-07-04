@@ -30,4 +30,7 @@ Depends:
     R (>= 2.10)
 Suggests: 
     testthat,
-    covr
+    covr,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
