@@ -21,13 +21,15 @@ Imports:
     DBI,
     RPostgres,
     dplyr,
-    dbplyr
+    dbplyr,
+    sf
 Suggests: 
     testthat,
     covr,
     knitr,
     rmarkdown,
-    magrittr
+    magrittr,
+    stringr
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
