@@ -3,7 +3,7 @@ title: "Country level visualisation for Mainland China"
 author: "Ernest Guevarra"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Data visualisation}
+  %\VignetteIndexEntry{Country level visualisation for Mainland China}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
