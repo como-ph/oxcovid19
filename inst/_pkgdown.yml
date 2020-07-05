@@ -24,6 +24,7 @@ reference:
     contents:
     - connect_oxcovid19
     - get_table
+    - get_layer
 
   - title: Utilities
     contents:
