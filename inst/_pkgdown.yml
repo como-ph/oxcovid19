@@ -31,7 +31,7 @@ reference:
     - list_tables
     - list_fields
 
-  - title: IATF Datasets
+  - title: Reference datasets
     contents:
     - data_sources
     - data_structures
