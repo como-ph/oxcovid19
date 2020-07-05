@@ -3,7 +3,8 @@ pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   database_access: database_access.html
-last_built: 2020-07-05T05:42Z
+  visualisation: visualisation.html
+last_built: 2020-07-05T08:01Z
 urls:
   reference: https://como-ph.github.io/oxcovid19/reference
   article: https://como-ph.github.io/oxcovid19/articles

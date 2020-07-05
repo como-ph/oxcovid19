@@ -13,6 +13,9 @@
     <loc>https://como-ph.github.io/oxcovid19/reference/data_structures.html</loc>
   </url>
   <url>
+    <loc>https://como-ph.github.io/oxcovid19/reference/get_layer.html</loc>
+  </url>
+  <url>
     <loc>https://como-ph.github.io/oxcovid19/reference/get_table.html</loc>
   </url>
   <url>
@@ -26,5 +29,8 @@
   </url>
   <url>
     <loc>https://como-ph.github.io/oxcovid19/articles/database_access.html</loc>
+  </url>
+  <url>
+    <loc>https://como-ph.github.io/oxcovid19/articles/visualisation.html</loc>
   </url>
 </urlset>
