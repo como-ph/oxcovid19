@@ -1,6 +1,8 @@
 ################################################################################
 #
 #'
+#' An R API to the Oxford COVID-19 Database
+#'
 #' The OxCOVID19 Project \url{https://covid19.eng.ox.ac.uk} aims to increase
 #' our understanding of the COVID-19 pandemic and elaborate possible strategies
 #' to reduce the impact on the society through the combined power of statistical,
