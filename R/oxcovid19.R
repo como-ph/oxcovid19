@@ -18,6 +18,7 @@
 #' @importFrom DBI dbConnect dbListTables dbListFields
 #' @importFrom RPostgres Postgres
 #' @importFrom dplyr tbl
+#' @importFrom sf st_read
 #'
 #
 ################################################################################
