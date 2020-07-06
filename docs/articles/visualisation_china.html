@@ -261,8 +261,100 @@
 <div id="plot-epidemiology-total-confirmed" class="section level2">
 <h2 class="hasAnchor">
 <a href="#plot-epidemiology-total-confirmed" class="anchor"></a>Plot epidemiology total confirmed</h2>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/sf/man/plot.html">plot</a></span>(<span class="no">chn_recent_region</span>[<span class="st">"confirmed"</span>], <span class="kw">nbreaks</span> <span class="kw">=</span> <span class="fl">10</span>, <span class="kw">breaks</span> <span class="kw">=</span> <span class="st">"quantile"</span>)</pre></body></html></div>
-<p><img src="visualisation_china_files/figure-html/example5a-1.png" width="700"></p>
+<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">chn_recent_region</span> <span class="kw">&lt;-</span> <span class="no">chn_recent_region</span> <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">confirmed_class</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span>(<span class="no">chn_recent_region</span>$<span class="no">confirmed</span>,
+                               <span class="kw">breaks</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">chn_recent_region</span>$<span class="no">confirmed</span>,
+                                                 <span class="kw">probs</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="kw">from</span> <span class="kw">=</span> <span class="fl">0</span>,
+                                                             <span class="kw">to</span> <span class="kw">=</span> <span class="fl">1</span>,
+                                                             <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.1</span>)),
+                               <span class="kw">include.lowest</span> <span class="kw">=</span> <span class="fl">TRUE</span>))
+
+<span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(<span class="no">chn_recent_region</span>$<span class="no">confirmed_class</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(<span class="no">chn_recent_region</span>$<span class="no">confirmed_class</span>) <span class="kw">%&gt;%</span>
+  <span class="kw pkg">stringr</span><span class="kw ns">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(<span class="kw">pattern</span> <span class="kw">=</span> <span class="st">","</span>, <span class="kw">replacement</span> <span class="kw">=</span> <span class="st">" - "</span>) <span class="kw">%&gt;%</span>
+  <span class="kw pkg">stringr</span><span class="kw ns">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(<span class="kw">pattern</span> <span class="kw">=</span> <span class="st">"1.26e\\+03"</span>, <span class="kw">replacement</span> <span class="kw">=</span> <span class="st">"1257"</span>) <span class="kw">%&gt;%</span>
+  <span class="kw pkg">stringr</span><span class="kw ns">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(<span class="kw">pattern</span> <span class="kw">=</span> <span class="st">"6.78e\\+04"</span>, <span class="kw">replacement</span> <span class="kw">=</span> <span class="st">"67802"</span>) <span class="kw">%&gt;%</span>
+  <span class="kw pkg">stringr</span><span class="kw ns">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span>(<span class="kw">pattern</span> <span class="kw">=</span> <span class="st">"\\[|\\]|\\("</span>)
+
+<span class="fu"><a href="https://rdrr.io/pkg/sf/man/plot.html">plot</a></span>(<span class="no">chn_recent_region</span>[<span class="st">"confirmed_class"</span>],
+     <span class="kw">main</span> <span class="kw">=</span> <span class="st">""</span>,
+     <span class="kw">pal</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span>(<span class="kw">colors</span> <span class="kw">=</span> <span class="kw pkg">RColorBrewer</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fl">5</span>,
+                                                              <span class="kw">name</span> <span class="kw">=</span> <span class="st">"Reds"</span>))(<span class="fl">10</span>),
+     <span class="kw">nbreaks</span> <span class="kw">=</span> <span class="fl">10</span>,
+     <span class="kw">breaks</span> <span class="kw">=</span> <span class="st">"quantile"</span>,
+     <span class="kw">key.width</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html">lcm</a></span>(<span class="fl">5</span>))</pre></body></html></div>
+<p><img src="visualisation_china_files/figure-html/example5a-1.png" width="672" style="display: block; margin: auto;"></p>
+</div>
+<div id="plot-epidemiology-total-death" class="section level2">
+<h2 class="hasAnchor">
+<a href="#plot-epidemiology-total-death" class="anchor"></a>Plot epidemiology total death</h2>
+<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">chn_recent_region</span> <span class="kw">&lt;-</span> <span class="no">chn_recent_region</span> <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">dead_class</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span>(<span class="no">chn_recent_region</span>$<span class="no">dead</span>,
+                               <span class="kw">breaks</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">chn_recent_region</span>$<span class="no">dead</span>,
+                                                <span class="kw">probs</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(<span class="kw">from</span> <span class="kw">=</span> <span class="fl">0</span>,
+                                                            <span class="kw">to</span> <span class="kw">=</span> <span class="fl">1</span>,
+                                                            <span class="kw">by</span> <span class="kw">=</span> <span class="fl">0.1</span>),
+                                                 <span class="kw">na.rm</span> <span class="kw">=</span> <span class="fl">TRUE</span>)),
+                               <span class="kw">include.lowest</span> <span class="kw">=</span> <span class="fl">TRUE</span>))
+
+<span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(<span class="no">chn_recent_region</span>$<span class="no">dead_class</span>) <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(<span class="no">chn_recent_region</span>$<span class="no">dead_class</span>) <span class="kw">%&gt;%</span>
+  <span class="kw pkg">stringr</span><span class="kw ns">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(<span class="kw">pattern</span> <span class="kw">=</span> <span class="st">","</span>, <span class="kw">replacement</span> <span class="kw">=</span> <span class="st">" - "</span>) <span class="kw">%&gt;%</span>
+  <span class="kw pkg">stringr</span><span class="kw ns">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(<span class="kw">pattern</span> <span class="kw">=</span> <span class="st">"3.19e\\+03"</span>, <span class="kw">replacement</span> <span class="kw">=</span> <span class="st">"3193"</span>) <span class="kw">%&gt;%</span>
+  <span class="kw pkg">stringr</span><span class="kw ns">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span>(<span class="kw">pattern</span> <span class="kw">=</span> <span class="st">"\\[|\\]|\\("</span>)
+
+<span class="fu"><a href="https://rdrr.io/pkg/sf/man/plot.html">plot</a></span>(<span class="no">chn_recent_region</span>[<span class="st">"dead_class"</span>],
+     <span class="kw">main</span> <span class="kw">=</span> <span class="st">""</span>,
+     <span class="kw">pal</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span>(<span class="kw">colors</span> <span class="kw">=</span> <span class="kw pkg">RColorBrewer</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fl">5</span>,
+                                                              <span class="kw">name</span> <span class="kw">=</span> <span class="st">"Reds"</span>))(<span class="fl">7</span>),
+     <span class="kw">nbreaks</span> <span class="kw">=</span> <span class="fl">7</span>,
+     <span class="kw">breaks</span> <span class="kw">=</span> <span class="st">"quantile"</span>,
+     <span class="kw">key.width</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html">lcm</a></span>(<span class="fl">5</span>))</pre></body></html></div>
+<p><img src="visualisation_china_files/figure-html/example6a-1.png" width="672" style="display: block; margin: auto;"></p>
+</div>
+<div id="check-monotonicity-of-data---confirmed" class="section level2">
+<h2 class="hasAnchor">
+<a href="#check-monotonicity-of-data---confirmed" class="anchor"></a>Check monotonicity of data - confirmed</h2>
+<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
+
+<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"CHN_ICL"</span>,
+         !<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">adm_area_1</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">date</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">date</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">confirmed</span>)) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>)</pre></body></html></div>
+<p><img src="visualisation_china_files/figure-html/example7a-1.png" width="960" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"CHN_ICL"</span>,
+         !<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">adm_area_1</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">date</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">date</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">confirmed</span>)) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_y"</span>)</pre></body></html></div>
+<p><img src="visualisation_china_files/figure-html/example7b-1.png" width="960" style="display: block; margin: auto;"></p>
+</div>
+<div id="check-monotonicity-of-data---dead" class="section level2">
+<h2 class="hasAnchor">
+<a href="#check-monotonicity-of-data---dead" class="anchor"></a>Check monotonicity of data - dead</h2>
+<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"CHN_ICL"</span>,
+         !<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">adm_area_1</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">date</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">date</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">dead</span>)) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>)</pre></body></html></div>
+<p><img src="visualisation_china_files/figure-html/example8a-1.png" width="960" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"CHN_ICL"</span>,
+         !<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">adm_area_1</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">date</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">date</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">dead</span>)) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_y"</span>)</pre></body></html></div>
+<p><img src="visualisation_china_files/figure-html/example8b-1.png" width="960" style="display: block; margin: auto;"></p>
 </div>
   </div>
 
