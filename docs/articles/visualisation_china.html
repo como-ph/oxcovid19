@@ -320,9 +320,11 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"CHN_ICL"</span>,
          !<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">adm_area_1</span>)) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">date</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">date</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">confirmed</span>)) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">date</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">confirmed</span>, <span class="kw">colour</span> <span class="kw">=</span> <span class="no">adm_area_1</span>)) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>)</pre></body></html></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_colour_discrete</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="kw">NULL</span>) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>()</pre></body></html></div>
 <p><img src="visualisation_china_files/figure-html/example7a-1.png" width="960" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
@@ -331,21 +333,23 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">date</span>)) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">date</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">confirmed</span>)) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_y"</span>)</pre></body></html></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()</pre></body></html></div>
 <p><img src="visualisation_china_files/figure-html/example7b-1.png" width="960" style="display: block; margin: auto;"></p>
-</div>
-<div id="check-monotonicity-of-data---dead" class="section level2">
-<h2 class="hasAnchor">
-<a href="#check-monotonicity-of-data---dead" class="anchor"></a>Check monotonicity of data - dead</h2>
 <div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"CHN_ICL"</span>,
          !<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">adm_area_1</span>)) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">date</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">date</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">dead</span>)) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">date</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">confirmed</span>)) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>)</pre></body></html></div>
-<p><img src="visualisation_china_files/figure-html/example8a-1.png" width="960" style="display: block; margin: auto;"></p>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_y"</span>) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()</pre></body></html></div>
+<p><img src="visualisation_china_files/figure-html/example7c-1.png" width="960" style="display: block; margin: auto;"></p>
+</div>
+<div id="check-monotonicity-of-data---dead" class="section level2">
+<h2 class="hasAnchor">
+<a href="#check-monotonicity-of-data---dead" class="anchor"></a>Check monotonicity of data - dead</h2>
 <div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"CHN_ICL"</span>,
@@ -353,7 +357,18 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">date</span>)) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">date</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">dead</span>)) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_y"</span>)</pre></body></html></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()</pre></body></html></div>
+<p><img src="visualisation_china_files/figure-html/example8a-1.png" width="960" style="display: block; margin: auto;"></p>
+<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"CHN_ICL"</span>,
+         !<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">adm_area_1</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">date</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">mapping</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">date</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">dead</span>)) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_y"</span>) +
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()</pre></body></html></div>
 <p><img src="visualisation_china_files/figure-html/example8b-1.png" width="960" style="display: block; margin: auto;"></p>
 </div>
   </div>
