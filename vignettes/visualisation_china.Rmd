@@ -42,7 +42,7 @@ chn_recent_region <- connect_oxcovid19() %>%
   filter(source == "CHN_ICL",
          !is.na(adm_area_1)) %>%
   group_by(adm_area_1) %>%
-  filter(as.Date(date) == max(as.Date(date))) %>%
+  filter(as.Date(date) == max(as.Date(date), na.rm = TRUE)) %>%
   select(date, country, adm_area_1, confirmed, recovered, dead, gid) %>%
   collect()
 ```
@@ -55,9 +55,7 @@ chn_recent_region
 
 ```{r example3a, echo = TRUE, eval = TRUE}
 chn_admin_1 <- connect_oxcovid19() %>%
-  get_table(tbl_name = "administrative_division") %>%
-  filter(countrycode == "CHN",
-         adm_level == 1) %>%
+  get_layer(ccode = "CHN", adm = 1) %>%
   collect()
 ```
 
@@ -68,12 +66,22 @@ chn_admin_1
 ## Merge administrative division and epidemiology data
 
 ```{r example4a, echo = TRUE, eval = TRUE}
+## Load sf package for spatial objects
+library(sf)
+
 chn_recent_region <- chn_recent_region %>%
   mutate(gid = as.character(stringr::str_remove_all(string = gid, 
                                                     pattern = "\\{|\\}"))) %>%
-  left_join(y = chn_admin_1, by = "gid")
+  left_join(y = chn_admin_1, by = "gid") %>%
+  st_as_sf()
 ```
 
 ```{r example4b, echo = FALSE, eval = TRUE}
 chn_recent_region
+```
+
+## Plot epidemiology total confirmed
+
+```{r example5a, echo = TRUE, eval = TRUE}
+plot(chn_recent_region["confirmed"], nbreaks = 10, breaks = "quantile")
 ```
