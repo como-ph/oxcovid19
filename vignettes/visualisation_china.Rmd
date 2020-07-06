@@ -133,8 +133,7 @@ plot(chn_recent_region["dead_class"],
 ```
 
 ## Check monotonicity of data - confirmed
-
-```{r example7a, echo = TRUE, eval = TRUE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
+```{r example7a, echo = TRUE, eval = TRUE, fig.width = 10, fig.height = 8, fig.align = "center"}
 library(ggplot2)
 
 connect_oxcovid19() %>%
@@ -142,10 +141,14 @@ connect_oxcovid19() %>%
   filter(source == "CHN_ICL",
          !is.na(adm_area_1)) %>%
   arrange(desc(date)) %>%
-  ggplot(mapping = aes(x = date, y = confirmed)) +
+  ggplot(mapping = aes(x = date, y = confirmed, colour = adm_area_1)) +
   geom_line() +
-  facet_wrap( ~ adm_area_1, ncol = 4)
+  geom_point() +
+  scale_colour_discrete(name = NULL) +
+  theme_minimal()
 ```
+
+
 ```{r example7b, echo = TRUE, eval = TRUE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
 connect_oxcovid19() %>%
   get_table(tbl_name = "epidemiology") %>%
@@ -154,7 +157,19 @@ connect_oxcovid19() %>%
   arrange(desc(date)) %>%
   ggplot(mapping = aes(x = date, y = confirmed)) +
   geom_line() +
-  facet_wrap( ~ adm_area_1, ncol = 4, scales = "free_y")
+  facet_wrap( ~ adm_area_1, ncol = 4) +
+  theme_bw()
+```
+```{r example7c, echo = TRUE, eval = TRUE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
+connect_oxcovid19() %>%
+  get_table(tbl_name = "epidemiology") %>%
+  filter(source == "CHN_ICL",
+         !is.na(adm_area_1)) %>%
+  arrange(desc(date)) %>%
+  ggplot(mapping = aes(x = date, y = confirmed)) +
+  geom_line() +
+  facet_wrap( ~ adm_area_1, ncol = 4, scales = "free_y") +
+  theme_bw()
 ```
 
 ## Check monotonicity of data - dead
@@ -167,7 +182,8 @@ connect_oxcovid19() %>%
   arrange(desc(date)) %>%
   ggplot(mapping = aes(x = date, y = dead)) +
   geom_line() +
-  facet_wrap( ~ adm_area_1, ncol = 4)
+  facet_wrap( ~ adm_area_1, ncol = 4) +
+  theme_bw()
 ```
 
 ```{r example8b, echo = TRUE, eval = TRUE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
@@ -178,5 +194,6 @@ connect_oxcovid19() %>%
   arrange(desc(date)) %>%
   ggplot(mapping = aes(x = date, y = dead)) +
   geom_line() +
-  facet_wrap( ~ adm_area_1, ncol = 4, scales = "free_y")
+  facet_wrap( ~ adm_area_1, ncol = 4, scales = "free_y") +
+  theme_bw()
 ```
