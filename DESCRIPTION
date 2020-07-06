@@ -29,7 +29,9 @@ Suggests:
     knitr,
     rmarkdown,
     magrittr,
-    stringr
+    stringr,
+    RColorBrewer,
+    ggplot2
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
