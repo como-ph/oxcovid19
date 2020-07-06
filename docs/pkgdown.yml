@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   database_access: database_access.html
   visualisation_china: visualisation_china.html
-last_built: 2020-07-05T11:03Z
+last_built: 2020-07-06T09:36Z
 urls:
   reference: https://como-ph.github.io/oxcovid19/reference
   article: https://como-ph.github.io/oxcovid19/articles
