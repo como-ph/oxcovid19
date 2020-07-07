@@ -104,6 +104,7 @@
 <div id="retrieving-epidemiology-data-for-single-source" class="section level2">
 <h2 class="hasAnchor">
 <a href="#retrieving-epidemiology-data-for-single-source" class="anchor"></a>Retrieving epidemiology data for single source</h2>
+<p>This is similar to what we have already demonstrated in previous vignettes. Here we retrieve the epidemiology table and query it for records coming from <code>CHN_ICL</code> source and for records at the subnational level for China.</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">oxcovid19</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">magrittr</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
@@ -135,6 +136,7 @@
 <div id="extracting-only-recent-data---total-per-region" class="section level2">
 <h2 class="hasAnchor">
 <a href="#extracting-only-recent-data---total-per-region" class="anchor"></a>Extracting only recent data - total per region</h2>
+<p>Then, here, we get the latest records for each subnational unit.</p>
 <div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">chn_recent_region</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"CHN_ICL"</span>,
@@ -162,6 +164,7 @@
 <div id="retrieving-administrative-division-level-1-for-single-country" class="section level2">
 <h2 class="hasAnchor">
 <a href="#retrieving-administrative-division-level-1-for-single-country" class="anchor"></a>Retrieving administrative division level 1 for single country</h2>
+<p>In this step, we retrieve the spatial layer for China at subnational level from the server using the function <code>get_layer</code>. The resulting output is an <code>sf</code> class object.</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">chn_admin_1</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/get_layer.html">get_layer</a></span>(<span class="kw">ccode</span> <span class="kw">=</span> <span class="st">"CHN"</span>, <span class="kw">adm</span> <span class="kw">=</span> <span class="fl">1</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>()</pre></body></html></div>
@@ -230,6 +233,7 @@
 <div id="merge-administrative-division-and-epidemiology-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#merge-administrative-division-and-epidemiology-data" class="anchor"></a>Merge administrative division and epidemiology data</h2>
+<p>Using the epidemiology data and the spatial layer we’ve retrieved, we create an overall spatial layer object for epidemiology data.</p>
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="co">## Load sf package for spatial objects</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">sf</span>)
 
@@ -265,6 +269,7 @@
 <div id="plot-epidemiology-total-confirmed" class="section level2">
 <h2 class="hasAnchor">
 <a href="#plot-epidemiology-total-confirmed" class="anchor"></a>Plot epidemiology total confirmed</h2>
+<p>Using the spatial layer object of epidemiology data in subnational units of China, we can create choropleth maps. Here we map the confirmed cases per subnational unit in China.</p>
 <div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">chn_recent_region</span> <span class="kw">&lt;-</span> <span class="no">chn_recent_region</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">confirmed_class</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span>(<span class="no">chn_recent_region</span>$<span class="no">confirmed</span>,
                                <span class="kw">breaks</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">chn_recent_region</span>$<span class="no">confirmed</span>,
@@ -291,6 +296,7 @@
 <div id="plot-epidemiology-total-death" class="section level2">
 <h2 class="hasAnchor">
 <a href="#plot-epidemiology-total-death" class="anchor"></a>Plot epidemiology total death</h2>
+<p>Here we map the deaths per subnational unit in China.</p>
 <div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">chn_recent_region</span> <span class="kw">&lt;-</span> <span class="no">chn_recent_region</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">dead_class</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span>(<span class="no">chn_recent_region</span>$<span class="no">dead</span>,
                                <span class="kw">breaks</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">chn_recent_region</span>$<span class="no">dead</span>,
@@ -317,6 +323,8 @@
 <div id="check-monotonicity-of-data---confirmed" class="section level2">
 <h2 class="hasAnchor">
 <a href="#check-monotonicity-of-data---confirmed" class="anchor"></a>Check monotonicity of data - confirmed</h2>
+<p>In the example from the Oxford COVID-19 Database, epidemiology data was checked for monotonicity. It is expected that epidemiology data is monotonic as these variables are expected to increase over time given that the information is cumulative. Monotonicity was checked by plotting a time series of cases and deaths with the expectation that the line plots will be on an increasing trajectory over time. Any instance of dips in the time series would indicate violation of monotonicity and an indication of issues with the data.</p>
+<p>In the Oxford COVID-19 Database example, time series line plot for each subnational unit was plotted on the same axis as shown below.</p>
 <div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
 
 <span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
@@ -330,6 +338,8 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_colour_discrete</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="kw">NULL</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>()</pre></body></html></div>
 <p><img src="visualisation_china_files/figure-html/example7a-1.png" width="960" style="display: block; margin: auto;"></p>
+<p>Given that Hubei province had the most cases compared to all subnational units, the plot shows one time series curve with significantly more cases that anywhere else whilst all other units had a flat time series curve. This is not necessarily a good way to check monotonicity in all units as only Hubei province time series information is shown clearly.</p>
+<p>In the plot below, we try to more clearly distinguish the time series for each subnational unit by showing a line plot for each unit separate. However, this only solves the issue of time series line plots being clearly demarcated from others. The curves, however, still does not show the true pattern for all units other than Hubei.</p>
 <div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"CHN_ICL"</span>,
@@ -340,6 +350,7 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()</pre></body></html></div>
 <p><img src="visualisation_china_files/figure-html/example7b-1.png" width="960" style="display: block; margin: auto;"></p>
+<p>We address this by allowing the y-axis for each subnational time series plot to be appropriate for the data for the specific unit as below. Here we are able to see the time series plots for each subunit and able to verify whether monotonicity is observed.</p>
 <div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"CHN_ICL"</span>,
@@ -350,10 +361,12 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_y"</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()</pre></body></html></div>
 <p><img src="visualisation_china_files/figure-html/example7c-1.png" width="960" style="display: block; margin: auto;"></p>
+<p>Unfortunately, one subnational unit (Shaanxi Province) has a dip in cases within the time series plot which breaks monotonicity. This would indicate something inconsistent with the data. This needs to be checked.</p>
 </div>
 <div id="check-monotonicity-of-data---dead" class="section level2">
 <h2 class="hasAnchor">
 <a href="#check-monotonicity-of-data---dead" class="anchor"></a>Check monotonicity of data - dead</h2>
+<p>In the next plots, we perform the same procedures but with the data on deaths. All subnational units demonstrate monotonicity with regard to number of deaths.</p>
 <div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"CHN_ICL"</span>,
