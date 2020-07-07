@@ -14,6 +14,9 @@
 #'   \item{\code{weather}}{Tibble of sources for weather table}
 #' }
 #'
+#' @examples
+#' data_sources
+#'
 #' @source \url{https://covid19.eng.ox.ac.uk/data_sources.html}
 #'
 #
@@ -39,6 +42,9 @@
 #'   \item{\code{administrative_division}}{Tibble of description for fields for
 #'     administrative division table}
 #' }
+#'
+#' @examples
+#' data_structures
 #'
 #' @source \url{https://covid19.eng.ox.ac.uk/data_schema.html}
 #'

@@ -10,6 +10,8 @@
 #'
 #' @return An RPostgres_tbl object of the specified OxCOVID19 Database table
 #'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' con <- connect_oxcovid19()
 #' get_table(con = con, tbl_name = "epidemiology")

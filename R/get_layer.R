@@ -13,6 +13,8 @@
 #'
 #' @return An object of \code{sf} class of the specified spatial layer
 #'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' con <- connect_oxcovid19()
 #' get_layer(con = con, ccode = "CHN", adm = 1)

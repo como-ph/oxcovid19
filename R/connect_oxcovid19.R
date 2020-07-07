@@ -18,6 +18,8 @@
 #'
 #' @return A PostgreSQL connection to OxCOVID19 database
 #'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' connect_oxcovid19()
 #'

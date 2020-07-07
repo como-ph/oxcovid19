@@ -9,6 +9,8 @@
 #'
 #' @return A vector of table names available from OxCOVID19 Database
 #'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' list_tables()
 #'
@@ -41,6 +43,8 @@ list_tables <- function(con = connect_oxcovid19()) {
 #'
 #' @return A named list of field names per specified table available from
 #'   OxCOVID19 Database
+#'
+#' @author Ernest Guevarra
 #'
 #' @examples
 #' list_fields()
