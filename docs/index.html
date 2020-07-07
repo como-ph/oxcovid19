@@ -100,11 +100,11 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The <a href="https://covid19.eng.ox.ac.uk">OxCOVID19 Project</a> aims to increase our understanding of the COVID-19 pandemic and elaborate possible strategies to reduce the impact on the society through the combined power of statistical, mathematical modelling, and machine learning techniques. The <a href="https://covid19.eng.ox.ac.uk">OxCOVID19 Database</a> is a large, single-centre, multimodal relational database consisting of information (using acknowledged sources) related to COVID-19 pandemic. This package provides an R-specific interface to the <a href="https://covid19.eng.ox.ac.uk">OxCOVID19 Database</a> based on widely-used data handling and manipulation approaches in R.</p>
+<p>The <a href="https://covid19.eng.ox.ac.uk">OxCOVID19 Project</a> aims to increase our understanding of the COVID-19 pandemic and elaborate possible strategies to reduce the impact on the society through the combined power of statistical, mathematical modelling, and machine learning techniques. The <a href="https://covid19.eng.ox.ac.uk">OxCOVID19 Database</a> is a large, single-centre, multimodal relational database consisting of information (using acknowledged sources) related to COVID-19 pandemic. This package provides an <a href="https://www.r-project.org">R</a>-specific interface to the <a href="https://covid19.eng.ox.ac.uk">OxCOVID19 Database</a> based on widely-used data handling and manipulation approaches in <a href="https://www.r-project.org">R</a>.</p>
 <div id="motivation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#motivation" class="anchor"></a>Motivation</h2>
-<p>The <a href="https://covid19.eng.ox.ac.uk">OxCOVID19 Project</a> team presented to the <a href="https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context">CoMo Consortium</a> during its weekly meeting on the 1st of July 2020. During this meeting, the <a href="https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context">CoMo Consortium</a> considered the use of the OxCOVID19 Database for use in filling data and information for country-specific parameters required in the <a href="https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context">CoMo Consortium</a> model. Given that the <a href="https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context">CoMo Consortium</a> model is R-centric, it makes logical sense to build an R-specific API to connect with the <a href="https://covid19.eng.ox.ac.uk">OxCOVID19</a> <a href="https://www.postgresql.org">PostgreSQL</a> database. This package aims to facilitate the possible use of the <a href="https://covid19.eng.ox.ac.uk">OxCOVID19</a> database for this purpose through purposefully-written functions that connects an R user to the database directly from R (as opposed to doing a manual download of the data or using separate tools to access <a href="https://www.postgresql.org">PostgreSQL</a>) and processes and structures the available datasets into country-specific tables structured for the requirements of the <a href="https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context">CoMo Consortium</a> model. A direct link to the <a href="https://www.postgresql.org">PostgreSQL</a> via R is also advantageous as this is updated more frequently than the CSV datasets made available via GitHub.</p>
+<p>The <a href="https://covid19.eng.ox.ac.uk">OxCOVID19 Project</a> team presented to the <a href="https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context">CoMo Consortium</a> during its weekly meeting on the 1st of July 2020. During this meeting, the <a href="https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context">CoMo Consortium</a> considered the use of the <a href="http://covid19.eng.ox.ac.uk/">OxCOVID19 Database</a> for use in filling data and information for country-specific parameters required in the <a href="https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context">CoMo Consortium</a> model. Given that the <a href="https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context">CoMo Consortium</a> model is <a href="https://www.r-project.org">R</a>-centric, it makes logical sense to build an <a href="https://www.r-project.org">R</a>-specific API to connect with the <a href="https://covid19.eng.ox.ac.uk">OxCOVID19</a> <a href="https://www.postgresql.org">PostgreSQL</a> database. This package aims to facilitate the possible use of the <a href="https://covid19.eng.ox.ac.uk">OxCOVID19</a> database for this purpose through purposefully-written functions that connects an R user to the database directly from <a href="https://www.r-project.org">R</a> (as opposed to doing a manual download of the data or using separate tools to access <a href="https://www.postgresql.org">PostgreSQL</a>) and processes and structures the available datasets into country-specific tables structured for the requirements of the <a href="https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context">CoMo Consortium</a> model. A direct link to the <a href="https://www.postgresql.org">PostgreSQL</a> via <a href="https://www.r-project.org">R</a> is also advantageous as this is updated more frequently than the CSV datasets made available via <a href="https://github.com/covid19db/data">GitHub</a>.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -129,23 +129,23 @@
 
 <span class="co">## Step 3: Query the epidemiology table to show data for Great Britain</span>
 <span class="no">gbr_epi_tab</span> <span class="kw">&lt;-</span> <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">epi_tab</span>, <span class="no">countrycode</span> <span class="kw">==</span> <span class="st">"GBR"</span>)</pre></div>
-<p><strong>Step 1</strong> and <strong>Step 2</strong> above are facilitated by the <code>connect_oxcovid19</code> and the <code>get_table</code> functions provided by the <code>oxcovid19</code> package. These functions are basically low-level wrappers to functions in the <a href="https://db.rstudio.com/dbi/"><code>DBI</code></a> and <a href="https://rpostgres.r-dbi.org"><code>RPostgres</code></a> packages applied specifically to work with the <a href="https://covid19.eng.ox.ac.uk">OxCOVID19</a> <a href="https://www.postgresql.org">PostgreSQL</a>. These functions facilitate convenient access to the server for general R users without having to learn to use the <code>DBI</code> and <code>RPostgres</code> packages.</p>
+<p><strong>Step 1</strong> and <strong>Step 2</strong> above are facilitated by the <code>connect_oxcovid19</code> and the <code>get_table</code> functions provided by the <code>oxcovid19</code> package. These functions are basically low-level wrappers to functions in the <a href="https://db.rstudio.com/dbi/"><code>DBI</code></a> and <a href="https://rpostgres.r-dbi.org"><code>RPostgres</code></a> packages applied specifically to work with the <a href="https://covid19.eng.ox.ac.uk">OxCOVID19</a> <a href="https://www.postgresql.org">PostgreSQL</a>. These functions facilitate convenient access to the server for general <a href="https://www.r-project.org">R</a> users without having to learn to use the <code>DBI</code> and <code>RPostgres</code> packages.</p>
 <p><strong>Step 3</strong>, on the other hand, is facilitated by the <code>dplyr</code> package functions which were designed to work with different types of tables including those from various database server connections such as <a href="https://www.postgresql.org">PostgreSQL</a>.</p>
 <p>The output of the workflow shown above is:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">#&gt; # Source:   lazy query [?? x 15]</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt; # Database: postgres [covid19@covid19db.org:5432/covid19]</span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;</span></span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt;  1 GBR_P… 2020-03-13 United… GBR         England    East Ridi… &lt;NA&gt;           NA</span></span>
-<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt;  2 GBR_P… 2020-03-13 United… GBR         England    East Suss… &lt;NA&gt;           NA</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt;  3 GBR_P… 2020-03-13 United… GBR         England    Greenwich  &lt;NA&gt;           NA</span></span>
-<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt;  4 GBR_P… 2020-03-13 United… GBR         England    Haringey   &lt;NA&gt;           NA</span></span>
-<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;  5 GBR_P… 2020-03-13 United… GBR         England    Havering   &lt;NA&gt;           NA</span></span>
-<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;  6 GBR_P… 2020-03-13 United… GBR         England    Hillingdon &lt;NA&gt;           NA</span></span>
-<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  7 GBR_P… 2020-03-13 United… GBR         England    Kensingto… &lt;NA&gt;           NA</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  8 GBR_P… 2020-03-13 United… GBR         England    Leicester  &lt;NA&gt;           NA</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt;  9 GBR_P… 2020-03-13 United… GBR         England    Hackney    &lt;NA&gt;           NA</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; 10 GBR_P… 2020-03-13 United… GBR         England    Merton     &lt;NA&gt;           NA</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt;  1 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Lanar… &lt;NA&gt;           NA</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt;  2 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Lothi… &lt;NA&gt;           NA</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">#&gt;  3 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Orkney &lt;NA&gt;           NA</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">#&gt;  4 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Shetl… &lt;NA&gt;           NA</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;  5 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Taysi… &lt;NA&gt;           NA</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;  6 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Weste… &lt;NA&gt;           NA</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  7 GBR_P… 2020-03-19 United… GBR         Wales      Aneurin B… &lt;NA&gt;           NA</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  8 GBR_P… 2020-03-19 United… GBR         Wales      Cardiff a… &lt;NA&gt;           NA</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt;  9 GBR_P… 2020-03-19 United… GBR         Wales      Cwm Taf H… &lt;NA&gt;           NA</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; 10 GBR_P… 2020-03-19 United… GBR         Wales      Hywel Dda… &lt;NA&gt;           NA</span></span>
 <span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span></span>
 <span id="cb3-16"><a href="#cb3-16"></a><span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span></span>
 <span id="cb3-17"><a href="#cb3-17"></a><span class="co">#&gt; #   gid &lt;chr&gt;</span></span></code></pre></div>
@@ -160,16 +160,16 @@
 <span class="co">#&gt; # Database: postgres [covid19@covid19db.org:5432/covid19]</span>
 <span class="co">#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested</span>
 <span class="co">#&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;</span>
-<span class="co">#&gt;  1 GBR_P… 2020-03-13 United… GBR         England    East Ridi… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  2 GBR_P… 2020-03-13 United… GBR         England    East Suss… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  3 GBR_P… 2020-03-13 United… GBR         England    Greenwich  &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  4 GBR_P… 2020-03-13 United… GBR         England    Haringey   &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  5 GBR_P… 2020-03-13 United… GBR         England    Havering   &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  6 GBR_P… 2020-03-13 United… GBR         England    Hillingdon &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  7 GBR_P… 2020-03-13 United… GBR         England    Kensingto… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  8 GBR_P… 2020-03-13 United… GBR         England    Leicester  &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  9 GBR_P… 2020-03-13 United… GBR         England    Hackney    &lt;NA&gt;           NA</span>
-<span class="co">#&gt; 10 GBR_P… 2020-03-13 United… GBR         England    Merton     &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  1 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Lanar… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  2 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Lothi… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  3 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Orkney &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  4 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Shetl… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  5 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Taysi… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  6 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Weste… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  7 GBR_P… 2020-03-19 United… GBR         Wales      Aneurin B… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  8 GBR_P… 2020-03-19 United… GBR         Wales      Cardiff a… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  9 GBR_P… 2020-03-19 United… GBR         Wales      Cwm Taf H… &lt;NA&gt;           NA</span>
+<span class="co">#&gt; 10 GBR_P… 2020-03-19 United… GBR         Wales      Hywel Dda… &lt;NA&gt;           NA</span>
 <span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span>
 <span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span>
 <span class="co">#&gt; #   gid &lt;chr&gt;</span></pre></div>
@@ -179,6 +179,11 @@
 <h2 class="hasAnchor">
 <a href="#limitations" class="anchor"></a>Limitations</h2>
 <p>The <code>oxcovid19</code> package is in active development which will be dictated by the evolution of the <a href="http://covid19.eng.ox.ac.uk/">OxCOVID19 Database</a> over time. Whilst every attempt will be employed to maintain syntax of current functions, it is possible that current functions may change syntax or operability in order to ensure relevance or maybe deprecated in lieu of a more appropriate and/or more performant function. In either of these cases, any change will be well-documented and explained to users and deprecation will be staged in such a way that users will be informed in good time to allow for transition to using the new functions.</p>
+</div>
+<div id="references" class="section level2">
+<h2 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h2>
+<p>Adam Mahdi, Piotr Błaszczyk, Paweł Dłotko, Dario Salvi, Tak-Shing Chan, John Harvey, Davide Gurnari, Yue Wu, Ahmad Farhat, Niklas Hellmer, Alexander Zarebski, Bernie Hogan, Lionel Tarassenko, <strong>Oxford COVID-19 Database: a multimodal data repository for better understanding the global impact of COVID-19</strong>. University of Oxford, 2020.</p>
 </div>
 </div>
   </div>
