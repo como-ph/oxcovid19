@@ -44,6 +44,9 @@
   </a>
 </li>
 <li>
+  <a href="../articles/oxcovid19.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -103,15 +106,16 @@
 <div id="list-of-available-sources" class="section level3">
 <h3 class="hasAnchor">
 <a href="#list-of-available-sources" class="anchor"></a>List of available sources</h3>
+<p>The task here is to list out all the unique epidemiology table sources sorted alphabetically.</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">oxcovid19</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">magrittr</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
 
-<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="no">source</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">source</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span>() <span class="kw">%&gt;%</span>
+<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>                      <span class="co">## Connect to PostgreSQL server</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>   <span class="co">## Retrieve epidemiology table</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="no">source</span>) <span class="kw">%&gt;%</span>                        <span class="co">## Sort the table by source</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="no">source</span>) <span class="kw">%&gt;%</span>                         <span class="co">## Select the source column</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span>() <span class="kw">%&gt;%</span>                             <span class="co">## Get only unique sources</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(<span class="no">source</span>)
 <span class="co">#&gt;  [1] "AUS_C1A"    "BEL_SCI"    "BEL_WY"     "BRA_MSHM"   "CAN_GOV"   </span>
 <span class="co">#&gt;  [6] "CHE_OPGOV"  "CHN_ICL"    "DEU_JPGG"   "ESP_MS"     "ESP_MSVP"  </span>
@@ -126,10 +130,11 @@
 <div id="data-for-single-source" class="section level3">
 <h3 class="hasAnchor">
 <a href="#data-for-single-source" class="anchor"></a>Data for single source</h3>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"GBR_PHTW"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">date</span>))
+<p>In this example, the task is to retrieve the epidemiology table and then get only the data from source <code>GBR_PHTW</code> and then sort resulting dataset by decreasing date.</p>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>                      <span class="co">## Connect to PostgreSQL server</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>   <span class="co">## Retrieve epidemiology table</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"GBR_PHTW"</span>) <span class="kw">%&gt;%</span>           <span class="co">## Select specific source</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">date</span>))                        <span class="co">## Sort by date</span>
 <span class="co">#&gt; # Source:     lazy query [?? x 15]</span>
 <span class="co">#&gt; # Database:   postgres [covid19@covid19db.org:5432/covid19]</span>
 <span class="co">#&gt; # Ordered by: desc(date)</span>
@@ -148,16 +153,18 @@
 <span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span>
 <span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span>
 <span class="co">#&gt; #   gid &lt;chr&gt;</span></pre></body></html></div>
+<p>For both tasks, the results in the example were replicated in R using the <code>oxcovid19</code> functions.</p>
 </div>
 </div>
 <div id="mobility" class="section level2">
 <h2 class="hasAnchor">
 <a href="#mobility" class="anchor"></a>Mobility</h2>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"mobility"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"GOOGLE_MOBILITY"</span>,
-         <span class="no">countrycode</span> <span class="kw">==</span> <span class="st">"GBR"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">date</span>))
+<p>The task here was to retrieve the mobility table from the PostgreSQL server and then extract only those with <code>GOOGLE_MOBILITY</code> as the source and <code>GBR</code> as the country code. Finally, the resulting table is sorted by date.</p>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>                      <span class="co">## Connect to PostgreSQL server</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"mobility"</span>) <span class="kw">%&gt;%</span>       <span class="co">## Retrieve mobility table</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"GOOGLE_MOBILITY"</span>,        <span class="co">## Get only data from `Google`</span>
+         <span class="no">countrycode</span> <span class="kw">==</span> <span class="st">"GBR"</span>) <span class="kw">%&gt;%</span>           <span class="co">## Get only data from `GBR`</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">date</span>))                        <span class="co">## Sort by date</span>
 <span class="co">#&gt; # Source:     lazy query [?? x 17]</span>
 <span class="co">#&gt; # Database:   postgres [covid19@covid19db.org:5432/covid19]</span>
 <span class="co">#&gt; # Ordered by: desc(date)</span>
@@ -177,6 +184,7 @@
 <span class="co">#&gt; #   residential &lt;dbl&gt;, workplace &lt;dbl&gt;, parks &lt;dbl&gt;, retail_recreation &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   grocery_pharmacy &lt;dbl&gt;, gid &lt;chr&gt;, transit &lt;dbl&gt;, walking &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   driving &lt;dbl&gt;</span></pre></body></html></div>
+<p>The results match the results shown in the examples.</p>
 </div>
   </div>
 
