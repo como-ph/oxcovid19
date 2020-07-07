@@ -20,7 +20,11 @@ knitr::opts_chunk$set(
 
 In this vignette, we show how to perform the OxCOVID19 Database visualisation examples shown [here](https://github.com/covid19db/examples/blob/master/data-plots/confirmed-adm-1-level-china.ipynb) using R and the `oxcovid19` package.
 
+Here we further demonstrate the use of the `oxcovid19` functions in tandem with the `dplyr` functions to query the PostgreSQL server. In addition, we demonstrate the use of `sf` functions to retrieve the `administrative_division` which is a spatial layer of boundary shapes of various countries and various administrative units within countries.
+
 ## Retrieving epidemiology data for single source
+
+This is similar to what we have already demonstrated in previous vignettes. Here we retrieve the epidemiology table and query it for records coming from `CHN_ICL` source and for records at the subnational level for China.
 
 ```{r example1, echo = TRUE, eval = TRUE}
 library(oxcovid19)
@@ -35,6 +39,8 @@ connect_oxcovid19() %>%
 ```
 
 ## Extracting only recent data - total per region
+
+Then, here, we get the latest records for each subnational unit.
 
 ```{r example2a, echo = TRUE, eval = TRUE}
 chn_recent_region <- connect_oxcovid19() %>%
@@ -53,6 +59,8 @@ chn_recent_region
 
 ## Retrieving administrative division level 1 for single country
 
+In this step, we retrieve the spatial layer for China at subnational level from the server using the function `get_layer`. The resulting output is an `sf` class object.
+
 ```{r example3a, echo = TRUE, eval = TRUE}
 chn_admin_1 <- connect_oxcovid19() %>%
   get_layer(ccode = "CHN", adm = 1) %>%
@@ -64,6 +72,8 @@ chn_admin_1
 ```
 
 ## Merge administrative division and epidemiology data
+
+Using the epidemiology data and the spatial layer we've retrieved, we create an overall spatial layer object for epidemiology data.
 
 ```{r example4a, echo = TRUE, eval = TRUE}
 ## Load sf package for spatial objects
@@ -81,6 +91,8 @@ chn_recent_region
 ```
 
 ## Plot epidemiology total confirmed
+
+Using the spatial layer object of epidemiology data in subnational units of China, we can create choropleth maps. Here we map the confirmed cases per subnational unit in China.
 
 ```{r example5a, echo = TRUE, eval = TRUE, fig.width = 7, fig.align = "center"}
 chn_recent_region <- chn_recent_region %>%
@@ -108,6 +120,8 @@ plot(chn_recent_region["confirmed_class"],
 
 ## Plot epidemiology total death
 
+Here we map the deaths per subnational unit in China.
+
 ```{r example6a, echo = TRUE, eval = TRUE, fig.width = 7, fig.align = "center"}
 chn_recent_region <- chn_recent_region %>%
   mutate(dead_class = cut(chn_recent_region$dead, 
@@ -133,6 +147,11 @@ plot(chn_recent_region["dead_class"],
 ```
 
 ## Check monotonicity of data - confirmed
+
+In the example from the Oxford COVID-19 Database, epidemiology data was checked for monotonicity. It is expected that epidemiology data is monotonic as these variables are expected to increase over time given that the information is cumulative. Monotonicity was checked by plotting a time series of cases and deaths with the expectation that the line plots will be on an increasing trajectory over time. Any instance of dips in the time series would indicate violation of monotonicity and an indication of issues with the data.
+
+In the Oxford COVID-19 Database example, time series line plot for each subnational unit was plotted on the same axis as shown below.
+
 ```{r example7a, echo = TRUE, eval = TRUE, fig.width = 10, fig.height = 8, fig.align = "center"}
 library(ggplot2)
 
@@ -148,6 +167,9 @@ connect_oxcovid19() %>%
   theme_minimal()
 ```
 
+Given that Hubei province had the most cases compared to all subnational units, the plot shows one time series curve with significantly more cases that anywhere else whilst all other units had a flat time series curve. This is not necessarily a good way to check monotonicity in all units as only Hubei province time series information is shown clearly.
+
+In the plot below, we try to more clearly distinguish the time series for each subnational unit by showing a line plot for each unit separate. However, this only solves the issue of time series line plots being clearly demarcated from others. The curves, however, still does not show the true pattern for all units other than Hubei.
 
 ```{r example7b, echo = TRUE, eval = TRUE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
 connect_oxcovid19() %>%
@@ -160,6 +182,9 @@ connect_oxcovid19() %>%
   facet_wrap( ~ adm_area_1, ncol = 4) +
   theme_bw()
 ```
+
+We address this by allowing the y-axis for each subnational time series plot to be appropriate for the data for the specific unit as below. Here we are able to see the time series plots for each subunit and able to verify whether monotonicity is observed.
+
 ```{r example7c, echo = TRUE, eval = TRUE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
 connect_oxcovid19() %>%
   get_table(tbl_name = "epidemiology") %>%
@@ -172,7 +197,11 @@ connect_oxcovid19() %>%
   theme_bw()
 ```
 
+Unfortunately, one subnational unit (Shaanxi Province) has a dip in cases within the time series plot which breaks monotonicity. This would indicate something inconsistent with the data. This needs to be checked.
+
 ## Check monotonicity of data - dead
+
+In the next plots, we perform the same procedures but with the data on deaths. All subnational units demonstrate monotonicity with regard to number of deaths.
 
 ```{r example8a, echo = TRUE, eval = TRUE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
 connect_oxcovid19() %>%

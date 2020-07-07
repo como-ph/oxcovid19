@@ -24,34 +24,44 @@ In this vignette, we show how to perform the OxCOVID19 Database access examples 
 
 ### List of available sources
 
+The task here is to list out all the unique epidemiology table sources sorted alphabetically.
+
 ```{r example1, echo = TRUE, eval = TRUE}
 library(oxcovid19)
 library(magrittr)
 library(dplyr)
 
-connect_oxcovid19() %>%
-  get_table(tbl_name = "epidemiology") %>%
-  arrange(source) %>%
-  select(source) %>%
-  distinct() %>%
-  pull(source)
+connect_oxcovid19() %>%                      ## Connect to PostgreSQL server
+  get_table(tbl_name = "epidemiology") %>%   ## Retrieve epidemiology table
+  arrange(source) %>%                        ## Sort the table by source
+  select(source) %>%                         ## Select the source column
+  distinct() %>%                             ## Get only unique sources
+  pull(source)                                 
 ```      
 
 ### Data for single source
 
+In this example, the task is to retrieve the epidemiology table and then get only the data from source `GBR_PHTW` and then sort resulting dataset by decreasing date.
+
 ```{r example2, echo = TRUE, eval = TRUE}
-connect_oxcovid19() %>%
-  get_table(tbl_name = "epidemiology") %>%
-  filter(source == "GBR_PHTW") %>%
-  arrange(desc(date))
+connect_oxcovid19() %>%                      ## Connect to PostgreSQL server
+  get_table(tbl_name = "epidemiology") %>%   ## Retrieve epidemiology table
+  filter(source == "GBR_PHTW") %>%           ## Select specific source
+  arrange(desc(date))                        ## Sort by date
 ```
+
+For both tasks, the results in the example were replicated in R using the `oxcovid19` functions.
 
 ## Mobility
 
+The task here was to retrieve the mobility table from the PostgreSQL server and then extract only those with `GOOGLE_MOBILITY` as the source and `GBR` as the country code. Finally, the resulting table is sorted by date.
+
 ```{r example3, echo = TRUE, eval = TRUE}
-connect_oxcovid19() %>%
-  get_table(tbl_name = "mobility") %>%
-  filter(source == "GOOGLE_MOBILITY",
-         countrycode == "GBR") %>%
-  arrange(desc(date))
+connect_oxcovid19() %>%                      ## Connect to PostgreSQL server
+  get_table(tbl_name = "mobility") %>%       ## Retrieve mobility table
+  filter(source == "GOOGLE_MOBILITY",        ## Get only data from `Google`
+         countrycode == "GBR") %>%           ## Get only data from `GBR`
+  arrange(desc(date))                        ## Sort by date
 ```
+
+The results match the results shown in the examples.
