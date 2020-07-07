@@ -31,7 +31,8 @@ Suggests:
     magrittr,
     stringr,
     RColorBrewer,
-    ggplot2
+    ggplot2,
+    DiagrammeR
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
