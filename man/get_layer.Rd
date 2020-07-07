@@ -29,3 +29,6 @@ con <- connect_oxcovid19()
 get_layer(con = con, ccode = "CHN", adm = 1)
 
 }
+\author{
+Ernest Guevarra
+}

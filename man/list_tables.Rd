@@ -21,3 +21,6 @@ List out names of tables available from OxCOVID19 Database
 list_tables()
 
 }
+\author{
+Ernest Guevarra
+}

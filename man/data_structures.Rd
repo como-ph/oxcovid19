@@ -28,4 +28,8 @@ data_structures
 \description{
 Data structures for OxCOVID19 Database
 }
+\examples{
+data_structures
+
+}
 \keyword{datasets}

@@ -27,3 +27,6 @@ List out field names of specific tables available from OxCOVID19 Database
 list_fields()
 
 }
+\author{
+Ernest Guevarra
+}

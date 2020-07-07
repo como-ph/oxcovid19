@@ -41,3 +41,6 @@ Initiate a connection to the OxCOVID19 PostgreSQL database
 connect_oxcovid19()
 
 }
+\author{
+Ernest Guevarra
+}

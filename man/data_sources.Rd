@@ -25,4 +25,8 @@ data_sources
 \description{
 Data sources for OxCOVID19 Database
 }
+\examples{
+data_sources
+
+}
 \keyword{datasets}

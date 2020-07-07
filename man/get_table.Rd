@@ -24,3 +24,6 @@ con <- connect_oxcovid19()
 get_table(con = con, tbl_name = "epidemiology")
 
 }
+\author{
+Ernest Guevarra
+}
