@@ -25,9 +25,10 @@ power of statistical, mathematical modelling, and machine learning
 techniques. The [OxCOVID19 Database](https://covid19.eng.ox.ac.uk) is a
 large, single-centre, multimodal relational database consisting of
 information (using acknowledged sources) related to COVID-19 pandemic.
-This package provides an R-specific interface to the [OxCOVID19
-Database](https://covid19.eng.ox.ac.uk) based on widely-used data
-handling and manipulation approaches in R.
+This package provides an [R](https://www.r-project.org)-specific
+interface to the [OxCOVID19 Database](https://covid19.eng.ox.ac.uk)
+based on widely-used data handling and manipulation approaches in
+[R](https://www.r-project.org).
 
 ## Motivation
 
@@ -37,26 +38,29 @@ Consortium](https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid
 during its weekly meeting on the 1st of July 2020. During this meeting,
 the [CoMo
 Consortium](https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context)
-considered the use of the OxCOVID19 Database for use in filling data and
+considered the use of the [OxCOVID19
+Database](http://covid19.eng.ox.ac.uk/) for use in filling data and
 information for country-specific parameters required in the [CoMo
 Consortium](https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context)
 model. Given that the [CoMo
 Consortium](https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context)
-model is R-centric, it makes logical sense to build an R-specific API to
-connect with the [OxCOVID19](https://covid19.eng.ox.ac.uk)
+model is [R](https://www.r-project.org)-centric, it makes logical sense
+to build an [R](https://www.r-project.org)-specific API to connect with
+the [OxCOVID19](https://covid19.eng.ox.ac.uk)
 [PostgreSQL](https://www.postgresql.org) database. This package aims to
 facilitate the possible use of the
 [OxCOVID19](https://covid19.eng.ox.ac.uk) database for this purpose
 through purposefully-written functions that connects an R user to the
-database directly from R (as opposed to doing a manual download of the
-data or using separate tools to access
+database directly from [R](https://www.r-project.org) (as opposed to
+doing a manual download of the data or using separate tools to access
 [PostgreSQL](https://www.postgresql.org)) and processes and structures
 the available datasets into country-specific tables structured for the
 requirements of the [CoMo
 Consortium](https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context)
 model. A direct link to the [PostgreSQL](https://www.postgresql.org) via
-R is also advantageous as this is updated more frequently than the CSV
-datasets made available via GitHub.
+[R](https://www.r-project.org) is also advantageous as this is updated
+more frequently than the CSV datasets made available via
+[GitHub](https://github.com/covid19db/data).
 
 ## Installation
 
@@ -102,8 +106,9 @@ functions in the [`DBI`](https://db.rstudio.com/dbi/) and
 [`RPostgres`](https://rpostgres.r-dbi.org) packages applied specifically
 to work with the [OxCOVID19](https://covid19.eng.ox.ac.uk)
 [PostgreSQL](https://www.postgresql.org). These functions facilitate
-convenient access to the server for general R users without having to
-learn to use the `DBI` and `RPostgres` packages.
+convenient access to the server for general
+[R](https://www.r-project.org) users without having to learn to use the
+`DBI` and `RPostgres` packages.
 
 **Step 3**, on the other hand, is facilitated by the `dplyr` package
 functions which were designed to work with different types of tables
@@ -116,16 +121,16 @@ The output of the workflow shown above is:
     #> # Database: postgres [covid19@covid19db.org:5432/covid19]
     #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
     #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-    #>  1 GBR_P… 2020-03-13 United… GBR         England    East Ridi… <NA>           NA
-    #>  2 GBR_P… 2020-03-13 United… GBR         England    East Suss… <NA>           NA
-    #>  3 GBR_P… 2020-03-13 United… GBR         England    Greenwich  <NA>           NA
-    #>  4 GBR_P… 2020-03-13 United… GBR         England    Haringey   <NA>           NA
-    #>  5 GBR_P… 2020-03-13 United… GBR         England    Havering   <NA>           NA
-    #>  6 GBR_P… 2020-03-13 United… GBR         England    Hillingdon <NA>           NA
-    #>  7 GBR_P… 2020-03-13 United… GBR         England    Kensingto… <NA>           NA
-    #>  8 GBR_P… 2020-03-13 United… GBR         England    Leicester  <NA>           NA
-    #>  9 GBR_P… 2020-03-13 United… GBR         England    Hackney    <NA>           NA
-    #> 10 GBR_P… 2020-03-13 United… GBR         England    Merton     <NA>           NA
+    #>  1 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Lanar… <NA>           NA
+    #>  2 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Lothi… <NA>           NA
+    #>  3 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Orkney <NA>           NA
+    #>  4 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Shetl… <NA>           NA
+    #>  5 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Taysi… <NA>           NA
+    #>  6 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Weste… <NA>           NA
+    #>  7 GBR_P… 2020-03-19 United… GBR         Wales      Aneurin B… <NA>           NA
+    #>  8 GBR_P… 2020-03-19 United… GBR         Wales      Cardiff a… <NA>           NA
+    #>  9 GBR_P… 2020-03-19 United… GBR         Wales      Cwm Taf H… <NA>           NA
+    #> 10 GBR_P… 2020-03-19 United… GBR         Wales      Hywel Dda… <NA>           NA
     #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
     #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
     #> #   gid <chr>
@@ -145,16 +150,16 @@ connect_oxcovid19() %>%
 #> # Database: postgres [covid19@covid19db.org:5432/covid19]
 #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-#>  1 GBR_P… 2020-03-13 United… GBR         England    East Ridi… <NA>           NA
-#>  2 GBR_P… 2020-03-13 United… GBR         England    East Suss… <NA>           NA
-#>  3 GBR_P… 2020-03-13 United… GBR         England    Greenwich  <NA>           NA
-#>  4 GBR_P… 2020-03-13 United… GBR         England    Haringey   <NA>           NA
-#>  5 GBR_P… 2020-03-13 United… GBR         England    Havering   <NA>           NA
-#>  6 GBR_P… 2020-03-13 United… GBR         England    Hillingdon <NA>           NA
-#>  7 GBR_P… 2020-03-13 United… GBR         England    Kensingto… <NA>           NA
-#>  8 GBR_P… 2020-03-13 United… GBR         England    Leicester  <NA>           NA
-#>  9 GBR_P… 2020-03-13 United… GBR         England    Hackney    <NA>           NA
-#> 10 GBR_P… 2020-03-13 United… GBR         England    Merton     <NA>           NA
+#>  1 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Lanar… <NA>           NA
+#>  2 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Lothi… <NA>           NA
+#>  3 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Orkney <NA>           NA
+#>  4 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Shetl… <NA>           NA
+#>  5 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Taysi… <NA>           NA
+#>  6 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Weste… <NA>           NA
+#>  7 GBR_P… 2020-03-19 United… GBR         Wales      Aneurin B… <NA>           NA
+#>  8 GBR_P… 2020-03-19 United… GBR         Wales      Cardiff a… <NA>           NA
+#>  9 GBR_P… 2020-03-19 United… GBR         Wales      Cwm Taf H… <NA>           NA
+#> 10 GBR_P… 2020-03-19 United… GBR         Wales      Hywel Dda… <NA>           NA
 #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
 #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
 #> #   gid <chr>
@@ -175,3 +180,11 @@ and/or more performant function. In either of these cases, any change
 will be well-documented and explained to users and deprecation will be
 staged in such a way that users will be informed in good time to allow
 for transition to using the new functions.
+
+## References
+
+Adam Mahdi, Piotr Błaszczyk, Paweł Dłotko, Dario Salvi, Tak-Shing Chan,
+John Harvey, Davide Gurnari, Yue Wu, Ahmad Farhat, Niklas Hellmer,
+Alexander Zarebski, Bernie Hogan, Lionel Tarassenko, **Oxford COVID-19
+Database: a multimodal data repository for better understanding the
+global impact of COVID-19**. University of Oxford, 2020.

@@ -2,10 +2,17 @@ Package: oxcovid19
 Type: Package
 Title: An R API to the Oxford COVID-19 Database
 Version: 0.1.0
-Authors@R: person("Ernest", "Guevarra", 
-                  comment = c(ORCID = "0000-0002-4887-4415"), 
-                  email = "ernest@guevarra.io", 
-                  role = c("aut", "cre"))
+Authors@R: c(person(given = "Ernest", family = "Guevarra", 
+                    email = "ernest@guevarra.io", role = c("aut", "cre"),
+                    comment = c(ORCID = "0000-0002-4887-4415")),
+             person(given = "Chris", family = "Mercado", 
+                    email = "cegmercado@gmail.com",
+                    role = "aut",
+                    comment = c(ORCID = "0000-0002-5588-9543")),
+             person(given = "Robert", family = "Medina", 
+                    email = "jcmedina1@up.edu.ph",
+                    role = "aut",
+                    comment = c(ORCID = "0000-0001-6647-5453")))
 Description: The OxCOVID19 Project <https://covid19.eng.ox.ac.uk> aims to increase
     our understanding of the COVID-19 pandemic and elaborate possible strategies
     to reduce the impact on the society through the combined power of statistical,
