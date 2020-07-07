@@ -16,4 +16,6 @@
 
 * Added GitHub Actions for performing code coverage
 
+* Added vignettes to demonstrate similar outputs as OxCOVID-19 Project
+
 * Added a `NEWS.md` file to track changes to the package.
