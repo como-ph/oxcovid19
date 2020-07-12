@@ -7,13 +7,10 @@ template:
     bootswatch: flatly
     ganalytics:
 
-#home:
-#  links:
-#  - text: See the DoH page for IATF Resolutions
-#    href: http://doh.gov.ph/COVID-19/IATF-Resolutions
-
-#  - text: See the Official Gazette pages for IATF Resolutions
-#    href: https://www.officialgazette.gov.ph/section/laws/other-issuances/inter-agency-task-force-for-the-management-of-emerging-infectious-diseases-resolutions/
+home:
+  links:
+  - text: See the Oxford COVID-19 (OxCOVID19) Project
+    href: https://covid19.eng.ox.ac.uk/
 
 reference:
   - title: Description
