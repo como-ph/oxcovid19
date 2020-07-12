@@ -39,8 +39,7 @@ Suggests:
     stringr,
     RColorBrewer,
     ggplot2,
-    DiagrammeR,
-    utf8
+    DiagrammeR
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
