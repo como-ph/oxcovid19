@@ -102,8 +102,8 @@
 <p>The primary use case for the <code>oxcovid19</code> package is for facilitating a simplified, R-based workflow for 1) connecting to the <a href="https://covid19.eng.ox.ac.uk">OxCOVID19</a> <a href="https://www.postgresql.org">PostgreSQL</a> server; 2) accessing table/s available from the <a href="https://www.postgresql.org">PostgreSQL</a> server; and, 3) querying the <a href="https://www.postgresql.org">PostgreSQL</a> server with specific parameters to customise table/s output for intended use. This workflow is illustrated in the workflow diagram below:</p>
 <p><br></p>
 <p></p>
-<div id="htmlwidget-f181e251f2a916f3dad4" style="width:768px;height:960px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f181e251f2a916f3dad4">{"x":{"diagram":"\n  digraph oxcovid19 {\n\n    # a \"graph\" statement\n    graph [overlap = false, fontsize = 12, fontname = Helvetica]\n\n    # Terminal nodes\n    node [shape = oval, width = 1.5, penwidth = 2, fontsize = 14]\n        \n    a [label = \"START\"; color = darkgreen; fontcolor = darkgreen];\n    h [label = \"END\"; color = crimson; fontcolor = crimson];\n\n    # Input/output nodes\n    node [shape = parallelogram, fixedsize = true, height = 1, width = 1.5, penwidth = 2, color = royalblue1, fontcolor = royalblue1]\n    \n    b [label = \"Step 1:\nConnect\nto server\"];\n\n    # Process nodes\n    node [shape = rect]\n  \n    d [label = \"Step 2:\nRetrieve\ntable\"];\n    f [label = \"Step 3:\nQuery\ntable\"];\n\n    # Package nodes\n    node [shape = oval, fixedsize = TRUE, width = 2, penwidth = 2, fontsize = 10, fontname = Courier, color = darkviolet, fontcolor = darkviolet]\n    \n    c [label = \"oxcovid19\nconnect_oxcovid19()\";];\n    e [label = \"oxcovid19\nget_table; get_layer\"];\n    g [label = \"dplyr - filter; select\nsf - st_read\"];\n\n    edge [minlen = 2, arrowsize = 0.75, penwidth = 2, color = dimgray]\n    \n    a -> b\n    b -> d\n    d -> f\n    f -> h\n\n    edge [minlen = 3]\n\n    b -> c\n    c -> b\n    d -> e\n    e -> d\n    f -> g\n    g -> f\n\n    subgraph {\n      rank = same; b; c;\n    }\n\n    subgraph {\n      rank = same; d; e;\n    }\n\n    subgraph {\n      rank = same; f; g;\n    }\n\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><br><p>The following code demonstrates how this workflow can be implemented in R:</p>
+<div id="htmlwidget-be05a37dbae66ca15846" style="width:768px;height:960px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-be05a37dbae66ca15846">{"x":{"diagram":"\n  digraph oxcovid19 {\n\n    # a \"graph\" statement\n    graph [overlap = false, fontsize = 12, fontname = Helvetica]\n\n    # Terminal nodes\n    node [shape = oval, width = 1.5, penwidth = 2, fontsize = 14]\n        \n    a [label = \"START\"; color = darkgreen; fontcolor = darkgreen];\n    h [label = \"END\"; color = crimson; fontcolor = crimson];\n\n    # Input/output nodes\n    node [shape = parallelogram, fixedsize = true, height = 1, width = 1.5, penwidth = 2, color = royalblue1, fontcolor = royalblue1]\n    \n    b [label = \"Step 1:\nConnect\nto server\"];\n\n    # Process nodes\n    node [shape = rect]\n  \n    d [label = \"Step 2:\nRetrieve\ntable\"];\n    f [label = \"Step 3:\nQuery\ntable\"];\n\n    # Package nodes\n    node [shape = oval, fixedsize = TRUE, width = 2, penwidth = 2, fontsize = 10, fontname = Courier, color = darkviolet, fontcolor = darkviolet]\n    \n    c [label = \"oxcovid19\nconnect_oxcovid19()\";];\n    e [label = \"oxcovid19\nget_table; get_layer\"];\n    g [label = \"dplyr - filter; select\nsf - st_read\"];\n\n    edge [minlen = 2, arrowsize = 0.75, penwidth = 2, color = dimgray]\n    \n    a -> b\n    b -> d\n    d -> f\n    f -> h\n\n    edge [minlen = 3]\n\n    b -> c\n    c -> b\n    d -> e\n    e -> d\n    f -> g\n    g -> f\n\n    subgraph {\n      rank = same; b; c;\n    }\n\n    subgraph {\n      rank = same; d; e;\n    }\n\n    subgraph {\n      rank = same; f; g;\n    }\n\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><br><p>The following code demonstrates how this workflow can be implemented in R:</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">oxcovid19</span>)
 
 <span class="co">## Step 1: Create a connection to OxCOVID19 PostgreSQL server</span>
@@ -127,10 +127,10 @@
 #&gt;  4 GBR_P… 2020-06-23 United… GBR         Wales      Monmouths… Monmouths…   2888
 #&gt;  5 GBR_P… 2020-06-23 United… GBR         Wales      Pembrokes… Pembrokes…   4922
 #&gt;  6 GBR_P… 2020-06-23 United… GBR         Wales      Torfaen    Torfaen      3313
-#&gt;  7 GBR_P… 2020-01-10 United… GBR         Wales      &lt;NA&gt;       &lt;NA&gt;            1
-#&gt;  8 GBR_P… 2020-01-11 United… GBR         Wales      &lt;NA&gt;       &lt;NA&gt;            1
-#&gt;  9 GBR_P… 2020-01-12 United… GBR         Wales      &lt;NA&gt;       &lt;NA&gt;            1
-#&gt; 10 GBR_P… 2020-01-13 United… GBR         Wales      &lt;NA&gt;       &lt;NA&gt;            1
+#&gt;  7 WRD_W… 2020-07-12 United… GBR         Bermuda    &lt;NA&gt;       &lt;NA&gt;           NA
+#&gt;  8 WRD_W… 2020-07-12 United… GBR         Gibraltar  &lt;NA&gt;       &lt;NA&gt;           NA
+#&gt;  9 WRD_W… 2020-07-12 United… GBR         Isle of M… &lt;NA&gt;       &lt;NA&gt;           NA
+#&gt; 10 WRD_W… 2020-07-12 United… GBR         Cayman Is… &lt;NA&gt;       &lt;NA&gt;           NA
 #&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,
 #&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,
 #&gt; #   gid &lt;chr&gt;</code></pre>
@@ -151,10 +151,10 @@
 <span class="co">#&gt;  4 GBR_P… 2020-06-23 United… GBR         Wales      Monmouths… Monmouths…   2888</span>
 <span class="co">#&gt;  5 GBR_P… 2020-06-23 United… GBR         Wales      Pembrokes… Pembrokes…   4922</span>
 <span class="co">#&gt;  6 GBR_P… 2020-06-23 United… GBR         Wales      Torfaen    Torfaen      3313</span>
-<span class="co">#&gt;  7 GBR_P… 2020-01-10 United… GBR         Wales      &lt;NA&gt;       &lt;NA&gt;            1</span>
-<span class="co">#&gt;  8 GBR_P… 2020-01-11 United… GBR         Wales      &lt;NA&gt;       &lt;NA&gt;            1</span>
-<span class="co">#&gt;  9 GBR_P… 2020-01-12 United… GBR         Wales      &lt;NA&gt;       &lt;NA&gt;            1</span>
-<span class="co">#&gt; 10 GBR_P… 2020-01-13 United… GBR         Wales      &lt;NA&gt;       &lt;NA&gt;            1</span>
+<span class="co">#&gt;  7 WRD_W… 2020-07-12 United… GBR         Bermuda    &lt;NA&gt;       &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  8 WRD_W… 2020-07-12 United… GBR         Gibraltar  &lt;NA&gt;       &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  9 WRD_W… 2020-07-12 United… GBR         Isle of M… &lt;NA&gt;       &lt;NA&gt;           NA</span>
+<span class="co">#&gt; 10 WRD_W… 2020-07-12 United… GBR         Cayman Is… &lt;NA&gt;       &lt;NA&gt;           NA</span>
 <span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span>
 <span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span>
 <span class="co">#&gt; #   gid &lt;chr&gt;</span></pre></body></html></div>

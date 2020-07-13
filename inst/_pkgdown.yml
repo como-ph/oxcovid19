@@ -15,6 +15,12 @@ home:
   - text: See the Oxford COVID-19 (OxCOVID19) Project
     href: https://covid19.eng.ox.ac.uk/
 
+  - text: More about the CoMo Consoritum
+    href: https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context
+
+  - text: See CoMo Philippines
+    href: https://como-ph.github.io/
+
 reference:
   - title: Description
     contents:
