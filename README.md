@@ -77,8 +77,8 @@ remotes::install_github("como-ph/oxcovid19")
 ## Usage
 
 The primary use case for the `oxcovid19` package is for facilitating a
-simplified, R-based workflow for 1) connecting to the
-[OxCOVID19](https://covid19.eng.ox.ac.uk)
+simplified, [R](https://www.r-project.org)-based workflow for 1)
+connecting to the [OxCOVID19](https://covid19.eng.ox.ac.uk)
 [PostgreSQL](https://www.postgresql.org) server; 2) accessing table/s
 available from the [PostgreSQL](https://www.postgresql.org) server; and,
 3) querying the [PostgreSQL](https://www.postgresql.org) server with
@@ -121,16 +121,16 @@ The output of the workflow shown above is:
     #> # Database: postgres [covid19@covid19db.org:5432/covid19]
     #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
     #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-    #>  1 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Lanar… <NA>           NA
-    #>  2 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Lothi… <NA>           NA
-    #>  3 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Orkney <NA>           NA
-    #>  4 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Shetl… <NA>           NA
-    #>  5 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Taysi… <NA>           NA
-    #>  6 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Weste… <NA>           NA
-    #>  7 GBR_P… 2020-03-19 United… GBR         Wales      Aneurin B… <NA>           NA
-    #>  8 GBR_P… 2020-03-19 United… GBR         Wales      Cardiff a… <NA>           NA
-    #>  9 GBR_P… 2020-03-19 United… GBR         Wales      Cwm Taf H… <NA>           NA
-    #> 10 GBR_P… 2020-03-19 United… GBR         Wales      Hywel Dda… <NA>           NA
+    #>  1 GBR_P… 2020-05-19 United… GBR         Wales      Vale of G… Vale of G…   3088
+    #>  2 GBR_P… 2020-03-25 United… GBR         Wales      Wrexham    Wrexham       138
+    #>  3 WRD_E… 2020-06-28 United… GBR         <NA>       <NA>       <NA>           NA
+    #>  4 GBR_P… 2020-06-23 United… GBR         Wales      Monmouths… Monmouths…   2888
+    #>  5 GBR_P… 2020-06-23 United… GBR         Wales      Pembrokes… Pembrokes…   4922
+    #>  6 GBR_P… 2020-06-23 United… GBR         Wales      Torfaen    Torfaen      3313
+    #>  7 WRD_W… 2020-07-12 United… GBR         Bermuda    <NA>       <NA>           NA
+    #>  8 WRD_W… 2020-07-12 United… GBR         Gibraltar  <NA>       <NA>           NA
+    #>  9 WRD_W… 2020-07-12 United… GBR         Isle of M… <NA>       <NA>           NA
+    #> 10 WRD_W… 2020-07-12 United… GBR         Cayman Is… <NA>       <NA>           NA
     #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
     #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
     #> #   gid <chr>
@@ -150,16 +150,16 @@ connect_oxcovid19() %>%
 #> # Database: postgres [covid19@covid19db.org:5432/covid19]
 #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-#>  1 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Lanar… <NA>           NA
-#>  2 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Lothi… <NA>           NA
-#>  3 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Orkney <NA>           NA
-#>  4 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Shetl… <NA>           NA
-#>  5 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Taysi… <NA>           NA
-#>  6 GBR_P… 2020-03-19 United… GBR         Scotland   NHS Weste… <NA>           NA
-#>  7 GBR_P… 2020-03-19 United… GBR         Wales      Aneurin B… <NA>           NA
-#>  8 GBR_P… 2020-03-19 United… GBR         Wales      Cardiff a… <NA>           NA
-#>  9 GBR_P… 2020-03-19 United… GBR         Wales      Cwm Taf H… <NA>           NA
-#> 10 GBR_P… 2020-03-19 United… GBR         Wales      Hywel Dda… <NA>           NA
+#>  1 GBR_P… 2020-05-19 United… GBR         Wales      Vale of G… Vale of G…   3088
+#>  2 GBR_P… 2020-03-25 United… GBR         Wales      Wrexham    Wrexham       138
+#>  3 WRD_E… 2020-06-28 United… GBR         <NA>       <NA>       <NA>           NA
+#>  4 GBR_P… 2020-06-23 United… GBR         Wales      Monmouths… Monmouths…   2888
+#>  5 GBR_P… 2020-06-23 United… GBR         Wales      Pembrokes… Pembrokes…   4922
+#>  6 GBR_P… 2020-06-23 United… GBR         Wales      Torfaen    Torfaen      3313
+#>  7 WRD_W… 2020-07-12 United… GBR         Bermuda    <NA>       <NA>           NA
+#>  8 WRD_W… 2020-07-12 United… GBR         Gibraltar  <NA>       <NA>           NA
+#>  9 WRD_W… 2020-07-12 United… GBR         Isle of M… <NA>       <NA>           NA
+#> 10 WRD_W… 2020-07-12 United… GBR         Cayman Is… <NA>       <NA>           NA
 #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
 #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
 #> #   gid <chr>

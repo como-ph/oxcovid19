@@ -43,7 +43,7 @@ remotes::install_github("como-ph/oxcovid19")
 
 ## Usage
 
-The primary use case for the `oxcovid19` package is for facilitating a simplified, R-based workflow for 1) connecting to the [OxCOVID19](https://covid19.eng.ox.ac.uk) [PostgreSQL](https://www.postgresql.org) server; 2) accessing table/s available from the [PostgreSQL](https://www.postgresql.org) server; and, 3) querying the [PostgreSQL](https://www.postgresql.org) server with specific parameters to customise table/s output for intended use.
+The primary use case for the `oxcovid19` package is for facilitating a simplified, [R](https://www.r-project.org)-based workflow for 1) connecting to the [OxCOVID19](https://covid19.eng.ox.ac.uk) [PostgreSQL](https://www.postgresql.org) server; 2) accessing table/s available from the [PostgreSQL](https://www.postgresql.org) server; and, 3) querying the [PostgreSQL](https://www.postgresql.org) server with specific parameters to customise table/s output for intended use.
 
 The following code demonstrates this workflow:
 
