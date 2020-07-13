@@ -7,6 +7,9 @@ template:
     bootswatch: flatly
     ganalytics:
 
+#navbar:
+#  type: inverse
+
 home:
   links:
   - text: See the Oxford COVID-19 (OxCOVID19) Project
