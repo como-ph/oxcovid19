@@ -100,6 +100,7 @@
 </h1></div>
 <!-- badges: start -->
 
+<!-- badges: end -->
 <p>The <a href="https://covid19.eng.ox.ac.uk">OxCOVID19 Project</a> aims to increase our understanding of the COVID-19 pandemic and elaborate possible strategies to reduce the impact on the society through the combined power of statistical, mathematical modelling, and machine learning techniques. The <a href="https://covid19.eng.ox.ac.uk">OxCOVID19 Database</a> is a large, single-centre, multimodal relational database consisting of information (using acknowledged sources) related to COVID-19 pandemic. This package provides an <a href="https://www.r-project.org">R</a>-specific interface to the <a href="https://covid19.eng.ox.ac.uk">OxCOVID19 Database</a> based on widely-used data handling and manipulation approaches in <a href="https://www.r-project.org">R</a>.</p>
 <div id="motivation" class="section level2">
 <h2 class="hasAnchor">
@@ -143,9 +144,9 @@
 <span id="cb3-9"><a href="#cb3-9"></a><span class="co">#&gt;  5 GBR_P… 2020-06-23 United… GBR         Wales      Pembrokes… Pembrokes…   4922</span></span>
 <span id="cb3-10"><a href="#cb3-10"></a><span class="co">#&gt;  6 GBR_P… 2020-06-23 United… GBR         Wales      Torfaen    Torfaen      3313</span></span>
 <span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;  7 WRD_W… 2020-07-12 United… GBR         Bermuda    &lt;NA&gt;       &lt;NA&gt;           NA</span></span>
-<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  8 WRD_W… 2020-07-12 United… GBR         Gibraltar  &lt;NA&gt;       &lt;NA&gt;           NA</span></span>
-<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt;  9 WRD_W… 2020-07-12 United… GBR         Isle of M… &lt;NA&gt;       &lt;NA&gt;           NA</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; 10 WRD_W… 2020-07-12 United… GBR         Cayman Is… &lt;NA&gt;       &lt;NA&gt;           NA</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;  8 WRD_W… 2020-07-12 United… GBR         Cayman Is… &lt;NA&gt;       &lt;NA&gt;           NA</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt;  9 WRD_W… 2020-07-12 United… GBR         Channel I… &lt;NA&gt;       &lt;NA&gt;           NA</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt; 10 WRD_W… 2020-07-12 United… GBR         Gibraltar  &lt;NA&gt;       &lt;NA&gt;           NA</span></span>
 <span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span></span>
 <span id="cb3-16"><a href="#cb3-16"></a><span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span></span>
 <span id="cb3-17"><a href="#cb3-17"></a><span class="co">#&gt; #   gid &lt;chr&gt;</span></span></code></pre></div>
@@ -167,9 +168,9 @@
 <span class="co">#&gt;  5 GBR_P… 2020-06-23 United… GBR         Wales      Pembrokes… Pembrokes…   4922</span>
 <span class="co">#&gt;  6 GBR_P… 2020-06-23 United… GBR         Wales      Torfaen    Torfaen      3313</span>
 <span class="co">#&gt;  7 WRD_W… 2020-07-12 United… GBR         Bermuda    &lt;NA&gt;       &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  8 WRD_W… 2020-07-12 United… GBR         Gibraltar  &lt;NA&gt;       &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  9 WRD_W… 2020-07-12 United… GBR         Isle of M… &lt;NA&gt;       &lt;NA&gt;           NA</span>
-<span class="co">#&gt; 10 WRD_W… 2020-07-12 United… GBR         Cayman Is… &lt;NA&gt;       &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  8 WRD_W… 2020-07-12 United… GBR         Cayman Is… &lt;NA&gt;       &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  9 WRD_W… 2020-07-12 United… GBR         Channel I… &lt;NA&gt;       &lt;NA&gt;           NA</span>
+<span class="co">#&gt; 10 WRD_W… 2020-07-12 United… GBR         Gibraltar  &lt;NA&gt;       &lt;NA&gt;           NA</span>
 <span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span>
 <span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span>
 <span class="co">#&gt; #   gid &lt;chr&gt;</span></pre></div>
@@ -224,6 +225,10 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://CRAN.R-project.org/package=oxcovid19"><img src="https://www.r-pkg.org/badges/version/oxcovid19" alt="CRAN status"></a></li>
+<li><a href="https://CRAN.R-project.org/package=oxcovid19"><img src="https://img.shields.io/cran/l/oxcovid19.svg" alt="CRAN"></a></li>
+<li><a href="https://CRAN.R-project.org/package=oxcovid19"><img src="http://cranlogs.r-pkg.org/badges/oxcovid19" alt="CRAN"></a></li>
+<li><a href="https://CRAN.R-project.org/package=oxcovid19"><img src="http://cranlogs.r-pkg.org/badges/grand-total/oxcovid19" alt="CRAN"></a></li>
 <li><a href="https://github.com/como-ph/oxcovid19/actions"><img src="https://github.com/como-ph/oxcovid19/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://ci.appveyor.com/project/como-ph/oxcovid19"><img src="https://ci.appveyor.com/api/projects/status/github/como-ph/oxcovid19?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
 <li><a href="https://github.com/como-ph/oxcovid19/actions"><img src="https://github.com/como-ph/oxcovid19/workflows/test-coverage/badge.svg" alt="R build status"></a></li>
