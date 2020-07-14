@@ -7,6 +7,11 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
+[![CRAN](https://img.shields.io/cran/l/oxcovid19.svg)](https://CRAN.R-project.org/package=oxcovid19)
+[![CRAN](http://cranlogs.r-pkg.org/badges/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
+[![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
 [![R build
 status](https://github.com/como-ph/oxcovid19/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![AppVeyor build
@@ -64,7 +69,12 @@ more frequently than the CSV datasets made available via
 
 ## Installation
 
-`oxcovid19` is not yet available on CRAN.
+You can install `oxcovid19` from [CRAN](https://cran.r-project.org)
+with:
+
+``` r
+install.packages("oxcovid19")
+```
 
 You can install the development version of `oxcovid19` from
 [GitHub](https://github.com/como-ph/oxcovid19) with:
@@ -128,9 +138,9 @@ The output of the workflow shown above is:
     #>  5 GBR_P… 2020-06-23 United… GBR         Wales      Pembrokes… Pembrokes…   4922
     #>  6 GBR_P… 2020-06-23 United… GBR         Wales      Torfaen    Torfaen      3313
     #>  7 WRD_W… 2020-07-12 United… GBR         Bermuda    <NA>       <NA>           NA
-    #>  8 WRD_W… 2020-07-12 United… GBR         Gibraltar  <NA>       <NA>           NA
-    #>  9 WRD_W… 2020-07-12 United… GBR         Isle of M… <NA>       <NA>           NA
-    #> 10 WRD_W… 2020-07-12 United… GBR         Cayman Is… <NA>       <NA>           NA
+    #>  8 WRD_W… 2020-07-12 United… GBR         Cayman Is… <NA>       <NA>           NA
+    #>  9 WRD_W… 2020-07-12 United… GBR         Channel I… <NA>       <NA>           NA
+    #> 10 WRD_W… 2020-07-12 United… GBR         Gibraltar  <NA>       <NA>           NA
     #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
     #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
     #> #   gid <chr>
@@ -157,9 +167,9 @@ connect_oxcovid19() %>%
 #>  5 GBR_P… 2020-06-23 United… GBR         Wales      Pembrokes… Pembrokes…   4922
 #>  6 GBR_P… 2020-06-23 United… GBR         Wales      Torfaen    Torfaen      3313
 #>  7 WRD_W… 2020-07-12 United… GBR         Bermuda    <NA>       <NA>           NA
-#>  8 WRD_W… 2020-07-12 United… GBR         Gibraltar  <NA>       <NA>           NA
-#>  9 WRD_W… 2020-07-12 United… GBR         Isle of M… <NA>       <NA>           NA
-#> 10 WRD_W… 2020-07-12 United… GBR         Cayman Is… <NA>       <NA>           NA
+#>  8 WRD_W… 2020-07-12 United… GBR         Cayman Is… <NA>       <NA>           NA
+#>  9 WRD_W… 2020-07-12 United… GBR         Channel I… <NA>       <NA>           NA
+#> 10 WRD_W… 2020-07-12 United… GBR         Gibraltar  <NA>       <NA>           NA
 #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
 #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
 #> #   gid <chr>
