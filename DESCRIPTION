@@ -28,9 +28,9 @@ Imports:
     DBI,
     RPostgres,
     dplyr,
-    dbplyr,
     sf
 Suggests: 
+    dbplyr,
     testthat,
     covr,
     knitr,

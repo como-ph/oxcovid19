@@ -1,3 +1,10 @@
+# oxcovid19 0.1.1
+
+* Edited 2 occurences of marked UTF8 characters
+
+* added `dbplyr` in Suggests rather than in Imports
+
+
 # oxcovid19 0.1.0
 
 * Created a function to open a connection to the PostgreSQL server of the OxCOVID19 Database.
