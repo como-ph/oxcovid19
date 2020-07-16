@@ -1,8 +1,10 @@
 # oxcovid19 0.1.1
 
-* Edited 2 occurences of marked UTF8 characters
+* Edited 2 marked UTF8 strings
 
-* added `dbplyr` in Suggests rather than in Imports
+* added `dbplyr` in **Suggests** rather than in **Imports**
+
+* improved documentation
 
 
 # oxcovid19 0.1.0
