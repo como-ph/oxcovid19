@@ -26,6 +26,7 @@ knitr::opts_chunk$set(
 [![R build status](https://github.com/como-ph/oxcovid19/workflows/test-coverage/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![Codecov test coverage](https://codecov.io/gh/como-ph/oxcovid19/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/oxcovid19?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/como-ph/oxcovid19/badge)](https://www.codefactor.io/repository/github/como-ph/oxcovid19)
+[![DOI](https://zenodo.org/badge/276818770.svg)](https://zenodo.org/badge/latestdoi/276818770)
 <!-- badges: end -->
 
 The [OxCOVID19 Project](https://covid19.eng.ox.ac.uk) aims to increase our understanding of the COVID-19 pandemic and elaborate possible strategies to reduce the impact on the society through the combined power of statistical, mathematical modelling, and machine learning techniques. The [OxCOVID19 Database](https://covid19.eng.ox.ac.uk) is a large, single-centre, multimodal relational database consisting of information (using acknowledged sources) related to COVID-19 pandemic. This package provides an [R](https://www.r-project.org)-specific interface to the [OxCOVID19 Database](https://covid19.eng.ox.ac.uk) based on widely-used data handling and manipulation approaches in [R](https://www.r-project.org).

@@ -21,6 +21,7 @@ status](https://github.com/como-ph/oxcovid19/workflows/test-coverage/badge.svg)]
 [![Codecov test
 coverage](https://codecov.io/gh/como-ph/oxcovid19/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/oxcovid19?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/como-ph/oxcovid19/badge)](https://www.codefactor.io/repository/github/como-ph/oxcovid19)
+[![DOI](https://zenodo.org/badge/276818770.svg)](https://zenodo.org/badge/latestdoi/276818770)
 <!-- badges: end -->
 
 The [OxCOVID19 Project](https://covid19.eng.ox.ac.uk) aims to increase
@@ -131,16 +132,16 @@ The output of the workflow shown above is:
     #> # Database: postgres [covid19@covid19db.org:5432/covid19]
     #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
     #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-    #>  1 GBR_P… 2020-05-19 United… GBR         Wales      Vale of G… Vale of G…   3088
-    #>  2 GBR_P… 2020-03-25 United… GBR         Wales      Wrexham    Wrexham       138
-    #>  3 WRD_E… 2020-06-28 United… GBR         <NA>       <NA>       <NA>           NA
-    #>  4 GBR_P… 2020-06-23 United… GBR         Wales      Monmouths… Monmouths…   2888
-    #>  5 GBR_P… 2020-06-23 United… GBR         Wales      Pembrokes… Pembrokes…   4922
-    #>  6 GBR_P… 2020-06-23 United… GBR         Wales      Torfaen    Torfaen      3313
-    #>  7 WRD_W… 2020-07-12 United… GBR         Bermuda    <NA>       <NA>           NA
-    #>  8 WRD_W… 2020-07-12 United… GBR         Cayman Is… <NA>       <NA>           NA
-    #>  9 WRD_W… 2020-07-12 United… GBR         Channel I… <NA>       <NA>           NA
-    #> 10 WRD_W… 2020-07-12 United… GBR         Gibraltar  <NA>       <NA>           NA
+    #>  1 GBR_P… 2020-07-10 United… GBR         England    Warwicksh… Nuneaton …     NA
+    #>  2 GBR_P… 2020-07-10 United… GBR         England    Greater L… Kingston …     NA
+    #>  3 GBR_P… 2020-07-10 United… GBR         England    Barnsley   Barnsley       NA
+    #>  4 GBR_P… 2020-07-10 United… GBR         England    Saint Hel… Saint Hel…     NA
+    #>  5 GBR_P… 2020-07-10 United… GBR         England    Staffords… Tamworth       NA
+    #>  6 GBR_P… 2020-07-10 United… GBR         England    North Yor… Ryedale        NA
+    #>  7 GBR_P… 2020-07-08 United… GBR         England    Greater L… Ealing         NA
+    #>  8 GBR_P… 2020-07-10 United… GBR         England    Leicester… Hinckley …     NA
+    #>  9 GBR_P… 2020-07-09 United… GBR         England    Bournemou… Bournemou…     NA
+    #> 10 GBR_P… 2020-07-08 United… GBR         England    Greater L… Wandsworth     NA
     #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
     #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
     #> #   gid <chr>
@@ -160,16 +161,16 @@ connect_oxcovid19() %>%
 #> # Database: postgres [covid19@covid19db.org:5432/covid19]
 #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-#>  1 GBR_P… 2020-05-19 United… GBR         Wales      Vale of G… Vale of G…   3088
-#>  2 GBR_P… 2020-03-25 United… GBR         Wales      Wrexham    Wrexham       138
-#>  3 WRD_E… 2020-06-28 United… GBR         <NA>       <NA>       <NA>           NA
-#>  4 GBR_P… 2020-06-23 United… GBR         Wales      Monmouths… Monmouths…   2888
-#>  5 GBR_P… 2020-06-23 United… GBR         Wales      Pembrokes… Pembrokes…   4922
-#>  6 GBR_P… 2020-06-23 United… GBR         Wales      Torfaen    Torfaen      3313
-#>  7 WRD_W… 2020-07-12 United… GBR         Bermuda    <NA>       <NA>           NA
-#>  8 WRD_W… 2020-07-12 United… GBR         Cayman Is… <NA>       <NA>           NA
-#>  9 WRD_W… 2020-07-12 United… GBR         Channel I… <NA>       <NA>           NA
-#> 10 WRD_W… 2020-07-12 United… GBR         Gibraltar  <NA>       <NA>           NA
+#>  1 GBR_P… 2020-07-10 United… GBR         England    Warwicksh… Nuneaton …     NA
+#>  2 GBR_P… 2020-07-10 United… GBR         England    Greater L… Kingston …     NA
+#>  3 GBR_P… 2020-07-10 United… GBR         England    Barnsley   Barnsley       NA
+#>  4 GBR_P… 2020-07-10 United… GBR         England    Saint Hel… Saint Hel…     NA
+#>  5 GBR_P… 2020-07-10 United… GBR         England    Staffords… Tamworth       NA
+#>  6 GBR_P… 2020-07-10 United… GBR         England    North Yor… Ryedale        NA
+#>  7 GBR_P… 2020-07-08 United… GBR         England    Greater L… Ealing         NA
+#>  8 GBR_P… 2020-07-10 United… GBR         England    Leicester… Hinckley …     NA
+#>  9 GBR_P… 2020-07-09 United… GBR         England    Bournemou… Bournemou…     NA
+#> 10 GBR_P… 2020-07-08 United… GBR         England    Greater L… Wandsworth     NA
 #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
 #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
 #> #   gid <chr>
