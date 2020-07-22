@@ -50,7 +50,7 @@ connect_oxcovid19 <- function(dbname = "covid19",
                           port       = port,
                           user       = user,
                           password   = password,
-                          gssencmode = "disable")
+                          gssencmode = "prefer")
   }
 
   ## Return connection
