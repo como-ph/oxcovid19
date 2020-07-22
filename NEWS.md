@@ -6,6 +6,14 @@
 
 * improved documentation
 
+* addressed issue with connect function regarding `gssencmode` specification
+
+* updated test package GitHub Actions specifications
+
+* updated check package GitHub Actions specifications
+
+* added Travis CI for Ubuntu Bionic distribution
+
 
 # oxcovid19 0.1.0
 
