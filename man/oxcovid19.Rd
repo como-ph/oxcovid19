@@ -31,6 +31,7 @@ Authors:
 \itemize{
   \item Chris Mercado \email{cegmercado@gmail.com} (\href{https://orcid.org/0000-0002-5588-9543}{ORCID})
   \item Robert Medina \email{jcmedina1@up.edu.ph} (\href{https://orcid.org/0000-0001-6647-5453}{ORCID})
+  \item Alexander Zarebski
 }
 
 }
