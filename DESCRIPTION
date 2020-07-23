@@ -12,7 +12,9 @@ Authors@R: c(person(given = "Ernest", family = "Guevarra",
              person(given = "Robert", family = "Medina", 
                     email = "jcmedina1@up.edu.ph",
                     role = "aut",
-                    comment = c(ORCID = "0000-0001-6647-5453")))
+                    comment = c(ORCID = "0000-0001-6647-5453")),
+             person(given = "Alexander", family = "Zarebski",
+                    role = "aut"))
 Description: The OxCOVID19 Project <https://covid19.eng.ox.ac.uk> aims to increase
     our understanding of the COVID-19 pandemic and elaborate possible strategies
     to reduce the impact on the society through the combined power of statistical,
