@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -85,8 +85,7 @@
 
       
 
-      </header><script src="oxcovid19_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="oxcovid19_files/htmlwidgets-1.5.1/htmlwidgets.js"></script><script src="oxcovid19_files/viz-1.8.2/viz.js"></script><link href="oxcovid19_files/DiagrammeR-styles-0.2/styles.css" rel="stylesheet">
-<script src="oxcovid19_files/grViz-binding-1.0.6.1/grViz.js"></script><div class="row">
+      </header><script src="oxcovid19_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>An R API to the Oxford COVID-19 Database</h1>
@@ -101,10 +100,28 @@
     
 <p>The primary use case for the <code>oxcovid19</code> package is for facilitating a simplified, R-based workflow for 1) connecting to the <a href="https://covid19.eng.ox.ac.uk">OxCOVID19</a> <a href="https://www.postgresql.org">PostgreSQL</a> server; 2) accessing table/s available from the <a href="https://www.postgresql.org">PostgreSQL</a> server; and, 3) querying the <a href="https://www.postgresql.org">PostgreSQL</a> server with specific parameters to customise table/s output for intended use. This workflow is illustrated in the workflow diagram below:</p>
 <p><br></p>
-<p></p>
-<div id="htmlwidget-237615a6587369b9a6e9" style="width:768px;height:960px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-237615a6587369b9a6e9">{"x":{"diagram":"\n  digraph oxcovid19 {\n\n    # a \"graph\" statement\n    graph [overlap = false, fontsize = 12, fontname = Helvetica]\n\n    # Terminal nodes\n    node [shape = oval, width = 1.5, penwidth = 2, fontsize = 14]\n        \n    a [label = \"START\"; color = darkgreen; fontcolor = darkgreen];\n    h [label = \"END\"; color = crimson; fontcolor = crimson];\n\n    # Input/output nodes\n    node [shape = parallelogram, fixedsize = true, height = 1, width = 1.5, penwidth = 2, color = royalblue1, fontcolor = royalblue1]\n    \n    b [label = \"Step 1:\nConnect\nto server\"];\n\n    # Process nodes\n    node [shape = rect]\n  \n    d [label = \"Step 2:\nRetrieve\ntable\"];\n    f [label = \"Step 3:\nQuery\ntable\"];\n\n    # Package nodes\n    node [shape = oval, fixedsize = TRUE, width = 2, penwidth = 2, fontsize = 10, fontname = Courier, color = darkviolet, fontcolor = darkviolet]\n    \n    c [label = \"oxcovid19\nconnect_oxcovid19()\";];\n    e [label = \"oxcovid19\nget_table; get_layer\"];\n    g [label = \"dplyr - filter; select\nsf - st_read\"];\n\n    edge [minlen = 2, arrowsize = 0.75, penwidth = 2, color = dimgray]\n    \n    a -> b\n    b -> d\n    d -> f\n    f -> h\n\n    edge [minlen = 3]\n\n    b -> c\n    c -> b\n    d -> e\n    e -> d\n    f -> g\n    g -> f\n\n    subgraph {\n      rank = same; b; c;\n    }\n\n    subgraph {\n      rank = same; d; e;\n    }\n\n    subgraph {\n      rank = same; f; g;\n    }\n\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script><br><p>The following code demonstrates how this workflow can be implemented in R:</p>
+<p><img src="../man/figures/oxcovid19workflow.png" width="80%" style="display: block; margin: auto;"></p>
+<p><br></p>
+<p>The following code demonstrates how this workflow can be implemented in R:</p>
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">oxcovid19</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt;   ___          ____  ___ __     __ ___  ____   _   ___</span>
+<span class="co">#&gt;  / _ \ __  __ / ___|/ _ \\ \   / /|_ _||  _ \ / | / _ \</span>
+<span class="co">#&gt; | | | |\ \/ /| |   | | | |\ \ / /  | | | | | || || (_) |</span>
+<span class="co">#&gt; | |_| | &gt;  &lt; | |___| |_| | \ V /   | | | |_| || | \__, |</span>
+<span class="co">#&gt;  \___/ /_/\_\ \____|\___/   \_/   |___||____/ |_|   /_/</span>
+<span class="co">#&gt;     ___           _          _</span>
+<span class="co">#&gt;    |  _ \   __ _ | |_  __ _ | |__    __ _  ___   ___</span>
+<span class="co">#&gt;    | | | | / _` || __|/ _` || '_ \  / _` |/ __| / _ \</span>
+<span class="co">#&gt;    | |_| || (_| || |_| (_| || |_) || (_| |\__ \|  __/</span>
+<span class="co">#&gt;    |____/  \__,_| \__|\__,_||_.__/  \__,_||___/ \___|</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; The OxCOVID19 Database makes use of several datasets. If you</span>
+<span class="co">#&gt; use any of the data provided by this package, please include</span>
+<span class="co">#&gt; the appropriate citation as described at the following</span>
+<span class="co">#&gt; website:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; https://covid19.eng.ox.ac.uk/data_sources.html</span>
 
 <span class="co">## Step 1: Create a connection to OxCOVID19 PostgreSQL server</span>
 <span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>()
@@ -121,16 +138,16 @@
 #&gt; # Database: postgres [covid19@covid19db.org:5432/covid19]
 #&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;
-#&gt;  1 GBR_P… 2020-07-10 United… GBR         England    Warwicksh… Nuneaton …     NA
-#&gt;  2 GBR_P… 2020-07-10 United… GBR         England    Greater L… Kingston …     NA
-#&gt;  3 GBR_P… 2020-07-10 United… GBR         England    Barnsley   Barnsley       NA
-#&gt;  4 GBR_P… 2020-07-10 United… GBR         England    Saint Hel… Saint Hel…     NA
-#&gt;  5 GBR_P… 2020-07-10 United… GBR         England    Staffords… Tamworth       NA
-#&gt;  6 GBR_P… 2020-07-10 United… GBR         England    North Yor… Ryedale        NA
-#&gt;  7 GBR_P… 2020-07-08 United… GBR         England    Greater L… Ealing         NA
-#&gt;  8 GBR_P… 2020-07-10 United… GBR         England    Leicester… Hinckley …     NA
-#&gt;  9 GBR_P… 2020-07-09 United… GBR         England    Bournemou… Bournemou…     NA
-#&gt; 10 GBR_P… 2020-07-08 United… GBR         England    Greater L… Wandsworth     NA
+#&gt;  1 GBR_P… 2020-03-21 United… GBR         England    Blackpool  Blackpool      NA
+#&gt;  2 GBR_P… 2020-03-20 United… GBR         England    Derbyshire North Eas…     NA
+#&gt;  3 GBR_P… 2020-03-20 United… GBR         England    Cambridge… South Cam…     NA
+#&gt;  4 GBR_P… 2020-03-20 United… GBR         England    Cambridge… Huntingdo…     NA
+#&gt;  5 GBR_P… 2020-03-20 United… GBR         England    Central B… Central B…     NA
+#&gt;  6 GBR_P… 2020-03-20 United… GBR         England    Shropshire Shropshire     NA
+#&gt;  7 GBR_P… 2020-03-20 United… GBR         England    Wiltshire  Wiltshire      NA
+#&gt;  8 GBR_P… 2020-03-20 United… GBR         England    Cheshire … Cheshire …     NA
+#&gt;  9 GBR_P… 2020-03-20 United… GBR         England    Durham     Durham         NA
+#&gt; 10 GBR_P… 2020-03-20 United… GBR         England    Isle of W… Isle of W…     NA
 #&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,
 #&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,
 #&gt; #   gid &lt;chr&gt;</code></pre>
@@ -145,16 +162,16 @@
 <span class="co">#&gt; # Database: postgres [covid19@covid19db.org:5432/covid19]</span>
 <span class="co">#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested</span>
 <span class="co">#&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;</span>
-<span class="co">#&gt;  1 GBR_P… 2020-07-10 United… GBR         England    Warwicksh… Nuneaton …     NA</span>
-<span class="co">#&gt;  2 GBR_P… 2020-07-10 United… GBR         England    Greater L… Kingston …     NA</span>
-<span class="co">#&gt;  3 GBR_P… 2020-07-10 United… GBR         England    Barnsley   Barnsley       NA</span>
-<span class="co">#&gt;  4 GBR_P… 2020-07-10 United… GBR         England    Saint Hel… Saint Hel…     NA</span>
-<span class="co">#&gt;  5 GBR_P… 2020-07-10 United… GBR         England    Staffords… Tamworth       NA</span>
-<span class="co">#&gt;  6 GBR_P… 2020-07-10 United… GBR         England    North Yor… Ryedale        NA</span>
-<span class="co">#&gt;  7 GBR_P… 2020-07-08 United… GBR         England    Greater L… Ealing         NA</span>
-<span class="co">#&gt;  8 GBR_P… 2020-07-10 United… GBR         England    Leicester… Hinckley …     NA</span>
-<span class="co">#&gt;  9 GBR_P… 2020-07-09 United… GBR         England    Bournemou… Bournemou…     NA</span>
-<span class="co">#&gt; 10 GBR_P… 2020-07-08 United… GBR         England    Greater L… Wandsworth     NA</span>
+<span class="co">#&gt;  1 GBR_P… 2020-03-21 United… GBR         England    Blackpool  Blackpool      NA</span>
+<span class="co">#&gt;  2 GBR_P… 2020-03-20 United… GBR         England    Derbyshire North Eas…     NA</span>
+<span class="co">#&gt;  3 GBR_P… 2020-03-20 United… GBR         England    Cambridge… South Cam…     NA</span>
+<span class="co">#&gt;  4 GBR_P… 2020-03-20 United… GBR         England    Cambridge… Huntingdo…     NA</span>
+<span class="co">#&gt;  5 GBR_P… 2020-03-20 United… GBR         England    Central B… Central B…     NA</span>
+<span class="co">#&gt;  6 GBR_P… 2020-03-20 United… GBR         England    Shropshire Shropshire     NA</span>
+<span class="co">#&gt;  7 GBR_P… 2020-03-20 United… GBR         England    Wiltshire  Wiltshire      NA</span>
+<span class="co">#&gt;  8 GBR_P… 2020-03-20 United… GBR         England    Cheshire … Cheshire …     NA</span>
+<span class="co">#&gt;  9 GBR_P… 2020-03-20 United… GBR         England    Durham     Durham         NA</span>
+<span class="co">#&gt; 10 GBR_P… 2020-03-20 United… GBR         England    Isle of W… Isle of W…     NA</span>
 <span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span>
 <span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span>
 <span class="co">#&gt; #   gid &lt;chr&gt;</span></pre></body></html></div>
@@ -170,7 +187,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ernest Guevarra, Chris Mercado, Robert Medina.</p>
+  <p>Developed by Ernest Guevarra, Chris Mercado, Robert Medina, Alexander Zarebski.</p>
 </div>
 
 <div class="pkgdown">

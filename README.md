@@ -1,21 +1,27 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# oxcovid19: An R API to the Oxford COVID-19 Database <img src="man/figures/oxcovid19.png" width="200px" align="right" />
+# oxcovid19: An R API to the Oxford COVID-19 Database
+
+<!-- <img src="man/figures/oxcovid19.png" width="200px" align="right" /> -->
 
 <!-- badges: start -->
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![CRAN](https://img.shields.io/cran/l/oxcovid19.svg)](https://CRAN.R-project.org/package=oxcovid19)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
-[![CRAN](https://img.shields.io/cran/l/oxcovid19.svg)](https://CRAN.R-project.org/package=oxcovid19)
+[![cran
+checks](https://cranchecks.info/badges/summary/oxcovid19)](https://cran.r-project.org/web/checks/check_results_oxcovid19.html)
 [![CRAN](http://cranlogs.r-pkg.org/badges/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
 [![R build
 status](https://github.com/como-ph/oxcovid19/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/como-ph/oxcovid19?branch=master&svg=true)](https://ci.appveyor.com/project/como-ph/oxcovid19)
+[![Travis build
+status](https://travis-ci.org/como-ph/oxcovid19.svg?branch=master)](https://travis-ci.org/como-ph/oxcovid19)
 [![R build
 status](https://github.com/como-ph/oxcovid19/workflows/test-coverage/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![Codecov test
@@ -99,6 +105,24 @@ The following code demonstrates this workflow:
 
 ``` r
 library(oxcovid19)
+#> 
+#>   ___          ____  ___ __     __ ___  ____   _   ___
+#>  / _ \ __  __ / ___|/ _ \\ \   / /|_ _||  _ \ / | / _ \
+#> | | | |\ \/ /| |   | | | |\ \ / /  | | | | | || || (_) |
+#> | |_| | >  < | |___| |_| | \ V /   | | | |_| || | \__, |
+#>  \___/ /_/\_\ \____|\___/   \_/   |___||____/ |_|   /_/
+#>     ___           _          _
+#>    |  _ \   __ _ | |_  __ _ | |__    __ _  ___   ___
+#>    | | | | / _` || __|/ _` || '_ \  / _` |/ __| / _ \
+#>    | |_| || (_| || |_| (_| || |_) || (_| |\__ \|  __/
+#>    |____/  \__,_| \__|\__,_||_.__/  \__,_||___/ \___|
+#> 
+#> The OxCOVID19 Database makes use of several datasets. If you
+#> use any of the data provided by this package, please include
+#> the appropriate citation as described at the following
+#> website:
+#> 
+#> https://covid19.eng.ox.ac.uk/data_sources.html
 
 ## Step 1: Create a connection to OxCOVID19 PostgreSQL server
 con <- connect_oxcovid19()
@@ -132,16 +156,16 @@ The output of the workflow shown above is:
     #> # Database: postgres [covid19@covid19db.org:5432/covid19]
     #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
     #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-    #>  1 GBR_P… 2020-07-10 United… GBR         England    Warwicksh… Nuneaton …     NA
-    #>  2 GBR_P… 2020-07-10 United… GBR         England    Greater L… Kingston …     NA
-    #>  3 GBR_P… 2020-07-10 United… GBR         England    Barnsley   Barnsley       NA
-    #>  4 GBR_P… 2020-07-10 United… GBR         England    Saint Hel… Saint Hel…     NA
-    #>  5 GBR_P… 2020-07-10 United… GBR         England    Staffords… Tamworth       NA
-    #>  6 GBR_P… 2020-07-10 United… GBR         England    North Yor… Ryedale        NA
-    #>  7 GBR_P… 2020-07-08 United… GBR         England    Greater L… Ealing         NA
-    #>  8 GBR_P… 2020-07-10 United… GBR         England    Leicester… Hinckley …     NA
-    #>  9 GBR_P… 2020-07-09 United… GBR         England    Bournemou… Bournemou…     NA
-    #> 10 GBR_P… 2020-07-08 United… GBR         England    Greater L… Wandsworth     NA
+    #>  1 GBR_P… 2020-03-21 United… GBR         England    Blackpool  Blackpool      NA
+    #>  2 GBR_P… 2020-03-20 United… GBR         England    Derbyshire North Eas…     NA
+    #>  3 GBR_P… 2020-03-20 United… GBR         England    Cambridge… South Cam…     NA
+    #>  4 GBR_P… 2020-03-20 United… GBR         England    Cambridge… Huntingdo…     NA
+    #>  5 GBR_P… 2020-03-20 United… GBR         England    Central B… Central B…     NA
+    #>  6 GBR_P… 2020-03-20 United… GBR         England    Shropshire Shropshire     NA
+    #>  7 GBR_P… 2020-03-20 United… GBR         England    Wiltshire  Wiltshire      NA
+    #>  8 GBR_P… 2020-03-20 United… GBR         England    Cheshire … Cheshire …     NA
+    #>  9 GBR_P… 2020-03-20 United… GBR         England    Durham     Durham         NA
+    #> 10 GBR_P… 2020-03-20 United… GBR         England    Isle of W… Isle of W…     NA
     #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
     #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
     #> #   gid <chr>
@@ -161,16 +185,16 @@ connect_oxcovid19() %>%
 #> # Database: postgres [covid19@covid19db.org:5432/covid19]
 #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-#>  1 GBR_P… 2020-07-10 United… GBR         England    Warwicksh… Nuneaton …     NA
-#>  2 GBR_P… 2020-07-10 United… GBR         England    Greater L… Kingston …     NA
-#>  3 GBR_P… 2020-07-10 United… GBR         England    Barnsley   Barnsley       NA
-#>  4 GBR_P… 2020-07-10 United… GBR         England    Saint Hel… Saint Hel…     NA
-#>  5 GBR_P… 2020-07-10 United… GBR         England    Staffords… Tamworth       NA
-#>  6 GBR_P… 2020-07-10 United… GBR         England    North Yor… Ryedale        NA
-#>  7 GBR_P… 2020-07-08 United… GBR         England    Greater L… Ealing         NA
-#>  8 GBR_P… 2020-07-10 United… GBR         England    Leicester… Hinckley …     NA
-#>  9 GBR_P… 2020-07-09 United… GBR         England    Bournemou… Bournemou…     NA
-#> 10 GBR_P… 2020-07-08 United… GBR         England    Greater L… Wandsworth     NA
+#>  1 GBR_P… 2020-03-21 United… GBR         England    Blackpool  Blackpool      NA
+#>  2 GBR_P… 2020-03-20 United… GBR         England    Derbyshire North Eas…     NA
+#>  3 GBR_P… 2020-03-20 United… GBR         England    Cambridge… South Cam…     NA
+#>  4 GBR_P… 2020-03-20 United… GBR         England    Cambridge… Huntingdo…     NA
+#>  5 GBR_P… 2020-03-20 United… GBR         England    Central B… Central B…     NA
+#>  6 GBR_P… 2020-03-20 United… GBR         England    Shropshire Shropshire     NA
+#>  7 GBR_P… 2020-03-20 United… GBR         England    Wiltshire  Wiltshire      NA
+#>  8 GBR_P… 2020-03-20 United… GBR         England    Cheshire … Cheshire …     NA
+#>  9 GBR_P… 2020-03-20 United… GBR         England    Durham     Durham         NA
+#> 10 GBR_P… 2020-03-20 United… GBR         England    Isle of W… Isle of W…     NA
 #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
 #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
 #> #   gid <chr>
@@ -192,10 +216,44 @@ will be well-documented and explained to users and deprecation will be
 staged in such a way that users will be informed in good time to allow
 for transition to using the new functions.
 
-## References
+## Citations
+
+If you find [OxCOVID19 Database](http://covid19.eng.ox.ac.uk/) useful
+please cite:
 
 Adam Mahdi, Piotr Błaszczyk, Paweł Dłotko, Dario Salvi, Tak-Shing Chan,
 John Harvey, Davide Gurnari, Yue Wu, Ahmad Farhat, Niklas Hellmer,
 Alexander Zarebski, Bernie Hogan, Lionel Tarassenko, **Oxford COVID-19
 Database: a multimodal data repository for better understanding the
 global impact of COVID-19**. University of Oxford, 2020.
+
+The [OxCOVID19 Database](http://covid19.eng.ox.ac.uk/) is the result of
+many hours of volunteer efforts and generous contributions of many
+organisations. If you use a specific table please also cite the
+underlying source as described
+[here](https://covid19.eng.ox.ac.uk/data_sources.html). Sources of
+specific tables can also be accessed via the `oxcovid19` package through
+the `data_sources` dataset. For example, if you have accessed the
+**Epidemiology** table from the database, you can access the sources for
+this table with:
+
+``` r
+data_sources[["epidemiology"]]
+```
+
+which gives the following result:
+
+    #> # A tibble: 45 x 5
+    #>    Country  `Source code` Source          Features           `Terms of Use`     
+    #>    <chr>    <chr>         <chr>           <chr>              <chr>              
+    #>  1 World    WRD_ECDC      European Centr… confirmed, dead, … ECDC Copyright     
+    #>  2 Argenti… LAT_DSRP      covid-19_latin… confirmed, dead, … CC BY-NC-SA 4.0    
+    #>  3 Austral… AUS_C1A       covid-19-au     tested, confirmed… For educational an…
+    #>  4 Austria  EU_ZH         COVID19 EU      tested, confirmed… MIT                
+    #>  5 Belgium  BEL_LE        covid19-be      tested, confirmed… CC0 1.0 Universal  
+    #>  6 Brazil   BRA_MSHM      covid19-Brazil… confirmed (countr… Public Domain      
+    #>  7 Brazil   LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    
+    #>  8 Canada   CAN_GOV       Public Health … tested, confirmed… Attribution requir…
+    #>  9 Chile    LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    
+    #> 10 China    CHN_ICL       Imperial Colle… confirmed,  dead,… with permission    
+    #> # … with 35 more rows

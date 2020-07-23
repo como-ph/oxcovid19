@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
       </span>
     </div>
 
@@ -94,10 +94,10 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="oxcovid19-an-r-api-to-the-oxford-covid-19-database-" class="section level1">
+<div id="oxcovid19-an-r-api-to-the-oxford-covid-19-database" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#oxcovid19-an-r-api-to-the-oxford-covid-19-database-" class="anchor"></a>oxcovid19: An R API to the Oxford COVID-19 Database <img src="reference/figures/oxcovid19.png" width="200px" align="right">
-</h1></div>
+<a href="#oxcovid19-an-r-api-to-the-oxford-covid-19-database" class="anchor"></a>oxcovid19: An R API to the Oxford COVID-19 Database</h1></div>
+<!-- <img src="man/figures/oxcovid19.png" width="200px" align="right" /> -->
 <!-- badges: start -->
 
 <p>The <a href="https://covid19.eng.ox.ac.uk">OxCOVID19 Project</a> aims to increase our understanding of the COVID-19 pandemic and elaborate possible strategies to reduce the impact on the society through the combined power of statistical, mathematical modelling, and machine learning techniques. The <a href="https://covid19.eng.ox.ac.uk">OxCOVID19 Database</a> is a large, single-centre, multimodal relational database consisting of information (using acknowledged sources) related to COVID-19 pandemic. This package provides an <a href="https://www.r-project.org">R</a>-specific interface to the <a href="https://covid19.eng.ox.ac.uk">OxCOVID19 Database</a> based on widely-used data handling and manipulation approaches in <a href="https://www.r-project.org">R</a>.</p>
@@ -121,6 +121,24 @@
 <p>The primary use case for the <code>oxcovid19</code> package is for facilitating a simplified, <a href="https://www.r-project.org">R</a>-based workflow for 1) connecting to the <a href="https://covid19.eng.ox.ac.uk">OxCOVID19</a> <a href="https://www.postgresql.org">PostgreSQL</a> server; 2) accessing table/s available from the <a href="https://www.postgresql.org">PostgreSQL</a> server; and, 3) querying the <a href="https://www.postgresql.org">PostgreSQL</a> server with specific parameters to customise table/s output for intended use.</p>
 <p>The following code demonstrates this workflow:</p>
 <div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">oxcovid19</span>)
+<span class="co">#&gt; </span>
+<span class="co">#&gt;   ___          ____  ___ __     __ ___  ____   _   ___</span>
+<span class="co">#&gt;  / _ \ __  __ / ___|/ _ \\ \   / /|_ _||  _ \ / | / _ \</span>
+<span class="co">#&gt; | | | |\ \/ /| |   | | | |\ \ / /  | | | | | || || (_) |</span>
+<span class="co">#&gt; | |_| | &gt;  &lt; | |___| |_| | \ V /   | | | |_| || | \__, |</span>
+<span class="co">#&gt;  \___/ /_/\_\ \____|\___/   \_/   |___||____/ |_|   /_/</span>
+<span class="co">#&gt;     ___           _          _</span>
+<span class="co">#&gt;    |  _ \   __ _ | |_  __ _ | |__    __ _  ___   ___</span>
+<span class="co">#&gt;    | | | | / _` || __|/ _` || '_ \  / _` |/ __| / _ \</span>
+<span class="co">#&gt;    | |_| || (_| || |_| (_| || |_) || (_| |\__ \|  __/</span>
+<span class="co">#&gt;    |____/  \__,_| \__|\__,_||_.__/  \__,_||___/ \___|</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; The OxCOVID19 Database makes use of several datasets. If you</span>
+<span class="co">#&gt; use any of the data provided by this package, please include</span>
+<span class="co">#&gt; the appropriate citation as described at the following</span>
+<span class="co">#&gt; website:</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; https://covid19.eng.ox.ac.uk/data_sources.html</span>
 
 <span class="co">## Step 1: Create a connection to OxCOVID19 PostgreSQL server</span>
 <span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/connect_oxcovid19.html">connect_oxcovid19</a></span>()
@@ -137,16 +155,16 @@
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt; # Database: postgres [covid19@covid19db.org:5432/covid19]</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;  1 GBR_P… 2020-07-10 United… GBR         England    Warwicksh… Nuneaton …     NA</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;  2 GBR_P… 2020-07-10 United… GBR         England    Greater L… Kingston …     NA</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;  3 GBR_P… 2020-07-10 United… GBR         England    Barnsley   Barnsley       NA</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt;  4 GBR_P… 2020-07-10 United… GBR         England    Saint Hel… Saint Hel…     NA</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt;  5 GBR_P… 2020-07-10 United… GBR         England    Staffords… Tamworth       NA</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt;  6 GBR_P… 2020-07-10 United… GBR         England    North Yor… Ryedale        NA</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt;  7 GBR_P… 2020-07-08 United… GBR         England    Greater L… Ealing         NA</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt;  8 GBR_P… 2020-07-10 United… GBR         England    Leicester… Hinckley …     NA</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt;  9 GBR_P… 2020-07-09 United… GBR         England    Bournemou… Bournemou…     NA</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt; 10 GBR_P… 2020-07-08 United… GBR         England    Greater L… Wandsworth     NA</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;  1 GBR_P… 2020-03-21 United… GBR         England    Blackpool  Blackpool      NA</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;  2 GBR_P… 2020-03-20 United… GBR         England    Derbyshire North Eas…     NA</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;  3 GBR_P… 2020-03-20 United… GBR         England    Cambridge… South Cam…     NA</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt;  4 GBR_P… 2020-03-20 United… GBR         England    Cambridge… Huntingdo…     NA</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt;  5 GBR_P… 2020-03-20 United… GBR         England    Central B… Central B…     NA</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt;  6 GBR_P… 2020-03-20 United… GBR         England    Shropshire Shropshire     NA</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt;  7 GBR_P… 2020-03-20 United… GBR         England    Wiltshire  Wiltshire      NA</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt;  8 GBR_P… 2020-03-20 United… GBR         England    Cheshire … Cheshire …     NA</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt;  9 GBR_P… 2020-03-20 United… GBR         England    Durham     Durham         NA</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt; 10 GBR_P… 2020-03-20 United… GBR         England    Isle of W… Isle of W…     NA</span></span>
 <span id="cb4-15"><a href="#cb4-15"></a><span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span></span>
 <span id="cb4-16"><a href="#cb4-16"></a><span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span></span>
 <span id="cb4-17"><a href="#cb4-17"></a><span class="co">#&gt; #   gid &lt;chr&gt;</span></span></code></pre></div>
@@ -161,16 +179,16 @@
 <span class="co">#&gt; # Database: postgres [covid19@covid19db.org:5432/covid19]</span>
 <span class="co">#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested</span>
 <span class="co">#&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;</span>
-<span class="co">#&gt;  1 GBR_P… 2020-07-10 United… GBR         England    Warwicksh… Nuneaton …     NA</span>
-<span class="co">#&gt;  2 GBR_P… 2020-07-10 United… GBR         England    Greater L… Kingston …     NA</span>
-<span class="co">#&gt;  3 GBR_P… 2020-07-10 United… GBR         England    Barnsley   Barnsley       NA</span>
-<span class="co">#&gt;  4 GBR_P… 2020-07-10 United… GBR         England    Saint Hel… Saint Hel…     NA</span>
-<span class="co">#&gt;  5 GBR_P… 2020-07-10 United… GBR         England    Staffords… Tamworth       NA</span>
-<span class="co">#&gt;  6 GBR_P… 2020-07-10 United… GBR         England    North Yor… Ryedale        NA</span>
-<span class="co">#&gt;  7 GBR_P… 2020-07-08 United… GBR         England    Greater L… Ealing         NA</span>
-<span class="co">#&gt;  8 GBR_P… 2020-07-10 United… GBR         England    Leicester… Hinckley …     NA</span>
-<span class="co">#&gt;  9 GBR_P… 2020-07-09 United… GBR         England    Bournemou… Bournemou…     NA</span>
-<span class="co">#&gt; 10 GBR_P… 2020-07-08 United… GBR         England    Greater L… Wandsworth     NA</span>
+<span class="co">#&gt;  1 GBR_P… 2020-03-21 United… GBR         England    Blackpool  Blackpool      NA</span>
+<span class="co">#&gt;  2 GBR_P… 2020-03-20 United… GBR         England    Derbyshire North Eas…     NA</span>
+<span class="co">#&gt;  3 GBR_P… 2020-03-20 United… GBR         England    Cambridge… South Cam…     NA</span>
+<span class="co">#&gt;  4 GBR_P… 2020-03-20 United… GBR         England    Cambridge… Huntingdo…     NA</span>
+<span class="co">#&gt;  5 GBR_P… 2020-03-20 United… GBR         England    Central B… Central B…     NA</span>
+<span class="co">#&gt;  6 GBR_P… 2020-03-20 United… GBR         England    Shropshire Shropshire     NA</span>
+<span class="co">#&gt;  7 GBR_P… 2020-03-20 United… GBR         England    Wiltshire  Wiltshire      NA</span>
+<span class="co">#&gt;  8 GBR_P… 2020-03-20 United… GBR         England    Cheshire … Cheshire …     NA</span>
+<span class="co">#&gt;  9 GBR_P… 2020-03-20 United… GBR         England    Durham     Durham         NA</span>
+<span class="co">#&gt; 10 GBR_P… 2020-03-20 United… GBR         England    Isle of W… Isle of W…     NA</span>
 <span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span>
 <span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span>
 <span class="co">#&gt; #   gid &lt;chr&gt;</span></pre></div>
@@ -181,10 +199,28 @@
 <a href="#limitations" class="anchor"></a>Limitations</h2>
 <p>The <code>oxcovid19</code> package is in active development which will be dictated by the evolution of the <a href="http://covid19.eng.ox.ac.uk/">OxCOVID19 Database</a> over time. Whilst every attempt will be employed to maintain syntax of current functions, it is possible that current functions may change syntax or operability in order to ensure relevance or maybe deprecated in lieu of a more appropriate and/or more performant function. In either of these cases, any change will be well-documented and explained to users and deprecation will be staged in such a way that users will be informed in good time to allow for transition to using the new functions.</p>
 </div>
-<div id="references" class="section level2">
+<div id="citations" class="section level2">
 <h2 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h2>
+<a href="#citations" class="anchor"></a>Citations</h2>
+<p>If you find <a href="http://covid19.eng.ox.ac.uk/">OxCOVID19 Database</a> useful please cite:</p>
 <p>Adam Mahdi, Piotr Błaszczyk, Paweł Dłotko, Dario Salvi, Tak-Shing Chan, John Harvey, Davide Gurnari, Yue Wu, Ahmad Farhat, Niklas Hellmer, Alexander Zarebski, Bernie Hogan, Lionel Tarassenko, <strong>Oxford COVID-19 Database: a multimodal data repository for better understanding the global impact of COVID-19</strong>. University of Oxford, 2020.</p>
+<p>The <a href="http://covid19.eng.ox.ac.uk/">OxCOVID19 Database</a> is the result of many hours of volunteer efforts and generous contributions of many organisations. If you use a specific table please also cite the underlying source as described <a href="https://covid19.eng.ox.ac.uk/data_sources.html">here</a>. Sources of specific tables can also be accessed via the <code>oxcovid19</code> package through the <code>data_sources</code> dataset. For example, if you have accessed the <strong>Epidemiology</strong> table from the database, you can access the sources for this table with:</p>
+<div class="sourceCode" id="cb6"><pre class="r"><span class="no">data_sources</span><span class="kw">[[</span><span class="st">"epidemiology"</span>]]</pre></div>
+<p>which gives the following result:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#&gt; # A tibble: 45 x 5</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt;    Country  `Source code` Source          Features           `Terms of Use`     </span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;              &lt;chr&gt;              </span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;  1 World    WRD_ECDC      European Centr… confirmed, dead, … ECDC Copyright     </span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt;  2 Argenti… LAT_DSRP      covid-19_latin… confirmed, dead, … CC BY-NC-SA 4.0    </span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt;  3 Austral… AUS_C1A       covid-19-au     tested, confirmed… For educational an…</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt;  4 Austria  EU_ZH         COVID19 EU      tested, confirmed… MIT                </span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt;  5 Belgium  BEL_LE        covid19-be      tested, confirmed… CC0 1.0 Universal  </span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt;  6 Brazil   BRA_MSHM      covid19-Brazil… confirmed (countr… Public Domain      </span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt;  7 Brazil   LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    </span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt;  8 Canada   CAN_GOV       Public Health … tested, confirmed… Attribution requir…</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt;  9 Chile    LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    </span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; 10 China    CHN_ICL       Imperial Colle… confirmed,  dead,… with permission    </span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; # … with 35 more rows</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -220,6 +256,7 @@
 <li>Ernest Guevarra <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-4887-4415" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Chris Mercado <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-5588-9543" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Robert Medina <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-6647-5453" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Alexander Zarebski <br><small class="roles"> Author </small>  </li>
 </ul>
 </div>
 
@@ -227,12 +264,14 @@
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://CRAN.R-project.org/package=oxcovid19"><img src="https://www.r-pkg.org/badges/version/oxcovid19" alt="CRAN status"></a></li>
 <li><a href="https://CRAN.R-project.org/package=oxcovid19"><img src="https://img.shields.io/cran/l/oxcovid19.svg" alt="CRAN"></a></li>
+<li><a href="https://CRAN.R-project.org/package=oxcovid19"><img src="https://www.r-pkg.org/badges/version/oxcovid19" alt="CRAN status"></a></li>
+<li><a href="https://cran.r-project.org/web/checks/check_results_oxcovid19.html"><img src="https://cranchecks.info/badges/summary/oxcovid19" alt="cran checks"></a></li>
 <li><a href="https://CRAN.R-project.org/package=oxcovid19"><img src="http://cranlogs.r-pkg.org/badges/oxcovid19" alt="CRAN"></a></li>
 <li><a href="https://CRAN.R-project.org/package=oxcovid19"><img src="http://cranlogs.r-pkg.org/badges/grand-total/oxcovid19" alt="CRAN"></a></li>
 <li><a href="https://github.com/como-ph/oxcovid19/actions"><img src="https://github.com/como-ph/oxcovid19/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://ci.appveyor.com/project/como-ph/oxcovid19"><img src="https://ci.appveyor.com/api/projects/status/github/como-ph/oxcovid19?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
+<li><a href="https://travis-ci.org/como-ph/oxcovid19"><img src="https://travis-ci.org/como-ph/oxcovid19.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://github.com/como-ph/oxcovid19/actions"><img src="https://github.com/como-ph/oxcovid19/workflows/test-coverage/badge.svg" alt="R build status"></a></li>
 <li><a href="https://codecov.io/gh/como-ph/oxcovid19?branch=master"><img src="https://codecov.io/gh/como-ph/oxcovid19/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://www.codefactor.io/repository/github/como-ph/oxcovid19"><img src="https://www.codefactor.io/repository/github/como-ph/oxcovid19/badge" alt="CodeFactor"></a></li>
@@ -244,7 +283,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Ernest Guevarra, Chris Mercado, Robert Medina.</p>
+  <p>Developed by Ernest Guevarra, Chris Mercado, Robert Medina, Alexander Zarebski.</p>
 </div>
 
 <div class="pkgdown">

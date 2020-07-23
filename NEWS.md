@@ -1,8 +1,20 @@
 # oxcovid19 0.1.1
 
-* Edited 2 occurences of marked UTF8 characters
+* Edited 2 marked UTF8 strings
 
-* added `dbplyr` in Suggests rather than in Imports
+* added `dbplyr` in **Suggests** rather than in **Imports**
+
+* addressed WARNING on CRAN checks
+
+* improved documentation
+
+* addressed issue with connect function regarding `gssencmode` specification
+
+* updated test package GitHub Actions specifications
+
+* updated check package GitHub Actions specifications
+
+* added Travis CI for Ubuntu Bionic distribution
 
 
 # oxcovid19 0.1.0

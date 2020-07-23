@@ -1,7 +1,7 @@
 Package: oxcovid19
 Type: Package
 Title: An R API to the Oxford COVID-19 Database
-Version: 0.1.0
+Version: 0.1.1.9000
 Authors@R: c(person(given = "Ernest", family = "Guevarra", 
                     email = "ernest@guevarra.io", role = c("aut", "cre"),
                     comment = c(ORCID = "0000-0002-4887-4415")),
@@ -12,7 +12,9 @@ Authors@R: c(person(given = "Ernest", family = "Guevarra",
              person(given = "Robert", family = "Medina", 
                     email = "jcmedina1@up.edu.ph",
                     role = "aut",
-                    comment = c(ORCID = "0000-0001-6647-5453")))
+                    comment = c(ORCID = "0000-0001-6647-5453")),
+             person(given = "Alexander", family = "Zarebski",
+                    role = "aut"))
 Description: The OxCOVID19 Project <https://covid19.eng.ox.ac.uk> aims to increase
     our understanding of the COVID-19 pandemic and elaborate possible strategies
     to reduce the impact on the society through the combined power of statistical,
@@ -28,9 +30,9 @@ Imports:
     DBI,
     RPostgres,
     dplyr,
+    dbplyr,
     sf
 Suggests: 
-    dbplyr,
     testthat,
     covr,
     knitr,
@@ -43,7 +45,7 @@ Suggests:
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
-URL: https://github.com/como-ph/oxcovid19
+URL: https://github.com/como-ph/oxcovid19, https://como-ph.github.io/oxcovid19
 BugReports: https://github.com/como-ph/oxcovid19/issues
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
