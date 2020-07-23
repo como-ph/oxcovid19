@@ -4,6 +4,8 @@
 
 * added `dbplyr` in **Suggests** rather than in **Imports**
 
+* addressed WARNING on CRAN checks
+
 * improved documentation
 
 * addressed issue with connect function regarding `gssencmode` specification
