@@ -105,6 +105,24 @@ The following code demonstrates this workflow:
 
 ``` r
 library(oxcovid19)
+#> 
+#>   ___          ____  ___ __     __ ___  ____   _   ___
+#>  / _ \ __  __ / ___|/ _ \\ \   / /|_ _||  _ \ / | / _ \
+#> | | | |\ \/ /| |   | | | |\ \ / /  | | | | | || || (_) |
+#> | |_| | >  < | |___| |_| | \ V /   | | | |_| || | \__, |
+#>  \___/ /_/\_\ \____|\___/   \_/   |___||____/ |_|   /_/
+#>     ___           _          _
+#>    |  _ \   __ _ | |_  __ _ | |__    __ _  ___   ___
+#>    | | | | / _` || __|/ _` || '_ \  / _` |/ __| / _ \
+#>    | |_| || (_| || |_| (_| || |_) || (_| |\__ \|  __/
+#>    |____/  \__,_| \__|\__,_||_.__/  \__,_||___/ \___|
+#> 
+#> The OxCOVID19 Database makes use of several datasets. If you
+#> use any of the data provided by this package, please include
+#> the appropriate citation as described at the following
+#> website:
+#> 
+#> https://covid19.eng.ox.ac.uk/data_sources.html
 
 ## Step 1: Create a connection to OxCOVID19 PostgreSQL server
 con <- connect_oxcovid19()
@@ -198,10 +216,44 @@ will be well-documented and explained to users and deprecation will be
 staged in such a way that users will be informed in good time to allow
 for transition to using the new functions.
 
-## References
+## Citations
+
+If you find [OxCOVID19 Database](http://covid19.eng.ox.ac.uk/) useful
+please cite:
 
 Adam Mahdi, Piotr Błaszczyk, Paweł Dłotko, Dario Salvi, Tak-Shing Chan,
 John Harvey, Davide Gurnari, Yue Wu, Ahmad Farhat, Niklas Hellmer,
 Alexander Zarebski, Bernie Hogan, Lionel Tarassenko, **Oxford COVID-19
 Database: a multimodal data repository for better understanding the
 global impact of COVID-19**. University of Oxford, 2020.
+
+The [OxCOVID19 Database](http://covid19.eng.ox.ac.uk/) is the result of
+many hours of volunteer efforts and generous contributions of many
+organisations. If you use a specific table please also cite the
+underlying source as described
+[here](https://covid19.eng.ox.ac.uk/data_sources.html). Sources of
+specific tables can also be accessed via the `oxcovid19` package through
+the `data_sources` dataset. For example, if you have accessed the
+**Epidemiology** table from the database, you can access the sources for
+this table with:
+
+``` r
+data_sources[["epidemiology"]]
+```
+
+which gives the following result:
+
+    #> # A tibble: 45 x 5
+    #>    Country  `Source code` Source          Features           `Terms of Use`     
+    #>    <chr>    <chr>         <chr>           <chr>              <chr>              
+    #>  1 World    WRD_ECDC      European Centr… confirmed, dead, … ECDC Copyright     
+    #>  2 Argenti… LAT_DSRP      covid-19_latin… confirmed, dead, … CC BY-NC-SA 4.0    
+    #>  3 Austral… AUS_C1A       covid-19-au     tested, confirmed… For educational an…
+    #>  4 Austria  EU_ZH         COVID19 EU      tested, confirmed… MIT                
+    #>  5 Belgium  BEL_LE        covid19-be      tested, confirmed… CC0 1.0 Universal  
+    #>  6 Brazil   BRA_MSHM      covid19-Brazil… confirmed (countr… Public Domain      
+    #>  7 Brazil   LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    
+    #>  8 Canada   CAN_GOV       Public Health … tested, confirmed… Attribution requir…
+    #>  9 Chile    LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    
+    #> 10 China    CHN_ICL       Imperial Colle… confirmed,  dead,… with permission    
+    #> # … with 35 more rows

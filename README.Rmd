@@ -99,6 +99,20 @@ The workflow using the piped workflow outputs the same result as the earlier wor
 
 The `oxcovid19` package is in active development which will be dictated by the evolution of the [OxCOVID19 Database](http://covid19.eng.ox.ac.uk/) over time. Whilst every attempt will be employed to maintain syntax of current functions, it is possible that current functions may change syntax or operability in order to ensure relevance or maybe deprecated in lieu of a more appropriate and/or more performant function. In either of these cases, any change will be well-documented and explained to users and deprecation will be staged in such a way that users will be informed in good time to allow for transition to using the new functions.
 
-## References
+## Citations
+
+If you find [OxCOVID19 Database](http://covid19.eng.ox.ac.uk/) useful please cite:
 
 Adam Mahdi, Piotr Błaszczyk, Paweł Dłotko, Dario Salvi, Tak-Shing Chan, John Harvey, Davide Gurnari, Yue Wu, Ahmad Farhat, Niklas Hellmer, Alexander Zarebski, Bernie Hogan, Lionel Tarassenko, **Oxford COVID-19 Database: a multimodal data repository for better understanding the global impact of COVID-19**. University of Oxford, 2020.
+
+The [OxCOVID19 Database](http://covid19.eng.ox.ac.uk/) is the result of many hours of volunteer efforts and generous contributions of many organisations. If you use a specific table please also cite the underlying source as described [here](https://covid19.eng.ox.ac.uk/data_sources.html). Sources of specific tables can also be accessed via the `oxcovid19` package through the `data_sources` dataset. For example, if you have accessed the **Epidemiology** table from the database, you can access the sources for this table with:
+
+```{r sources1, echo = TRUE, eval = FALSE}
+data_sources[["epidemiology"]]
+```
+
+which gives the following result:
+
+```{r sources2, echo = FALSE, eval = TRUE}
+data_sources[["epidemiology"]]
+```
