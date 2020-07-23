@@ -1,7 +1,7 @@
 Package: oxcovid19
 Type: Package
 Title: An R API to the Oxford COVID-19 Database
-Version: 0.1.0
+Version: 0.1.1.9000
 Authors@R: c(person(given = "Ernest", family = "Guevarra", 
                     email = "ernest@guevarra.io", role = c("aut", "cre"),
                     comment = c(ORCID = "0000-0002-4887-4415")),
@@ -28,9 +28,9 @@ Imports:
     DBI,
     RPostgres,
     dplyr,
+    dbplyr,
     sf
 Suggests: 
-    dbplyr,
     testthat,
     covr,
     knitr,
@@ -43,7 +43,7 @@ Suggests:
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
-URL: https://github.com/como-ph/oxcovid19
+URL: https://github.com/como-ph/oxcovid19, https://como-ph.github.io/oxcovid19
 BugReports: https://github.com/como-ph/oxcovid19/issues
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
