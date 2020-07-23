@@ -9,9 +9,11 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![CRAN](https://img.shields.io/cran/l/oxcovid19.svg)](https://CRAN.R-project.org/package=oxcovid19)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
-[![CRAN](https://img.shields.io/cran/l/oxcovid19.svg)](https://CRAN.R-project.org/package=oxcovid19)
+[![cran
+checks](https://cranchecks.info/badges/summary/oxcovid19)](https://cran.r-project.org/web/checks/check_results_oxcovid19.html)
 [![CRAN](http://cranlogs.r-pkg.org/badges/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
 [![R build
