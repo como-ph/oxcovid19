@@ -18,7 +18,7 @@ The primary use case for the `oxcovid19` package is for facilitating a simplifie
 
 <br>
 
-```{r workflow, echo = FALSE, eval = TRUE, fig.width = 8, fig.height = 10, fig.pos = "center"}
+```{r workflow, echo = FALSE, eval = FALSE, fig.width = 8, fig.height = 10, fig.pos = "center"}
 DiagrammeR::grViz("
   digraph oxcovid19 {
 
@@ -89,6 +89,11 @@ DiagrammeR::grViz("
     [8]: 'END'
 ")
 ```
+
+```{r workflowB, echo = FALSE, eval = TRUE, out.width = "80%", fig.align = "center"}
+knitr::include_graphics("../man/figures/oxcovid19workflow.png")
+```
+
 <br>
 
 The following code demonstrates how this workflow can be implemented in R:

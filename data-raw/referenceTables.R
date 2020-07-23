@@ -11,6 +11,11 @@ data_sources <- xml2::read_html(x = "https://covid19.eng.ox.ac.uk/data_sources.h
 data_sources[[1]] <- data_sources[[1]] %>%
   dplyr::select(Country:`Terms of Use`)
 
+## Clean up marked UTF8 in sources for Epidemiology
+data_sources[[1]]$Source <- data_sources[[1]]$Source %>%
+  stringr::str_replace(pattern = "é", replacement = "Ã©") %>%
+  stringr::str_replace(pattern = "ü", replacement = "Ã¼")
+
 ## Convert each table in list to tibble
 for(i in seq_len(length(data_sources))) {
   data_sources[[i]] <- tibble::tibble(data_sources[[i]])
