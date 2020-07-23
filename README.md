@@ -19,7 +19,7 @@ status](https://github.com/como-ph/oxcovid19/workflows/R-CMD-check/badge.svg)](h
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/como-ph/oxcovid19?branch=master&svg=true)](https://ci.appveyor.com/project/como-ph/oxcovid19)
 [![Travis build
-status](https://travis-ci.com/como-ph/oxcovid19.svg?branch=master)](https://travis-ci.com/como-ph/oxcovid19)
+status](https://travis-ci.org/como-ph/oxcovid19.svg?branch=master)](https://travis-ci.org/como-ph/oxcovid19)
 [![R build
 status](https://github.com/como-ph/oxcovid19/workflows/test-coverage/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![Codecov test
