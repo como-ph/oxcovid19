@@ -1,7 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# oxcovid19: An R API to the Oxford COVID-19 Database <img src="man/figures/oxcovid19.png" width="200px" align="right" />
+# oxcovid19: An R API to the Oxford COVID-19 Database
+
+<!-- <img src="man/figures/oxcovid19.png" width="200px" align="right" /> -->
 
 <!-- badges: start -->
 
@@ -16,6 +18,8 @@ status](https://www.r-pkg.org/badges/version/oxcovid19)](https://CRAN.R-project.
 status](https://github.com/como-ph/oxcovid19/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/como-ph/oxcovid19?branch=master&svg=true)](https://ci.appveyor.com/project/como-ph/oxcovid19)
+[![Travis build
+status](https://travis-ci.com/como-ph/oxcovid19.svg?branch=master)](https://travis-ci.com/como-ph/oxcovid19)
 [![R build
 status](https://github.com/como-ph/oxcovid19/workflows/test-coverage/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![Codecov test
@@ -132,16 +136,16 @@ The output of the workflow shown above is:
     #> # Database: postgres [covid19@covid19db.org:5432/covid19]
     #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
     #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-    #>  1 GBR_P… 2020-07-10 United… GBR         England    Warwicksh… Nuneaton …     NA
-    #>  2 GBR_P… 2020-07-10 United… GBR         England    Greater L… Kingston …     NA
-    #>  3 GBR_P… 2020-07-10 United… GBR         England    Barnsley   Barnsley       NA
-    #>  4 GBR_P… 2020-07-10 United… GBR         England    Saint Hel… Saint Hel…     NA
-    #>  5 GBR_P… 2020-07-10 United… GBR         England    Staffords… Tamworth       NA
-    #>  6 GBR_P… 2020-07-10 United… GBR         England    North Yor… Ryedale        NA
-    #>  7 GBR_P… 2020-07-08 United… GBR         England    Greater L… Ealing         NA
-    #>  8 GBR_P… 2020-07-10 United… GBR         England    Leicester… Hinckley …     NA
-    #>  9 GBR_P… 2020-07-09 United… GBR         England    Bournemou… Bournemou…     NA
-    #> 10 GBR_P… 2020-07-08 United… GBR         England    Greater L… Wandsworth     NA
+    #>  1 GBR_P… 2020-03-21 United… GBR         England    Blackpool  Blackpool      NA
+    #>  2 GBR_P… 2020-03-20 United… GBR         England    Derbyshire North Eas…     NA
+    #>  3 GBR_P… 2020-03-20 United… GBR         England    Cambridge… South Cam…     NA
+    #>  4 GBR_P… 2020-03-20 United… GBR         England    Cambridge… Huntingdo…     NA
+    #>  5 GBR_P… 2020-03-20 United… GBR         England    Central B… Central B…     NA
+    #>  6 GBR_P… 2020-03-20 United… GBR         England    Shropshire Shropshire     NA
+    #>  7 GBR_P… 2020-03-20 United… GBR         England    Wiltshire  Wiltshire      NA
+    #>  8 GBR_P… 2020-03-20 United… GBR         England    Cheshire … Cheshire …     NA
+    #>  9 GBR_P… 2020-03-20 United… GBR         England    Durham     Durham         NA
+    #> 10 GBR_P… 2020-03-20 United… GBR         England    Isle of W… Isle of W…     NA
     #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
     #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
     #> #   gid <chr>
@@ -161,16 +165,16 @@ connect_oxcovid19() %>%
 #> # Database: postgres [covid19@covid19db.org:5432/covid19]
 #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-#>  1 GBR_P… 2020-07-10 United… GBR         England    Warwicksh… Nuneaton …     NA
-#>  2 GBR_P… 2020-07-10 United… GBR         England    Greater L… Kingston …     NA
-#>  3 GBR_P… 2020-07-10 United… GBR         England    Barnsley   Barnsley       NA
-#>  4 GBR_P… 2020-07-10 United… GBR         England    Saint Hel… Saint Hel…     NA
-#>  5 GBR_P… 2020-07-10 United… GBR         England    Staffords… Tamworth       NA
-#>  6 GBR_P… 2020-07-10 United… GBR         England    North Yor… Ryedale        NA
-#>  7 GBR_P… 2020-07-08 United… GBR         England    Greater L… Ealing         NA
-#>  8 GBR_P… 2020-07-10 United… GBR         England    Leicester… Hinckley …     NA
-#>  9 GBR_P… 2020-07-09 United… GBR         England    Bournemou… Bournemou…     NA
-#> 10 GBR_P… 2020-07-08 United… GBR         England    Greater L… Wandsworth     NA
+#>  1 GBR_P… 2020-03-21 United… GBR         England    Blackpool  Blackpool      NA
+#>  2 GBR_P… 2020-03-20 United… GBR         England    Derbyshire North Eas…     NA
+#>  3 GBR_P… 2020-03-20 United… GBR         England    Cambridge… South Cam…     NA
+#>  4 GBR_P… 2020-03-20 United… GBR         England    Cambridge… Huntingdo…     NA
+#>  5 GBR_P… 2020-03-20 United… GBR         England    Central B… Central B…     NA
+#>  6 GBR_P… 2020-03-20 United… GBR         England    Shropshire Shropshire     NA
+#>  7 GBR_P… 2020-03-20 United… GBR         England    Wiltshire  Wiltshire      NA
+#>  8 GBR_P… 2020-03-20 United… GBR         England    Cheshire … Cheshire …     NA
+#>  9 GBR_P… 2020-03-20 United… GBR         England    Durham     Durham         NA
+#> 10 GBR_P… 2020-03-20 United… GBR         England    Isle of W… Isle of W…     NA
 #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
 #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
 #> #   gid <chr>
