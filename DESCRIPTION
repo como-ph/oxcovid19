@@ -28,6 +28,7 @@ Imports:
     DBI,
     RPostgres,
     dplyr,
+    dbplyr,
     sf
 Suggests: 
     testthat,
@@ -38,8 +39,7 @@ Suggests:
     stringr,
     RColorBrewer,
     ggplot2,
-    DiagrammeR,
-    dbplyr
+    DiagrammeR
 Encoding: UTF-8
 Language: en-gb
 LazyData: true
