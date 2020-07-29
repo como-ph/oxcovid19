@@ -3,7 +3,7 @@
 
 # oxcovid19: An R API to the Oxford COVID-19 Database
 
-<!-- <img src="man/figures/oxcovid19.png" width="200px" align="right" /> -->
+<img src="man/figures/oxcovid19.png" width="200px" align="right" />
 
 <!-- badges: start -->
 
