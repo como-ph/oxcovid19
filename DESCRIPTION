@@ -1,7 +1,7 @@
 Package: oxcovid19
 Type: Package
 Title: An R API to the Oxford COVID-19 Database
-Version: 0.1.1.9000
+Version: 0.1.1
 Authors@R: c(person(given = "Ernest", family = "Guevarra", 
                     email = "ernest@guevarra.io", role = c("aut", "cre"),
                     comment = c(ORCID = "0000-0002-4887-4415")),
