@@ -19,7 +19,6 @@ on widely-used data handling and manipulation approaches in R.
 Useful links:
 \itemize{
   \item \url{https://github.com/como-ph/oxcovid19}
-  \item \url{https://como-ph.github.io/oxcovid19}
   \item Report bugs at \url{https://github.com/como-ph/oxcovid19/issues}
 }
 
