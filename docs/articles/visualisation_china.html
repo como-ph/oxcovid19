@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -291,7 +291,7 @@
      <span class="kw">nbreaks</span> <span class="kw">=</span> <span class="fl">10</span>,
      <span class="kw">breaks</span> <span class="kw">=</span> <span class="st">"quantile"</span>,
      <span class="kw">key.width</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html">lcm</a></span>(<span class="fl">5</span>))</pre></body></html></div>
-<p><img src="visualisation_china_files/figure-html/example5a-1.png" width="672" style="display: block; margin: auto;"></p>
+<p><img src="../man/figures/visualisation_china_1.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
 <div id="plot-epidemiology-total-death" class="section level2">
 <h2 class="hasAnchor">
@@ -318,7 +318,7 @@
      <span class="kw">nbreaks</span> <span class="kw">=</span> <span class="fl">7</span>,
      <span class="kw">breaks</span> <span class="kw">=</span> <span class="st">"quantile"</span>,
      <span class="kw">key.width</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html">lcm</a></span>(<span class="fl">5</span>))</pre></body></html></div>
-<p><img src="visualisation_china_files/figure-html/example6a-1.png" width="672" style="display: block; margin: auto;"></p>
+<p><img src="../man/figures/visualisation_china_2.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
 <div id="check-monotonicity-of-data---confirmed" class="section level2">
 <h2 class="hasAnchor">
@@ -337,7 +337,7 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_colour_discrete</a></span>(<span class="kw">name</span> <span class="kw">=</span> <span class="kw">NULL</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>()</pre></body></html></div>
-<p><img src="visualisation_china_files/figure-html/example7a-1.png" width="960" style="display: block; margin: auto;"></p>
+<p><img src="../man/figures/visualisation_china_3.png" width="75%" style="display: block; margin: auto;"></p>
 <p>Given that Hubei province had the most cases compared to all subnational units, the plot shows one time series curve with significantly more cases that anywhere else whilst all other units had a flat time series curve. This is not necessarily a good way to check monotonicity in all units as only Hubei province time series information is shown clearly.</p>
 <p>In the plot below, we try to more clearly distinguish the time series for each subnational unit by showing a line plot for each unit separate. However, this only solves the issue of time series line plots being clearly demarcated from others. The curves, however, still does not show the true pattern for all units other than Hubei.</p>
 <div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
@@ -349,7 +349,7 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()</pre></body></html></div>
-<p><img src="visualisation_china_files/figure-html/example7b-1.png" width="960" style="display: block; margin: auto;"></p>
+<p><img src="../man/figures/visualisation_china_4.png" width="75%" style="display: block; margin: auto;"></p>
 <p>We address this by allowing the y-axis for each subnational time series plot to be appropriate for the data for the specific unit as below. Here we are able to see the time series plots for each subunit and able to verify whether monotonicity is observed.</p>
 <div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
@@ -360,7 +360,7 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_y"</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()</pre></body></html></div>
-<p><img src="visualisation_china_files/figure-html/example7c-1.png" width="960" style="display: block; margin: auto;"></p>
+<p><img src="../man/figures/visualisation_china_5.png" width="75%" style="display: block; margin: auto;"></p>
 <p>Unfortunately, one subnational unit (Shaanxi Province) has a dip in cases within the time series plot which breaks monotonicity. This would indicate something inconsistent with the data. This needs to be checked.</p>
 </div>
 <div id="check-monotonicity-of-data---dead" class="section level2">
@@ -376,7 +376,7 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()</pre></body></html></div>
-<p><img src="visualisation_china_files/figure-html/example8a-1.png" width="960" style="display: block; margin: auto;"></p>
+<p><img src="../man/figures/visualisation_china_6.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">source</span> <span class="kw">==</span> <span class="st">"CHN_ICL"</span>,
@@ -386,7 +386,7 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( ~ <span class="no">adm_area_1</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">4</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_y"</span>) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()</pre></body></html></div>
-<p><img src="visualisation_china_files/figure-html/example8b-1.png" width="960" style="display: block; margin: auto;"></p>
+<p><img src="../man/figures/visualisation_china_7.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
   </div>
 

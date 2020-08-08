@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -194,11 +194,6 @@ Default is character vector of all table names specified by
 #&gt; [53] "cloudfrac_min_avg"        "cloudfrac_min_std"       
 #&gt; [55] "cloudfrac_mean_avg"       "cloudfrac_mean_std"      
 #&gt; 
-#&gt; $world_bank
-#&gt;  [1] "source"         "gid"            "country_name"   "country_code"  
-#&gt;  [5] "adm_area_1"     "adm_area_2"     "adm_area_3"     "indicator_name"
-#&gt;  [9] "indicator_code" "value"          "year"          
-#&gt; 
 #&gt; $mobility
 #&gt;  [1] "source"            "date"              "country"          
 #&gt;  [4] "countrycode"       "adm_area_1"        "adm_area_2"       
@@ -206,6 +201,10 @@ Default is character vector of all table names specified by
 #&gt; [10] "workplace"         "parks"             "retail_recreation"
 #&gt; [13] "grocery_pharmacy"  "gid"               "transit"          
 #&gt; [16] "walking"           "driving"          
+#&gt; 
+#&gt; $baseline_mortality
+#&gt; [1] "source"      "date"        "country"     "countrycode" "adm_level"  
+#&gt; [6] "gid"         "deaths"     
 #&gt; 
 #&gt; $epidemiology
 #&gt;  [1] "source"           "date"             "country"          "countrycode"     
@@ -261,8 +260,22 @@ Default is character vector of all table names specified by
 #&gt; [45] "economic_support_index_for_display"   
 #&gt; [46] "actions"                              
 #&gt; 
+#&gt; $diagnostics
+#&gt; [1] "table_name"         "source"             "validation_success"
+#&gt; [4] "error"              "last_run_start"     "last_run_stop"     
+#&gt; [7] "first_timestamp"    "last_timestamp"    
+#&gt; 
+#&gt; $surveys
+#&gt;  [1] "source"      "wave"        "gid"         "country"     "countrycode"
+#&gt;  [6] "adm_area_1"  "adm_area_2"  "adm_area_3"  "samplesize"  "properties" 
+#&gt; 
+#&gt; $world_bank
+#&gt;  [1] "source"         "gid"            "country"        "countrycode"   
+#&gt;  [5] "adm_area_1"     "adm_area_2"     "adm_area_3"     "indicator_name"
+#&gt;  [9] "indicator_code" "value"          "year"          
+#&gt; 
 #&gt; $world_bank_time_series
-#&gt;  [1] "source"         "gid"            "country_name"   "country_code"  
+#&gt;  [1] "source"         "gid"            "country"        "countrycode"   
 #&gt;  [5] "adm_area_1"     "adm_area_2"     "adm_area_3"     "indicator_name"
 #&gt;  [9] "indicator_code" "1960"           "1961"           "1962"          
 #&gt; [13] "1963"           "1964"           "1965"           "1966"          
@@ -280,15 +293,6 @@ Default is character vector of all table names specified by
 #&gt; [61] "2011"           "2012"           "2013"           "2014"          
 #&gt; [65] "2015"           "2016"           "2017"           "2018"          
 #&gt; [69] "2019"          
-#&gt; 
-#&gt; $diagnostics
-#&gt; [1] "table_name"         "source"             "validation_success"
-#&gt; [4] "error"              "last_run_start"     "last_run_stop"     
-#&gt; [7] "first_timestamp"    "last_timestamp"    
-#&gt; 
-#&gt; $baseline_mortality
-#&gt; [1] "source"      "date"        "country"     "countrycode" "adm_level"  
-#&gt; [6] "gid"         "deaths"     
 #&gt; 
 #&gt; $administrative_division
 #&gt;  [1] "country"            "countrycode"        "countrycode_alpha2"
@@ -309,10 +313,6 @@ Default is character vector of all table names specified by
 #&gt; [1] "f_table_catalog"   "f_table_schema"    "f_table_name"     
 #&gt; [4] "f_geometry_column" "coord_dimension"   "srid"             
 #&gt; [7] "type"             
-#&gt; 
-#&gt; $country_statistics
-#&gt; [1] "source"      "year"        "country"     "countrycode" "adm_level"  
-#&gt; [6] "gid"         "samplesize"  "properties" 
 #&gt; </div><div class='input'>
 </div></pre>
   </div>
