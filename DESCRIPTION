@@ -43,7 +43,7 @@ Suggests:
     ggplot2,
     DiagrammeR
 Encoding: UTF-8
-Language: en-gb
+Language: en-GB
 LazyData: true
 URL: https://github.com/como-ph/oxcovid19
 BugReports: https://github.com/como-ph/oxcovid19/issues
