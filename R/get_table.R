@@ -4,9 +4,9 @@
 #' Get specified table from OxCOVID19 Database
 #'
 #' @param con Connection to OxCOVID19 Database. This can be specified using
-#'   the \code{connect_oxcovid19} function.
+#'   the \link{connect_oxcovid19} function.
 #' @param tbl_name Name of table available in OxCOVID19 Database. Should be
-#'   one of the table names given by a call to \code{list_tables}.
+#'   one of the table names given by a call to \link{list_tables}.
 #'
 #' @return An RPostgres_tbl object of the specified OxCOVID19 Database table
 #'
