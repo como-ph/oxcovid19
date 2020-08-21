@@ -31,6 +31,7 @@ reference:
     - connect_oxcovid19
     - get_table
     - get_layer
+    - get_metadata
 
   - title: Utilities
     contents:
