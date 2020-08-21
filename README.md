@@ -28,6 +28,8 @@ status](https://github.com/como-ph/oxcovid19/workflows/test-coverage/badge.svg)]
 coverage](https://codecov.io/gh/como-ph/oxcovid19/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/oxcovid19?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/como-ph/oxcovid19/badge)](https://www.codefactor.io/repository/github/como-ph/oxcovid19)
 [![DOI](https://zenodo.org/badge/276818770.svg)](https://zenodo.org/badge/latestdoi/276818770)
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
 The [OxCOVID19 Project](https://covid19.eng.ox.ac.uk) aims to increase
@@ -156,16 +158,16 @@ The output of the workflow shown above is:
     #> # Database: postgres [covid19@covid19db.org:5432/covid19]
     #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
     #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-    #>  1 GBR_P… 2020-03-21 United… GBR         England    Blackpool  Blackpool      NA
-    #>  2 GBR_P… 2020-03-20 United… GBR         England    Derbyshire North Eas…     NA
-    #>  3 GBR_P… 2020-03-20 United… GBR         England    Cambridge… South Cam…     NA
-    #>  4 GBR_P… 2020-03-20 United… GBR         England    Cambridge… Huntingdo…     NA
-    #>  5 GBR_P… 2020-03-20 United… GBR         England    Central B… Central B…     NA
-    #>  6 GBR_P… 2020-03-20 United… GBR         England    Shropshire Shropshire     NA
-    #>  7 GBR_P… 2020-03-20 United… GBR         England    Wiltshire  Wiltshire      NA
-    #>  8 GBR_P… 2020-03-20 United… GBR         England    Cheshire … Cheshire …     NA
-    #>  9 GBR_P… 2020-03-20 United… GBR         England    Durham     Durham         NA
-    #> 10 GBR_P… 2020-03-20 United… GBR         England    Isle of W… Isle of W…     NA
+    #>  1 GBR_P… 2020-06-28 United… GBR         Wales      Powys Tea… <NA>           NA
+    #>  2 GBR_P… 2020-06-28 United… GBR         Wales      Swansea B… <NA>           NA
+    #>  3 WRD_E… 2020-06-29 United… GBR         <NA>       <NA>       <NA>           NA
+    #>  4 GBR_P… 2020-03-25 United… GBR         England    North Tyn… <NA>           NA
+    #>  5 GBR_P… 2020-03-25 United… GBR         England    Newcastle… <NA>           NA
+    #>  6 GBR_P… 2020-03-25 United… GBR         England    Sheffield  <NA>           NA
+    #>  7 GBR_P… 2020-03-25 United… GBR         England    Rotherham  <NA>           NA
+    #>  8 GBR_P… 2020-03-25 United… GBR         England    Doncaster  <NA>           NA
+    #>  9 GBR_P… 2020-03-25 United… GBR         England    Barnsley   Barnsley       NA
+    #> 10 GBR_P… 2020-03-25 United… GBR         England    Wirral     <NA>           NA
     #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
     #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
     #> #   gid <chr>
@@ -185,16 +187,16 @@ connect_oxcovid19() %>%
 #> # Database: postgres [covid19@covid19db.org:5432/covid19]
 #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-#>  1 GBR_P… 2020-03-21 United… GBR         England    Blackpool  Blackpool      NA
-#>  2 GBR_P… 2020-03-20 United… GBR         England    Derbyshire North Eas…     NA
-#>  3 GBR_P… 2020-03-20 United… GBR         England    Cambridge… South Cam…     NA
-#>  4 GBR_P… 2020-03-20 United… GBR         England    Cambridge… Huntingdo…     NA
-#>  5 GBR_P… 2020-03-20 United… GBR         England    Central B… Central B…     NA
-#>  6 GBR_P… 2020-03-20 United… GBR         England    Shropshire Shropshire     NA
-#>  7 GBR_P… 2020-03-20 United… GBR         England    Wiltshire  Wiltshire      NA
-#>  8 GBR_P… 2020-03-20 United… GBR         England    Cheshire … Cheshire …     NA
-#>  9 GBR_P… 2020-03-20 United… GBR         England    Durham     Durham         NA
-#> 10 GBR_P… 2020-03-20 United… GBR         England    Isle of W… Isle of W…     NA
+#>  1 GBR_P… 2020-06-28 United… GBR         Wales      Powys Tea… <NA>           NA
+#>  2 GBR_P… 2020-06-28 United… GBR         Wales      Swansea B… <NA>           NA
+#>  3 WRD_E… 2020-06-29 United… GBR         <NA>       <NA>       <NA>           NA
+#>  4 GBR_P… 2020-03-25 United… GBR         England    North Tyn… <NA>           NA
+#>  5 GBR_P… 2020-03-25 United… GBR         England    Newcastle… <NA>           NA
+#>  6 GBR_P… 2020-03-25 United… GBR         England    Sheffield  <NA>           NA
+#>  7 GBR_P… 2020-03-25 United… GBR         England    Rotherham  <NA>           NA
+#>  8 GBR_P… 2020-03-25 United… GBR         England    Doncaster  <NA>           NA
+#>  9 GBR_P… 2020-03-25 United… GBR         England    Barnsley   Barnsley       NA
+#> 10 GBR_P… 2020-03-25 United… GBR         England    Wirral     <NA>           NA
 #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
 #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
 #> #   gid <chr>
