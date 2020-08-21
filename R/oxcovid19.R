@@ -21,7 +21,11 @@
 #' @importFrom dbplyr remote_name remote_src remote_con remote_query
 #'   remote_query_plan
 #' @importFrom sf st_read
+#' @importFrom lubridate ymd
 #'
 #
 ################################################################################
 "_PACKAGE"
+
+## quiets concerns of R CMD check re: data_sources
+if(getRversion() >= "2.15.1")  utils::globalVariables("data_sources")
