@@ -13,8 +13,8 @@ data_sources[[1]] <- data_sources[[1]] %>%
 
 ## Clean up marked UTF8 in sources for Epidemiology
 data_sources[[1]]$Source <- data_sources[[1]]$Source %>%
-  stringr::str_replace(pattern = "é", replacement = "Ã©") %>%
-  stringr::str_replace(pattern = "ü", replacement = "Ã¼")
+  stringr::str_replace(pattern = "é", replacement = "e") %>%
+  stringr::str_replace(pattern = "ü", replacement = "u")
 
 ## Convert each table in list to tibble
 for(i in seq_len(length(data_sources))) {
