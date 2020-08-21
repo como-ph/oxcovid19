@@ -18,6 +18,8 @@
 #' @importFrom DBI dbConnect dbListTables dbListFields
 #' @importFrom RPostgres Postgres
 #' @importFrom dplyr tbl
+#' @importFrom dbplyr remote_name remote_src remote_con remote_query
+#'   remote_query_plan
 #' @importFrom sf st_read
 #'
 #
