@@ -29,14 +29,21 @@ reference:
   - title: Connect
     contents:
     - connect_oxcovid19
+
+  - title: Explore
+    contents:
     - get_table
     - get_layer
-    - get_metadata
+
+  - title: Retrieve
+    contents:
+    - starts_with("get_data")
 
   - title: Utilities
     contents:
     - list_tables
     - list_fields
+    - get_metadata
 
   - title: Reference datasets
     contents:
