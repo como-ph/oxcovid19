@@ -5,20 +5,20 @@ url: https://como-ph.github.io/oxcovid19
 template:
   params:
     bootswatch: flatly
-    ganalytics:
+    ganalytics: UA-171282455-3
 
 #navbar:
 #  type: inverse
 
 home:
   links:
-  - text: See the Oxford COVID-19 (OxCOVID19) Project
+  - text: Read about the Oxford COVID-19 (OxCOVID19) Project
     href: https://covid19.eng.ox.ac.uk/
 
-  - text: More about the CoMo Consoritum
+  - text: Learn about the CoMo Consoritum
     href: https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context
 
-  - text: See CoMo Philippines
+  - text: More about CoMo Philippines
     href: https://como-ph.github.io/
 
 reference:
