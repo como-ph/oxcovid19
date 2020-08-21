@@ -8,13 +8,13 @@ list_fields(con = connect_oxcovid19(), tab = list_tables())
 }
 \arguments{
 \item{con}{A PqConnection class object specifying the PostgreSQL connection
-to OxCOVID19 Database. This is produced by \code{connect_covid19}
+to OxCOVID19 Database. This is produced by \link{connect_oxcovid19}
 function}
 
 \item{tab}{A character vector specifying table name/s to extract field names
-from. Must be a value included when a call to \code{list_names} is issued.
+from. Must be a value included when a call to \link{list_tables} is issued.
 Default is character vector of all table names specified by
-\code{list_names}.}
+\link{list_tables}.}
 }
 \value{
 A named list of field names per specified table available from

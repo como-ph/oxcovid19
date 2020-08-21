@@ -8,10 +8,10 @@ get_table(con, tbl_name)
 }
 \arguments{
 \item{con}{Connection to OxCOVID19 Database. This can be specified using
-the \code{connect_oxcovid19} function.}
+the \link{connect_oxcovid19} function.}
 
 \item{tbl_name}{Name of table available in OxCOVID19 Database. Should be
-one of the table names given by a call to \code{list_tables}.}
+one of the table names given by a call to \link{list_tables}.}
 }
 \value{
 An RPostgres_tbl object of the specified OxCOVID19 Database table

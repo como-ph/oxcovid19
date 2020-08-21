@@ -4,7 +4,7 @@
 #' List out names of tables available from OxCOVID19 Database
 #'
 #' @param con A PqConnection class object specifying the PostgreSQL connection
-#'   to OxCOVID19 Database. This is produced by \code{connect_covid19}
+#'   to OxCOVID19 Database. This is produced by \link{connect_oxcovid19}
 #'   function
 #'
 #' @return A vector of table names available from OxCOVID19 Database
@@ -34,12 +34,12 @@ list_tables <- function(con = connect_oxcovid19()) {
 #' List out field names of specific tables available from OxCOVID19 Database
 #'
 #' @param con A PqConnection class object specifying the PostgreSQL connection
-#'   to OxCOVID19 Database. This is produced by \code{connect_covid19}
+#'   to OxCOVID19 Database. This is produced by \link{connect_oxcovid19}
 #'   function
 #' @param tab A character vector specifying table name/s to extract field names
-#'   from. Must be a value included when a call to \code{list_names} is issued.
+#'   from. Must be a value included when a call to \link{list_tables} is issued.
 #'   Default is character vector of all table names specified by
-#'   \code{list_names}.
+#'   \link{list_tables}.
 #'
 #' @return A named list of field names per specified table available from
 #'   OxCOVID19 Database
@@ -69,3 +69,4 @@ list_fields <- function(con = connect_oxcovid19(),
   ## Return list of field names
   return(fieldList)
 }
+
