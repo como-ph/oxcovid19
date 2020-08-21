@@ -1,3 +1,21 @@
+# oxcovid19 0.1.2
+
+## Enhancements
+
+* added function to get remote table metadata (party to fix CRAN NOTE on non-use
+of imported `dbplyr` package)
+
+* improved documentation
+
+* updated lifecycle to *maturing*
+
+## Bug fixes
+
+* addressed CRAN NOTE regarding 2 marked UTF-9 strings
+
+* addressed CRAN NOTE regarding non-use of imported `dbplyr` package
+
+
 # oxcovid19 0.1.1
 
 * Edited 2 marked UTF8 strings
