@@ -31,7 +31,8 @@ Imports:
     RPostgres,
     dplyr,
     sf,
-    dbplyr
+    dbplyr,
+    lubridate
 Suggests: 
     testthat,
     covr,
