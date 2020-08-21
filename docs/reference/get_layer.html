@@ -55,6 +55,16 @@
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171282455-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-171282455-3');
+</script>
+
 
   </head>
 
@@ -72,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -146,7 +156,7 @@
     <tr>
       <th>con</th>
       <td><p>Connection to OxCOVID19 Database. This can be specified using
-the <code>connect_oxcovid19</code> function.</p></td>
+the <a href='connect_oxcovid19.html'>connect_oxcovid19</a> function.</p></td>
     </tr>
     <tr>
       <th>layer</th>
@@ -156,11 +166,14 @@ Currently, only <code>administrative_division</code> is a spatial layer.</p></td
     <tr>
       <th>ccode</th>
       <td><p>Three character ISO country code for required country
-layers</p></td>
+layers.</p></td>
     </tr>
     <tr>
       <th>adm</th>
-      <td><p>Numeric value for administrative level layer required.</p></td>
+      <td><p>Numeric value for administrative level layer required. Possible
+values are 0 for whole country, 1 for administrative level 1, 2 for
+administrative level 2 and 3 for administrative level 3. Default is 0 for
+country borders.</p></td>
     </tr>
     </table>
 

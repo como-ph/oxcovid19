@@ -54,6 +54,16 @@
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-171282455-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-171282455-3');
+</script>
+
 
   </head>
 
@@ -71,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -132,6 +142,28 @@
       <small>Source: <a href='https://github.com/como-ph/oxcovid19/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="oxcovid19-012" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.2">
+<a href="#oxcovid19-012" class="anchor"></a>oxcovid19 0.1.2<small> Unreleased </small>
+</h1>
+<div id="enhancements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#enhancements" class="anchor"></a>Enhancements</h2>
+<ul>
+<li><p>added function to get remote table metadata (party to fix CRAN NOTE on non-use of imported <code>dbplyr</code> package)</p></li>
+<li><p>improved documentation</p></li>
+<li><p>updated lifecycle to <em>maturing</em></p></li>
+</ul>
+</div>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li><p>addressed CRAN NOTE regarding 2 marked UTF-9 strings</p></li>
+<li><p>addressed CRAN NOTE regarding non-use of imported <code>dbplyr</code> package</p></li>
+</ul>
+</div>
+</div>
     <div id="oxcovid19-011" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.1">
 <a href="#oxcovid19-011" class="anchor"></a>oxcovid19 0.1.1<small> 2020-08-14 </small>

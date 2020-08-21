@@ -13,7 +13,25 @@
     <loc>https://como-ph.github.io/oxcovid19/reference/data_structures.html</loc>
   </url>
   <url>
+    <loc>https://como-ph.github.io/oxcovid19/reference/get_data.html</loc>
+  </url>
+  <url>
+    <loc>https://como-ph.github.io/oxcovid19/reference/get_data_epidemiology.html</loc>
+  </url>
+  <url>
+    <loc>https://como-ph.github.io/oxcovid19/reference/get_data_mobility.html</loc>
+  </url>
+  <url>
+    <loc>https://como-ph.github.io/oxcovid19/reference/get_data_response.html</loc>
+  </url>
+  <url>
+    <loc>https://como-ph.github.io/oxcovid19/reference/get_data_weather.html</loc>
+  </url>
+  <url>
     <loc>https://como-ph.github.io/oxcovid19/reference/get_layer.html</loc>
+  </url>
+  <url>
+    <loc>https://como-ph.github.io/oxcovid19/reference/get_metadata.html</loc>
   </url>
   <url>
     <loc>https://como-ph.github.io/oxcovid19/reference/get_table.html</loc>
