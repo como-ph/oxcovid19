@@ -53,3 +53,6 @@ get_data_mobility(.source = "APPLE_MOBILITY",
                   adm = 0)
 
 }
+\author{
+Ernest Guevarra
+}

@@ -58,3 +58,6 @@ get_data(tbl_name = "epidemiology",
          adm = 0)
 
 }
+\author{
+Ernest Guevarra
+}

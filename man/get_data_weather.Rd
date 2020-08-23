@@ -41,3 +41,6 @@ get_data_weather(ccode = "GBR",
                  adm = 0)
 
 }
+\author{
+Ernest Guevarra
+}
