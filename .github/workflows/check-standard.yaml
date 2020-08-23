@@ -22,7 +22,7 @@ jobs:
         config:
           - {os: windows-latest, r: 'release'}
           - {os: macOS-latest, r: 'release'}
-          - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          #- {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
           - {os: ubuntu-20.04, r: 'devel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
     env:
@@ -77,7 +77,7 @@ jobs:
         shell: Rscript {0}
 
       #- name: Install rgdal from source
-      #  if: runner.os == 'macOS'
+      #  if: runner.os != 'Windows'
       #  run: install.packages("rgdal", type = "source")
       #  shell: Rscript {0}
 

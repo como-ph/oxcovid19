@@ -4,12 +4,15 @@
 #' Get specified spatial layer from OxCOVID19 Database
 #'
 #' @param con Connection to OxCOVID19 Database. This can be specified using
-#'   the \code{connect_oxcovid19} function.
+#'   the \link{connect_oxcovid19} function.
 #' @param layer Name of spatial layer available in OxCOVID19 Database.
 #'   Currently, only \code{administrative_division} is a spatial layer.
 #' @param ccode Three character ISO country code for required country
-#'   layers
-#' @param adm Numeric value for administrative level layer required.
+#'   layers.
+#' @param adm Numeric value for administrative level layer required. Possible
+#'   values are 0 for whole country, 1 for administrative level 1, 2 for
+#'   administrative level 2 and 3 for administrative level 3. Default is 0 for
+#'   country borders.
 #'
 #' @return An object of \code{sf} class of the specified spatial layer
 #'

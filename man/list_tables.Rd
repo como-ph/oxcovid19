@@ -8,7 +8,7 @@ list_tables(con = connect_oxcovid19())
 }
 \arguments{
 \item{con}{A PqConnection class object specifying the PostgreSQL connection
-to OxCOVID19 Database. This is produced by \code{connect_covid19}
+to OxCOVID19 Database. This is produced by \link{connect_oxcovid19}
 function}
 }
 \value{
