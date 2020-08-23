@@ -8,7 +8,7 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![CRAN](https://img.shields.io/cran/l/oxcovid19.svg)](https://CRAN.R-project.org/package=oxcovid19)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
@@ -16,6 +16,7 @@ status](https://www.r-pkg.org/badges/version/oxcovid19)](https://CRAN.R-project.
 checks](https://cranchecks.info/badges/summary/oxcovid19)](https://cran.r-project.org/web/checks/check_results_oxcovid19.html)
 [![CRAN](http://cranlogs.r-pkg.org/badges/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
+[![dev](https://img.shields.io/badge/dev-v0.1.2.9000-orange.svg)](https://github.com/como-ph/oxcovid19)
 [![R build
 status](https://github.com/como-ph/oxcovid19/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![AppVeyor build
@@ -28,8 +29,6 @@ status](https://github.com/como-ph/oxcovid19/workflows/test-coverage/badge.svg)]
 coverage](https://codecov.io/gh/como-ph/oxcovid19/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/oxcovid19?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/como-ph/oxcovid19/badge)](https://www.codefactor.io/repository/github/como-ph/oxcovid19)
 [![DOI](https://zenodo.org/badge/276818770.svg)](https://zenodo.org/badge/latestdoi/276818770)
-[![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 <!-- badges: end -->
 
 The [OxCOVID19 Project](https://covid19.eng.ox.ac.uk) aims to increase
@@ -158,19 +157,87 @@ The output of the workflow shown above is:
     #> # Database: postgres [covid19@covid19db.org:5432/covid19]
     #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
     #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-    #>  1 GBR_P… 2020-06-28 United… GBR         Wales      Powys Tea… <NA>           NA
-    #>  2 GBR_P… 2020-06-28 United… GBR         Wales      Swansea B… <NA>           NA
-    #>  3 WRD_E… 2020-06-29 United… GBR         <NA>       <NA>       <NA>           NA
-    #>  4 GBR_P… 2020-03-25 United… GBR         England    North Tyn… <NA>           NA
-    #>  5 GBR_P… 2020-03-25 United… GBR         England    Newcastle… <NA>           NA
-    #>  6 GBR_P… 2020-03-25 United… GBR         England    Sheffield  <NA>           NA
-    #>  7 GBR_P… 2020-03-25 United… GBR         England    Rotherham  <NA>           NA
-    #>  8 GBR_P… 2020-03-25 United… GBR         England    Doncaster  <NA>           NA
-    #>  9 GBR_P… 2020-03-25 United… GBR         England    Barnsley   Barnsley       NA
-    #> 10 GBR_P… 2020-03-25 United… GBR         England    Wirral     <NA>           NA
+    #>  1 GBR_P… 2020-07-22 United… GBR         England    Worcester… Bromsgrove     NA
+    #>  2 GBR_P… 2020-07-01 United… GBR         England    Worcester… Wyre Fore…     NA
+    #>  3 GBR_P… 2020-07-23 United… GBR         England    Leicester  Leicester      NA
+    #>  4 GBR_P… 2020-07-01 United… GBR         England    West Suss… Horsham        NA
+    #>  5 GBR_P… 2020-07-01 United… GBR         England    Blackburn… Blackburn…     NA
+    #>  6 GBR_P… 2020-06-30 United… GBR         England    Dudley     Dudley         NA
+    #>  7 GBR_P… 2020-07-01 United… GBR         England    Leicester… Harborough     NA
+    #>  8 GBR_P… 2020-07-01 United… GBR         England    Leicester… Charnwood      NA
+    #>  9 GBR_P… 2020-07-01 United… GBR         England    Blackpool  Blackpool      NA
+    #> 10 GBR_P… 2020-06-30 United… GBR         England    West Berk… West Berk…     NA
     #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
     #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
     #> #   gid <chr>
+
+Note that the output of this workflow looks like a `tibble` (which it
+partly is) but it is also more than that. Annotation shows some of the
+metadata about this table. Specifically it shows the *source* and the
+*database* from which this table is from. This output table has the
+following classes:
+
+``` r
+class(gbr_epi_tab)
+#> [1] "tbl_PqConnection" "tbl_dbi"          "tbl_sql"          "tbl_lazy"        
+#> [5] "tbl"
+```
+
+Other than being a `tibble`, the output is also a what is called a
+*“lazy”* table (`tbl_lazy`) or a *dbi* (database) table (`tbl_dib`).
+What this means is that the output table shown is not actually retrieved
+and the basic query (which in this case is selecting a specific table
+named `epidemiology`) is not actually run. This has its advantageous in
+that the data is not yet in memory in [R](https://www.r-project.org)
+which can save computing time particularly if only a subset of the table
+in the remote server is required, and further queries to the remote
+server can be declared to customise the data output. These further
+queries can be facilitated using `dplyr` verbs such as `filter`,
+`mutate`, `arrange` which also operates *lazily* when applied to
+`tbl_lazy` or `tbl_dbi` objects.
+
+One can review the query parameter/s or the query plan applied to a
+`tbl_lazy` object by using the `get_metadata` function provided in
+`oxcovid19`:
+
+``` r
+get_metadata(gbr_epi_tab)
+#> $Name
+#> NULL
+#> 
+#> $Source
+#> src:  postgres  [covid19@covid19db.org:5432/covid19]
+#> tbls: administrative_division, baseline_mortality, diagnostics, epidemiology,
+#>   geography_columns, geometry_columns, government_response, mobility,
+#>   spatial_ref_sys, surveys, weather, world_bank, world_bank_time_series
+#> 
+#> $`DBI connection`
+#> <PqConnection> covid19@covid19db.org:5432
+#> 
+#> $`Query text`
+#> <SQL> SELECT *
+#> FROM "epidemiology"
+#> WHERE ("countrycode" = 'GBR')
+#> 
+#> $`Query plan`
+#> [1] "Seq Scan on epidemiology  (cost=0.00..27889.72 rows=102118 width=121)\n  Filter: ((countrycode)::text = 'GBR'::text)"
+```
+
+The result is a list showing information on the remote table’s `name`,
+`source`, `DBI connection`, `query text` and `query plan`.
+
+It should also be noted that other [R](https://www.r-project.org)
+operations and functions will not work on `tbl_lazy` objects. For
+example, getting the number of rows of a `tbl_lazy` using `nrow` will
+result in `NA`:
+
+``` r
+nrow(gbr_epi_tab)
+#> [1] NA
+```
+
+These operations require for the table to be retrieved into
+[R](https://www.r-project.org) (discussed below).
 
 The `oxcovid19` package functions are also designed to allow *pipe
 operations* using the `magrittr` package. The workflow above can be done
@@ -187,16 +254,16 @@ connect_oxcovid19() %>%
 #> # Database: postgres [covid19@covid19db.org:5432/covid19]
 #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-#>  1 GBR_P… 2020-06-28 United… GBR         Wales      Powys Tea… <NA>           NA
-#>  2 GBR_P… 2020-06-28 United… GBR         Wales      Swansea B… <NA>           NA
-#>  3 WRD_E… 2020-06-29 United… GBR         <NA>       <NA>       <NA>           NA
-#>  4 GBR_P… 2020-03-25 United… GBR         England    North Tyn… <NA>           NA
-#>  5 GBR_P… 2020-03-25 United… GBR         England    Newcastle… <NA>           NA
-#>  6 GBR_P… 2020-03-25 United… GBR         England    Sheffield  <NA>           NA
-#>  7 GBR_P… 2020-03-25 United… GBR         England    Rotherham  <NA>           NA
-#>  8 GBR_P… 2020-03-25 United… GBR         England    Doncaster  <NA>           NA
-#>  9 GBR_P… 2020-03-25 United… GBR         England    Barnsley   Barnsley       NA
-#> 10 GBR_P… 2020-03-25 United… GBR         England    Wirral     <NA>           NA
+#>  1 GBR_P… 2020-07-22 United… GBR         England    Worcester… Bromsgrove     NA
+#>  2 GBR_P… 2020-07-01 United… GBR         England    Worcester… Wyre Fore…     NA
+#>  3 GBR_P… 2020-07-23 United… GBR         England    Leicester  Leicester      NA
+#>  4 GBR_P… 2020-07-01 United… GBR         England    West Suss… Horsham        NA
+#>  5 GBR_P… 2020-07-01 United… GBR         England    Blackburn… Blackburn…     NA
+#>  6 GBR_P… 2020-06-30 United… GBR         England    Dudley     Dudley         NA
+#>  7 GBR_P… 2020-07-01 United… GBR         England    Leicester… Harborough     NA
+#>  8 GBR_P… 2020-07-01 United… GBR         England    Leicester… Charnwood      NA
+#>  9 GBR_P… 2020-07-01 United… GBR         England    Blackpool  Blackpool      NA
+#> 10 GBR_P… 2020-06-30 United… GBR         England    West Berk… West Berk…     NA
 #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
 #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
 #> #   gid <chr>
@@ -204,6 +271,155 @@ connect_oxcovid19() %>%
 
 The workflow using the piped workflow outputs the same result as the
 earlier workflow but with a much streamlined use of code.
+
+Once all query parameters have been set to what is required, the actual
+data from the remote table can be retrieved into
+[R](https://www.r-project.org) by using the `collect` function:
+
+``` r
+dplyr::collect(gbr_epi_tab)
+#> # A tibble: 101,886 x 15
+#>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
+#>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
+#>  1 GBR_P… 2020-07-22 United… GBR         England    Worcester… Bromsgrove     NA
+#>  2 GBR_P… 2020-07-01 United… GBR         England    Worcester… Wyre Fore…     NA
+#>  3 GBR_P… 2020-07-23 United… GBR         England    Leicester  Leicester      NA
+#>  4 GBR_P… 2020-07-01 United… GBR         England    West Suss… Horsham        NA
+#>  5 GBR_P… 2020-07-01 United… GBR         England    Blackburn… Blackburn…     NA
+#>  6 GBR_P… 2020-06-30 United… GBR         England    Dudley     Dudley         NA
+#>  7 GBR_P… 2020-07-01 United… GBR         England    Leicester… Harborough     NA
+#>  8 GBR_P… 2020-07-01 United… GBR         England    Leicester… Charnwood      NA
+#>  9 GBR_P… 2020-07-01 United… GBR         England    Blackpool  Blackpool      NA
+#> 10 GBR_P… 2020-06-30 United… GBR         England    West Berk… West Berk…     NA
+#> # … with 101,876 more rows, and 7 more variables: confirmed <int>,
+#> #   recovered <int>, dead <int>, hospitalised <int>, hospitalised_icu <int>,
+#> #   quarantined <int>, gid <pq__text>
+```
+
+    #> [1] "tbl_df"     "tbl"        "data.frame"
+
+The resulting output is a `tbl` but is now retrieved into
+[R](https://www.r-project.org). Now, further
+[R](https://www.r-project.org) operations can be used:
+
+``` r
+nrow(dplyr::collect(gbr_epi_tab))
+#> [1] 101886
+```
+
+It should be noted that the use of `collect` should be well-planned and
+ideally should be implemented once all required queries that can be
+issued lazily have been specified. Depending on the size of the remote
+database being accessed, using `collect` too early to retrieve data can
+cause significant computing overheads.
+
+### Querying spatial layers
+
+The [OxCOVID19 Database](http://covid19.eng.ox.ac.uk/) includes a table
+named `administrative_division` which contains some spatial information.
+This table can be accessed via `oxcovid19` using the same approach
+described above:
+
+``` r
+connect_oxcovid19() %>% get_table(tbl_name = "administrative_division")
+#> # Source:   table<administrative_division> [?? x 15]
+#> # Database: postgres [covid19@covid19db.org:5432/covid19]
+#>    country countrycode countrycode_alp… adm_level adm_area_1 adm_area_1_code
+#>    <chr>   <chr>       <chr>                <int> <chr>      <chr>          
+#>  1 Georgia GEO         GE                       1 Samegrelo… GEO.9_1        
+#>  2 Georgia GEO         GE                       1 Samtskhe-… GEO.10_1       
+#>  3 Georgia GEO         GE                       1 Shida Kar… GEO.11_1       
+#>  4 Georgia GEO         GE                       1 Tbilisi    GEO.12_1       
+#>  5 Guerns… GGY         GG                       1 Castel     GGY.3_1        
+#>  6 Guerns… GGY         GG                       1 Forest     GGY.4_1        
+#>  7 Guerns… GGY         GG                       1 Alderney   GGY.1_1        
+#>  8 Guerns… GGY         GG                       1 Brecqhou   GGY.2_1        
+#>  9 Guerns… GGY         GG                       1 Herm       GGY.5_1        
+#> 10 Guerns… GGY         GG                       1 Jethou     GGY.6_1        
+#> # … with more rows, and 9 more variables: adm_area_2 <chr>,
+#> #   adm_area_2_code <chr>, adm_area_3 <chr>, adm_area_3_code <chr>, gid <chr>,
+#> #   latitude <dbl>, longitude <dbl>, properties <chr>, geometry <chr>
+```
+
+The `administrative_division` table contains rows of information on
+**longitude** and **latitude** for several countries and for
+administrative divisions (up to level 3) within some of these countries.
+In addition, each row of geographical area available in this table has
+area borders information in [simple
+features](https://en.wikipedia.org/wiki/Simple_Features) format.
+
+The **longitude** and **latitude** information can be easily accessed
+and utilised for mapping point locations using the `get_table` function.
+However, the area borders information in [simple
+features](https://en.wikipedia.org/wiki/Simple_Features) format require
+specific parsing to be usable in [R](https://www.r-project.org). This is
+facilitated using the `sf` package. The `oxcovid19` package provides the
+`get_layer` function which is a wrapper function around the `st_read`
+function in the `sf` package to read [simple
+features](https://en.wikipedia.org/wiki/Simple_Features) format data
+into [R](https://www.r-project.org).
+
+To query the `administrative_division` table for the area borders data,
+the function `get_layer` is used as follows:
+
+``` r
+connect_oxcovid19() %>% get_layer(ccode = "GBR", adm = 0)
+#> Simple feature collection with 1 feature and 14 fields
+#> geometry type:  MULTIPOLYGON
+#> dimension:      XY
+#> bbox:           xmin: -8.151357 ymin: 49.95847 xmax: 1.764168 ymax: 60.84583
+#> geographic CRS: WGS 84
+#>          country countrycode countrycode_alpha2 adm_level adm_area_1
+#> 1 United Kingdom         GBR                 GB         0       <NA>
+#>   adm_area_1_code adm_area_2 adm_area_2_code adm_area_3 adm_area_3_code gid
+#> 1            <NA>       <NA>            <NA>       <NA>            <NA> GBR
+#>   latitude longitude                                   properties
+#> 1 54.16473 -2.895751 {"GID_0": "GBR", "NAME_0": "United Kingdom"}
+#>                         geometry
+#> 1 MULTIPOLYGON (((-5.867211 5...
+```
+
+The `get_layer` function requires two main parameters. First, the
+country from which area borders are required need to be specified using
+its three-letter ISO code. In the example above, the ISO code `GBR` is
+used to specify the country United Kingdom. Second, the administrative
+division level should be indicated. This should be specified as a
+numeric value from 0 to 3 corresponding to country level borders (0),
+administrative level 1 borders such as regions or provinces (1),
+administrative level 2 borders such as districts or communes (2), and
+administrative level 3 borders such as sub-districts or sub-communes
+(3). In the example above, 0 is specified for country borders.
+
+Once the area borders have been read into [R](https://www.r-project.org)
+using the `get_layer` function, further spatial data manipulation and
+processing can be done using other `sf` package functions. Further
+information on the `sf` package can be found
+[here](https://r-spatial.github.io/sf/).
+
+### Specialised functions
+
+`oxcovid19` includes four specialised wrapper functions that facilitate
+easy access and query of specific tables availabe in the [OxCOVID19
+Database](http://covid19.eng.ox.ac.uk/) and reads the data into
+[R](https://www.r-project.org). These functions start with the
+`get_data_` prefix followed by the respective table descriptor.
+
+| **Function**            | **Description**                         |
+| :---------------------- | :-------------------------------------- |
+| `get_data_epidemiology` | Get data from epidemiology table        |
+| `get_data_weather`      | Get data from weather table             |
+| `get_data_mobility`     | Get data from mobility table            |
+| `get_data_response`     | Get data from government response table |
+
+Each of these `get_data_` functions can be supplied with specific query
+parameters to further refine the data to retrieve from the remote table.
+
+| **Query parameters** | **Description**                                                            |
+| :------------------- | :------------------------------------------------------------------------- |
+| `.source`            | Query the table via the `source` field                                     |
+| `ccode`              | Query the table via the `countrycode` field                                |
+| `start`, `end`       | Query the table via the `date` field                                       |
+| `adm`                | Query the table via the `adm_area_1`, `adm_area_2` and `adm_area_3` fields |
 
 ## Limitations
 
