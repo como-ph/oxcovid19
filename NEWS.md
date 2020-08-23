@@ -1,9 +1,15 @@
-# oxcovid19 0.1.2
+# oxcovid19 0.1.2.9000
+
+This is the current development version (unreleased) of `oxcovid19`. In this 
+development version:
 
 ## Enhancements
 
 * added function to get remote table metadata (party to fix CRAN NOTE on non-use
 of imported `dbplyr` package)
+
+* added convenience wrapper functions to retrieve data from specific tables
+based on specified query parameters
 
 * improved documentation
 
@@ -15,23 +21,29 @@ of imported `dbplyr` package)
 
 * addressed CRAN NOTE regarding non-use of imported `dbplyr` package
 
-
 # oxcovid19 0.1.1
 
-* Edited 2 marked UTF8 strings
+This is the second CRAN release of `oxcovid19`. In this release:
 
-* addressed WARNING on CRAN checks
+## Enhancements
 
 * improved documentation
-
-* addressed issue with connect function regarding `gssencmode` specification
 
 * updated test package GitHub Actions specifications
 
 * updated check package GitHub Actions specifications
 
+## Bug fixes
+
+* Edited 2 marked UTF8 strings
+
+* addressed WARNING on CRAN checks
+
+* addressed issue with connect function regarding `gssencmode` specification
 
 # oxcovid19 0.1.0
+
+This is the first CRAN release of `oxcovid19`. In this release:
 
 * Created a function to open a connection to the PostgreSQL server of the OxCOVID19 Database.
 
