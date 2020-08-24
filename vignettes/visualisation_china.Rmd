@@ -94,7 +94,23 @@ chn_recent_region
 
 Using the spatial layer object of epidemiology data in subnational units of China, we can create choropleth maps. Here we map the confirmed cases per subnational unit in China.
 
-```{r example5a, echo = TRUE, eval = TRUE, fig.width = 7, fig.align = "center"}
+```{r example5, echo = FALSE, eval = TRUE}
+chn_recent_region <- chn_recent_region %>%
+  mutate(confirmed_class = cut(chn_recent_region$confirmed, 
+                               breaks = quantile(x = chn_recent_region$confirmed, 
+                                                 probs = seq(from = 0, 
+                                                             to = 1, 
+                                                             by = 0.1)),
+                               include.lowest = TRUE))
+
+levels(chn_recent_region$confirmed_class) <- levels(chn_recent_region$confirmed_class) %>%
+  stringr::str_replace_all(pattern = ",", replacement = " - ") %>%
+  stringr::str_replace_all(pattern = "1.26e\\+03", replacement = "1257") %>%
+  stringr::str_replace_all(pattern = "6.78e\\+04", replacement = "67802") %>%
+  stringr::str_remove_all(pattern = "\\[|\\]|\\(")
+```
+
+```{r example5a, echo = TRUE, eval = FALSE, fig.width = 7, fig.align = "center"}
 chn_recent_region <- chn_recent_region %>%
   mutate(confirmed_class = cut(chn_recent_region$confirmed, 
                                breaks = quantile(x = chn_recent_region$confirmed, 
@@ -118,11 +134,31 @@ plot(chn_recent_region["confirmed_class"],
      key.width = lcm(5))
 ```
 
+```{r example5b, echo = FALSE, eval = TRUE, fig.align = "center", out.width = "75%"}
+knitr::include_graphics("../man/figures/visualisation_china_1.png")
+```
+
 ## Plot epidemiology total death
 
 Here we map the deaths per subnational unit in China.
 
-```{r example6a, echo = TRUE, eval = TRUE, fig.width = 7, fig.align = "center"}
+```{r example6, echo = FALSE, eval = TRUE}
+chn_recent_region <- chn_recent_region %>%
+  mutate(dead_class = cut(chn_recent_region$dead, 
+                               breaks = unique(quantile(x = chn_recent_region$dead, 
+                                                probs = seq(from = 0, 
+                                                            to = 1, 
+                                                            by = 0.1),
+                                                 na.rm = TRUE)),
+                               include.lowest = TRUE))
+
+levels(chn_recent_region$dead_class) <- levels(chn_recent_region$dead_class) %>%
+  stringr::str_replace_all(pattern = ",", replacement = " - ") %>%
+  stringr::str_replace_all(pattern = "3.19e\\+03", replacement = "3193") %>%
+  stringr::str_remove_all(pattern = "\\[|\\]|\\(")
+```
+
+```{r example6a, echo = TRUE, eval = FALSE, fig.width = 7, fig.align = "center"}
 chn_recent_region <- chn_recent_region %>%
   mutate(dead_class = cut(chn_recent_region$dead, 
                                breaks = unique(quantile(x = chn_recent_region$dead, 
@@ -146,13 +182,17 @@ plot(chn_recent_region["dead_class"],
      key.width = lcm(5))
 ```
 
+```{r example6b, echo = FALSE, eval = TRUE, fig.align = "center", out.width = "75%"}
+knitr::include_graphics("../man/figures/visualisation_china_2.png")
+```
+
 ## Check monotonicity of data - confirmed
 
 In the example from the Oxford COVID-19 Database, epidemiology data was checked for monotonicity. It is expected that epidemiology data is monotonic as these variables are expected to increase over time given that the information is cumulative. Monotonicity was checked by plotting a time series of cases and deaths with the expectation that the line plots will be on an increasing trajectory over time. Any instance of dips in the time series would indicate violation of monotonicity and an indication of issues with the data.
 
 In the Oxford COVID-19 Database example, time series line plot for each subnational unit was plotted on the same axis as shown below.
 
-```{r example7a, echo = TRUE, eval = TRUE, fig.width = 10, fig.height = 8, fig.align = "center"}
+```{r example7a, echo = TRUE, eval = FALSE, fig.width = 10, fig.height = 8, fig.align = "center"}
 library(ggplot2)
 
 connect_oxcovid19() %>%
@@ -167,11 +207,15 @@ connect_oxcovid19() %>%
   theme_minimal()
 ```
 
+```{r example7aa, echo = FALSE, eval = TRUE, fig.align = "center", out.width = "75%"}
+knitr::include_graphics("../man/figures/visualisation_china_3.png")
+```
+
 Given that Hubei province had the most cases compared to all subnational units, the plot shows one time series curve with significantly more cases that anywhere else whilst all other units had a flat time series curve. This is not necessarily a good way to check monotonicity in all units as only Hubei province time series information is shown clearly.
 
 In the plot below, we try to more clearly distinguish the time series for each subnational unit by showing a line plot for each unit separate. However, this only solves the issue of time series line plots being clearly demarcated from others. The curves, however, still does not show the true pattern for all units other than Hubei.
 
-```{r example7b, echo = TRUE, eval = TRUE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
+```{r example7b, echo = TRUE, eval = FALSE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
 connect_oxcovid19() %>%
   get_table(tbl_name = "epidemiology") %>%
   filter(source == "CHN_ICL",
@@ -183,9 +227,13 @@ connect_oxcovid19() %>%
   theme_bw()
 ```
 
+```{r example7bb, echo = FALSE, eval = TRUE, fig.align = "center", out.width = "75%"}
+knitr::include_graphics("../man/figures/visualisation_china_4.png")
+```
+
 We address this by allowing the y-axis for each subnational time series plot to be appropriate for the data for the specific unit as below. Here we are able to see the time series plots for each subunit and able to verify whether monotonicity is observed.
 
-```{r example7c, echo = TRUE, eval = TRUE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
+```{r example7c, echo = TRUE, eval = FALSE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
 connect_oxcovid19() %>%
   get_table(tbl_name = "epidemiology") %>%
   filter(source == "CHN_ICL",
@@ -195,6 +243,10 @@ connect_oxcovid19() %>%
   geom_line() +
   facet_wrap( ~ adm_area_1, ncol = 4, scales = "free_y") +
   theme_bw()
+```
+
+```{r example7cc, echo = FALSE, eval = TRUE, fig.align = "center", out.width = "75%"}
+knitr::include_graphics("../man/figures/visualisation_china_5.png")
 ```
 
 Unfortunately, one subnational unit (Shaanxi Province) has a dip in cases within the time series plot which breaks monotonicity. This would indicate something inconsistent with the data. This needs to be checked.
@@ -203,7 +255,7 @@ Unfortunately, one subnational unit (Shaanxi Province) has a dip in cases within
 
 In the next plots, we perform the same procedures but with the data on deaths. All subnational units demonstrate monotonicity with regard to number of deaths.
 
-```{r example8a, echo = TRUE, eval = TRUE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
+```{r example8a, echo = TRUE, eval = FALSE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
 connect_oxcovid19() %>%
   get_table(tbl_name = "epidemiology") %>%
   filter(source == "CHN_ICL",
@@ -215,7 +267,11 @@ connect_oxcovid19() %>%
   theme_bw()
 ```
 
-```{r example8b, echo = TRUE, eval = TRUE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
+```{r example8aa, echo = FALSE, eval = TRUE, fig.align = "center", out.width = "75%"}
+knitr::include_graphics("../man/figures/visualisation_china_6.png")
+```
+
+```{r example8b, echo = TRUE, eval = FALSE, fig.width = 10, fig.height = 17.5, fig.align = "center"}
 connect_oxcovid19() %>%
   get_table(tbl_name = "epidemiology") %>%
   filter(source == "CHN_ICL",
@@ -225,4 +281,8 @@ connect_oxcovid19() %>%
   geom_line() +
   facet_wrap( ~ adm_area_1, ncol = 4, scales = "free_y") +
   theme_bw()
+```
+
+```{r example8bb, echo = FALSE, eval = TRUE, fig.align = "center", out.width = "75%"}
+knitr::include_graphics("../man/figures/visualisation_china_7.png")
 ```
