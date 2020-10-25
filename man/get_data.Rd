@@ -2,34 +2,61 @@
 % Please edit documentation in R/get_data.R
 \name{get_data}
 \alias{get_data}
+\alias{get_data_epidemiology}
+\alias{get_data_weather}
+\alias{get_data_mobility}
+\alias{get_data_response}
 \title{Get data from specified table based on specified query parameters}
 \usage{
 get_data(
   tbl_name,
   .source = NULL,
-  ccode = NULL,
+  country = NULL,
   .start = NULL,
   .end = Sys.Date(),
   adm = NULL
 )
+
+get_data_epidemiology(
+  .source = NULL,
+  country = NULL,
+  .start = NULL,
+  .end = Sys.Date(),
+  adm = NULL
+)
+
+get_data_weather(country = NULL, .start = NULL, .end = Sys.Date(), adm = NULL)
+
+get_data_mobility(
+  .source = NULL,
+  country = NULL,
+  .start = NULL,
+  .end = Sys.Date(),
+  adm = NULL
+)
+
+get_data_response(country = NULL, .start = NULL, .end = Sys.Date(), adm = NULL)
 }
 \arguments{
-\item{tbl_name}{Name of table available in OxCOVID19 Database. Should be
-one of the table names given by a call to \link{list_tables}.}
+\item{tbl_name}{Name of table available in \strong{OxCOVID19 Database}. Should be
+one of the table names given by a call to \code{\link[=list_tables]{list_tables()}}.}
 
 \item{.source}{Source of data. Should be specified as per source
 code shown in \link{data_sources} for specified table. Default is NULL
 which returns data from specified table from all data sources.}
 
-\item{ccode}{Three character ISO country code for country to which data is
-required. Defaults to NULL which returns data for all countries.}
+\item{country}{A character value of country name specified as either a two
+character ISO country code, or a three character ISO country code, or any
+of the country names specified in the \link{countrycode} package, or a
+vector of country names using a combination of these country name variants.
+Defaults to NULL which returns data for all countries in the database.}
 
-\item{.start}{Starting date in \code{YYYY-MM-DD} character format of data
+\item{.start}{Starting date (in \code{YYYY-MM-DD} character format) of data
 to retrieve. Defaults to NULL which returns data from the earliest date
 available.}
 
-\item{.end}{End date in \code{YYYY-MM-DD} character format of data to
-retrieve. Defaults to current date as speciifed by \link{Sys.Date}.}
+\item{.end}{End date (in \code{YYYY-MM-DD} character format) of data to
+retrieve. Defaults to current date as speciifed by \code{\link[=Sys.Date]{Sys.Date()}}.}
 
 \item{adm}{Numeric value for administrative level data required. Possible
 values are 0 for whole country, 1 for administrative level 1, 2 for
@@ -39,11 +66,11 @@ which returns data for all administrative divisions.}
 \value{
 A tibble of specified table dataset based on specified parameters. If
 all parameters are kept to default, output is the same as that when
-\link{get_table} is used with \code{tbl_name} based on specified table.
+\code{\link[=get_table]{get_table()}} is used with \code{tbl_name} based on specified table.
 However, this function will retrieve the full data into a local tibble
 which will take considerable time. It is therefore recommended that
 this function be used when the specific data requirements are already
-clearly determined. For data exploration, \link{get_table} should be used
+clearly determined. For data exploration, \code{\link[=get_table]{get_table()}} should be used
 instead.
 }
 \description{
@@ -54,8 +81,29 @@ Get data from specified table based on specified query parameters
 ## available dates
 get_data(tbl_name = "epidemiology",
          .source = "WRD_ECDC",
-         ccode = "GBR",
+         country = "GBR",
          adm = 0)
+
+## Get epidemiology data for the the whole of the UK from the ECDC for all
+## available dates
+get_data_epidemiology(.source = "WRD_ECDC",
+                      country = "UK",
+                      adm = 0)
+
+## Get weather data for the the whole of the UK for all available dates
+get_data_weather(country = "GBR",
+                 adm = 0)
+
+## Get mobility data for the the whole of the UK from Apple for all
+## available dates
+get_data_mobility(.source = "APPLE_MOBILITY",
+                  country = "United Kingdom",
+                  adm = 0)
+
+## Get government response data for the the whole of the UK for all
+## available dates
+get_data_response(country = "UK",
+                  adm = 0)
 
 }
 \author{
