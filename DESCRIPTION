@@ -33,13 +33,13 @@ Imports:
     sf,
     dbplyr,
     lubridate,
-    countrycode
+    countrycode,
+    magrittr
 Suggests: 
     testthat,
     covr,
     knitr,
     rmarkdown,
-    magrittr,
     rvest,
     stringr,
     RColorBrewer,
