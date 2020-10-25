@@ -22,6 +22,7 @@
 #'   remote_query_plan
 #' @importFrom sf st_read
 #' @importFrom lubridate ymd
+#' @countrycode countrycode countryname
 #'
 #
 ################################################################################
