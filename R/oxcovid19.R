@@ -17,16 +17,21 @@
 #' @name oxcovid19
 #' @importFrom DBI dbConnect dbListTables dbListFields
 #' @importFrom RPostgres Postgres
-#' @importFrom dplyr tbl
+#' @importFrom dplyr tbl mutate collect filter
 #' @importFrom dbplyr remote_name remote_src remote_con remote_query
 #'   remote_query_plan
 #' @importFrom sf st_read
 #' @importFrom lubridate ymd
-#' @countrycode countrycode countryname
+#' @importFrom countrycode countryname
+#' @importFrom magrittr %>%
 #'
 #
 ################################################################################
 "_PACKAGE"
 
 ## quiets concerns of R CMD check re: data_sources
-if(getRversion() >= "2.15.1")  utils::globalVariables("data_sources")
+if(getRversion() >= "2.15.1")  utils::globalVariables(c("data_sources",
+                                                        "tbl_name",
+                                                        "adm_area_1",
+                                                        "adm_area_2",
+                                                        "adm_area_3"))
