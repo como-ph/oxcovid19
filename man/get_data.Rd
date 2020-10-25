@@ -11,7 +11,7 @@
 get_data(
   tbl_name,
   .source = NULL,
-  country = NULL,
+  ccode = NULL,
   .start = NULL,
   .end = Sys.Date(),
   adm = NULL
@@ -19,23 +19,23 @@ get_data(
 
 get_data_epidemiology(
   .source = NULL,
-  country = NULL,
+  ccode = NULL,
   .start = NULL,
   .end = Sys.Date(),
   adm = NULL
 )
 
-get_data_weather(country = NULL, .start = NULL, .end = Sys.Date(), adm = NULL)
+get_data_weather(ccode = NULL, .start = NULL, .end = Sys.Date(), adm = NULL)
 
 get_data_mobility(
   .source = NULL,
-  country = NULL,
+  ccode = NULL,
   .start = NULL,
   .end = Sys.Date(),
   adm = NULL
 )
 
-get_data_response(country = NULL, .start = NULL, .end = Sys.Date(), adm = NULL)
+get_data_response(ccode = NULL, .start = NULL, .end = Sys.Date(), adm = NULL)
 }
 \arguments{
 \item{tbl_name}{Name of table available in \strong{OxCOVID19 Database}. Should be
@@ -45,7 +45,7 @@ one of the table names given by a call to \code{\link[=list_tables]{list_tables(
 code shown in \link{data_sources} for specified table. Default is NULL
 which returns data from specified table from all data sources.}
 
-\item{country}{A character value of country name specified as either a two
+\item{ccode}{A character value of country name specified as either a two
 character ISO country code, or a three character ISO country code, or any
 of the country names specified in the \link{countrycode} package, or a
 vector of country names using a combination of these country name variants.
@@ -81,28 +81,28 @@ Get data from specified table based on specified query parameters
 ## available dates
 get_data(tbl_name = "epidemiology",
          .source = "WRD_ECDC",
-         country = "GBR",
+         ccode = "GBR",
          adm = 0)
 
 ## Get epidemiology data for the the whole of the UK from the ECDC for all
 ## available dates
 get_data_epidemiology(.source = "WRD_ECDC",
-                      country = "UK",
+                      ccode = "UK",
                       adm = 0)
 
 ## Get weather data for the the whole of the UK for all available dates
-get_data_weather(country = "GBR",
+get_data_weather(ccode = "GBR",
                  adm = 0)
 
 ## Get mobility data for the the whole of the UK from Apple for all
 ## available dates
 get_data_mobility(.source = "APPLE_MOBILITY",
-                  country = "United Kingdom",
+                  ccode = "United Kingdom",
                   adm = 0)
 
 ## Get government response data for the the whole of the UK for all
 ## available dates
-get_data_response(country = "UK",
+get_data_response(ccode = "UK",
                   adm = 0)
 
 }
