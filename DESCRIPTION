@@ -42,11 +42,13 @@ Suggests:
     stringr,
     RColorBrewer,
     ggplot2,
-    DiagrammeR
+    DiagrammeR,
+    spelling
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
 URL: https://github.com/como-ph/oxcovid19
 BugReports: https://github.com/como-ph/oxcovid19/issues
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
