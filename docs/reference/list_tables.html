@@ -148,7 +148,7 @@
     <p>List out names of tables available from OxCOVID19 Database</p>
     </div>
 
-    <pre class="usage"><span class='fu'>list_tables</span>(<span class='kw'>con</span> <span class='kw'>=</span> <span class='fu'><a href='connect_oxcovid19.html'>connect_oxcovid19</a></span>())</pre>
+    <pre class="usage"><span class='fu'>list_tables</span><span class='op'>(</span>con <span class='op'>=</span> <span class='fu'><a href='connect_oxcovid19.html'>connect_oxcovid19</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -164,15 +164,19 @@ function</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A vector of table names available from OxCOVID19 Database</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>list_tables</span>()</div><div class='output co'>#&gt;  [1] "weather"                 "mobility"               
-#&gt;  [3] "epidemiology"            "government_response"    
-#&gt;  [5] "baseline_mortality"      "diagnostics"            
-#&gt;  [7] "surveys"                 "world_bank"             
-#&gt;  [9] "world_bank_time_series"  "administrative_division"
-#&gt; [11] "spatial_ref_sys"         "geography_columns"      
-#&gt; [13] "geometry_columns"       </div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>list_tables</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "weather"                   "mobility"                 
+#&gt;  [3] "epidemiology_england_msoa" "epidemiology"             
+#&gt;  [5] "government_response"       "baseline_mortality"       
+#&gt;  [7] "diagnostics"               "surveys"                  
+#&gt;  [9] "world_bank"                "world_bank_time_series"   
+#&gt; [11] "administrative_division"   "spatial_ref_sys"          
+#&gt; [13] "geography_columns"         "geometry_columns"         </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -189,7 +193,7 @@ function</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
