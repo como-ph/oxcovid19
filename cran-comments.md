@@ -22,11 +22,12 @@ based on specified query parameters
 
 ## Test environments
 * local R installation, R 4.0.3
-* ubuntu 16.04 (on github actions), R 4.0.3
+* ubuntu 16.04 (on travis), R 4.0.3
+* ubuntu 20.04 (on github actions), R 4.0.3
 * windows latest (on github actions), R 4.0.3
 * windows latest (on appveyor), R 4.0.3
 * win-builder (devel, oldrelease, release)
-* rhub windows, ubuntu, fedora (devel, release)
+* rhub ubuntu, fedora (devel, release)
 
 ## R CMD check results
 
