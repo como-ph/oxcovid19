@@ -8,7 +8,7 @@
 #' @param .source Source of data. Should be specified as per source
 #'   code shown in [data_sources] for specified table. Default is NULL
 #'   which returns data from specified table from all data sources.
-#' @param country A character value of country name specified as either a two
+#' @param ccode A character value of country name specified as either a two
 #'   character ISO country code, or a three character ISO country code, or any
 #'   of the country names specified in the [countrycode] package, or a
 #'   vector of country names using a combination of these country name variants.
@@ -39,28 +39,28 @@
 #' ## available dates
 #' get_data(tbl_name = "epidemiology",
 #'          .source = "WRD_ECDC",
-#'          country = "GBR",
+#'          ccode = "GBR",
 #'          adm = 0)
 #'
 #' ## Get epidemiology data for the the whole of the UK from the ECDC for all
 #' ## available dates
 #' get_data_epidemiology(.source = "WRD_ECDC",
-#'                       country = "UK",
+#'                       ccode = "UK",
 #'                       adm = 0)
 #'
 #' ## Get weather data for the the whole of the UK for all available dates
-#' get_data_weather(country = "GBR",
+#' get_data_weather(ccode = "GBR",
 #'                  adm = 0)
 #'
 #' ## Get mobility data for the the whole of the UK from Apple for all
 #' ## available dates
 #' get_data_mobility(.source = "APPLE_MOBILITY",
-#'                   country = "United Kingdom",
+#'                   ccode = "United Kingdom",
 #'                   adm = 0)
 #'
 #' ## Get government response data for the the whole of the UK for all
 #' ## available dates
-#' get_data_response(country = "UK",
+#' get_data_response(ccode = "UK",
 #'                   adm = 0)
 #'
 #' @rdname get_data
@@ -72,7 +72,7 @@
 
 get_data <- function(tbl_name,
                      .source = NULL,
-                     country = NULL,
+                     ccode = NULL,
                      .start = NULL,
                      .end = Sys.Date(),
                      adm = NULL) {
@@ -98,18 +98,19 @@ get_data <- function(tbl_name,
   }
 
   ## Create country query
-  if(is.null(country)) {
+  if(is.null(ccode)) {
     ccode_query <- "!is.null(countrycode)"
   } else {
-    c1 <- countrycode::countrycode(sourcevar = country,
+    c1 <- countrycode::countrycode(sourcevar = ccode,
                                    origin = "iso2c",
                                    destination = "iso3c",
                                    warn = FALSE)
-    ccode <- ifelse(is.na(c1), country, c1)
-    c2 <- countrycode::countryname(sourcevar = ccode,
+    country <- ifelse(is.na(c1), ccode, c1)
+    c2 <- countrycode::countryname(sourcevar = country,
                                    destination = "iso3c",
                                    warn = FALSE)
-    ccode <- ifelse(is.na(c2), ccode, c2)
+    country <- ifelse(is.na(c2), country, c2)
+    ccode <- country
     ccode_query <- "countrycode %in% ccode"
   }
 
@@ -183,14 +184,14 @@ get_data <- function(tbl_name,
 ################################################################################
 
 get_data_epidemiology <- function(.source = NULL,
-                                  country = NULL,
+                                  ccode = NULL,
                                   .start = NULL,
                                   .end = Sys.Date(),
                                   adm = NULL) {
   ## Retrieve dataset
   tab <- get_data(tbl_name = "epidemiology",
                   .source = .source,
-                  country = country,
+                  ccode = ccode,
                   .start = .start,
                   .end = .end,
                   adm = adm)
@@ -207,13 +208,13 @@ get_data_epidemiology <- function(.source = NULL,
 #
 ################################################################################
 
-get_data_weather <- function(country = NULL,
+get_data_weather <- function(ccode = NULL,
                              .start = NULL,
                              .end = Sys.Date(),
                              adm = NULL) {
   ## Retrieve dataset
   tab <- get_data(tbl_name = "weather",
-                  country = country,
+                  ccode = ccode,
                   .start = .start,
                   .end = .end,
                   adm = adm)
@@ -231,14 +232,14 @@ get_data_weather <- function(country = NULL,
 ################################################################################
 
 get_data_mobility <- function(.source = NULL,
-                              country = NULL,
+                              ccode = NULL,
                               .start = NULL,
                               .end = Sys.Date(),
                               adm = NULL) {
   ## Retrieve dataset
   tab <- get_data(tbl_name = "mobility",
                   .source = .source,
-                  country = country,
+                  ccode = ccode,
                   .start = .start,
                   .end = .end,
                   adm = adm)
@@ -255,13 +256,13 @@ get_data_mobility <- function(.source = NULL,
 #
 ################################################################################
 
-get_data_response <- function(country = NULL,
+get_data_response <- function(ccode = NULL,
                               .start = NULL,
                               .end = Sys.Date(),
                               adm = NULL) {
   ## Retrieve dataset
   tab <- get_data(tbl_name = "government_response",
-                  country = country,
+                  ccode = ccode,
                   .start = .start,
                   .end = .end,
                   adm = adm)
