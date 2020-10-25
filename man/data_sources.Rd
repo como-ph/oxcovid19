@@ -7,13 +7,13 @@
 \format{
 A named list of 5 tibbles of data sources.
 \describe{
-  \item{\code{epidemiology}}{Tibble of sources for epidemiology table}
-  \item{\code{government_response}}{Tibble of sources for government
-    response table}
-  \item{\code{country_statistics}}{Tibble of sources for country statistics
-    table}
-  \item{\code{mobility}}{Tibble of sources for mobility table}
-  \item{\code{weather}}{Tibble of sources for weather table}
+\item{\code{epidemiology}}{Tibble of sources for epidemiology table}
+\item{\code{government_response}}{Tibble of sources for government
+response table}
+\item{\code{country_statistics}}{Tibble of sources for country statistics
+table}
+\item{\code{mobility}}{Tibble of sources for mobility table}
+\item{\code{weather}}{Tibble of sources for weather table}
 }
 }
 \source{

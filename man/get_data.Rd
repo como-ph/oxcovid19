@@ -38,13 +38,13 @@ which returns data for all administrative divisions.}
 }
 \value{
 A tibble of specified table dataset based on specified parameters. If
-  all parameters are kept to default, output is the same as that when
-  \link{get_table} is used with \code{tbl_name} based on specified table.
-  However, this function will retrieve the full data into a local tibble
-  which will take considerable time. It is therefore recommended that
-  this function be used when the specific data requirements are already
-  clearly determined. For data exploration, \link{get_table} should be used
-  instead.
+all parameters are kept to default, output is the same as that when
+\link{get_table} is used with \code{tbl_name} based on specified table.
+However, this function will retrieve the full data into a local tibble
+which will take considerable time. It is therefore recommended that
+this function be used when the specific data requirements are already
+clearly determined. For data exploration, \link{get_table} should be used
+instead.
 }
 \description{
 Get data from specified table based on specified query parameters
