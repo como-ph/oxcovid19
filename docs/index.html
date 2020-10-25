@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2.9000</span>
       </span>
     </div>
 
@@ -161,21 +161,52 @@
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co">#&gt; # Database: postgres [covid19@covid19db.org:5432/covid19]</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="co">#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a><span class="co">#&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;</span></span>
-<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;  1 GBR_P… 2020-06-28 United… GBR         Wales      Powys Tea… &lt;NA&gt;           NA</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;  2 GBR_P… 2020-06-28 United… GBR         Wales      Swansea B… &lt;NA&gt;           NA</span></span>
-<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;  3 WRD_E… 2020-06-29 United… GBR         &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;           NA</span></span>
-<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt;  4 GBR_P… 2020-03-25 United… GBR         England    North Tyn… &lt;NA&gt;           NA</span></span>
-<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt;  5 GBR_P… 2020-03-25 United… GBR         England    Newcastle… &lt;NA&gt;           NA</span></span>
-<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt;  6 GBR_P… 2020-03-25 United… GBR         England    Sheffield  &lt;NA&gt;           NA</span></span>
-<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt;  7 GBR_P… 2020-03-25 United… GBR         England    Rotherham  &lt;NA&gt;           NA</span></span>
-<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt;  8 GBR_P… 2020-03-25 United… GBR         England    Doncaster  &lt;NA&gt;           NA</span></span>
-<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt;  9 GBR_P… 2020-03-25 United… GBR         England    Barnsley   Barnsley       NA</span></span>
-<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt; 10 GBR_P… 2020-03-25 United… GBR         England    Wirral     &lt;NA&gt;           NA</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="co">#&gt;  1 GBR_P… 2020-07-22 United… GBR         England    Worcester… Bromsgrove     NA</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="co">#&gt;  2 GBR_P… 2020-07-01 United… GBR         England    Worcester… Wyre Fore…     NA</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="co">#&gt;  3 GBR_P… 2020-07-23 United… GBR         England    Leicester  Leicester      NA</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">#&gt;  4 GBR_P… 2020-07-01 United… GBR         England    West Suss… Horsham        NA</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="co">#&gt;  5 GBR_P… 2020-07-01 United… GBR         England    Blackburn… Blackburn…     NA</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="co">#&gt;  6 GBR_P… 2020-06-30 United… GBR         England    Dudley     Dudley         NA</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="co">#&gt;  7 GBR_P… 2020-07-01 United… GBR         England    Leicester… Harborough     NA</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="co">#&gt;  8 GBR_P… 2020-07-01 United… GBR         England    Leicester… Charnwood      NA</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="co">#&gt;  9 GBR_P… 2020-07-01 United… GBR         England    Blackpool  Blackpool      NA</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a><span class="co">#&gt; 10 GBR_P… 2020-06-30 United… GBR         England    West Berk… West Berk…     NA</span></span>
 <span id="cb4-15"><a href="#cb4-15"></a><span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span></span>
 <span id="cb4-16"><a href="#cb4-16"></a><span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span></span>
 <span id="cb4-17"><a href="#cb4-17"></a><span class="co">#&gt; #   gid &lt;chr&gt;</span></span></code></pre></div>
+<p>Note that the output of this workflow looks like a <code>tibble</code> (which it partly is) but it is also more than that. Annotation shows some of the metadata about this table. Specifically it shows the <em>source</em> and the <em>database</em> from which this table is from. This output table has the following classes:</p>
+<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="no">gbr_epi_tab</span>)
+<span class="co">#&gt; [1] "tbl_PqConnection" "tbl_dbi"          "tbl_sql"          "tbl_lazy"        </span>
+<span class="co">#&gt; [5] "tbl"</span></pre></div>
+<p>Other than being a <code>tibble</code>, the output is also a what is called a <em>“lazy”</em> table (<code>tbl_lazy</code>) or a <em>dbi</em> (database) table (<code>tbl_dib</code>). What this means is that the output table shown is not actually retrieved and the basic query (which in this case is selecting a specific table named <code>epidemiology</code>) is not actually run. This has its advantageous in that the data is not yet in memory in <a href="https://www.r-project.org">R</a> which can save computing time particularly if only a subset of the table in the remote server is required, and further queries to the remote server can be declared to customise the data output. These further queries can be facilitated using <code>dplyr</code> verbs such as <code>filter</code>, <code>mutate</code>, <code>arrange</code> which also operates <em>lazily</em> when applied to <code>tbl_lazy</code> or <code>tbl_dbi</code> objects.</p>
+<p>One can review the query parameter/s or the query plan applied to a <code>tbl_lazy</code> object by using the <code>get_metadata</code> function provided in <code>oxcovid19</code>:</p>
+<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="reference/get_metadata.html">get_metadata</a></span>(<span class="no">gbr_epi_tab</span>)
+<span class="co">#&gt; $Name</span>
+<span class="co">#&gt; NULL</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $Source</span>
+<span class="co">#&gt; src:  postgres  [covid19@covid19db.org:5432/covid19]</span>
+<span class="co">#&gt; tbls: administrative_division, baseline_mortality, diagnostics, epidemiology,</span>
+<span class="co">#&gt;   geography_columns, geometry_columns, government_response, mobility,</span>
+<span class="co">#&gt;   spatial_ref_sys, surveys, weather, world_bank, world_bank_time_series</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $`DBI connection`</span>
+<span class="co">#&gt; &lt;PqConnection&gt; covid19@covid19db.org:5432</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $`Query text`</span>
+<span class="co">#&gt; &lt;SQL&gt; SELECT *</span>
+<span class="co">#&gt; FROM "epidemiology"</span>
+<span class="co">#&gt; WHERE ("countrycode" = 'GBR')</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $`Query plan`</span>
+<span class="co">#&gt; [1] "Seq Scan on epidemiology  (cost=0.00..27889.72 rows=102118 width=121)\n  Filter: ((countrycode)::text = 'GBR'::text)"</span></pre></div>
+<p>The result is a list showing information on the remote table’s <code>name</code>, <code>source</code>, <code>DBI connection</code>, <code>query text</code> and <code>query plan</code>.</p>
+<p>It should also be noted that other <a href="https://www.r-project.org">R</a> operations and functions will not work on <code>tbl_lazy</code> objects. For example, getting the number of rows of a <code>tbl_lazy</code> using <code>nrow</code> will result in <code>NA</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">gbr_epi_tab</span>)
+<span class="co">#&gt; [1] NA</span></pre></div>
+<p>These operations require for the table to be retrieved into <a href="https://www.r-project.org">R</a> (discussed below).</p>
 <p>The <code>oxcovid19</code> package functions are also designed to allow <em>pipe operations</em> using the <code>magrittr</code> package. The workflow above can be done using piped operations as follows:</p>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="co">## Load magrittr to use pipe operator %&gt;%</span>
+<div class="sourceCode" id="cb8"><pre class="r"><span class="co">## Load magrittr to use pipe operator %&gt;%</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">magrittr</span>)
 
 <span class="fu"><a href="reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
@@ -185,20 +216,141 @@
 <span class="co">#&gt; # Database: postgres [covid19@covid19db.org:5432/covid19]</span>
 <span class="co">#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested</span>
 <span class="co">#&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;</span>
-<span class="co">#&gt;  1 GBR_P… 2020-06-28 United… GBR         Wales      Powys Tea… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  2 GBR_P… 2020-06-28 United… GBR         Wales      Swansea B… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  3 WRD_E… 2020-06-29 United… GBR         &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  4 GBR_P… 2020-03-25 United… GBR         England    North Tyn… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  5 GBR_P… 2020-03-25 United… GBR         England    Newcastle… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  6 GBR_P… 2020-03-25 United… GBR         England    Sheffield  &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  7 GBR_P… 2020-03-25 United… GBR         England    Rotherham  &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  8 GBR_P… 2020-03-25 United… GBR         England    Doncaster  &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  9 GBR_P… 2020-03-25 United… GBR         England    Barnsley   Barnsley       NA</span>
-<span class="co">#&gt; 10 GBR_P… 2020-03-25 United… GBR         England    Wirral     &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  1 GBR_P… 2020-07-22 United… GBR         England    Worcester… Bromsgrove     NA</span>
+<span class="co">#&gt;  2 GBR_P… 2020-07-01 United… GBR         England    Worcester… Wyre Fore…     NA</span>
+<span class="co">#&gt;  3 GBR_P… 2020-07-23 United… GBR         England    Leicester  Leicester      NA</span>
+<span class="co">#&gt;  4 GBR_P… 2020-07-01 United… GBR         England    West Suss… Horsham        NA</span>
+<span class="co">#&gt;  5 GBR_P… 2020-07-01 United… GBR         England    Blackburn… Blackburn…     NA</span>
+<span class="co">#&gt;  6 GBR_P… 2020-06-30 United… GBR         England    Dudley     Dudley         NA</span>
+<span class="co">#&gt;  7 GBR_P… 2020-07-01 United… GBR         England    Leicester… Harborough     NA</span>
+<span class="co">#&gt;  8 GBR_P… 2020-07-01 United… GBR         England    Leicester… Charnwood      NA</span>
+<span class="co">#&gt;  9 GBR_P… 2020-07-01 United… GBR         England    Blackpool  Blackpool      NA</span>
+<span class="co">#&gt; 10 GBR_P… 2020-06-30 United… GBR         England    West Berk… West Berk…     NA</span>
 <span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span>
 <span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span>
 <span class="co">#&gt; #   gid &lt;chr&gt;</span></pre></div>
 <p>The workflow using the piped workflow outputs the same result as the earlier workflow but with a much streamlined use of code.</p>
+<p>Once all query parameters have been set to what is required, the actual data from the remote table can be retrieved into <a href="https://www.r-project.org">R</a> by using the <code>collect</code> function:</p>
+<div class="sourceCode" id="cb9"><pre class="r"><span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>(<span class="no">gbr_epi_tab</span>)
+<span class="co">#&gt; # A tibble: 101,886 x 15</span>
+<span class="co">#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested</span>
+<span class="co">#&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;</span>
+<span class="co">#&gt;  1 GBR_P… 2020-07-22 United… GBR         England    Worcester… Bromsgrove     NA</span>
+<span class="co">#&gt;  2 GBR_P… 2020-07-01 United… GBR         England    Worcester… Wyre Fore…     NA</span>
+<span class="co">#&gt;  3 GBR_P… 2020-07-23 United… GBR         England    Leicester  Leicester      NA</span>
+<span class="co">#&gt;  4 GBR_P… 2020-07-01 United… GBR         England    West Suss… Horsham        NA</span>
+<span class="co">#&gt;  5 GBR_P… 2020-07-01 United… GBR         England    Blackburn… Blackburn…     NA</span>
+<span class="co">#&gt;  6 GBR_P… 2020-06-30 United… GBR         England    Dudley     Dudley         NA</span>
+<span class="co">#&gt;  7 GBR_P… 2020-07-01 United… GBR         England    Leicester… Harborough     NA</span>
+<span class="co">#&gt;  8 GBR_P… 2020-07-01 United… GBR         England    Leicester… Charnwood      NA</span>
+<span class="co">#&gt;  9 GBR_P… 2020-07-01 United… GBR         England    Blackpool  Blackpool      NA</span>
+<span class="co">#&gt; 10 GBR_P… 2020-06-30 United… GBR         England    West Berk… West Berk…     NA</span>
+<span class="co">#&gt; # … with 101,876 more rows, and 7 more variables: confirmed &lt;int&gt;,</span>
+<span class="co">#&gt; #   recovered &lt;int&gt;, dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;,</span>
+<span class="co">#&gt; #   quarantined &lt;int&gt;, gid &lt;pq__text&gt;</span></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">#&gt; [1] "tbl_df"     "tbl"        "data.frame"</span></span></code></pre></div>
+<p>The resulting output is a <code>tbl</code> but is now retrieved into <a href="https://www.r-project.org">R</a>. Now, further <a href="https://www.r-project.org">R</a> operations can be used:</p>
+<div class="sourceCode" id="cb11"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>(<span class="no">gbr_epi_tab</span>))
+<span class="co">#&gt; [1] 101886</span></pre></div>
+<p>It should be noted that the use of <code>collect</code> should be well-planned and ideally should be implemented once all required queries that can be issued lazily have been specified. Depending on the size of the remote database being accessed, using <code>collect</code> too early to retrieve data can cause significant computing overheads.</p>
+<div id="querying-spatial-layers" class="section level3">
+<h3 class="hasAnchor">
+<a href="#querying-spatial-layers" class="anchor"></a>Querying spatial layers</h3>
+<p>The <a href="http://covid19.eng.ox.ac.uk/">OxCOVID19 Database</a> includes a table named <code>administrative_division</code> which contains some spatial information. This table can be accessed via <code>oxcovid19</code> using the same approach described above:</p>
+<div class="sourceCode" id="cb12"><pre class="r"><span class="fu"><a href="reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span> <span class="fu"><a href="reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"administrative_division"</span>)
+<span class="co">#&gt; # Source:   table&lt;administrative_division&gt; [?? x 15]</span>
+<span class="co">#&gt; # Database: postgres [covid19@covid19db.org:5432/covid19]</span>
+<span class="co">#&gt;    country countrycode countrycode_alp… adm_level adm_area_1 adm_area_1_code</span>
+<span class="co">#&gt;    &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;                &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;          </span>
+<span class="co">#&gt;  1 Georgia GEO         GE                       1 Samegrelo… GEO.9_1        </span>
+<span class="co">#&gt;  2 Georgia GEO         GE                       1 Samtskhe-… GEO.10_1       </span>
+<span class="co">#&gt;  3 Georgia GEO         GE                       1 Shida Kar… GEO.11_1       </span>
+<span class="co">#&gt;  4 Georgia GEO         GE                       1 Tbilisi    GEO.12_1       </span>
+<span class="co">#&gt;  5 Guerns… GGY         GG                       1 Castel     GGY.3_1        </span>
+<span class="co">#&gt;  6 Guerns… GGY         GG                       1 Forest     GGY.4_1        </span>
+<span class="co">#&gt;  7 Guerns… GGY         GG                       1 Alderney   GGY.1_1        </span>
+<span class="co">#&gt;  8 Guerns… GGY         GG                       1 Brecqhou   GGY.2_1        </span>
+<span class="co">#&gt;  9 Guerns… GGY         GG                       1 Herm       GGY.5_1        </span>
+<span class="co">#&gt; 10 Guerns… GGY         GG                       1 Jethou     GGY.6_1        </span>
+<span class="co">#&gt; # … with more rows, and 9 more variables: adm_area_2 &lt;chr&gt;,</span>
+<span class="co">#&gt; #   adm_area_2_code &lt;chr&gt;, adm_area_3 &lt;chr&gt;, adm_area_3_code &lt;chr&gt;, gid &lt;chr&gt;,</span>
+<span class="co">#&gt; #   latitude &lt;dbl&gt;, longitude &lt;dbl&gt;, properties &lt;chr&gt;, geometry &lt;chr&gt;</span></pre></div>
+<p>The <code>administrative_division</code> table contains rows of information on <strong>longitude</strong> and <strong>latitude</strong> for several countries and for administrative divisions (up to level 3) within some of these countries. In addition, each row of geographical area available in this table has area borders information in <a href="https://en.wikipedia.org/wiki/Simple_Features">simple features</a> format.</p>
+<p>The <strong>longitude</strong> and <strong>latitude</strong> information can be easily accessed and utilised for mapping point locations using the <code>get_table</code> function. However, the area borders information in <a href="https://en.wikipedia.org/wiki/Simple_Features">simple features</a> format require specific parsing to be usable in <a href="https://www.r-project.org">R</a>. This is facilitated using the <code>sf</code> package. The <code>oxcovid19</code> package provides the <code>get_layer</code> function which is a wrapper function around the <code>st_read</code> function in the <code>sf</code> package to read <a href="https://en.wikipedia.org/wiki/Simple_Features">simple features</a> format data into <a href="https://www.r-project.org">R</a>.</p>
+<p>To query the <code>administrative_division</code> table for the area borders data, the function <code>get_layer</code> is used as follows:</p>
+<div class="sourceCode" id="cb13"><pre class="r"><span class="fu"><a href="reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span> <span class="fu"><a href="reference/get_layer.html">get_layer</a></span>(<span class="kw">ccode</span> <span class="kw">=</span> <span class="st">"GBR"</span>, <span class="kw">adm</span> <span class="kw">=</span> <span class="fl">0</span>)
+<span class="co">#&gt; Simple feature collection with 1 feature and 14 fields</span>
+<span class="co">#&gt; geometry type:  MULTIPOLYGON</span>
+<span class="co">#&gt; dimension:      XY</span>
+<span class="co">#&gt; bbox:           xmin: -8.151357 ymin: 49.95847 xmax: 1.764168 ymax: 60.84583</span>
+<span class="co">#&gt; geographic CRS: WGS 84</span>
+<span class="co">#&gt;          country countrycode countrycode_alpha2 adm_level adm_area_1</span>
+<span class="co">#&gt; 1 United Kingdom         GBR                 GB         0       &lt;NA&gt;</span>
+<span class="co">#&gt;   adm_area_1_code adm_area_2 adm_area_2_code adm_area_3 adm_area_3_code gid</span>
+<span class="co">#&gt; 1            &lt;NA&gt;       &lt;NA&gt;            &lt;NA&gt;       &lt;NA&gt;            &lt;NA&gt; GBR</span>
+<span class="co">#&gt;   latitude longitude                                   properties</span>
+<span class="co">#&gt; 1 54.16473 -2.895751 {"GID_0": "GBR", "NAME_0": "United Kingdom"}</span>
+<span class="co">#&gt;                         geometry</span>
+<span class="co">#&gt; 1 MULTIPOLYGON (((-5.867211 5...</span></pre></div>
+<p>The <code>get_layer</code> function requires two main parameters. First, the country from which area borders are required need to be specified using its three-letter ISO code. In the example above, the ISO code <code>GBR</code> is used to specify the country United Kingdom. Second, the administrative division level should be indicated. This should be specified as a numeric value from 0 to 3 corresponding to country level borders (0), administrative level 1 borders such as regions or provinces (1), administrative level 2 borders such as districts or communes (2), and administrative level 3 borders such as sub-districts or sub-communes (3). In the example above, 0 is specified for country borders.</p>
+<p>Once the area borders have been read into <a href="https://www.r-project.org">R</a> using the <code>get_layer</code> function, further spatial data manipulation and processing can be done using other <code>sf</code> package functions. Further information on the <code>sf</code> package can be found <a href="https://r-spatial.github.io/sf/">here</a>.</p>
+</div>
+<div id="specialised-functions" class="section level3">
+<h3 class="hasAnchor">
+<a href="#specialised-functions" class="anchor"></a>Specialised functions</h3>
+<p><code>oxcovid19</code> includes four specialised wrapper functions that facilitate easy access and query of specific tables availabe in the <a href="http://covid19.eng.ox.ac.uk/">OxCOVID19 Database</a> and reads the data into <a href="https://www.r-project.org">R</a>. These functions start with the <code>get_data_</code> prefix followed by the respective table descriptor.</p>
+<table class="table">
+<thead><tr class="header">
+<th align="left"><strong>Function</strong></th>
+<th align="left"><strong>Description</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>get_data_epidemiology</code></td>
+<td align="left">Get data from epidemiology table</td>
+</tr>
+<tr class="even">
+<td align="left"><code>get_data_weather</code></td>
+<td align="left">Get data from weather table</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>get_data_mobility</code></td>
+<td align="left">Get data from mobility table</td>
+</tr>
+<tr class="even">
+<td align="left"><code>get_data_response</code></td>
+<td align="left">Get data from government response table</td>
+</tr>
+</tbody>
+</table>
+<p>Each of these <code>get_data_</code> functions can be supplied with specific query parameters to further refine the data to retrieve from the remote table.</p>
+<table class="table">
+<thead><tr class="header">
+<th align="left"><strong>Query parameters</strong></th>
+<th align="left"><strong>Description</strong></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>.source</code></td>
+<td align="left">Query the table via the <code>source</code> field</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ccode</code></td>
+<td align="left">Query the table via the <code>countrycode</code> field</td>
+</tr>
+<tr class="odd">
+<td align="left">
+<code>start</code>, <code>end</code>
+</td>
+<td align="left">Query the table via the <code>date</code> field</td>
+</tr>
+<tr class="even">
+<td align="left"><code>adm</code></td>
+<td align="left">Query the table via the <code>adm_area_1</code>, <code>adm_area_2</code> and <code>adm_area_3</code> fields</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 <div id="limitations" class="section level2">
 <h2 class="hasAnchor">
@@ -211,22 +363,22 @@
 <p>If you find <a href="http://covid19.eng.ox.ac.uk/">OxCOVID19 Database</a> useful please cite:</p>
 <p>Adam Mahdi, Piotr Błaszczyk, Paweł Dłotko, Dario Salvi, Tak-Shing Chan, John Harvey, Davide Gurnari, Yue Wu, Ahmad Farhat, Niklas Hellmer, Alexander Zarebski, Bernie Hogan, Lionel Tarassenko, <strong>Oxford COVID-19 Database: a multimodal data repository for better understanding the global impact of COVID-19</strong>. University of Oxford, 2020.</p>
 <p>The <a href="http://covid19.eng.ox.ac.uk/">OxCOVID19 Database</a> is the result of many hours of volunteer efforts and generous contributions of many organisations. If you use a specific table please also cite the underlying source as described <a href="https://covid19.eng.ox.ac.uk/data_sources.html">here</a>. Sources of specific tables can also be accessed via the <code>oxcovid19</code> package through the <code>data_sources</code> dataset. For example, if you have accessed the <strong>Epidemiology</strong> table from the database, you can access the sources for this table with:</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="no">data_sources</span><span class="kw">[[</span><span class="st">"epidemiology"</span>]]</pre></div>
+<div class="sourceCode" id="cb14"><pre class="r"><span class="no">data_sources</span><span class="kw">[[</span><span class="st">"epidemiology"</span>]]</pre></div>
 <p>which gives the following result:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">#&gt; # A tibble: 45 x 5</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="co">#&gt;    Country  `Source code` Source          Features           `Terms of Use`     </span></span>
-<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;              &lt;chr&gt;              </span></span>
-<span id="cb7-4"><a href="#cb7-4"></a><span class="co">#&gt;  1 World    WRD_ECDC      European Centr… confirmed, dead, … ECDC Copyright     </span></span>
-<span id="cb7-5"><a href="#cb7-5"></a><span class="co">#&gt;  2 Argenti… LAT_DSRP      covid-19_latin… confirmed, dead, … CC BY-NC-SA 4.0    </span></span>
-<span id="cb7-6"><a href="#cb7-6"></a><span class="co">#&gt;  3 Austral… AUS_C1A       covid-19-au     tested, confirmed… For educational an…</span></span>
-<span id="cb7-7"><a href="#cb7-7"></a><span class="co">#&gt;  4 Austria  EU_ZH         COVID19 EU      tested, confirmed… MIT                </span></span>
-<span id="cb7-8"><a href="#cb7-8"></a><span class="co">#&gt;  5 Belgium  BEL_LE        covid19-be      tested, confirmed… CC0 1.0 Universal  </span></span>
-<span id="cb7-9"><a href="#cb7-9"></a><span class="co">#&gt;  6 Brazil   BRA_MSHM      covid19-Brazil… confirmed (countr… Public Domain      </span></span>
-<span id="cb7-10"><a href="#cb7-10"></a><span class="co">#&gt;  7 Brazil   LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    </span></span>
-<span id="cb7-11"><a href="#cb7-11"></a><span class="co">#&gt;  8 Canada   CAN_GOV       Public Health … tested, confirmed… Attribution requir…</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a><span class="co">#&gt;  9 Chile    LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    </span></span>
-<span id="cb7-13"><a href="#cb7-13"></a><span class="co">#&gt; 10 China    CHN_ICL       Imperial Colle… confirmed,  dead,… with permission    </span></span>
-<span id="cb7-14"><a href="#cb7-14"></a><span class="co">#&gt; # … with 35 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#&gt; # A tibble: 45 x 5</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="co">#&gt;    Country  `Source code` Source          Features           `Terms of Use`     </span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;              &lt;chr&gt;              </span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co">#&gt;  1 World    WRD_ECDC      European Centr… confirmed, dead, … ECDC Copyright     </span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="co">#&gt;  2 Argenti… LAT_DSRP      covid-19_latin… confirmed, dead, … CC BY-NC-SA 4.0    </span></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="co">#&gt;  3 Austral… AUS_C1A       covid-19-au     tested, confirmed… For educational an…</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co">#&gt;  4 Austria  EU_ZH         COVID19 EU      tested, confirmed… MIT                </span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="co">#&gt;  5 Belgium  BEL_LE        covid19-be      tested, confirmed… CC0 1.0 Universal  </span></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="co">#&gt;  6 Brazil   BRA_MSHM      covid19-Brazil… confirmed (countr… Public Domain      </span></span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="co">#&gt;  7 Brazil   LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    </span></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="co">#&gt;  8 Canada   CAN_GOV       Public Health … tested, confirmed… Attribution requir…</span></span>
+<span id="cb15-12"><a href="#cb15-12"></a><span class="co">#&gt;  9 Chile    LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    </span></span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="co">#&gt; 10 China    CHN_ICL       Imperial Colle… confirmed,  dead,… with permission    </span></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="co">#&gt; # … with 35 more rows</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -269,12 +421,13 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://www.tidyverse.org/lifecycle/#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
 <li><a href="https://CRAN.R-project.org/package=oxcovid19"><img src="https://img.shields.io/cran/l/oxcovid19.svg" alt="CRAN"></a></li>
 <li><a href="https://CRAN.R-project.org/package=oxcovid19"><img src="https://www.r-pkg.org/badges/version/oxcovid19" alt="CRAN status"></a></li>
 <li><a href="https://cran.r-project.org/web/checks/check_results_oxcovid19.html"><img src="https://cranchecks.info/badges/summary/oxcovid19" alt="cran checks"></a></li>
 <li><a href="https://CRAN.R-project.org/package=oxcovid19"><img src="http://cranlogs.r-pkg.org/badges/oxcovid19" alt="CRAN"></a></li>
 <li><a href="https://CRAN.R-project.org/package=oxcovid19"><img src="http://cranlogs.r-pkg.org/badges/grand-total/oxcovid19" alt="CRAN"></a></li>
+<li><a href="https://github.com/como-ph/oxcovid19"><img src="https://img.shields.io/badge/dev-v0.1.2.9000-orange.svg" alt="dev"></a></li>
 <li><a href="https://github.com/como-ph/oxcovid19/actions"><img src="https://github.com/como-ph/oxcovid19/workflows/R-CMD-check/badge.svg" alt="R build status"></a></li>
 <li><a href="https://ci.appveyor.com/project/como-ph/oxcovid19"><img src="https://ci.appveyor.com/api/projects/status/github/como-ph/oxcovid19?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
 <li><a href="https://travis-ci.org/como-ph/oxcovid19"><img src="https://travis-ci.org/como-ph/oxcovid19.svg?branch=master" alt="Travis build status"></a></li>
@@ -282,7 +435,6 @@
 <li><a href="https://codecov.io/gh/como-ph/oxcovid19?branch=master"><img src="https://codecov.io/gh/como-ph/oxcovid19/branch/master/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://www.codefactor.io/repository/github/como-ph/oxcovid19"><img src="https://www.codefactor.io/repository/github/como-ph/oxcovid19/badge" alt="CodeFactor"></a></li>
 <li><a href="https://zenodo.org/badge/latestdoi/276818770"><img src="https://zenodo.org/badge/276818770.svg" alt="DOI"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle: maturing"></a></li>
 </ul>
 </div>
 </div>

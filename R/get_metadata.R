@@ -7,6 +7,8 @@
 #'
 #' @return A named list of remote table metadata
 #'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' x <- get_table(con = connect_oxcovid19(), tbl_name = "epidemiology")
 #' get_metadata(x)

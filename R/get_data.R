@@ -29,6 +29,8 @@
 #'   clearly determined. For data exploration, \link{get_table} should be used
 #'   instead.
 #'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' ## Get epidemiology data for the the whole of the UK from the ECDC for all
 #' ## available dates
@@ -169,6 +171,8 @@ get_data <- function(tbl_name,
 #'   clearly determined. For data exploration, \link{get_table} shouild be used
 #'   instead.
 #'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' ## Get epidemiology data for the the whole of the UK from the ECDC for all
 #' ## available dates
@@ -226,6 +230,8 @@ get_data_epidemiology <- function(.source = NULL,
 #'   clearly determined. For data exploration, \link{get_table} shouild be used
 #'   instead.
 #'
+#' @author Ernest Guevarra
+#'
 #' @examples
 #' ## Get weather data for the the whole of the UK for all available dates
 #' get_data_weather(ccode = "GBR",
@@ -281,6 +287,8 @@ get_data_weather <- function(ccode = NULL,
 #'   this function be used when the specific data requirements are already
 #'   clearly determined. For data exploration, \link{get_table} shouild be used
 #'   instead.
+#'
+#' @author Ernest Guevarra
 #'
 #' @examples
 #' ## Get mobility data for the the whole of the UK from Apple for all
@@ -338,6 +346,8 @@ get_data_mobility <- function(.source = NULL,
 #'   recommended that this function be used when the specific data requirements
 #'   are already clearly determined. For data exploration, \link{get_table}
 #'   shouild be used instead.
+#'
+#' @author Ernest Guevarra
 #'
 #' @examples
 #' ## Get government response data for the the whole of the UK for all

@@ -53,3 +53,6 @@ get_data_epidemiology(.source = "WRD_ECDC",
                       adm = 0)
 
 }
+\author{
+Ernest Guevarra
+}

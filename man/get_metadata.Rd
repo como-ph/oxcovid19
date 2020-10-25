@@ -20,3 +20,6 @@ x <- get_table(con = connect_oxcovid19(), tbl_name = "epidemiology")
 get_metadata(x)
 
 }
+\author{
+Ernest Guevarra
+}

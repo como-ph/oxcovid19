@@ -42,3 +42,6 @@ get_data_response(ccode = "GBR",
                   adm = 0)
 
 }
+\author{
+Ernest Guevarra
+}
