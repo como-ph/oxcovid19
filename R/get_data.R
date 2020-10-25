@@ -3,18 +3,21 @@
 #'
 #' Get data from specified table based on specified query parameters
 #'
-#' @param tbl_name Name of table available in OxCOVID19 Database. Should be
-#'   one of the table names given by a call to \link{list_tables}.
+#' @param tbl_name Name of table available in **OxCOVID19 Database**. Should be
+#'   one of the table names given by a call to [list_tables()].
 #' @param .source Source of data. Should be specified as per source
-#'   code shown in \link{data_sources} for specified table. Default is NULL
+#'   code shown in [data_sources] for specified table. Default is NULL
 #'   which returns data from specified table from all data sources.
-#' @param ccode Three character ISO country code for country to which data is
-#'   required. Defaults to NULL which returns data for all countries.
-#' @param .start Starting date in \code{YYYY-MM-DD} character format of data
+#' @param country A character value of country name specified as either a two
+#'   character ISO country code, or a three character ISO country code, or any
+#'   of the country names specified in the [countrycode] package, or a
+#'   vector of country names using a combination of these country name variants.
+#'   Defaults to NULL which returns data for all countries in the database.
+#' @param .start Starting date (in `YYYY-MM-DD` character format) of data
 #'   to retrieve. Defaults to NULL which returns data from the earliest date
 #'   available.
-#' @param .end End date in \code{YYYY-MM-DD} character format of data to
-#'   retrieve. Defaults to current date as speciifed by \link{Sys.Date}.
+#' @param .end End date (in `YYYY-MM-DD` character format) of data to
+#'   retrieve. Defaults to current date as speciifed by [Sys.Date()].
 #' @param adm Numeric value for administrative level data required. Possible
 #'   values are 0 for whole country, 1 for administrative level 1, 2 for
 #'   administrative level 2 and 3 for administrative level 3. Default is NULL
@@ -22,11 +25,11 @@
 #'
 #' @return A tibble of specified table dataset based on specified parameters. If
 #'   all parameters are kept to default, output is the same as that when
-#'   \link{get_table} is used with \code{tbl_name} based on specified table.
+#'   [get_table()] is used with `tbl_name` based on specified table.
 #'   However, this function will retrieve the full data into a local tibble
 #'   which will take considerable time. It is therefore recommended that
 #'   this function be used when the specific data requirements are already
-#'   clearly determined. For data exploration, \link{get_table} should be used
+#'   clearly determined. For data exploration, [get_table()] should be used
 #'   instead.
 #'
 #' @author Ernest Guevarra
@@ -36,9 +39,31 @@
 #' ## available dates
 #' get_data(tbl_name = "epidemiology",
 #'          .source = "WRD_ECDC",
-#'          ccode = "GBR",
+#'          country = "GBR",
 #'          adm = 0)
 #'
+#' ## Get epidemiology data for the the whole of the UK from the ECDC for all
+#' ## available dates
+#' get_data_epidemiology(.source = "WRD_ECDC",
+#'                       country = "UK",
+#'                       adm = 0)
+#'
+#' ## Get weather data for the the whole of the UK for all available dates
+#' get_data_weather(country = "GBR",
+#'                  adm = 0)
+#'
+#' ## Get mobility data for the the whole of the UK from Apple for all
+#' ## available dates
+#' get_data_mobility(.source = "APPLE_MOBILITY",
+#'                   country = "United Kingdom",
+#'                   adm = 0)
+#'
+#' ## Get government response data for the the whole of the UK for all
+#' ## available dates
+#' get_data_response(country = "UK",
+#'                   adm = 0)
+#'
+#' @rdname get_data
 #' @export
 #'
 #'
@@ -47,14 +72,14 @@
 
 get_data <- function(tbl_name,
                      .source = NULL,
-                     ccode = NULL,
+                     country = NULL,
                      .start = NULL,
                      .end = Sys.Date(),
                      adm = NULL) {
   ## Create connection
   con <- connect_oxcovid19()
 
-  ## Retrieve epidemiology table
+  ## Retrieve table specified by tbl_name
   x <- get_table(con = con, tbl_name = tbl_name)
 
   ## Create source query
@@ -73,9 +98,18 @@ get_data <- function(tbl_name,
   }
 
   ## Create country query
-  if(is.null(ccode)) {
+  if(is.null(country)) {
     ccode_query <- "!is.null(countrycode)"
   } else {
+    c1 <- countrycode::countrycode(sourcevar = country,
+                                   origin = "iso2c",
+                                   destination = "iso3c",
+                                   warn = FALSE)
+    ccode <- ifelse(is.na(c1), country, c1)
+    c2 <- countrycode::countryname(sourcevar = ccode,
+                                   destination = "iso3c",
+                                   warn = FALSE)
+    ccode <- ifelse(is.na(c2), ccode, c2)
     ccode_query <- "countrycode %in% ccode"
   }
 
@@ -141,60 +175,22 @@ get_data <- function(tbl_name,
   return(tab)
 }
 
-
 ################################################################################
 #
-#'
-#' Get epidemiology data based on specified query parameters
-#'
-#' @param .source Source of epidemiology data. Should be specified as per source
-#'   code shown in \link{data_sources} for epidemiology table. Default is NULL
-#'   which returns data fraom all data sources.
-#' @param ccode Three character ISO country code for country to which data is
-#'   required. Defaults to NULL which returns data for all countries.
-#' @param .start Starting date in \code{YYYY-MM-DD} character format of data
-#'   to retrieve. Defaults to NULL which returns data from the earliest date
-#'   available.
-#' @param .end End date in \code{YYYY-MM-DD} character format of data to
-#'   retrieve. Defaults to current date as speciifed by \link{Sys.Date}.
-#' @param adm Numeric value for administrative level data required. Possible
-#'   values are 0 for whole country, 1 for administrative level 1, 2 for
-#'   administrative level 2 and 3 for administrative level 3. Default is NULL
-#'   which returns data for all administrative divisions.
-#'
-#' @return A tibble of epidemiology dataset based on specified parameters. If
-#'   all parameters are kept to default, output is the same as that when
-#'   \link{get_table} is used with \code{tbl_name} specified as epidemiology.
-#'   However, this function will retrieve the full data into a local tibble
-#'   which will take considerable time. It is therefore recommended that
-#'   this function be used when the specific data requirements are already
-#'   clearly determined. For data exploration, \link{get_table} shouild be used
-#'   instead.
-#'
-#' @author Ernest Guevarra
-#'
-#' @examples
-#' ## Get epidemiology data for the the whole of the UK from the ECDC for all
-#' ## available dates
-#' get_data_epidemiology(.source = "WRD_ECDC",
-#'                       ccode = "GBR",
-#'                       adm = 0)
-#'
+#' @rdname get_data
 #' @export
-#'
-#'
 #
 ################################################################################
 
 get_data_epidemiology <- function(.source = NULL,
-                                  ccode = NULL,
+                                  country = NULL,
                                   .start = NULL,
                                   .end = Sys.Date(),
                                   adm = NULL) {
   ## Retrieve dataset
   tab <- get_data(tbl_name = "epidemiology",
                   .source = .source,
-                  ccode = ccode,
+                  country = country,
                   .start = .start,
                   .end = .end,
                   adm = adm)
@@ -206,50 +202,18 @@ get_data_epidemiology <- function(.source = NULL,
 
 ################################################################################
 #
-#'
-#' Get weather data based on specified query parameters
-#'
-#' @param ccode Three character ISO country code for country to which data is
-#'   required. Defaults to NULL which returns data for all countries.
-#' @param .start Starting date in \code{YYYY-MM-DD} character format of data
-#'   to retrieve. Defaults to NULL which returns data from the earliest date
-#'   available.
-#' @param .end End date in \code{YYYY-MM-DD} character format of data to
-#'   retrieve. Defaults to current date as speciifed by \link{Sys.Date}.
-#' @param adm Numeric value for administrative level data required. Possible
-#'   values are 0 for whole country, 1 for administrative level 1, 2 for
-#'   administrative level 2 and 3 for administrative level 3. Default is NULL
-#'   which returns data for all administrative divisions.
-#'
-#' @return A tibble of weather dataset based on specified parameters. If
-#'   all parameters are kept to default, output is the same as that when
-#'   \link{get_table} is used with \code{tbl_name} specified as weather.
-#'   However, this function will retrieve the full data into a local tibble
-#'   which will take considerable time. It is therefore recommended that
-#'   this function be used when the specific data requirements are already
-#'   clearly determined. For data exploration, \link{get_table} shouild be used
-#'   instead.
-#'
-#' @author Ernest Guevarra
-#'
-#' @examples
-#' ## Get weather data for the the whole of the UK for all available dates
-#' get_data_weather(ccode = "GBR",
-#'                  adm = 0)
-#'
+#' @rdname get_data
 #' @export
-#'
-#'
 #
 ################################################################################
 
-get_data_weather <- function(ccode = NULL,
+get_data_weather <- function(country = NULL,
                              .start = NULL,
                              .end = Sys.Date(),
                              adm = NULL) {
   ## Retrieve dataset
   tab <- get_data(tbl_name = "weather",
-                  ccode = ccode,
+                  country = country,
                   .start = .start,
                   .end = .end,
                   adm = adm)
@@ -261,57 +225,20 @@ get_data_weather <- function(ccode = NULL,
 
 ################################################################################
 #
-#'
-#' Get mobility data based on specified query parameters
-#'
-#' @param .source Source of mobility data. Should be specified as per source
-#'   code shown in \link{data_sources} for mobility table. Default is NULL
-#'   which returns data fraom all data sources.
-#' @param ccode Three character ISO country code for country to which data is
-#'   required. Defaults to NULL which returns data for all countries.
-#' @param .start Starting date in \code{YYYY-MM-DD} character format of data
-#'   to retrieve. Defaults to NULL which returns data from the earliest date
-#'   available.
-#' @param .end End date in \code{YYYY-MM-DD} character format of data to
-#'   retrieve. Defaults to current date as speciifed by \link{Sys.Date}.
-#' @param adm Numeric value for administrative level data required. Possible
-#'   values are 0 for whole country, 1 for administrative level 1, 2 for
-#'   administrative level 2 and 3 for administrative level 3. Default is NULL
-#'   which returns data for all administrative divisions.
-#'
-#' @return A tibble of mobility dataset based on specified parameters. If
-#'   all parameters are kept to default, output is the same as that when
-#'   \link{get_table} is used with \code{tbl_name} specified as mobility.
-#'   However, this function will retrieve the full data into a local tibble
-#'   which will take considerable time. It is therefore recommended that
-#'   this function be used when the specific data requirements are already
-#'   clearly determined. For data exploration, \link{get_table} shouild be used
-#'   instead.
-#'
-#' @author Ernest Guevarra
-#'
-#' @examples
-#' ## Get mobility data for the the whole of the UK from Apple for all
-#' ## available dates
-#' get_data_mobility(.source = "APPLE_MOBILITY",
-#'                   ccode = "GBR",
-#'                   adm = 0)
-#'
+#' @rdname get_data
 #' @export
-#'
-#'
 #
 ################################################################################
 
 get_data_mobility <- function(.source = NULL,
-                              ccode = NULL,
+                              country = NULL,
                               .start = NULL,
                               .end = Sys.Date(),
                               adm = NULL) {
   ## Retrieve dataset
   tab <- get_data(tbl_name = "mobility",
                   .source = .source,
-                  ccode = ccode,
+                  country = country,
                   .start = .start,
                   .end = .end,
                   adm = adm)
@@ -323,51 +250,18 @@ get_data_mobility <- function(.source = NULL,
 
 ################################################################################
 #
-#'
-#' Get government response data based on specified query parameters
-#'
-#' @param ccode Three character ISO country code for country to which data is
-#'   required. Defaults to NULL which returns data for all countries.
-#' @param .start Starting date in \code{YYYY-MM-DD} character format of data
-#'   to retrieve. Defaults to NULL which returns data from the earliest date
-#'   available.
-#' @param .end End date in \code{YYYY-MM-DD} character format of data to
-#'   retrieve. Defaults to current date as speciifed by \link{Sys.Date}.
-#' @param adm Numeric value for administrative level data required. Possible
-#'   values are 0 for whole country, 1 for administrative level 1, 2 for
-#'   administrative level 2 and 3 for administrative level 3. Default is NULL
-#'   which returns data for all administrative divisions.
-#'
-#' @return A tibble of government response dataset based on specified parameters.
-#'   If all parameters are kept to default, output is the same as that when
-#'   \link{get_table} is used with \code{tbl_name} specified as
-#'   government_response. However, this function will retrieve the full data
-#'   into a local tibble which will take considerable time. It is therefore
-#'   recommended that this function be used when the specific data requirements
-#'   are already clearly determined. For data exploration, \link{get_table}
-#'   shouild be used instead.
-#'
-#' @author Ernest Guevarra
-#'
-#' @examples
-#' ## Get government response data for the the whole of the UK for all
-#' ## available dates
-#' get_data_response(ccode = "GBR",
-#'                   adm = 0)
-#'
+#' @rdname get_data
 #' @export
-#'
-#'
 #
 ################################################################################
 
-get_data_response <- function(ccode = NULL,
+get_data_response <- function(country = NULL,
                               .start = NULL,
                               .end = Sys.Date(),
                               adm = NULL) {
   ## Retrieve dataset
   tab <- get_data(tbl_name = "government_response",
-                  ccode = ccode,
+                  country = country,
                   .start = .start,
                   .end = .end,
                   adm = adm)
