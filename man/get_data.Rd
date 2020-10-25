@@ -25,7 +25,13 @@ get_data_epidemiology(
   adm = NULL
 )
 
-get_data_weather(ccode = NULL, .start = NULL, .end = Sys.Date(), adm = NULL)
+get_data_weather(
+  .source = NULL,
+  ccode = NULL,
+  .start = NULL,
+  .end = Sys.Date(),
+  adm = NULL
+)
 
 get_data_mobility(
   .source = NULL,
