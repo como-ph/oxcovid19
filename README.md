@@ -52,7 +52,7 @@ during its weekly meeting on the 1st of July 2020. During this meeting,
 the [CoMo
 Consortium](https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context)
 considered the use of the [OxCOVID19
-Database](http://covid19.eng.ox.ac.uk/) for use in filling data and
+Database](https://covid19.eng.ox.ac.uk/) for use in filling data and
 information for country-specific parameters required in the [CoMo
 Consortium](https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context)
 model. Given that the [CoMo
@@ -221,7 +221,7 @@ get_metadata(gbr_epi_tab)
 #> WHERE ("countrycode" = 'GBR')
 #> 
 #> $`Query plan`
-#> [1] "Seq Scan on epidemiology  (cost=0.00..42434.31 rows=171053 width=120)\n  Filter: ((countrycode)::text = 'GBR'::text)"
+#> [1] "Seq Scan on epidemiology  (cost=0.00..42502.93 rows=174802 width=120)\n  Filter: ((countrycode)::text = 'GBR'::text)"
 ```
 
 The result is a list showing information on the remote table’s `name`,
@@ -279,7 +279,7 @@ data from the remote table can be retrieved into
 
 ``` r
 dplyr::collect(gbr_epi_tab)
-#> # A tibble: 175,835 x 15
+#> # A tibble: 176,435 x 15
 #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
 #>  1 GBR_P… 2020-05-23 United… GBR         England    Hampshire  <NA>           NA
@@ -292,7 +292,7 @@ dplyr::collect(gbr_epi_tab)
 #>  8 GBR_P… 2020-05-23 United… GBR         England    Cambridge… <NA>           NA
 #>  9 GBR_P… 2020-05-23 United… GBR         England    Derbyshire <NA>           NA
 #> 10 GBR_P… 2020-05-23 United… GBR         England    Westminst… <NA>           NA
-#> # … with 175,825 more rows, and 7 more variables: confirmed <int>,
+#> # … with 176,425 more rows, and 7 more variables: confirmed <int>,
 #> #   recovered <int>, dead <int>, hospitalised <int>, hospitalised_icu <int>,
 #> #   quarantined <int>, gid <pq__text>
 ```
@@ -305,7 +305,7 @@ The resulting output is a `tbl` but is now retrieved into
 
 ``` r
 nrow(dplyr::collect(gbr_epi_tab))
-#> [1] 175835
+#> [1] 176435
 ```
 
 It should be noted that the use of `collect` should be well-planned and
@@ -316,7 +316,7 @@ cause significant computing overheads.
 
 ### Querying spatial layers
 
-The [OxCOVID19 Database](http://covid19.eng.ox.ac.uk/) includes a table
+The [OxCOVID19 Database](https://covid19.eng.ox.ac.uk/) includes a table
 named `administrative_division` which contains some spatial information.
 This table can be accessed via `oxcovid19` using the same approach
 described above:
@@ -401,7 +401,7 @@ information on the `sf` package can be found
 
 `oxcovid19` includes four specialised wrapper functions that facilitate
 easy access and query of specific tables available in the [OxCOVID19
-Database](http://covid19.eng.ox.ac.uk/) and reads the data into
+Database](https://covid19.eng.ox.ac.uk/) and reads the data into
 [R](https://www.r-project.org). These functions start with the
 `get_data_` prefix followed by the respective table descriptor.
 
@@ -426,7 +426,7 @@ parameters to further refine the data to retrieve from the remote table.
 
 The `oxcovid19` package is in active development which will be dictated
 by the evolution of the [OxCOVID19
-Database](http://covid19.eng.ox.ac.uk/) over time. Whilst every attempt
+Database](https://covid19.eng.ox.ac.uk/) over time. Whilst every attempt
 will be employed to maintain syntax of current functions, it is possible
 that current functions may change syntax or operability in order to
 ensure relevance or maybe deprecated in lieu of a more appropriate
@@ -437,7 +437,7 @@ for transition to using the new functions.
 
 ## Citations
 
-If you find [OxCOVID19 Database](http://covid19.eng.ox.ac.uk/) useful
+If you find [OxCOVID19 Database](https://covid19.eng.ox.ac.uk/) useful
 please cite:
 
 Adam Mahdi, Piotr Błaszczyk, Paweł Dłotko, Dario Salvi, Tak-Shing Chan,
@@ -446,7 +446,7 @@ Alexander Zarebski, Bernie Hogan, Lionel Tarassenko, **Oxford COVID-19
 Database: a multimodal data repository for better understanding the
 global impact of COVID-19**. University of Oxford, 2020.
 
-The [OxCOVID19 Database](http://covid19.eng.ox.ac.uk/) is the result of
+The [OxCOVID19 Database](https://covid19.eng.ox.ac.uk/) is the result of
 many hours of volunteer efforts and generous contributions of many
 organisations. If you use a specific table please also cite the
 underlying source as described
