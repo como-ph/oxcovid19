@@ -1,5 +1,7 @@
 ## Load libraries
 library(magrittr)
+library(rvest)
+library(stringr)
 
 ## Read HTML page for data sources - https://covid19.eng.ox.ac.uk/data_sources.html -
 ## and extract sources tables
