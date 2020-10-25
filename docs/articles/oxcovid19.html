@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -91,7 +91,8 @@
 
       
 
-      </header><script src="oxcovid19_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="oxcovid19_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="oxcovid19_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
+<script src="oxcovid19_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>An R API to the Oxford COVID-19 Database</h1>
@@ -109,7 +110,8 @@
 <p><img src="../man/figures/oxcovid19workflow.png" width="80%" style="display: block; margin: auto;"></p>
 <p><br></p>
 <p>The following code demonstrates how this workflow can be implemented in R:</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">oxcovid19</span>)
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/como-ph/oxcovid19">oxcovid19</a></span>)
 <span class="co">#&gt; </span>
 <span class="co">#&gt;   ___          ____  ___ __     __ ___  ____   _   ___</span>
 <span class="co">#&gt;  / _ \ __  __ / ___|/ _ \\ \   / /|_ _||  _ \ / | / _ \</span>
@@ -130,13 +132,14 @@
 <span class="co">#&gt; https://covid19.eng.ox.ac.uk/data_sources.html</span>
 
 <span class="co">## Step 1: Create a connection to OxCOVID19 PostgreSQL server</span>
-<span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>()
+<span class="kw">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>()
 
 <span class="co">## Step 2: Access epidemiology table from OxCOVID19 PostgreSQL server</span>
-<span class="no">epi_tab</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">con</span> <span class="kw">=</span> <span class="no">con</span>, <span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>)
+<span class="kw">epi_tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(con = <span class="kw">con</span>, tbl_name = <span class="st">"epidemiology"</span>)
 
 <span class="co">## Step 3: Query the epidemiology table to show data for Great Britain</span>
-<span class="no">gbr_epi_tab</span> <span class="kw">&lt;-</span> <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">.data</span> <span class="kw">=</span> <span class="no">epi_tab</span>, <span class="no">countrycode</span> <span class="kw">==</span> <span class="st">"GBR"</span>)</pre></body></html></div>
+<span class="kw">gbr_epi_tab</span> <span class="op">&lt;-</span> <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(.data = <span class="kw">epi_tab</span>, <span class="kw">countrycode</span> <span class="op">==</span> <span class="st">"GBR"</span>)
+</pre></div>
 <p><strong>Step 1</strong> and <strong>Step 2</strong> above are facilitated by the <code>connect_oxcovid19</code> and the <code>get_table</code> functions provided by the <code>oxcovid19</code> package. These functions are basically low-level wrappers to functions in the <a href="https://db.rstudio.com/dbi/"><code>DBI</code></a> and <a href="https://rpostgres.r-dbi.org"><code>RPostgres</code></a> packages applied specifically to work with the <a href="https://covid19.eng.ox.ac.uk">OxCOVID19</a> <a href="https://www.postgresql.org">PostgreSQL</a>. These functions facilitate convenient access to the server for general R users without having to learn to use the <code>DBI</code> and <code>RPostgres</code> packages.</p>
 <p><strong>Step 3</strong>, on the other hand, is facilitated by the <code>dplyr</code> package functions which were designed to work with different types of tables including those from various database server connections such as <a href="https://www.postgresql.org">PostgreSQL</a>.</p>
 <p>The output of the workflow shown above is:</p>
@@ -144,43 +147,45 @@
 #&gt; # Database: postgres [covid19@covid19db.org:5432/covid19]
 #&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;
-#&gt;  1 GBR_P… 2020-07-22 United… GBR         England    Worcester… Bromsgrove     NA
-#&gt;  2 GBR_P… 2020-07-01 United… GBR         England    Worcester… Wyre Fore…     NA
-#&gt;  3 GBR_P… 2020-07-23 United… GBR         England    Leicester  Leicester      NA
-#&gt;  4 GBR_P… 2020-07-01 United… GBR         England    West Suss… Horsham        NA
-#&gt;  5 GBR_P… 2020-07-01 United… GBR         England    Blackburn… Blackburn…     NA
-#&gt;  6 GBR_P… 2020-06-30 United… GBR         England    Dudley     Dudley         NA
-#&gt;  7 GBR_P… 2020-07-01 United… GBR         England    Leicester… Harborough     NA
-#&gt;  8 GBR_P… 2020-07-01 United… GBR         England    Leicester… Charnwood      NA
-#&gt;  9 GBR_P… 2020-07-01 United… GBR         England    Blackpool  Blackpool      NA
-#&gt; 10 GBR_P… 2020-06-30 United… GBR         England    West Berk… West Berk…     NA
+#&gt;  1 GBR_P… 2020-05-23 United… GBR         England    Hampshire  &lt;NA&gt;           NA
+#&gt;  2 GBR_P… 2020-05-23 United… GBR         England    Kent       &lt;NA&gt;           NA
+#&gt;  3 GBR_P… 2020-05-23 United… GBR         England    Essex      &lt;NA&gt;           NA
+#&gt;  4 GBR_P… 2020-05-23 United… GBR         England    Hertfords… &lt;NA&gt;           NA
+#&gt;  5 GBR_P… 2020-05-23 United… GBR         England    Leicester… &lt;NA&gt;           NA
+#&gt;  6 GBR_P… 2020-05-23 United… GBR         England    Norfolk    &lt;NA&gt;           NA
+#&gt;  7 GBR_P… 2020-05-23 United… GBR         England    Glouceste… &lt;NA&gt;           NA
+#&gt;  8 GBR_P… 2020-05-23 United… GBR         England    Cambridge… &lt;NA&gt;           NA
+#&gt;  9 GBR_P… 2020-05-23 United… GBR         England    Derbyshire &lt;NA&gt;           NA
+#&gt; 10 GBR_P… 2020-05-23 United… GBR         England    Westminst… &lt;NA&gt;           NA
 #&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,
 #&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,
 #&gt; #   gid &lt;chr&gt;</code></pre>
 <p>The <code>oxcovid19</code> package functions are also designed to allow <em>pipe operations</em> using the <code>magrittr</code> package. The workflow above can be done using piped operations as follows:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co">## Load magrittr to use pipe operator %&gt;%</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">magrittr</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="co">## Load magrittr to use pipe operator %&gt;%</span>
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">magrittr</span>)
 
-<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(<span class="kw">tbl_name</span> <span class="kw">=</span> <span class="st">"epidemiology"</span>) <span class="kw">%&gt;%</span>
-  <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">countrycode</span> <span class="kw">==</span> <span class="st">"GBR"</span>)
+<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(tbl_name = <span class="st">"epidemiology"</span>) <span class="op">%&gt;%</span>
+  <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">countrycode</span> <span class="op">==</span> <span class="st">"GBR"</span>)
 <span class="co">#&gt; # Source:   lazy query [?? x 15]</span>
 <span class="co">#&gt; # Database: postgres [covid19@covid19db.org:5432/covid19]</span>
 <span class="co">#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested</span>
 <span class="co">#&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;</span>
-<span class="co">#&gt;  1 GBR_P… 2020-07-22 United… GBR         England    Worcester… Bromsgrove     NA</span>
-<span class="co">#&gt;  2 GBR_P… 2020-07-01 United… GBR         England    Worcester… Wyre Fore…     NA</span>
-<span class="co">#&gt;  3 GBR_P… 2020-07-23 United… GBR         England    Leicester  Leicester      NA</span>
-<span class="co">#&gt;  4 GBR_P… 2020-07-01 United… GBR         England    West Suss… Horsham        NA</span>
-<span class="co">#&gt;  5 GBR_P… 2020-07-01 United… GBR         England    Blackburn… Blackburn…     NA</span>
-<span class="co">#&gt;  6 GBR_P… 2020-06-30 United… GBR         England    Dudley     Dudley         NA</span>
-<span class="co">#&gt;  7 GBR_P… 2020-07-01 United… GBR         England    Leicester… Harborough     NA</span>
-<span class="co">#&gt;  8 GBR_P… 2020-07-01 United… GBR         England    Leicester… Charnwood      NA</span>
-<span class="co">#&gt;  9 GBR_P… 2020-07-01 United… GBR         England    Blackpool  Blackpool      NA</span>
-<span class="co">#&gt; 10 GBR_P… 2020-06-30 United… GBR         England    West Berk… West Berk…     NA</span>
+<span class="co">#&gt;  1 GBR_P… 2020-05-23 United… GBR         England    Hampshire  &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  2 GBR_P… 2020-05-23 United… GBR         England    Kent       &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  3 GBR_P… 2020-05-23 United… GBR         England    Essex      &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  4 GBR_P… 2020-05-23 United… GBR         England    Hertfords… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  5 GBR_P… 2020-05-23 United… GBR         England    Leicester… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  6 GBR_P… 2020-05-23 United… GBR         England    Norfolk    &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  7 GBR_P… 2020-05-23 United… GBR         England    Glouceste… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  8 GBR_P… 2020-05-23 United… GBR         England    Cambridge… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  9 GBR_P… 2020-05-23 United… GBR         England    Derbyshire &lt;NA&gt;           NA</span>
+<span class="co">#&gt; 10 GBR_P… 2020-05-23 United… GBR         England    Westminst… &lt;NA&gt;           NA</span>
 <span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span>
 <span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span>
-<span class="co">#&gt; #   gid &lt;chr&gt;</span></pre></body></html></div>
+<span class="co">#&gt; #   gid &lt;chr&gt;</span>
+</pre></div>
 <p>The workflow using the piped workflow outputs the same result as the earlier workflow but with a much streamlined use of code.</p>
   </div>
 
@@ -197,7 +202,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

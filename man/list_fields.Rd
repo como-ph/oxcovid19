@@ -18,7 +18,7 @@ Default is character vector of all table names specified by
 }
 \value{
 A named list of field names per specified table available from
-  OxCOVID19 Database
+OxCOVID19 Database
 }
 \description{
 List out field names of specific tables available from OxCOVID19 Database

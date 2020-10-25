@@ -1,7 +1,7 @@
 Package: oxcovid19
 Type: Package
 Title: An R API to the Oxford COVID-19 Database
-Version: 0.1.2.9000
+Version: 0.1.2
 Authors@R: c(person(given = "Ernest", family = "Guevarra", 
                     email = "ernest@guevarra.io", role = c("aut", "cre"),
                     comment = c(ORCID = "0000-0002-4887-4415")),
@@ -32,21 +32,25 @@ Imports:
     dplyr,
     sf,
     dbplyr,
-    lubridate
+    lubridate,
+    countrycode,
+    magrittr
 Suggests: 
     testthat,
     covr,
     knitr,
     rmarkdown,
-    magrittr,
+    rvest,
     stringr,
     RColorBrewer,
     ggplot2,
-    DiagrammeR
+    DiagrammeR,
+    spelling
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
 URL: https://github.com/como-ph/oxcovid19
 BugReports: https://github.com/como-ph/oxcovid19/issues
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr

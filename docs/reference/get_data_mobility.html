@@ -148,13 +148,13 @@
     <p>Get mobility data based on specified query parameters</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_data_mobility</span>(
-  <span class='kw'>.source</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ccode</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>.start</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>.end</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(),
-  <span class='kw'>adm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>get_data_mobility</span><span class='op'>(</span>
+  .source <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ccode <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .start <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .end <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span>,
+  adm <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -193,20 +193,24 @@ which returns data for all administrative divisions.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble of mobility dataset based on specified parameters. If
-  all parameters are kept to default, output is the same as that when
-  <a href='get_table.html'>get_table</a> is used with <code>tbl_name</code> specified as mobility.
-  However, this function will retrieve the full data into a local tibble
-  which will take considerable time. It is therefore recommended that
-  this function be used when the specific data requirements are already
-  clearly determined. For data exploration, <a href='get_table.html'>get_table</a> shouild be used
-  instead.</p>
+all parameters are kept to default, output is the same as that when
+<a href='get_table.html'>get_table</a> is used with <code>tbl_name</code> specified as mobility.
+However, this function will retrieve the full data into a local tibble
+which will take considerable time. It is therefore recommended that
+this function be used when the specific data requirements are already
+clearly determined. For data exploration, <a href='get_table.html'>get_table</a> shouild be used
+instead.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Get mobility data for the the whole of the UK from Apple for all</span>
 <span class='co'>## available dates</span>
-<span class='fu'>get_data_mobility</span>(<span class='kw'>.source</span> <span class='kw'>=</span> <span class='st'>"APPLE_MOBILITY"</span>,
-                  <span class='kw'>ccode</span> <span class='kw'>=</span> <span class='st'>"GBR"</span>,
-                  <span class='kw'>adm</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 221 x 17</span><span>
+<span class='fu'>get_data_mobility</span><span class='op'>(</span>.source <span class='op'>=</span> <span class='st'>"APPLE_MOBILITY"</span>,
+                  ccode <span class='op'>=</span> <span class='st'>"GBR"</span>,
+                  adm <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 274 x 17</span><span>
 #&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> APPLE… 2020-01-13 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
@@ -219,7 +223,7 @@ which returns data for all administrative divisions.</p></td>
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> APPLE… 2020-01-20 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> APPLE… 2020-01-21 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> APPLE… 2020-01-22 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
-#&gt; </span><span style='color: #949494;'># … with 211 more rows, and 10 more variables: transit_stations </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'># … with 264 more rows, and 10 more variables: transit_stations </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   residential </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, workplace </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, parks </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, retail_recreation </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   grocery_pharmacy </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, gid </span><span style='color: #949494;font-style: italic;'>&lt;pq__text&gt;</span><span style='color: #949494;'>, transit </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, walking </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   driving </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
@@ -239,7 +243,7 @@ which returns data for all administrative divisions.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

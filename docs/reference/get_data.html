@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -149,21 +149,47 @@
     </div>
 
     <pre class="usage"><span class='fu'>get_data</span>(
-  <span class='no'>tbl_name</span>,
-  <span class='kw'>.source</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ccode</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>.start</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>.end</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(),
-  <span class='kw'>adm</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+  <span class='kw'>tbl_name</span>,
+  .source = <span class='kw'>NULL</span>,
+  ccode = <span class='kw'>NULL</span>,
+  .start = <span class='kw'>NULL</span>,
+  .end = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(),
+  adm = <span class='kw'>NULL</span>
+)
+
+<span class='fu'>get_data_epidemiology</span>(
+  .source = <span class='kw'>NULL</span>,
+  ccode = <span class='kw'>NULL</span>,
+  .start = <span class='kw'>NULL</span>,
+  .end = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(),
+  adm = <span class='kw'>NULL</span>
+)
+
+<span class='fu'>get_data_weather</span>(
+  .source = <span class='kw'>NULL</span>,
+  ccode = <span class='kw'>NULL</span>,
+  .start = <span class='kw'>NULL</span>,
+  .end = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(),
+  adm = <span class='kw'>NULL</span>
+)
+
+<span class='fu'>get_data_mobility</span>(
+  .source = <span class='kw'>NULL</span>,
+  ccode = <span class='kw'>NULL</span>,
+  .start = <span class='kw'>NULL</span>,
+  .end = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(),
+  adm = <span class='kw'>NULL</span>
+)
+
+<span class='fu'>get_data_response</span>(ccode = <span class='kw'>NULL</span>, .start = <span class='kw'>NULL</span>, .end = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(), adm = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>tbl_name</th>
-      <td><p>Name of table available in OxCOVID19 Database. Should be
-one of the table names given by a call to <a href='list_tables.html'>list_tables</a>.</p></td>
+      <td><p>Name of table available in <strong>OxCOVID19 Database</strong>. Should be
+one of the table names given by a call to <code><a href='list_tables.html'>list_tables()</a></code>.</p></td>
     </tr>
     <tr>
       <th>.source</th>
@@ -173,19 +199,22 @@ which returns data from specified table from all data sources.</p></td>
     </tr>
     <tr>
       <th>ccode</th>
-      <td><p>Three character ISO country code for country to which data is
-required. Defaults to NULL which returns data for all countries.</p></td>
+      <td><p>A character value of country name specified as either a two
+character ISO country code, or a three character ISO country code, or any
+of the country names specified in the countrycode package, or a
+vector of country names using a combination of these country name variants.
+Defaults to NULL which returns data for all countries in the database.</p></td>
     </tr>
     <tr>
       <th>.start</th>
-      <td><p>Starting date in <code>YYYY-MM-DD</code> character format of data
+      <td><p>Starting date (in <code>YYYY-MM-DD</code> character format) of data
 to retrieve. Defaults to NULL which returns data from the earliest date
 available.</p></td>
     </tr>
     <tr>
       <th>.end</th>
-      <td><p>End date in <code>YYYY-MM-DD</code> character format of data to
-retrieve. Defaults to current date as speciifed by <a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a>.</p></td>
+      <td><p>End date (in <code>YYYY-MM-DD</code> character format) of data to
+retrieve. Defaults to current date as speciifed by <code><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date()</a></code>.</p></td>
     </tr>
     <tr>
       <th>adm</th>
@@ -199,36 +228,145 @@ which returns data for all administrative divisions.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble of specified table dataset based on specified parameters. If
-  all parameters are kept to default, output is the same as that when
-  <a href='get_table.html'>get_table</a> is used with <code>tbl_name</code> based on specified table.
-  However, this function will retrieve the full data into a local tibble
-  which will take considerable time. It is therefore recommended that
-  this function be used when the specific data requirements are already
-  clearly determined. For data exploration, <a href='get_table.html'>get_table</a> should be used
-  instead.</p>
+all parameters are kept to default, output is the same as that when
+<code><a href='get_table.html'>get_table()</a></code> is used with <code>tbl_name</code> based on specified table.
+However, this function will retrieve the full data into a local tibble
+which will take considerable time. It is therefore recommended that
+this function be used when the specific data requirements are already
+clearly determined. For data exploration, <code><a href='get_table.html'>get_table()</a></code> should be used
+instead.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Get epidemiology data for the the whole of the UK from the ECDC for all</span>
 <span class='co'>## available dates</span>
-<span class='fu'>get_data</span>(<span class='kw'>tbl_name</span> <span class='kw'>=</span> <span class='st'>"epidemiology"</span>,
-         <span class='kw'>.source</span> <span class='kw'>=</span> <span class='st'>"WRD_ECDC"</span>,
-         <span class='kw'>ccode</span> <span class='kw'>=</span> <span class='st'>"GBR"</span>,
-         <span class='kw'>adm</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 235 x 15</span><span>
+<span class='fu'>get_data</span>(tbl_name = <span class='st'>"epidemiology"</span>,
+         .source = <span class='st'>"WRD_ECDC"</span>,
+         ccode = <span class='st'>"GBR"</span>,
+         adm = <span class='fl'>0</span>)
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 300 x 15</span><span>
 #&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> WRD_E… 2020-08-01 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> WRD_E… 2020-06-28 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> WRD_E… 2020-07-04 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> WRD_E… 2020-07-07 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> WRD_E… 2020-08-31 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> WRD_E… 2020-08-01 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> WRD_E… 2020-06-28 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> WRD_E… 2020-07-04 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 5</span><span> WRD_E… 2020-06-29 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 6</span><span> WRD_E… 2020-02-26 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 7</span><span> WRD_E… 2020-02-27 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> WRD_E… 2020-06-13 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> WRD_E… 2020-06-24 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> WRD_E… 2020-07-06 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #949494;'># … with 225 more rows, and 7 more variables: confirmed </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, recovered </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'># … with 290 more rows, and 7 more variables: confirmed </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, recovered </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   dead </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, hospitalised </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, hospitalised_icu </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, quarantined </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   gid </span><span style='color: #949494;font-style: italic;'>&lt;pq__text&gt;</span><span></div><div class='input'>
+<span class='co'>## Get epidemiology data for the the whole of the UK from the ECDC for all</span>
+<span class='co'>## available dates</span>
+<span class='fu'>get_data_epidemiology</span>(.source = <span class='st'>"WRD_ECDC"</span>,
+                      ccode = <span class='st'>"UK"</span>,
+                      adm = <span class='fl'>0</span>)
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 300 x 15</span><span>
+#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> WRD_E… 2020-08-31 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> WRD_E… 2020-08-01 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> WRD_E… 2020-06-28 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> WRD_E… 2020-07-04 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> WRD_E… 2020-06-29 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> WRD_E… 2020-02-26 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> WRD_E… 2020-02-27 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> WRD_E… 2020-06-13 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> WRD_E… 2020-06-24 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> WRD_E… 2020-07-06 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #949494;'># … with 290 more rows, and 7 more variables: confirmed </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, recovered </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   dead </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, hospitalised </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, hospitalised_icu </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, quarantined </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   gid </span><span style='color: #949494;font-style: italic;'>&lt;pq__text&gt;</span><span></div><div class='input'>
+<span class='co'>## Get weather data for the the whole of the UK for all available dates</span>
+<span class='fu'>get_data_weather</span>(ccode = <span class='st'>"GBR"</span>,
+                 adm = <span class='fl'>0</span>)
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 0 x 56</span><span>
+#&gt; </span><span style='color: #949494;'># … with 56 variables: source </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, date </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span style='color: #949494;'>, gid </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, country </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   countrycode </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, adm_area_1 </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, adm_area_2 </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, adm_area_3 </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   samplesize </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, precipitation_max_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, precipitation_max_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   precipitation_mean_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, precipitation_mean_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   humidity_max_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, humidity_max_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, humidity_mean_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   humidity_mean_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, humidity_min_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, humidity_min_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   sunshine_max_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, sunshine_max_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, sunshine_mean_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   sunshine_mean_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, temperature_max_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   temperature_max_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, temperature_mean_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   temperature_mean_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, temperature_min_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   temperature_min_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, windgust_max_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, windgust_max_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   windgust_mean_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, windgust_mean_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, windgust_min_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   windgust_min_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, windspeed_max_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, windspeed_max_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   windspeed_mean_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, windspeed_mean_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   windspeed_min_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, windspeed_min_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   cloudaltitude_max_valid </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, cloudaltitude_max_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   cloudaltitude_max_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, cloudaltitude_min_valid </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   cloudaltitude_min_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, cloudaltitude_min_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   cloudaltitude_mean_valid </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, cloudaltitude_mean_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   cloudaltitude_mean_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, cloudfrac_max_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   cloudfrac_max_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, cloudfrac_min_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, cloudfrac_min_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   cloudfrac_mean_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, cloudfrac_mean_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
+<span class='co'>## Get mobility data for the the whole of the UK from Apple for all</span>
+<span class='co'>## available dates</span>
+<span class='fu'>get_data_mobility</span>(.source = <span class='st'>"APPLE_MOBILITY"</span>,
+                  ccode = <span class='st'>"United Kingdom"</span>,
+                  adm = <span class='fl'>0</span>)
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 274 x 17</span><span>
+#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> APPLE… 2020-01-13 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> APPLE… 2020-01-14 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> APPLE… 2020-01-15 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> APPLE… 2020-01-16 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> APPLE… 2020-01-17 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> APPLE… 2020-01-18 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> APPLE… 2020-01-19 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> APPLE… 2020-01-20 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> APPLE… 2020-01-21 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> APPLE… 2020-01-22 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #949494;'># … with 264 more rows, and 10 more variables: transit_stations </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   residential </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, workplace </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, parks </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, retail_recreation </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   grocery_pharmacy </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, gid </span><span style='color: #949494;font-style: italic;'>&lt;pq__text&gt;</span><span style='color: #949494;'>, transit </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, walking </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   driving </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
+<span class='co'>## Get government response data for the the whole of the UK for all</span>
+<span class='co'>## available dates</span>
+<span class='fu'>get_data_response</span>(ccode = <span class='st'>"UK"</span>,
+                  adm = <span class='fl'>0</span>)
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 287 x 46</span><span>
+#&gt;    source date       gid   country countrycode adm_area_1 adm_area_2 adm_area_3
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> GOVTR… 2020-01-01 GBR   United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> GOVTR… 2020-01-02 GBR   United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> GOVTR… 2020-01-03 GBR   United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> GOVTR… 2020-01-04 GBR   United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> GOVTR… 2020-01-05 GBR   United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> GOVTR… 2020-01-06 GBR   United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> GOVTR… 2020-01-07 GBR   United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> GOVTR… 2020-01-08 GBR   United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> GOVTR… 2020-01-09 GBR   United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> GOVTR… 2020-01-10 GBR   United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>        
+#&gt; </span><span style='color: #949494;'># … with 277 more rows, and 38 more variables: c1_school_closing </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   c1_flag </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, c2_workplace_closing </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, c2_flag </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   c3_cancel_public_events </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, c3_flag </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   c4_restrictions_on_gatherings </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, c4_flag </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   c5_close_public_transport </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, c5_flag </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   c6_stay_at_home_requirements </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, c6_flag </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   c7_restrictions_on_internal_movement </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, c7_flag </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   c8_international_travel_controls </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, e1_income_support </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   e1_flag </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, e2_debtcontract_relief </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, e3_fiscal_measures </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   e4_international_support </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, h1_public_information_campaigns </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   h1_flag </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, h2_testing_policy </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, h3_contact_tracing </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   h4_emergency_investment_in_healthcare </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   h5_investment_in_vaccines </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, m1_wildcard </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, stringency_index </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   stringency_indexfordisplay </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, stringency_legacy_index </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   stringency_legacy_indexfordisplay </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, government_response_index </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   government_response_index_for_display </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   containment_health_index </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, containment_health_index_for_display </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   economic_support_index </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, economic_support_index_for_display </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   actions </span><span style='color: #949494;font-style: italic;'>&lt;pq_jsonb&gt;</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -245,7 +383,7 @@ which returns data for all administrative divisions.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

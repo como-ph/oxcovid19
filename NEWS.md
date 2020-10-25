@@ -1,7 +1,6 @@
-# oxcovid19 0.1.2.9000
+# oxcovid19 0.1.2
 
-This is the current development version (unreleased) of `oxcovid19`. In this 
-development version:
+This is the third CRAN release of `oxcovid19`. In this release:
 
 ## Enhancements
 
