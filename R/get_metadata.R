@@ -3,7 +3,7 @@
 #'
 #' Get remote table metadata
 #'
-#' @param x An object of class \code{tbl_lazy} produced by \link{get_table}
+#' @param x An object of class `tbl_lazy` produced by [get_table()]
 #'
 #' @return A named list of remote table metadata
 #'
