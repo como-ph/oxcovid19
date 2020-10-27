@@ -113,15 +113,15 @@
 <a href="#retrieving-epidemiology-data-for-single-source" class="anchor"></a>Retrieving epidemiology data for single source</h2>
 <p>This is similar to what we have already demonstrated in previous vignettes. Here we retrieve the epidemiology table and query it for records coming from <code>CHN_ICL</code> source and for records at the subnational level for China.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/como-ph/oxcovid19">oxcovid19</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">magrittr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/como-ph/oxcovid19">oxcovid19</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">magrittr</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(tbl_name = <span class="st">"epidemiology"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">source</span> <span class="op">==</span> <span class="st">"CHN_ICL"</span>,
-         <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="kw">adm_area_1</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="kw">date</span>))
+<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span><span class="op">(</span>tbl_name <span class="op">=</span> <span class="st">"epidemiology"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op">==</span> <span class="st">"CHN_ICL"</span>,
+         <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">adm_area_1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # Source:     lazy query [?? x 15]</span>
 <span class="co">#&gt; # Database:   postgres [covid19@covid19db.org:5432/covid19]</span>
 <span class="co">#&gt; # Ordered by: desc(date)</span>
@@ -139,23 +139,21 @@
 <span class="co">#&gt; 10 CHN_I… 2020-03-31 China   CHN         Shandong   &lt;NA&gt;       &lt;NA&gt;           NA</span>
 <span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span>
 <span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span>
-<span class="co">#&gt; #   gid &lt;chr&gt;</span>
-</pre></div>
+<span class="co">#&gt; #   gid &lt;chr&gt;</span></pre></div>
 </div>
 <div id="extracting-only-recent-data---total-per-region" class="section level2">
 <h2 class="hasAnchor">
 <a href="#extracting-only-recent-data---total-per-region" class="anchor"></a>Extracting only recent data - total per region</h2>
 <p>Then, here, we get the latest records for each subnational unit.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">chn_recent_region</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(tbl_name = <span class="st">"epidemiology"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">source</span> <span class="op">==</span> <span class="st">"CHN_ICL"</span>,
-         <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="kw">adm_area_1</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">adm_area_1</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span>(<span class="kw">date</span>) <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span>(<span class="kw">date</span>), na.rm = <span class="fl">TRUE</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="kw">date</span>, <span class="kw">country</span>, <span class="kw">adm_area_1</span>, <span class="kw">confirmed</span>, <span class="kw">recovered</span>, <span class="kw">dead</span>, <span class="kw">gid</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>()
-</pre></div>
+<span class="va">chn_recent_region</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span><span class="op">(</span>tbl_name <span class="op">=</span> <span class="st">"epidemiology"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op">==</span> <span class="st">"CHN_ICL"</span>,
+         <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">adm_area_1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">adm_area_1</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">country</span>, <span class="va">adm_area_1</span>, <span class="va">confirmed</span>, <span class="va">recovered</span>, <span class="va">dead</span>, <span class="va">gid</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>#&gt; # A tibble: 31 x 7
 #&gt; # Groups:   adm_area_1 [31]
 #&gt;    adm_area_1 date       country confirmed recovered  dead gid       
@@ -177,10 +175,9 @@
 <a href="#retrieving-administrative-division-level-1-for-single-country" class="anchor"></a>Retrieving administrative division level 1 for single country</h2>
 <p>In this step, we retrieve the spatial layer for China at subnational level from the server using the function <code>get_layer</code>. The resulting output is an <code>sf</code> class object.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="kw">chn_admin_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_layer.html">get_layer</a></span>(ccode = <span class="st">"CHN"</span>, adm = <span class="fl">1</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>()
-</pre></div>
+<span class="va">chn_admin_1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_layer.html">get_layer</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="st">"CHN"</span>, adm <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>#&gt; Simple feature collection with 31 features and 14 fields
 #&gt; geometry type:  GEOMETRY
 #&gt; dimension:      XY
@@ -249,14 +246,13 @@
 <p>Using the epidemiology data and the spatial layer we’ve retrieved, we create an overall spatial layer object for epidemiology data.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit">
 <span class="co">## Load sf package for spatial objects</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://r-spatial.github.io/sf">sf</a></span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-spatial.github.io/sf/">sf</a></span><span class="op">)</span>
 
-<span class="kw">chn_recent_region</span> <span class="op">&lt;-</span> <span class="kw">chn_recent_region</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(gid = <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span>(<span class="kw">stringr</span>::<span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span>(string = <span class="kw">gid</span>, 
-                                                    pattern = <span class="st">"\\{|\\}"</span>))) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span>(y = <span class="kw">chn_admin_1</span>, by = <span class="st">"gid"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/sf/man/st_as_sf.html">st_as_sf</a></span>()
-</pre></div>
+<span class="va">chn_recent_region</span> <span class="op">&lt;-</span> <span class="va">chn_recent_region</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gid <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span>string <span class="op">=</span> <span class="va">gid</span>, 
+                                                    pattern <span class="op">=</span> <span class="st">"\\{|\\}"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">chn_admin_1</span>, by <span class="op">=</span> <span class="st">"gid"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <pre><code>#&gt; Simple feature collection with 31 features and 20 fields
 #&gt; geometry type:  GEOMETRY
 #&gt; dimension:      XY
@@ -286,28 +282,27 @@
 <a href="#plot-epidemiology-total-confirmed" class="anchor"></a>Plot epidemiology total confirmed</h2>
 <p>Using the spatial layer object of epidemiology data in subnational units of China, we can create choropleth maps. Here we map the confirmed cases per subnational unit in China.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit">
-<span class="kw">chn_recent_region</span> <span class="op">&lt;-</span> <span class="kw">chn_recent_region</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(confirmed_class = <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span>(<span class="kw">chn_recent_region</span><span class="op">$</span><span class="kw">confirmed</span>, 
-                               breaks = <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span>(x = <span class="kw">chn_recent_region</span><span class="op">$</span><span class="kw">confirmed</span>, 
-                                                 probs = <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(from = <span class="fl">0</span>, 
-                                                             to = <span class="fl">1</span>, 
-                                                             by = <span class="fl">0.1</span>)),
-                               include.lowest = <span class="fl">TRUE</span>))
+<span class="va">chn_recent_region</span> <span class="op">&lt;-</span> <span class="va">chn_recent_region</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>confirmed_class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">chn_recent_region</span><span class="op">$</span><span class="va">confirmed</span>, 
+                               breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">chn_recent_region</span><span class="op">$</span><span class="va">confirmed</span>, 
+                                                 probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, 
+                                                             to <span class="op">=</span> <span class="fl">1</span>, 
+                                                             by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span><span class="op">)</span>,
+                               include.lowest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(<span class="kw">chn_recent_region</span><span class="op">$</span><span class="kw">confirmed_class</span>) <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(<span class="kw">chn_recent_region</span><span class="op">$</span><span class="kw">confirmed_class</span>) <span class="op">%&gt;%</span>
-  <span class="kw">stringr</span>::<span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(pattern = <span class="st">","</span>, replacement = <span class="st">" - "</span>) <span class="op">%&gt;%</span>
-  <span class="kw">stringr</span>::<span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(pattern = <span class="st">"1.26e\\+03"</span>, replacement = <span class="st">"1257"</span>) <span class="op">%&gt;%</span>
-  <span class="kw">stringr</span>::<span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(pattern = <span class="st">"6.78e\\+04"</span>, replacement = <span class="st">"67802"</span>) <span class="op">%&gt;%</span>
-  <span class="kw">stringr</span>::<span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span>(pattern = <span class="st">"\\[|\\]|\\("</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">chn_recent_region</span><span class="op">$</span><span class="va">confirmed_class</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">chn_recent_region</span><span class="op">$</span><span class="va">confirmed_class</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">","</span>, replacement <span class="op">=</span> <span class="st">" - "</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"1.26e\\+03"</span>, replacement <span class="op">=</span> <span class="st">"1257"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"6.78e\\+04"</span>, replacement <span class="op">=</span> <span class="st">"67802"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"\\[|\\]|\\("</span><span class="op">)</span>
   
-<span class="fu"><a href="https://rdrr.io/pkg/sf/man/plot.html">plot</a></span>(<span class="kw">chn_recent_region</span>[<span class="st">"confirmed_class"</span>],
-     main = <span class="st">""</span>,
-     pal = <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span>(colors = <span class="kw">RColorBrewer</span>::<span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span>(n = <span class="fl">5</span>, 
-                                                              name = <span class="st">"Reds"</span>))(<span class="fl">10</span>),
-     nbreaks = <span class="fl">10</span>,
-     breaks = <span class="st">"quantile"</span>,
-     key.width = <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html">lcm</a></span>(<span class="fl">5</span>))
-</pre></div>
+<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">chn_recent_region</span><span class="op">[</span><span class="st">"confirmed_class"</span><span class="op">]</span>,
+     main <span class="op">=</span> <span class="st">""</span>,
+     pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu">RColorBrewer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span>, 
+                                                              name <span class="op">=</span> <span class="st">"Reds"</span><span class="op">)</span><span class="op">)</span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>,
+     nbreaks <span class="op">=</span> <span class="fl">10</span>,
+     breaks <span class="op">=</span> <span class="st">"quantile"</span>,
+     key.width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html">lcm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></pre></div>
 <p><img src="../man/figures/visualisation_china_1.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
 <div id="plot-epidemiology-total-death" class="section level2">
@@ -315,28 +310,27 @@
 <a href="#plot-epidemiology-total-death" class="anchor"></a>Plot epidemiology total death</h2>
 <p>Here we map the deaths per subnational unit in China.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit">
-<span class="kw">chn_recent_region</span> <span class="op">&lt;-</span> <span class="kw">chn_recent_region</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(dead_class = <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span>(<span class="kw">chn_recent_region</span><span class="op">$</span><span class="kw">dead</span>, 
-                               breaks = <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span>(x = <span class="kw">chn_recent_region</span><span class="op">$</span><span class="kw">dead</span>, 
-                                                probs = <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span>(from = <span class="fl">0</span>, 
-                                                            to = <span class="fl">1</span>, 
-                                                            by = <span class="fl">0.1</span>),
-                                                 na.rm = <span class="fl">TRUE</span>)),
-                               include.lowest = <span class="fl">TRUE</span>))
+<span class="va">chn_recent_region</span> <span class="op">&lt;-</span> <span class="va">chn_recent_region</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>dead_class <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">chn_recent_region</span><span class="op">$</span><span class="va">dead</span>, 
+                               breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html">unique</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">chn_recent_region</span><span class="op">$</span><span class="va">dead</span>, 
+                                                probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span>from <span class="op">=</span> <span class="fl">0</span>, 
+                                                            to <span class="op">=</span> <span class="fl">1</span>, 
+                                                            by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span>,
+                                                 na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>,
+                               include.lowest <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(<span class="kw">chn_recent_region</span><span class="op">$</span><span class="kw">dead_class</span>) <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span>(<span class="kw">chn_recent_region</span><span class="op">$</span><span class="kw">dead_class</span>) <span class="op">%&gt;%</span>
-  <span class="kw">stringr</span>::<span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(pattern = <span class="st">","</span>, replacement = <span class="st">" - "</span>) <span class="op">%&gt;%</span>
-  <span class="kw">stringr</span>::<span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span>(pattern = <span class="st">"3.19e\\+03"</span>, replacement = <span class="st">"3193"</span>) <span class="op">%&gt;%</span>
-  <span class="kw">stringr</span>::<span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span>(pattern = <span class="st">"\\[|\\]|\\("</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">chn_recent_region</span><span class="op">$</span><span class="va">dead_class</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">chn_recent_region</span><span class="op">$</span><span class="va">dead_class</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">","</span>, replacement <span class="op">=</span> <span class="st">" - "</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html">str_replace_all</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"3.19e\\+03"</span>, replacement <span class="op">=</span> <span class="st">"3193"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">stringr</span><span class="fu">::</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_remove.html">str_remove_all</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"\\[|\\]|\\("</span><span class="op">)</span>
   
-<span class="fu"><a href="https://rdrr.io/pkg/sf/man/plot.html">plot</a></span>(<span class="kw">chn_recent_region</span>[<span class="st">"dead_class"</span>],
-     main = <span class="st">""</span>,
-     pal = <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span>(colors = <span class="kw">RColorBrewer</span>::<span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span>(n = <span class="fl">5</span>, 
-                                                              name = <span class="st">"Reds"</span>))(<span class="fl">7</span>),
-     nbreaks = <span class="fl">7</span>,
-     breaks = <span class="st">"quantile"</span>,
-     key.width = <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html">lcm</a></span>(<span class="fl">5</span>))
-</pre></div>
+<span class="fu"><a href="https://r-spatial.github.io/sf/reference/plot.html">plot</a></span><span class="op">(</span><span class="va">chn_recent_region</span><span class="op">[</span><span class="st">"dead_class"</span><span class="op">]</span>,
+     main <span class="op">=</span> <span class="st">""</span>,
+     pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/colorRamp.html">colorRampPalette</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu">RColorBrewer</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RColorBrewer/man/ColorBrewer.html">brewer.pal</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">5</span>, 
+                                                              name <span class="op">=</span> <span class="st">"Reds"</span><span class="op">)</span><span class="op">)</span><span class="op">(</span><span class="fl">7</span><span class="op">)</span>,
+     nbreaks <span class="op">=</span> <span class="fl">7</span>,
+     breaks <span class="op">=</span> <span class="st">"quantile"</span>,
+     key.width <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/graphics/layout.html">lcm</a></span><span class="op">(</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span></pre></div>
 <p><img src="../man/figures/visualisation_china_2.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
 <div id="check-monotonicity-of-data---confirmed" class="section level2">
@@ -345,46 +339,43 @@
 <p>In the example from the Oxford COVID-19 Database, epidemiology data was checked for monotonicity. It is expected that epidemiology data is monotonic as these variables are expected to increase over time given that the information is cumulative. Monotonicity was checked by plotting a time series of cases and deaths with the expectation that the line plots will be on an increasing trajectory over time. Any instance of dips in the time series would indicate violation of monotonicity and an indication of issues with the data.</p>
 <p>In the Oxford COVID-19 Database example, time series line plot for each subnational unit was plotted on the same axis as shown below.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(tbl_name = <span class="st">"epidemiology"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">source</span> <span class="op">==</span> <span class="st">"CHN_ICL"</span>,
-         <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="kw">adm_area_1</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="kw">date</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(mapping = <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(x = <span class="kw">date</span>, y = <span class="kw">confirmed</span>, colour = <span class="kw">adm_area_1</span>)) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_colour_discrete</a></span>(name = <span class="kw">NULL</span>) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>()
-</pre></div>
+<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span><span class="op">(</span>tbl_name <span class="op">=</span> <span class="st">"epidemiology"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op">==</span> <span class="st">"CHN_ICL"</span>,
+         <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">adm_area_1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">confirmed</span>, colour <span class="op">=</span> <span class="va">adm_area_1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_colour_discrete</a></span><span class="op">(</span>name <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p><img src="../man/figures/visualisation_china_3.png" width="75%" style="display: block; margin: auto;"></p>
 <p>Given that Hubei province had the most cases compared to all subnational units, the plot shows one time series curve with significantly more cases that anywhere else whilst all other units had a flat time series curve. This is not necessarily a good way to check monotonicity in all units as only Hubei province time series information is shown clearly.</p>
 <p>In the plot below, we try to more clearly distinguish the time series for each subnational unit by showing a line plot for each unit separate. However, this only solves the issue of time series line plots being clearly demarcated from others. The curves, however, still does not show the true pattern for all units other than Hubei.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(tbl_name = <span class="st">"epidemiology"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">source</span> <span class="op">==</span> <span class="st">"CHN_ICL"</span>,
-         <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="kw">adm_area_1</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="kw">date</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(mapping = <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(x = <span class="kw">date</span>, y = <span class="kw">confirmed</span>)) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( <span class="op">~</span> <span class="kw">adm_area_1</span>, ncol = <span class="fl">4</span>) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()
-</pre></div>
+<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span><span class="op">(</span>tbl_name <span class="op">=</span> <span class="st">"epidemiology"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op">==</span> <span class="st">"CHN_ICL"</span>,
+         <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">adm_area_1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">confirmed</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span> <span class="op">~</span> <span class="va">adm_area_1</span>, ncol <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p><img src="../man/figures/visualisation_china_4.png" width="75%" style="display: block; margin: auto;"></p>
 <p>We address this by allowing the y-axis for each subnational time series plot to be appropriate for the data for the specific unit as below. Here we are able to see the time series plots for each subunit and able to verify whether monotonicity is observed.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit">
-<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(tbl_name = <span class="st">"epidemiology"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">source</span> <span class="op">==</span> <span class="st">"CHN_ICL"</span>,
-         <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="kw">adm_area_1</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="kw">date</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(mapping = <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(x = <span class="kw">date</span>, y = <span class="kw">confirmed</span>)) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( <span class="op">~</span> <span class="kw">adm_area_1</span>, ncol = <span class="fl">4</span>, scales = <span class="st">"free_y"</span>) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()
-</pre></div>
+<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span><span class="op">(</span>tbl_name <span class="op">=</span> <span class="st">"epidemiology"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op">==</span> <span class="st">"CHN_ICL"</span>,
+         <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">adm_area_1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">confirmed</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span> <span class="op">~</span> <span class="va">adm_area_1</span>, ncol <span class="op">=</span> <span class="fl">4</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p><img src="../man/figures/visualisation_china_5.png" width="75%" style="display: block; margin: auto;"></p>
 <p>Unfortunately, one subnational unit (Shaanxi Province) has a dip in cases within the time series plot which breaks monotonicity. This would indicate something inconsistent with the data. This needs to be checked.</p>
 </div>
@@ -393,28 +384,26 @@
 <a href="#check-monotonicity-of-data---dead" class="anchor"></a>Check monotonicity of data - dead</h2>
 <p>In the next plots, we perform the same procedures but with the data on deaths. All subnational units demonstrate monotonicity with regard to number of deaths.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit">
-<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(tbl_name = <span class="st">"epidemiology"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">source</span> <span class="op">==</span> <span class="st">"CHN_ICL"</span>,
-         <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="kw">adm_area_1</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="kw">date</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(mapping = <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(x = <span class="kw">date</span>, y = <span class="kw">dead</span>)) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( <span class="op">~</span> <span class="kw">adm_area_1</span>, ncol = <span class="fl">4</span>) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()
-</pre></div>
+<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span><span class="op">(</span>tbl_name <span class="op">=</span> <span class="st">"epidemiology"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op">==</span> <span class="st">"CHN_ICL"</span>,
+         <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">adm_area_1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">dead</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span> <span class="op">~</span> <span class="va">adm_area_1</span>, ncol <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p><img src="../man/figures/visualisation_china_6.png" width="75%" style="display: block; margin: auto;"></p>
 <div class="sourceCode" id="cb14"><pre class="downlit">
-<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="op">%&gt;%</span>
-  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(tbl_name = <span class="st">"epidemiology"</span>) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">source</span> <span class="op">==</span> <span class="st">"CHN_ICL"</span>,
-         <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="kw">adm_area_1</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="kw">date</span>)) <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(mapping = <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(x = <span class="kw">date</span>, y = <span class="kw">dead</span>)) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span>() <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>( <span class="op">~</span> <span class="kw">adm_area_1</span>, ncol = <span class="fl">4</span>, scales = <span class="st">"free_y"</span>) <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>()
-</pre></div>
+<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span><span class="op">(</span>tbl_name <span class="op">=</span> <span class="st">"epidemiology"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op">==</span> <span class="st">"CHN_ICL"</span>,
+         <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">adm_area_1</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">date</span>, y <span class="op">=</span> <span class="va">dead</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span> <span class="op">~</span> <span class="va">adm_area_1</span>, ncol <span class="op">=</span> <span class="fl">4</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <p><img src="../man/figures/visualisation_china_7.png" width="75%" style="display: block; margin: auto;"></p>
 </div>
   </div>

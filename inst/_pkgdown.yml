@@ -32,7 +32,7 @@ reference:
 
   - title: Explore
     contents:
-    - get_table
+    - starts_with("get_table")
     - get_layer
 
   - title: Retrieve

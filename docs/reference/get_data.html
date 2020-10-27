@@ -148,40 +148,40 @@
     <p>Get data from specified table based on specified query parameters</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_data</span>(
-  <span class='kw'>tbl_name</span>,
-  .source = <span class='kw'>NULL</span>,
-  ccode = <span class='kw'>NULL</span>,
-  .start = <span class='kw'>NULL</span>,
-  .end = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(),
-  adm = <span class='kw'>NULL</span>
-)
+    <pre class="usage"><span class='fu'>get_data</span><span class='op'>(</span>
+  <span class='va'>tbl_name</span>,
+  .source <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ccode <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .start <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .end <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span>,
+  adm <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>get_data_epidemiology</span>(
-  .source = <span class='kw'>NULL</span>,
-  ccode = <span class='kw'>NULL</span>,
-  .start = <span class='kw'>NULL</span>,
-  .end = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(),
-  adm = <span class='kw'>NULL</span>
-)
+<span class='fu'>get_data_epidemiology</span><span class='op'>(</span>
+  .source <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ccode <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .start <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .end <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span>,
+  adm <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>get_data_weather</span>(
-  .source = <span class='kw'>NULL</span>,
-  ccode = <span class='kw'>NULL</span>,
-  .start = <span class='kw'>NULL</span>,
-  .end = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(),
-  adm = <span class='kw'>NULL</span>
-)
+<span class='fu'>get_data_weather</span><span class='op'>(</span>
+  .source <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ccode <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .start <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .end <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span>,
+  adm <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>get_data_mobility</span>(
-  .source = <span class='kw'>NULL</span>,
-  ccode = <span class='kw'>NULL</span>,
-  .start = <span class='kw'>NULL</span>,
-  .end = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(),
-  adm = <span class='kw'>NULL</span>
-)
+<span class='fu'>get_data_mobility</span><span class='op'>(</span>
+  .source <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ccode <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .start <span class='op'>=</span> <span class='cn'>NULL</span>,
+  .end <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span>,
+  adm <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span>
 
-<span class='fu'>get_data_response</span>(ccode = <span class='kw'>NULL</span>, .start = <span class='kw'>NULL</span>, .end = <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>(), adm = <span class='kw'>NULL</span>)</pre>
+<span class='fu'>get_data_response</span><span class='op'>(</span>ccode <span class='op'>=</span> <span class='cn'>NULL</span>, .start <span class='op'>=</span> <span class='cn'>NULL</span>, .end <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span>, adm <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -242,11 +242,11 @@ instead.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Get epidemiology data for the the whole of the UK from the ECDC for all</span>
 <span class='co'>## available dates</span>
-<span class='fu'>get_data</span>(tbl_name = <span class='st'>"epidemiology"</span>,
-         .source = <span class='st'>"WRD_ECDC"</span>,
-         ccode = <span class='st'>"GBR"</span>,
-         adm = <span class='fl'>0</span>)
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 300 x 15</span><span>
+<span class='fu'>get_data</span><span class='op'>(</span>tbl_name <span class='op'>=</span> <span class='st'>"epidemiology"</span>,
+         .source <span class='op'>=</span> <span class='st'>"WRD_ECDC"</span>,
+         ccode <span class='op'>=</span> <span class='st'>"GBR"</span>,
+         adm <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 302 x 15</span><span>
 #&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> WRD_E… 2020-08-31 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
@@ -259,15 +259,15 @@ instead.</p>
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> WRD_E… 2020-06-13 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> WRD_E… 2020-06-24 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> WRD_E… 2020-07-06 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #949494;'># … with 290 more rows, and 7 more variables: confirmed </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, recovered </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'># … with 292 more rows, and 7 more variables: confirmed </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, recovered </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   dead </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, hospitalised </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, hospitalised_icu </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, quarantined </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   gid </span><span style='color: #949494;font-style: italic;'>&lt;pq__text&gt;</span><span></div><div class='input'>
 <span class='co'>## Get epidemiology data for the the whole of the UK from the ECDC for all</span>
 <span class='co'>## available dates</span>
-<span class='fu'>get_data_epidemiology</span>(.source = <span class='st'>"WRD_ECDC"</span>,
-                      ccode = <span class='st'>"UK"</span>,
-                      adm = <span class='fl'>0</span>)
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 300 x 15</span><span>
+<span class='fu'>get_data_epidemiology</span><span class='op'>(</span>.source <span class='op'>=</span> <span class='st'>"WRD_ECDC"</span>,
+                      ccode <span class='op'>=</span> <span class='st'>"UK"</span>,
+                      adm <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 302 x 15</span><span>
 #&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span> WRD_E… 2020-08-31 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
@@ -280,12 +280,12 @@ instead.</p>
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span> WRD_E… 2020-06-13 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span> WRD_E… 2020-06-24 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span> WRD_E… 2020-07-06 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #949494;'># … with 290 more rows, and 7 more variables: confirmed </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, recovered </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'># … with 292 more rows, and 7 more variables: confirmed </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, recovered </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   dead </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, hospitalised </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, hospitalised_icu </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, quarantined </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   gid </span><span style='color: #949494;font-style: italic;'>&lt;pq__text&gt;</span><span></div><div class='input'>
 <span class='co'>## Get weather data for the the whole of the UK for all available dates</span>
-<span class='fu'>get_data_weather</span>(ccode = <span class='st'>"GBR"</span>,
-                 adm = <span class='fl'>0</span>)
+<span class='fu'>get_data_weather</span><span class='op'>(</span>ccode <span class='op'>=</span> <span class='st'>"GBR"</span>,
+                 adm <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 0 x 56</span><span>
 #&gt; </span><span style='color: #949494;'># … with 56 variables: source </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, date </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span style='color: #949494;'>, gid </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, country </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   countrycode </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, adm_area_1 </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, adm_area_2 </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, adm_area_3 </span><span style='color: #949494;font-style: italic;'>&lt;lgl&gt;</span><span style='color: #949494;'>,</span><span>
@@ -311,9 +311,9 @@ instead.</p>
 #&gt; </span><span style='color: #949494;'>#   cloudfrac_mean_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, cloudfrac_mean_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
 <span class='co'>## Get mobility data for the the whole of the UK from Apple for all</span>
 <span class='co'>## available dates</span>
-<span class='fu'>get_data_mobility</span>(.source = <span class='st'>"APPLE_MOBILITY"</span>,
-                  ccode = <span class='st'>"United Kingdom"</span>,
-                  adm = <span class='fl'>0</span>)
+<span class='fu'>get_data_mobility</span><span class='op'>(</span>.source <span class='op'>=</span> <span class='st'>"APPLE_MOBILITY"</span>,
+                  ccode <span class='op'>=</span> <span class='st'>"United Kingdom"</span>,
+                  adm <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 274 x 17</span><span>
 #&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
@@ -333,8 +333,8 @@ instead.</p>
 #&gt; </span><span style='color: #949494;'>#   driving </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
 <span class='co'>## Get government response data for the the whole of the UK for all</span>
 <span class='co'>## available dates</span>
-<span class='fu'>get_data_response</span>(ccode = <span class='st'>"UK"</span>,
-                  adm = <span class='fl'>0</span>)
+<span class='fu'>get_data_response</span><span class='op'>(</span>ccode <span class='op'>=</span> <span class='st'>"UK"</span>,
+                  adm <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 287 x 46</span><span>
 #&gt;    source date       gid   country countrycode adm_area_1 adm_area_2 adm_area_3
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     

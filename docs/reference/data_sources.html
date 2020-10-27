@@ -148,43 +148,43 @@
     <p>Data sources for OxCOVID19 Database</p>
     </div>
 
-    <pre class="usage"><span class='kw'>data_sources</span></pre>
+    <pre class="usage"><span class='va'>data_sources</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A named list of 5 tibbles of data sources.</p><dl>
-<dt><code>epidemiology</code></dt><dd><p>Tibble of sources for epidemiology table</p></dd>
-<dt><code>government_response</code></dt><dd><p>Tibble of sources for government
-response table</p></dd>
-<dt><code>country_statistics</code></dt><dd><p>Tibble of sources for country statistics
-table</p></dd>
-<dt><code>mobility</code></dt><dd><p>Tibble of sources for mobility table</p></dd>
-<dt><code>weather</code></dt><dd><p>Tibble of sources for weather table</p></dd>
+    <p>A named list of 6 tibbles of data sources for <strong>OxCOVID19 Database</strong></p><table class='table'>
+<tr><td><strong>Table name</strong></td><td><strong>Description</strong></td></tr>
+<tr><td><strong>epidemiology</strong></td><td>Tibble of sources for epidemiology table</td></tr>
+<tr><td><strong>government_response</strong></td><td>Tibble of sources for government response table</td></tr>
+<tr><td><strong>country_statistics</strong></td><td>Tibble of sources for country statistics table</td></tr>
+<tr><td><strong>mobility</strong></td><td>Tibble of sources for mobility table</td></tr>
+<tr><td><strong>weather</strong></td><td>Tibble of sources for weather table</td></tr>
+<tr><td><strong>administrative_division</strong></td><td>Tibble of sources for administrative division table</td></tr>
+</table>
 
-</dl>
 
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
     <p><a href='https://covid19.eng.ox.ac.uk/data_sources.html'>https://covid19.eng.ox.ac.uk/data_sources.html</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>data_sources</span>
+    <pre class="examples"><div class='input'><span class='va'>data_sources</span>
 </div><div class='output co'>#&gt; $epidemiology
-#&gt; <span style='color: #949494;'># A tibble: 45 x 5</span><span>
-#&gt;    Country  `Source code` Source          Features           `Terms of Use`     
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>           </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> World    WRD_ECDC      European Centr… confirmed, dead, … ECDC Copyright     
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Argenti… LAT_DSRP      covid-19_latin… confirmed, dead, … CC BY-NC-SA 4.0    
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Austral… AUS_C1A       covid-19-au     tested, confirmed… For educational an…
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Austria  EU_ZH         COVID19 EU      tested, confirmed… MIT                
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Belgium  BEL_LE        covid19-be      tested, confirmed… CC0 1.0 Universal  
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Brazil   BRA_MSHM      covid19-Brazil… confirmed (countr… Public Domain      
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Brazil   LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Canada   CAN_GOV       Public Health … tested, confirmed… Attribution requir…
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Chile    LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> China    CHN_ICL       Imperial Colle… confirmed,  dead,… with permission    
-#&gt; </span><span style='color: #949494;'># … with 35 more rows</span><span>
+#&gt; <span style='color: #949494;'># A tibble: 63 x 5</span><span>
+#&gt;    Country   `Source code` Source        Features           `Terms of Use`      
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>               
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Australia AUS_C1A       covid-19-au.… </span><span style='color: #949494;'>"</span><span>tested, confirme… </span><span style='color: #949494;'>"</span><span>Strictly for educa…
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Belgium   BEL_LE        Laurent Esch… </span><span style='color: #949494;'>"</span><span>confirmed (count… </span><span style='color: #949494;'>"</span><span>CC0 1.0 Universal …
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Belgium   BEL_SCI       Epistat       </span><span style='color: #949494;'>""</span><span>                 </span><span style='color: #949494;'>""</span><span>                  
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Brazil    BRA_MSHM      Ministerio d… </span><span style='color: #949494;'>"</span><span>confirmed (count… </span><span style='color: #949494;'>"</span><span>CC0 1.0 Universal</span><span style='color: #949494;'>"</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Canada    CAN_GOV       Government o… </span><span style='color: #949494;'>"</span><span>tested, confirme… </span><span style='color: #949494;'>"</span><span>Attribution requir…
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Switzerl… CHE_OPGOV     Swiss Canton… </span><span style='color: #949494;'>""</span><span>                 </span><span style='color: #949494;'>"</span><span>CC 4.0</span><span style='color: #949494;'>"</span><span>            
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Mainland… CHN_ICL       MRC Centre f… </span><span style='color: #949494;'>"</span><span>confirmed (both … </span><span style='color: #949494;'>"</span><span>CC BY NC ND 4.0</span><span style='color: #949494;'>"</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Germany   DEU_JPGG      Jan-Philip G… </span><span style='color: #949494;'>"</span><span>confirmed, dead</span><span style='color: #949494;'>"</span><span>  </span><span style='color: #949494;'>"</span><span>MIT</span><span style='color: #949494;'>"</span><span>               
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Spain     ESP_MS        Ministerio d… </span><span style='color: #949494;'>"</span><span>confirmed, dead,… </span><span style='color: #949494;'>"</span><span>\"Desnaturalizacio…
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Spain     ESP_MSVP      Ministerio d… </span><span style='color: #949494;'>"</span><span>confirmed, recov… </span><span style='color: #949494;'>"</span><span>Apache License 2.0</span><span style='color: #949494;'>"</span><span>
+#&gt; </span><span style='color: #949494;'># … with 53 more rows</span><span>
 #&gt; 
 #&gt; $government_response
 #&gt; </span><span style='color: #949494;'># A tibble: 1 x 3</span><span>
@@ -212,6 +212,12 @@ table</p></dd>
 #&gt;   Source             `Example Features`                    `Terms of Use`       
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                 </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                
 #&gt; </span><span style='color: #BCBCBC;'>1</span><span> Met Office Inform… precip_max_avg, temperature_max_avg,… Open Government Lice…
+#&gt; 
+#&gt; $administrative_division
+#&gt; </span><span style='color: #949494;'># A tibble: 1 x 3</span><span>
+#&gt;   Source `Example Features`                    `Terms of Use`
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                 </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>         
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> GADM   Polygons describing geographical area GADM license  
 #&gt; </div><div class='input'>
 </div></span></pre>
   </div>

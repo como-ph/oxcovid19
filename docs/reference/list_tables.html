@@ -148,7 +148,7 @@
     <p>List out names of tables available from OxCOVID19 Database</p>
     </div>
 
-    <pre class="usage"><span class='fu'>list_tables</span>(con = <span class='fu'><a href='connect_oxcovid19.html'>connect_oxcovid19</a></span>())</pre>
+    <pre class="usage"><span class='fu'>list_tables</span><span class='op'>(</span>con <span class='op'>=</span> <span class='fu'><a href='connect_oxcovid19.html'>connect_oxcovid19</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,20 +156,20 @@
     <tr>
       <th>con</th>
       <td><p>A PqConnection class object specifying the PostgreSQL connection
-to OxCOVID19 Database. This is produced by <a href='connect_oxcovid19.html'>connect_oxcovid19</a>
+to <strong>OxCOVID19 Database</strong>. This is produced by <code><a href='connect_oxcovid19.html'>connect_oxcovid19()</a></code>
 function</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A vector of table names available from OxCOVID19 Database</p>
+    <p>A vector of table names available from <strong>OxCOVID19 Database</strong></p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>list_tables</span>()
+    <pre class="examples"><div class='input'><span class='fu'>list_tables</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "weather"                   "mobility"                 
 #&gt;  [3] "epidemiology_england_msoa" "epidemiology"             
 #&gt;  [5] "government_response"       "baseline_mortality"       
