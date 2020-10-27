@@ -6,14 +6,15 @@
 \alias{oxcovid19-package}
 \title{An R API to the Oxford COVID-19 Database}
 \description{
-The OxCOVID19 Project \url{https://covid19.eng.ox.ac.uk} aims to increase
+The \href{https://covid19.eng.ox.ac.uk}{OxCOVID19 Project} aims to increase
 our understanding of the COVID-19 pandemic and elaborate possible strategies
 to reduce the impact on the society through the combined power of statistical,
-mathematical modelling, and machine learning techniques. The OxCOVID19
-Database is a large, single-centre, multimodal relational database consisting
-of information (using acknowledged sources) related to COVID-19 pandemic.
-This package provides an R-specific interface to the OxCOVID19 Database based
-on widely-used data handling and manipulation approaches in R.
+mathematical modelling, and machine learning techniques. \strong{The OxCOVID19}
+\strong{Database} is a large, single-centre, multimodal relational database
+consisting of information (using acknowledged sources) related to COVID-19
+pandemic. This package provides an R-specific interface to the
+\strong{OxCOVID19 Database} based on widely-used data handling and manipulation
+approaches in R.
 }
 \seealso{
 Useful links:

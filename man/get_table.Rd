@@ -2,26 +2,41 @@
 % Please edit documentation in R/get_table.R
 \name{get_table}
 \alias{get_table}
+\alias{get_tables}
 \title{Get specified table from OxCOVID19 Database}
 \usage{
 get_table(con, tbl_name)
+
+get_tables(con, tbl_names)
 }
 \arguments{
-\item{con}{Connection to OxCOVID19 Database. This can be specified using
-the \link{connect_oxcovid19} function.}
+\item{con}{Connection to \strong{OxCOVID19 Database}. This can be specified using
+the \code{\link[=connect_oxcovid19]{connect_oxcovid19()}} function.}
 
-\item{tbl_name}{Name of table available in OxCOVID19 Database. Should be
-one of the table names given by a call to \link{list_tables}.}
+\item{tbl_name}{Name of table available in \strong{OxCOVID19 Database}. Should be
+one of the table names given by a call to \code{\link[=list_tables]{list_tables()}}.}
+
+\item{tbl_names}{Name of tables available in \strong{OxCOVID19 Database}. Should
+be a character vector of names of tables found in the table names given by
+a call to \code{\link[=list_tables]{list_tables()}}.}
 }
 \value{
-An RPostgres_tbl object of the specified OxCOVID19 Database table
+For \code{\link[=get_table]{get_table()}}, an \code{RPostgres_tbl} object of the specified
+\strong{OxCOVID19 Database} table. For \code{\link[=get_tables]{get_tables()}}, an \code{RPostgres_tbl} object
+containing a named list of the specified \strong{OxCOVID19 Database} tables.
 }
 \description{
 Get specified table from OxCOVID19 Database
 }
 \examples{
+## Create a connection to OxCOVID19 Database
 con <- connect_oxcovid19()
+
+## Get epidemiology table
 get_table(con = con, tbl_name = "epidemiology")
+
+## Get epidemiology and weather tables
+get_tables(con = con, tbl_names = c("epidemiology", "weather"))
 
 }
 \author{

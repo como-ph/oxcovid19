@@ -7,7 +7,7 @@
 get_metadata(x)
 }
 \arguments{
-\item{x}{An object of class \code{tbl_lazy} produced by \link{get_table}}
+\item{x}{An object of class \code{tbl_lazy} produced by \code{\link[=get_table]{get_table()}}}
 }
 \value{
 A named list of remote table metadata
