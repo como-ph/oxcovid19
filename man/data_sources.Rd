@@ -5,15 +5,14 @@
 \alias{data_sources}
 \title{Data sources for OxCOVID19 Database}
 \format{
-A named list of 5 tibbles of data sources.
-\describe{
-\item{\code{epidemiology}}{Tibble of sources for epidemiology table}
-\item{\code{government_response}}{Tibble of sources for government
-response table}
-\item{\code{country_statistics}}{Tibble of sources for country statistics
-table}
-\item{\code{mobility}}{Tibble of sources for mobility table}
-\item{\code{weather}}{Tibble of sources for weather table}
+A named list of 6 tibbles of data sources for \strong{OxCOVID19 Database}\tabular{ll}{
+   \strong{Table name} \tab \strong{Description} \cr
+   \strong{epidemiology} \tab Tibble of sources for epidemiology table \cr
+   \strong{government_response} \tab Tibble of sources for government response table \cr
+   \strong{country_statistics} \tab Tibble of sources for country statistics table \cr
+   \strong{mobility} \tab Tibble of sources for mobility table \cr
+   \strong{weather} \tab Tibble of sources for weather table \cr
+   \strong{administrative_division} \tab Tibble of sources for administrative division table \cr
 }
 }
 \source{

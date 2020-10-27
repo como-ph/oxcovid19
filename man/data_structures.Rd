@@ -5,18 +5,14 @@
 \alias{data_structures}
 \title{Data structures for OxCOVID19 Database}
 \format{
-A named list of 6 tibbles of data structures.
-\describe{
-\item{\code{epidemiology}}{Tibble of description of fields for epidemiology
-table}
-\item{\code{government_response}}{Tibble of description of fields for
-government response table}
-\item{\code{country_statistics}}{Tibble of description for fields for
-country statistics table}
-\item{\code{mobility}}{Tibble of description for fields for mobility table}
-\item{\code{weather}}{Tibble of description for fields for weather table}
-\item{\code{administrative_division}}{Tibble of description for fields for
-administrative division table}
+A named list of 6 tibbles of data structures for \strong{OxCOVID19 Database}\tabular{ll}{
+   \strong{Table name} \tab \strong{Description} \cr
+   \strong{epidemiology} \tab Tibble of description of fields for epidemiology table \cr
+   \strong{government_response} \tab Tibble of description of fields for government response table \cr
+   \strong{country_statistics} \tab Tibble of description for fields for country statistics table \cr
+   \strong{mobility} \tab Tibble of description for fields for mobility table \cr
+   \strong{weather} \tab Tibble of description for fields for weather table \cr
+   \strong{administrative_division} \tab Tibble of description for fields for administrative division table \cr
 }
 }
 \source{
