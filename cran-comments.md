@@ -12,8 +12,7 @@ based on specified query parameters
 
 * added utility function to help in citing appropriate data sources
 
-* improved documentation including adding markdown support and lifecycle badges 
-for `Rd`
+* improved documentation including adding markdown support
 
 * updated lifecycle to *maturing*
 
