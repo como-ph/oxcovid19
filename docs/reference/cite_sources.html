@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Initiate a connection to the OxCOVID19 PostgreSQL database — connect_oxcovid19 • oxcovid19</title>
+<title>Cite data sources — cite_sources • oxcovid19</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Initiate a connection to the OxCOVID19 PostgreSQL database — connect_oxcovid19" />
+<meta property="og:title" content="Cite data sources — cite_sources" />
 <meta property="og:description" content="" />
 
 
@@ -139,67 +139,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Initiate a connection to the OxCOVID19 PostgreSQL database</h1>
-    <small class="dont-index">Source: <a href='https://github.com/como-ph/oxcovid19/blob/master/R/connect_oxcovid19.R'><code>R/connect_oxcovid19.R</code></a></small>
-    <div class="hidden name"><code>connect_oxcovid19.Rd</code></div>
+    <h1>Cite data sources</h1>
+    <small class="dont-index">Source: <a href='https://github.com/como-ph/oxcovid19/blob/master/R/citation.R'><code>R/citation.R</code></a></small>
+    <div class="hidden name"><code>cite_sources.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><a href='https://www.tidyverse.org/lifecycle/#stable'><img src='figures/lifecycle-stable.svg' alt='Stable lifecycle'></a></p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
     </div>
 
-    <pre class="usage"><span class='fu'>connect_oxcovid19</span><span class='op'>(</span>
-  dbname <span class='op'>=</span> <span class='st'>"covid19"</span>,
-  host <span class='op'>=</span> <span class='st'>"covid19db.org"</span>,
-  port <span class='op'>=</span> <span class='fl'>5432</span>,
-  user <span class='op'>=</span> <span class='st'>"covid19"</span>,
-  password <span class='op'>=</span> <span class='st'>"covid19"</span>
-<span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>cite_sources</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dbname</th>
-      <td><p>Name of database. Default is <code>"covid19"</code>. Unless
-OxCOVID19 Project changes database details, this should be kept as
-default.</p></td>
-    </tr>
-    <tr>
-      <th>host</th>
-      <td><p>Name of database host. Default is <code>"covid19db.org"</code>. Unless
-OxCOVID19 Project changes database details, this should be kept as
-default.</p></td>
-    </tr>
-    <tr>
-      <th>port</th>
-      <td><p>Port specifications. Default is <code>5432</code>. Unless OxCOVID19
-Project changes database details, this should be kept as default.</p></td>
-    </tr>
-    <tr>
-      <th>user</th>
-      <td><p>User specifications. Default is <code>"covid19"</code>. Unless
-OxCOVID19 Project changes database details, this should be kept as default.</p></td>
-    </tr>
-    <tr>
-      <th>password</th>
-      <td><p>Password specifications. Default is <code>"covid19"</code>. Unless
-OxCOVID19 Project changes database details, this should be kept as
-default.</p></td>
+      <th>x</th>
+      <td><p>An object of class <code>tbl</code> produced by <code><a href='get_data.html'>get_data()</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A PostgreSQL connection to OxCOVID19 database</p>
+    <p>A tibble containing information on data source and relevant terms of
+use.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>connect_oxcovid19</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;PqConnection&gt; covid19@covid19db.org:5432</div><div class='input'>
-</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>epidata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_data.html'>get_data_epidemiology</a></span><span class='op'>(</span>ccode <span class='op'>=</span> <span class='st'>"UK"</span>, adm <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
+<span class='fu'>cite_sources</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>epidata</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Please cite the following source/s and follow respective Terms of Use: </span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 x 3</span><span>
+#&gt;   Table      Source                                      `Terms of Use`         
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                  
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Epidemiol… Public Health England                       </span><span style='color: #949494;'>"</span><span>Open Government Licen…
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Epidemiol… Tom White                                   </span><span style='color: #949494;'>"</span><span>The Unlicense</span><span style='color: #949494;'>"</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Epidemiol… European Centre for Disease Prevention and… </span><span style='color: #949494;'>"</span><span>Attribution required</span><span style='color: #949494;'>"</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Epidemiol… World Health Organization                   </span><span style='color: #949494;'>""</span><span>                     
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Epidemiol… Center for Systems Science and Engineering… </span><span style='color: #949494;'>"</span><span>CC BY 4.0</span><span style='color: #949494;'>"</span><span>            </div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

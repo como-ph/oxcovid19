@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Get specified table from OxCOVID19 Database — get_table" />
-<meta property="og:description" content="Get specified table from OxCOVID19 Database" />
+<meta property="og:description" content="" />
 
 
 
@@ -145,7 +145,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Get specified table from OxCOVID19 Database</p>
+    <p><a href='https://www.tidyverse.org/lifecycle/#stable'><img src='figures/lifecycle-stable.svg' alt='Stable lifecycle'></a></p>
     </div>
 
     <pre class="usage"><span class='fu'>get_table</span><span class='op'>(</span><span class='va'>con</span>, <span class='va'>tbl_name</span><span class='op'>)</span>
@@ -231,16 +231,16 @@ containing a named list of the specified <strong>OxCOVID19 Database</strong> tab
 #&gt; </span><span style='color: #949494;'># Database: postgres [covid19@covid19db.org:5432/covid19]</span><span>
 #&gt;    source date       gid   country countrycode adm_area_1 adm_area_2 adm_area_3
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> MET    2020-06-06 JPN.… Japan   JPN         Kagoshima  Setouchi   NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> MET    2020-06-06 JPN.… Japan   JPN         Kagoshima  Uken       NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> MET    2020-06-06 JPN.… Japan   JPN         Kagoshima  Amami      NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> MET    2020-06-06 JPN.… Japan   JPN         Kagoshima  Kikai      NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> MET    2020-06-06 JPN.… Japan   JPN         Kagoshima  Tatsugō    NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> MET    2020-06-06 JPN.… Japan   JPN         Kagoshima  Toshima    NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> MET    2020-06-06 JPN.… Japan   JPN         Kagoshima  Yakushima  NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> MET    2020-06-06 JPN.… Japan   JPN         Kagoshima  Nakatane   NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> MET    2020-06-06 JPN.… Japan   JPN         Kagoshima  Nishinoom… NaN       
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> MET    2020-06-06 JPN.… Japan   JPN         Kagoshima  Minamiōsu… NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> MET    2020-08-20 KHM.… Cambod… KHM         Takêv      Angkor Bo… NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> MET    2020-08-20 KHM.… Cambod… KHM         Takêv      Doun Kaev  NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> MET    2020-08-20 KHM.… Cambod… KHM         Takêv      Samraong   NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> MET    2020-08-20 KHM.… Cambod… KHM         Takêv      Prey Kabb… NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> MET    2020-08-20 KHM.… Cambod… KHM         Takêv      Bati       NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> MET    2020-08-20 KHM.… Cambod… KHM         Kaôh Kong  Srae Ambel NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> MET    2020-08-20 KHM.… Cambod… KHM         Kaôh Kong  Kiri Sakor NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> MET    2020-08-20 KHM.… Cambod… KHM         Kaôh Kong  Kampong S… NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> MET    2020-08-20 KHM.… Cambod… KHM         Kaôh Kong  Botum Sak… NaN       
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> MET    2020-08-20 KHM.… Cambod… KHM         Kaôh Kong  Kaoh Kong  NaN       
 #&gt; </span><span style='color: #949494;'># … with more rows, and 48 more variables: samplesize </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   precipitation_max_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, precipitation_max_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   precipitation_mean_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, precipitation_mean_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
