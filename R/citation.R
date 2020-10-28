@@ -54,7 +54,7 @@ cite_sources <- function(x) {
   ## match sources to tables - mobility
   if(any(unique(x[["source"]]) %in% data_sources[["mobility"]][["Source code"]])) {
     mobility_sources <- data_sources$mobility %>%
-      dplyr::filter(`Source code` %in% unique(x$source)) %>%
+      dplyr::filter(`Source code` %in% unique(x[["source"]])) %>%
       dplyr::mutate(Table = "Mobility") %>%
       dplyr::select(Table, Source, `Terms of Use`)
   } else {
