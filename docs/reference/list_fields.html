@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="List out field names of specific tables available from OxCOVID19 Database — list_fields" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="List out field names of specific tables available from OxCOVID19 Database" />
 
 
 
@@ -145,10 +145,10 @@
     </div>
 
     <div class="ref-description">
-    <p><a href='https://www.tidyverse.org/lifecycle/#stable'><img src='figures/lifecycle-stable.svg' alt='Stable lifecycle'></a></p>
+    <p>List out field names of specific tables available from OxCOVID19 Database</p>
     </div>
 
-    <pre class="usage"><span class='fu'>list_fields</span><span class='op'>(</span>con <span class='op'>=</span> <span class='fu'><a href='connect_oxcovid19.html'>connect_oxcovid19</a></span><span class='op'>(</span><span class='op'>)</span>, tab <span class='op'>=</span> <span class='fu'><a href='list_tables.html'>list_tables</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>list_fields</span>(con = <span class='fu'><a href='connect_oxcovid19.html'>connect_oxcovid19</a></span>(), tab = <span class='fu'><a href='list_tables.html'>list_tables</a></span>())</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,7 +177,7 @@ Default is character vector of all table names specified by
     <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>list_fields</span><span class='op'>(</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'>list_fields</span>()
 </div><div class='output co'>#&gt; $weather
 #&gt;  [1] "source"                   "date"                    
 #&gt;  [3] "gid"                      "country"                 

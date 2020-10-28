@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Get remote table metadata — get_metadata" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="Get remote table metadata" />
 
 
 
@@ -145,10 +145,10 @@
     </div>
 
     <div class="ref-description">
-    <p><a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a></p>
+    <p>Get remote table metadata</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_metadata</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_metadata</span>(<span class='kw'>x</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,8 +167,8 @@
     <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_table.html'>get_table</a></span><span class='op'>(</span>con <span class='op'>=</span> <span class='fu'><a href='connect_oxcovid19.html'>connect_oxcovid19</a></span><span class='op'>(</span><span class='op'>)</span>, tbl_name <span class='op'>=</span> <span class='st'>"epidemiology"</span><span class='op'>)</span>
-<span class='fu'>get_metadata</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_table.html'>get_table</a></span>(con = <span class='fu'><a href='connect_oxcovid19.html'>connect_oxcovid19</a></span>(), tbl_name = <span class='st'>"epidemiology"</span>)
+<span class='fu'>get_metadata</span>(<span class='kw'>x</span>)
 </div><div class='output co'>#&gt; $Name
 #&gt; &lt;IDENT&gt; epidemiology
 #&gt; 
@@ -187,7 +187,7 @@
 #&gt; FROM "epidemiology"
 #&gt; 
 #&gt; $`Query plan`
-#&gt; [1] "Seq Scan on epidemiology  (cost=0.00..39339.45 rows=1358545 width=121)"
+#&gt; [1] "Seq Scan on epidemiology  (cost=0.00..39383.75 rows=1360075 width=121)"
 #&gt; </div><div class='input'>
 </div></pre>
   </div>
