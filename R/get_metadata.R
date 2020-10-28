@@ -3,6 +3,8 @@
 #'
 #' Get remote table metadata
 #'
+#' \lifecycle{experimental}
+#'
 #' @param x An object of class `tbl_lazy` produced by [get_table()]
 #'
 #' @return A named list of remote table metadata

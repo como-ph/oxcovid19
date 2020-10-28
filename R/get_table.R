@@ -3,6 +3,8 @@
 #'
 #' Get specified table from OxCOVID19 Database
 #'
+#' \lifecycle{stable}
+#'
 #' @param con Connection to **OxCOVID19 Database**. This can be specified using
 #'   the [connect_oxcovid19()] function.
 #' @param tbl_name Name of table available in **OxCOVID19 Database**. Should be

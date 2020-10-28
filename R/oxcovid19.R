@@ -18,13 +18,14 @@
 #' @name oxcovid19
 #' @importFrom DBI dbConnect dbListTables dbListFields
 #' @importFrom RPostgres Postgres
-#' @importFrom dplyr tbl mutate collect filter
+#' @importFrom dplyr tbl mutate collect filter select
 #' @importFrom dbplyr remote_name remote_src remote_con remote_query
 #'   remote_query_plan
 #' @importFrom sf st_read
 #' @importFrom lubridate ymd
 #' @importFrom countrycode countryname
 #' @importFrom magrittr %>%
+#' @importFrom lifecycle deprecate_soft
 #'
 #
 ################################################################################
@@ -35,4 +36,8 @@ if(getRversion() >= "2.15.1")  utils::globalVariables(c("data_sources",
                                                         "tbl_name",
                                                         "adm_area_1",
                                                         "adm_area_2",
-                                                        "adm_area_3"))
+                                                        "adm_area_3",
+                                                        "Source code",
+                                                        "Table",
+                                                        "Source",
+                                                        "Terms of Use"))

@@ -3,6 +3,8 @@
 #'
 #' Get specified spatial layer from OxCOVID19 Database
 #'
+#' \lifecycle{maturing}
+#'
 #' @param con Connection to **OxCOVID19 Database**. This can be specified using
 #'   the [connect_oxcovid19()] function.
 #' @param layer Name of spatial layer available in **OxCOVID19 Database**.

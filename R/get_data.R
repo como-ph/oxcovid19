@@ -3,6 +3,8 @@
 #'
 #' Get data from specified table based on specified query parameters
 #'
+#' \lifecycle{experimental}
+#'
 #' @param tbl_name Name of table available in **OxCOVID19 Database**. Should be
 #'   one of the table names given by a call to [list_tables()].
 #' @param .source Source of data. Should be specified as per source

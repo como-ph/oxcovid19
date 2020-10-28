@@ -2,6 +2,8 @@
 #
 #' Initiate a connection to the OxCOVID19 PostgreSQL database
 #'
+#' \lifecycle{stable}
+#'
 #' @param dbname Name of database. Default is \code{"covid19"}. Unless
 #'   OxCOVID19 Project changes database details, this should be kept as
 #'   default.
