@@ -35,7 +35,7 @@ default.}
 A PostgreSQL connection to OxCOVID19 database
 }
 \description{
-\lifecycle{stable}
+Initiate a connection to the OxCOVID19 PostgreSQL database
 }
 \examples{
 connect_oxcovid19()

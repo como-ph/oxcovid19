@@ -80,7 +80,7 @@ clearly determined. For data exploration, \code{\link[=get_table]{get_table()}} 
 instead.
 }
 \description{
-\lifecycle{experimental}
+Get data from specified table based on specified query parameters
 }
 \examples{
 ## Get epidemiology data for the the whole of the UK from the ECDC for all

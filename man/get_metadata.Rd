@@ -13,7 +13,7 @@ get_metadata(x)
 A named list of remote table metadata
 }
 \description{
-\lifecycle{experimental}
+Get remote table metadata
 }
 \examples{
 x <- get_table(con = connect_oxcovid19(), tbl_name = "epidemiology")

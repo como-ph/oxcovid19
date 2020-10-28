@@ -14,7 +14,7 @@ A tibble containing information on data source and relevant terms of
 use.
 }
 \description{
-\lifecycle{experimental}
+Cite data sources
 }
 \examples{
 epidata <- get_data_epidemiology(ccode = "UK", adm = 0)
