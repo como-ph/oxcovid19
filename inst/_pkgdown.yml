@@ -32,7 +32,7 @@ reference:
 
   - title: Explore
     contents:
-    - get_table
+    - starts_with("get_table")
     - get_layer
 
   - title: Retrieve
@@ -44,6 +44,7 @@ reference:
     - list_tables
     - list_fields
     - get_metadata
+    - cite_sources
 
   - title: Reference datasets
     contents:

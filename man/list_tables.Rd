@@ -8,11 +8,11 @@ list_tables(con = connect_oxcovid19())
 }
 \arguments{
 \item{con}{A PqConnection class object specifying the PostgreSQL connection
-to OxCOVID19 Database. This is produced by \link{connect_oxcovid19}
+to \strong{OxCOVID19 Database}. This is produced by \code{\link[=connect_oxcovid19]{connect_oxcovid19()}}
 function}
 }
 \value{
-A vector of table names available from OxCOVID19 Database
+A vector of table names available from \strong{OxCOVID19 Database}
 }
 \description{
 List out names of tables available from OxCOVID19 Database

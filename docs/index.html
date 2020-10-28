@@ -209,7 +209,7 @@
 <span class="co">#&gt; WHERE ("countrycode" = 'GBR')</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; $`Query plan`</span>
-<span class="co">#&gt; [1] "Seq Scan on epidemiology  (cost=0.00..42502.93 rows=174802 width=120)\n  Filter: ((countrycode)::text = 'GBR'::text)"</span>
+<span class="co">#&gt; [1] "Seq Scan on epidemiology  (cost=0.00..42709.26 rows=180167 width=121)\n  Filter: ((countrycode)::text = 'GBR'::text)"</span>
 </pre></div>
 <p>The result is a list showing information on the remote table’s <code>name</code>, <code>source</code>, <code>DBI connection</code>, <code>query text</code> and <code>query plan</code>.</p>
 <p>It should also be noted that other <a href="https://www.r-project.org">R</a> operations and functions will not work on <code>tbl_lazy</code> objects. For example, getting the number of rows of a <code>tbl_lazy</code> using <code>nrow</code> will result in <code>NA</code>:</p>
@@ -248,7 +248,7 @@
 <p>Once all query parameters have been set to what is required, the actual data from the remote table can be retrieved into <a href="https://www.r-project.org">R</a> by using the <code>collect</code> function:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit">
 <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>(<span class="kw">gbr_epi_tab</span>)
-<span class="co">#&gt; # A tibble: 176,435 x 15</span>
+<span class="co">#&gt; # A tibble: 177,735 x 15</span>
 <span class="co">#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested</span>
 <span class="co">#&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;</span>
 <span class="co">#&gt;  1 GBR_P… 2020-05-23 United… GBR         England    Hampshire  &lt;NA&gt;           NA</span>
@@ -261,7 +261,7 @@
 <span class="co">#&gt;  8 GBR_P… 2020-05-23 United… GBR         England    Cambridge… &lt;NA&gt;           NA</span>
 <span class="co">#&gt;  9 GBR_P… 2020-05-23 United… GBR         England    Derbyshire &lt;NA&gt;           NA</span>
 <span class="co">#&gt; 10 GBR_P… 2020-05-23 United… GBR         England    Westminst… &lt;NA&gt;           NA</span>
-<span class="co">#&gt; # … with 176,425 more rows, and 7 more variables: confirmed &lt;int&gt;,</span>
+<span class="co">#&gt; # … with 177,725 more rows, and 7 more variables: confirmed &lt;int&gt;,</span>
 <span class="co">#&gt; #   recovered &lt;int&gt;, dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;,</span>
 <span class="co">#&gt; #   quarantined &lt;int&gt;, gid &lt;pq__text&gt;</span>
 </pre></div>
@@ -269,7 +269,7 @@
 <p>The resulting output is a <code>tbl</code> but is now retrieved into <a href="https://www.r-project.org">R</a>. Now, further <a href="https://www.r-project.org">R</a> operations can be used:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span>(<span class="kw">gbr_epi_tab</span>))
-<span class="co">#&gt; [1] 176435</span>
+<span class="co">#&gt; [1] 177735</span>
 </pre></div>
 <p>It should be noted that the use of <code>collect</code> should be well-planned and ideally should be implemented once all required queries that can be issued lazily have been specified. Depending on the size of the remote database being accessed, using <code>collect</code> too early to retrieve data can cause significant computing overheads.</p>
 <div id="querying-spatial-layers" class="section level3">
@@ -384,26 +384,47 @@
 <h2 class="hasAnchor">
 <a href="#citations" class="anchor"></a>Citations</h2>
 <p>If you find <a href="https://covid19.eng.ox.ac.uk/">OxCOVID19 Database</a> useful please cite:</p>
-<p>Adam Mahdi, Piotr Błaszczyk, Paweł Dłotko, Dario Salvi, Tak-Shing Chan, John Harvey, Davide Gurnari, Yue Wu, Ahmad Farhat, Niklas Hellmer, Alexander Zarebski, Bernie Hogan, Lionel Tarassenko, <strong>Oxford COVID-19 Database: a multimodal data repository for better understanding the global impact of COVID-19</strong>. University of Oxford, 2020.</p>
+<p>Adam Mahdi, Piotr Błaszczyk, Paweł Dłotko, Dario Salvi, Tak-Shing Chan, John Harvey, Davide Gurnari, Yue Wu, Ahmad Farhat, Niklas Hellmer, Alexander Zarebski, Bernie Hogan, Lionel Tarassenko, <strong>Oxford COVID-19 Database: a multimodal data repository for better understanding the global impact of COVID-19</strong>. University of Oxford, 2020. medRxiv (doi: <a href="https://doi.org/10.1101/2020.08.18.20177147" class="uri">https://doi.org/10.1101/2020.08.18.20177147</a>).</p>
 <p>The <a href="https://covid19.eng.ox.ac.uk/">OxCOVID19 Database</a> is the result of many hours of volunteer efforts and generous contributions of many organisations. If you use a specific table please also cite the underlying source as described <a href="https://covid19.eng.ox.ac.uk/data_sources.html">here</a>. Sources of specific tables can also be accessed via the <code>oxcovid19</code> package through the <code>data_sources</code> dataset. For example, if you have accessed the <strong>Epidemiology</strong> table from the database, you can access the sources for this table with:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit">
 <span class="kw">data_sources</span>[[<span class="st">"epidemiology"</span>]]
 </pre></div>
 <p>which gives the following result:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#&gt; # A tibble: 45 x 5</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="co">#&gt;    Country  `Source code` Source          Features           `Terms of Use`     </span></span>
-<span id="cb15-3"><a href="#cb15-3"></a><span class="co">#&gt;    &lt;chr&gt;    &lt;chr&gt;         &lt;chr&gt;           &lt;chr&gt;              &lt;chr&gt;              </span></span>
-<span id="cb15-4"><a href="#cb15-4"></a><span class="co">#&gt;  1 World    WRD_ECDC      European Centr… confirmed, dead, … ECDC Copyright     </span></span>
-<span id="cb15-5"><a href="#cb15-5"></a><span class="co">#&gt;  2 Argenti… LAT_DSRP      covid-19_latin… confirmed, dead, … CC BY-NC-SA 4.0    </span></span>
-<span id="cb15-6"><a href="#cb15-6"></a><span class="co">#&gt;  3 Austral… AUS_C1A       covid-19-au     tested, confirmed… For educational an…</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a><span class="co">#&gt;  4 Austria  EU_ZH         COVID19 EU      tested, confirmed… MIT                </span></span>
-<span id="cb15-8"><a href="#cb15-8"></a><span class="co">#&gt;  5 Belgium  BEL_LE        covid19-be      tested, confirmed… CC0 1.0 Universal  </span></span>
-<span id="cb15-9"><a href="#cb15-9"></a><span class="co">#&gt;  6 Brazil   BRA_MSHM      covid19-Brazil… confirmed (countr… Public Domain      </span></span>
-<span id="cb15-10"><a href="#cb15-10"></a><span class="co">#&gt;  7 Brazil   LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    </span></span>
-<span id="cb15-11"><a href="#cb15-11"></a><span class="co">#&gt;  8 Canada   CAN_GOV       Public Health … tested, confirmed… Attribution requir…</span></span>
-<span id="cb15-12"><a href="#cb15-12"></a><span class="co">#&gt;  9 Chile    LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    </span></span>
-<span id="cb15-13"><a href="#cb15-13"></a><span class="co">#&gt; 10 China    CHN_ICL       Imperial Colle… confirmed,  dead,… with permission    </span></span>
-<span id="cb15-14"><a href="#cb15-14"></a><span class="co">#&gt; # … with 35 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co">#&gt; # A tibble: 63 x 5</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="co">#&gt;    Country   `Source code` Source        Features           `Terms of Use`      </span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co">#&gt;    &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;              &lt;chr&gt;               </span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co">#&gt;  1 Australia AUS_C1A       covid-19-au.… "tested, confirme… "Strictly for educa…</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="co">#&gt;  2 Belgium   BEL_LE        Laurent Esch… "confirmed (count… "CC0 1.0 Universal …</span></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="co">#&gt;  3 Belgium   BEL_SCI       Epistat       ""                 ""                  </span></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co">#&gt;  4 Brazil    BRA_MSHM      Ministerio d… "confirmed (count… "CC0 1.0 Universal" </span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="co">#&gt;  5 Canada    CAN_GOV       Government o… "tested, confirme… "Attribution requir…</span></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="co">#&gt;  6 Switzerl… CHE_OPGOV     Swiss Canton… ""                 "CC 4.0"            </span></span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="co">#&gt;  7 Mainland… CHN_ICL       MRC Centre f… "confirmed (both … "CC BY NC ND 4.0"   </span></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="co">#&gt;  8 Germany   DEU_JPGG      Jan-Philip G… "confirmed, dead"  "MIT"               </span></span>
+<span id="cb15-12"><a href="#cb15-12"></a><span class="co">#&gt;  9 Spain     ESP_MS        Ministerio d… "confirmed, dead,… "\"Desnaturalizacio…</span></span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="co">#&gt; 10 Spain     ESP_MSVP      Ministerio d… "confirmed, recov… "Apache License 2.0"</span></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="co">#&gt; # … with 53 more rows</span></span></code></pre></div>
+<p>A utility function called <code>cite_sources</code> is also available. This function is applied to a dataset extracted from the <a href="https://covid19.eng.ox.ac.uk/">OxCOVID19 Database</a> using the <code>get_data</code> functions or a dataset that has been collected after using <code>get_table</code> function. For example:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit">
+<span class="co">## Get epidemiology data for UK</span>
+<span class="kw">gbr_epi_tab</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_data.html">get_data_epidemiology</a></span>(ccode = <span class="st">"UK"</span>)
+
+<span class="co">## Cite sources for UK epidemiology data</span>
+<span class="fu"><a href="reference/cite_sources.html">cite_sources</a></span>(<span class="kw">gbr_epi_tab</span>)
+</pre></div>
+<p>This results in:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co">#&gt; Please cite the following source/s and follow respective Terms of Use:</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="co">#&gt; # A tibble: 8 x 3</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="co">#&gt;   Table      Source                                      `Terms of Use`         </span></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="co">#&gt;   &lt;chr&gt;      &lt;chr&gt;                                       &lt;chr&gt;                  </span></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="co">#&gt; 1 Epidemiol… Department of Health (Northern Ireland)     ""                     </span></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="co">#&gt; 2 Epidemiol… Public Health England                       "Open Government Licen…</span></span>
+<span id="cb17-7"><a href="#cb17-7"></a><span class="co">#&gt; 3 Epidemiol… Scottish Government                         "GPL 3.0"              </span></span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="co">#&gt; 4 Epidemiol… Tom White                                   "The Unlicense"        </span></span>
+<span id="cb17-9"><a href="#cb17-9"></a><span class="co">#&gt; 5 Epidemiol… Public Health Wales                         "Open Government Licen…</span></span>
+<span id="cb17-10"><a href="#cb17-10"></a><span class="co">#&gt; 6 Epidemiol… European Centre for Disease Prevention and… "Attribution required" </span></span>
+<span id="cb17-11"><a href="#cb17-11"></a><span class="co">#&gt; 7 Epidemiol… World Health Organization                   ""                     </span></span>
+<span id="cb17-12"><a href="#cb17-12"></a><span class="co">#&gt; 8 Epidemiol… Center for Systems Science and Engineering… "CC BY 4.0"</span></span></code></pre></div>
 </div>
 </div>
   </div>

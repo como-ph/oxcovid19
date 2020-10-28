@@ -221,7 +221,7 @@ get_metadata(gbr_epi_tab)
 #> WHERE ("countrycode" = 'GBR')
 #> 
 #> $`Query plan`
-#> [1] "Seq Scan on epidemiology  (cost=0.00..42502.93 rows=174802 width=120)\n  Filter: ((countrycode)::text = 'GBR'::text)"
+#> [1] "Seq Scan on epidemiology  (cost=0.00..42709.26 rows=180167 width=121)\n  Filter: ((countrycode)::text = 'GBR'::text)"
 ```
 
 The result is a list showing information on the remote table’s `name`,
@@ -279,7 +279,7 @@ data from the remote table can be retrieved into
 
 ``` r
 dplyr::collect(gbr_epi_tab)
-#> # A tibble: 176,435 x 15
+#> # A tibble: 177,735 x 15
 #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
 #>  1 GBR_P… 2020-05-23 United… GBR         England    Hampshire  <NA>           NA
@@ -292,7 +292,7 @@ dplyr::collect(gbr_epi_tab)
 #>  8 GBR_P… 2020-05-23 United… GBR         England    Cambridge… <NA>           NA
 #>  9 GBR_P… 2020-05-23 United… GBR         England    Derbyshire <NA>           NA
 #> 10 GBR_P… 2020-05-23 United… GBR         England    Westminst… <NA>           NA
-#> # … with 176,425 more rows, and 7 more variables: confirmed <int>,
+#> # … with 177,725 more rows, and 7 more variables: confirmed <int>,
 #> #   recovered <int>, dead <int>, hospitalised <int>, hospitalised_icu <int>,
 #> #   quarantined <int>, gid <pq__text>
 ```
@@ -305,7 +305,7 @@ The resulting output is a `tbl` but is now retrieved into
 
 ``` r
 nrow(dplyr::collect(gbr_epi_tab))
-#> [1] 176435
+#> [1] 177735
 ```
 
 It should be noted that the use of `collect` should be well-planned and
@@ -444,7 +444,8 @@ Adam Mahdi, Piotr Błaszczyk, Paweł Dłotko, Dario Salvi, Tak-Shing Chan,
 John Harvey, Davide Gurnari, Yue Wu, Ahmad Farhat, Niklas Hellmer,
 Alexander Zarebski, Bernie Hogan, Lionel Tarassenko, **Oxford COVID-19
 Database: a multimodal data repository for better understanding the
-global impact of COVID-19**. University of Oxford, 2020.
+global impact of COVID-19**. University of Oxford, 2020. medRxiv (doi:
+<https://doi.org/10.1101/2020.08.18.20177147>).
 
 The [OxCOVID19 Database](https://covid19.eng.ox.ac.uk/) is the result of
 many hours of volunteer efforts and generous contributions of many
@@ -462,17 +463,46 @@ data_sources[["epidemiology"]]
 
 which gives the following result:
 
-    #> # A tibble: 45 x 5
-    #>    Country  `Source code` Source          Features           `Terms of Use`     
-    #>    <chr>    <chr>         <chr>           <chr>              <chr>              
-    #>  1 World    WRD_ECDC      European Centr… confirmed, dead, … ECDC Copyright     
-    #>  2 Argenti… LAT_DSRP      covid-19_latin… confirmed, dead, … CC BY-NC-SA 4.0    
-    #>  3 Austral… AUS_C1A       covid-19-au     tested, confirmed… For educational an…
-    #>  4 Austria  EU_ZH         COVID19 EU      tested, confirmed… MIT                
-    #>  5 Belgium  BEL_LE        covid19-be      tested, confirmed… CC0 1.0 Universal  
-    #>  6 Brazil   BRA_MSHM      covid19-Brazil… confirmed (countr… Public Domain      
-    #>  7 Brazil   LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    
-    #>  8 Canada   CAN_GOV       Public Health … tested, confirmed… Attribution requir…
-    #>  9 Chile    LAT_DSRP      covid-19_latin… confirmed,  dead,… CC BY-NC-SA 4.0    
-    #> 10 China    CHN_ICL       Imperial Colle… confirmed,  dead,… with permission    
-    #> # … with 35 more rows
+    #> # A tibble: 63 x 5
+    #>    Country   `Source code` Source        Features           `Terms of Use`      
+    #>    <chr>     <chr>         <chr>         <chr>              <chr>               
+    #>  1 Australia AUS_C1A       covid-19-au.… "tested, confirme… "Strictly for educa…
+    #>  2 Belgium   BEL_LE        Laurent Esch… "confirmed (count… "CC0 1.0 Universal …
+    #>  3 Belgium   BEL_SCI       Epistat       ""                 ""                  
+    #>  4 Brazil    BRA_MSHM      Ministerio d… "confirmed (count… "CC0 1.0 Universal" 
+    #>  5 Canada    CAN_GOV       Government o… "tested, confirme… "Attribution requir…
+    #>  6 Switzerl… CHE_OPGOV     Swiss Canton… ""                 "CC 4.0"            
+    #>  7 Mainland… CHN_ICL       MRC Centre f… "confirmed (both … "CC BY NC ND 4.0"   
+    #>  8 Germany   DEU_JPGG      Jan-Philip G… "confirmed, dead"  "MIT"               
+    #>  9 Spain     ESP_MS        Ministerio d… "confirmed, dead,… "\"Desnaturalizacio…
+    #> 10 Spain     ESP_MSVP      Ministerio d… "confirmed, recov… "Apache License 2.0"
+    #> # … with 53 more rows
+
+A utility function called `cite_sources` is also available. This
+function is applied to a dataset extracted from the [OxCOVID19
+Database](https://covid19.eng.ox.ac.uk/) using the `get_data` functions
+or a dataset that has been collected after using `get_table` function.
+For example:
+
+``` r
+## Get epidemiology data for UK
+gbr_epi_tab <- get_data_epidemiology(ccode = "UK")
+
+## Cite sources for UK epidemiology data
+cite_sources(gbr_epi_tab)
+```
+
+This results in:
+
+    #> Please cite the following source/s and follow respective Terms of Use:
+    #> # A tibble: 8 x 3
+    #>   Table      Source                                      `Terms of Use`         
+    #>   <chr>      <chr>                                       <chr>                  
+    #> 1 Epidemiol… Department of Health (Northern Ireland)     ""                     
+    #> 2 Epidemiol… Public Health England                       "Open Government Licen…
+    #> 3 Epidemiol… Scottish Government                         "GPL 3.0"              
+    #> 4 Epidemiol… Tom White                                   "The Unlicense"        
+    #> 5 Epidemiol… Public Health Wales                         "Open Government Licen…
+    #> 6 Epidemiol… European Centre for Disease Prevention and… "Attribution required" 
+    #> 7 Epidemiol… World Health Organization                   ""                     
+    #> 8 Epidemiol… Center for Systems Science and Engineering… "CC BY 4.0"

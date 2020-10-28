@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • oxcovid19</title>
+<title>Cite data sources — cite_sources • oxcovid19</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Cite data sources — cite_sources" />
+<meta property="og:description" content="Cite data sources" />
 
 
 
@@ -68,7 +69,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -138,85 +139,52 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/como-ph/oxcovid19/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Cite data sources</h1>
+    <small class="dont-index">Source: <a href='https://github.com/como-ph/oxcovid19/blob/master/R/citation.R'><code>R/citation.R</code></a></small>
+    <div class="hidden name"><code>cite_sources.Rd</code></div>
     </div>
 
-    <div id="oxcovid19-012" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.2">
-<a href="#oxcovid19-012" class="anchor"></a>oxcovid19 0.1.2<small> Unreleased </small>
-</h1>
-<p>This is the third CRAN release of <code>oxcovid19</code>. In this release:</p>
-<div id="enhancements" class="section level2">
-<h2 class="hasAnchor">
-<a href="#enhancements" class="anchor"></a>Enhancements</h2>
-<ul>
-<li><p>added function to get remote table metadata (party to fix CRAN NOTE on non-use of imported <code>dbplyr</code> package)</p></li>
-<li><p>added convenience wrapper functions to retrieve data from specific tables based on specified query parameters</p></li>
-<li><p>added utility function to help in citing appropriate data sources</p></li>
-<li><p>improved documentation including adding markdown support</p></li>
-<li><p>updated lifecycle to <em>maturing</em></p></li>
-</ul>
-</div>
-<div id="bug-fixes" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
-<ul>
-<li><p>addressed CRAN NOTE regarding 2 marked UTF-8 strings</p></li>
-<li><p>addressed CRAN NOTE regarding non-use of imported <code>dbplyr</code> package</p></li>
-</ul>
-</div>
-</div>
-    <div id="oxcovid19-011" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.1">
-<a href="#oxcovid19-011" class="anchor"></a>oxcovid19 0.1.1<small> 2020-08-14 </small>
-</h1>
-<p>This is the second CRAN release of <code>oxcovid19</code>. In this release:</p>
-<div id="enhancements-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#enhancements-1" class="anchor"></a>Enhancements</h2>
-<ul>
-<li><p>improved documentation</p></li>
-<li><p>updated test package GitHub Actions specifications</p></li>
-<li><p>updated check package GitHub Actions specifications</p></li>
-</ul>
-</div>
-<div id="bug-fixes-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
-<ul>
-<li><p>Edited 2 marked UTF8 strings</p></li>
-<li><p>addressed WARNING on CRAN checks</p></li>
-<li><p>addressed issue with connect function regarding <code>gssencmode</code> specification</p></li>
-</ul>
-</div>
-</div>
-    <div id="oxcovid19-010" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.0">
-<a href="#oxcovid19-010" class="anchor"></a>oxcovid19 0.1.0<small> 2020-07-16 </small>
-</h1>
-<p>This is the first CRAN release of <code>oxcovid19</code>. In this release:</p>
-<ul>
-<li><p>Created a function to open a connection to the PostgreSQL server of the OxCOVID19 Database.</p></li>
-<li><p>Created a function to output lists of available tables in the PostgreSQL server and lists of fields in each table in the PostgreSQL server.</p></li>
-<li><p>Created a function to output specified tables for use within R environment.</p></li>
-<li><p>Pulled source and structure specifications of tables in PostgreSQL server and saved as package datasets.</p></li>
-<li><p>Added README to document package description, installation and use.</p></li>
-<li><p>Added tests using <code>testhat</code></p></li>
-<li><p>Added GitHub Actions for performing R CMD check on package</p></li>
-<li><p>Added GitHub Actions for performing code coverage</p></li>
-<li><p>Added vignettes to demonstrate similar outputs as OxCOVID-19 Project</p></li>
-<li><p>Added a <code>NEWS.md</code> file to track changes to the package.</p></li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>Cite data sources</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>cite_sources</span>(<span class='kw'>x</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>An object of class <code>tbl</code> produced by <code><a href='get_data.html'>get_data()</a></code></p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A tibble containing information on data source and relevant terms of
+use.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Ernest Guevarra</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'>epidata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_data.html'>get_data_epidemiology</a></span>(ccode = <span class='st'>"UK"</span>, adm = <span class='fl'>0</span>)
+<span class='fu'>cite_sources</span>(x = <span class='kw'>epidata</span>)
+</div><div class='output co'>#&gt; <span class='message'>Please cite the following source/s and follow respective Terms of Use: </span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 x 3</span><span>
+#&gt;   Table      Source                                      `Terms of Use`         
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                  
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> Epidemiol… Public Health England                       </span><span style='color: #949494;'>"</span><span>Open Government Licen…
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> Epidemiol… Tom White                                   </span><span style='color: #949494;'>"</span><span>The Unlicense</span><span style='color: #949494;'>"</span><span>        
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> Epidemiol… European Centre for Disease Prevention and… </span><span style='color: #949494;'>"</span><span>Attribution required</span><span style='color: #949494;'>"</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> Epidemiol… World Health Organization                   </span><span style='color: #949494;'>""</span><span>                     
+#&gt; </span><span style='color: #BCBCBC;'>5</span><span> Epidemiol… Center for Systems Science and Engineering… </span><span style='color: #949494;'>"</span><span>CC BY 4.0</span><span style='color: #949494;'>"</span><span>            </div><div class='input'>
+</div></span></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 

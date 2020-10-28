@@ -7,10 +7,10 @@
 get_layer(con, layer = "administrative_division", ccode, adm)
 }
 \arguments{
-\item{con}{Connection to OxCOVID19 Database. This can be specified using
-the \link{connect_oxcovid19} function.}
+\item{con}{Connection to \strong{OxCOVID19 Database}. This can be specified using
+the \code{\link[=connect_oxcovid19]{connect_oxcovid19()}} function.}
 
-\item{layer}{Name of spatial layer available in OxCOVID19 Database.
+\item{layer}{Name of spatial layer available in \strong{OxCOVID19 Database}.
 Currently, only \code{administrative_division} is a spatial layer.}
 
 \item{ccode}{Three character ISO country code for required country

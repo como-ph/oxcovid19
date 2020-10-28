@@ -10,7 +10,9 @@ of imported `dbplyr` package)
 * added convenience wrapper functions to retrieve data from specific tables
 based on specified query parameters
 
-* improved documentation
+* added utility function to help in citing appropriate data sources
+
+* improved documentation including adding markdown support
 
 * updated lifecycle to *maturing*
 
@@ -27,7 +29,7 @@ based on specified query parameters
 * windows latest (on github actions), R 4.0.3
 * windows latest (on appveyor), R 4.0.3
 * win-builder (devel, oldrelease, release)
-* rhub ubuntu, fedora (devel, release)
+* rhub windows ubuntu, fedora (devel, release)
 
 ## R CMD check results
 
