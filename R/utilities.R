@@ -3,8 +3,6 @@
 #'
 #' List out names of tables available from OxCOVID19 Database
 #'
-#' \lifecycle{stable}
-#'
 #' @param con A PqConnection class object specifying the PostgreSQL connection
 #'   to **OxCOVID19 Database**. This is produced by [connect_oxcovid19()]
 #'   function
@@ -34,8 +32,6 @@ list_tables <- function(con = connect_oxcovid19()) {
 #
 #'
 #' List out field names of specific tables available from OxCOVID19 Database
-#'
-#' \lifecycle{stable}
 #'
 #' @param con A PqConnection class object specifying the PostgreSQL connection
 #'   to **OxCOVID19 Database**. This is produced by [connect_oxcovid19()]

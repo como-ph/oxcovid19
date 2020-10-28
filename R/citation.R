@@ -3,8 +3,6 @@
 #'
 #' Cite data sources
 #'
-#' \lifecycle{experimental}
-#'
 #' @param x An object of class `tbl` produced by [get_data()]
 #'
 #' @return A tibble containing information on data source and relevant terms of

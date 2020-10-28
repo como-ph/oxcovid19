@@ -25,7 +25,6 @@
 #' @importFrom lubridate ymd
 #' @importFrom countrycode countryname
 #' @importFrom magrittr %>%
-#' @importFrom lifecycle deprecate_soft
 #'
 #
 ################################################################################
