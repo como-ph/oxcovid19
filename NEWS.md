@@ -10,13 +10,16 @@ of imported `dbplyr` package)
 * added convenience wrapper functions to retrieve data from specific tables
 based on specified query parameters
 
-* improved documentation
+* added utility function to help in citing appropriate data sources
+
+* improved documentation including adding markdown support and lifecycle badges 
+for `Rd`
 
 * updated lifecycle to *maturing*
 
 ## Bug fixes
 
-* addressed CRAN NOTE regarding 2 marked UTF-9 strings
+* addressed CRAN NOTE regarding 2 marked UTF-8 strings
 
 * addressed CRAN NOTE regarding non-use of imported `dbplyr` package
 
