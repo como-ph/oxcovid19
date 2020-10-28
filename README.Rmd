@@ -187,7 +187,7 @@ The `oxcovid19` package is in active development which will be dictated by the e
 
 If you find [OxCOVID19 Database](https://covid19.eng.ox.ac.uk/) useful please cite:
 
-Adam Mahdi, Piotr Błaszczyk, Paweł Dłotko, Dario Salvi, Tak-Shing Chan, John Harvey, Davide Gurnari, Yue Wu, Ahmad Farhat, Niklas Hellmer, Alexander Zarebski, Bernie Hogan, Lionel Tarassenko, **Oxford COVID-19 Database: a multimodal data repository for better understanding the global impact of COVID-19**. University of Oxford, 2020.
+Adam Mahdi, Piotr Błaszczyk, Paweł Dłotko, Dario Salvi, Tak-Shing Chan, John Harvey, Davide Gurnari, Yue Wu, Ahmad Farhat, Niklas Hellmer, Alexander Zarebski, Bernie Hogan, Lionel Tarassenko, **Oxford COVID-19 Database: a multimodal data repository for better understanding the global impact of COVID-19**. University of Oxford, 2020. medRxiv (doi: https://doi.org/10.1101/2020.08.18.20177147).
 
 The [OxCOVID19 Database](https://covid19.eng.ox.ac.uk/) is the result of many hours of volunteer efforts and generous contributions of many organisations. If you use a specific table please also cite the underlying source as described [here](https://covid19.eng.ox.ac.uk/data_sources.html). Sources of specific tables can also be accessed via the `oxcovid19` package through the `data_sources` dataset. For example, if you have accessed the **Epidemiology** table from the database, you can access the sources for this table with:
 
@@ -199,4 +199,24 @@ which gives the following result:
 
 ```{r sources2, echo = FALSE, eval = TRUE}
 data_sources[["epidemiology"]]
+```
+
+A utility function called `cite_sources` is also available. This function is applied to a dataset extracted from the [OxCOVID19 Database](https://covid19.eng.ox.ac.uk/) using the `get_data` functions or a dataset that has been collected after using `get_table` function. For example:
+
+```{r sources3, echo = TRUE, eval = FALSE}
+## Get epidemiology data for UK
+gbr_epi_tab <- get_data_epidemiology(ccode = "UK")
+
+## Cite sources for UK epidemiology data
+cite_sources(gbr_epi_tab)
+```
+
+This results in:
+
+```{r sources4, echo = FALSE, eval = TRUE}
+## Get epidemiology data for UK
+gbr_epi_tab <- get_data_epidemiology(ccode = "UK")
+
+## Cite sources for UK epidemiology data
+cite_sources(gbr_epi_tab)
 ```
