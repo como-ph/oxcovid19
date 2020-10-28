@@ -21,7 +21,7 @@ A named list of field names per specified table available from
 \strong{OxCOVID19 Database}
 }
 \description{
-List out field names of specific tables available from OxCOVID19 Database
+\lifecycle{stable}
 }
 \examples{
 list_fields()

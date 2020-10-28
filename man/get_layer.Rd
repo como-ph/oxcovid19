@@ -25,7 +25,7 @@ country borders.}
 An object of \code{sf} class of the specified spatial layer
 }
 \description{
-Get specified spatial layer from OxCOVID19 Database
+\lifecycle{maturing}
 }
 \examples{
 con <- connect_oxcovid19()

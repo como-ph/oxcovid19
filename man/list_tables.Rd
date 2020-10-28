@@ -15,7 +15,7 @@ function}
 A vector of table names available from \strong{OxCOVID19 Database}
 }
 \description{
-List out names of tables available from OxCOVID19 Database
+\lifecycle{stable}
 }
 \examples{
 list_tables()

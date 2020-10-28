@@ -26,7 +26,7 @@ For \code{\link[=get_table]{get_table()}}, an \code{RPostgres_tbl} object of the
 containing a named list of the specified \strong{OxCOVID19 Database} tables.
 }
 \description{
-Get specified table from OxCOVID19 Database
+\lifecycle{stable}
 }
 \examples{
 ## Create a connection to OxCOVID19 Database
