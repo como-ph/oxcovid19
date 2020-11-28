@@ -1,0 +1,52 @@
+title: oxcovid19
+
+url: https://como-ph.github.io/oxcovid19
+
+template:
+  params:
+    bootswatch: flatly
+    ganalytics: UA-171282455-3
+
+#navbar:
+#  type: inverse
+
+home:
+  links:
+  - text: Read about the Oxford COVID-19 (OxCOVID19) Project
+    href: https://covid19.eng.ox.ac.uk/
+
+  - text: Learn about the CoMo Consoritum
+    href: https://www.tropicalmedicine.ox.ac.uk/news/como-consortium-the-covid-19-pandemic-modelling-in-context
+
+  - text: More about CoMo Philippines
+    href: https://como-ph.github.io/
+
+reference:
+  - title: Description
+    contents:
+    - oxcovid19
+
+  - title: Connect
+    contents:
+    - connect_oxcovid19
+
+  - title: Explore
+    contents:
+    - starts_with("get_table")
+    - get_layer
+
+  - title: Retrieve
+    contents:
+    - starts_with("get_data")
+
+  - title: Utilities
+    contents:
+    - list_tables
+    - list_fields
+    - get_metadata
+    - cite_sources
+
+  - title: Reference datasets
+    contents:
+    - data_sources
+    - data_structures
