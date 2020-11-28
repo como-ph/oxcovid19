@@ -8,6 +8,13 @@
 
 <title>Changelog • oxcovid19</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -40,6 +47,7 @@
 
 
 <meta property="og:title" content="Changelog" />
+<meta property="og:image" content="https://como-ph.github.io/oxcovid19/logo.png" />
 
 
 
@@ -81,7 +89,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -142,14 +150,37 @@
       <small>Source: <a href='https://github.com/como-ph/oxcovid19/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="oxcovid19-012" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.2">
-<a href="#oxcovid19-012" class="anchor"></a>oxcovid19 0.1.2<small> Unreleased </small>
+    <div id="oxcovid19-013" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.3">
+<a href="#oxcovid19-013" class="anchor"></a>oxcovid19 0.1.3<small> Unreleased </small>
 </h1>
-<p>This is the third CRAN release of <code>oxcovid19</code>. In this release:</p>
+<p>This is a patch release of <code>oxcovid19</code> (GitHub and Zenodo release only). This is a development release leading up to <code>oxcovid19</code> minor <a href="https://cran.r-rpoject.org">CRAN</a> release v0.2.0 in December 2020.</p>
+<p>In this release:</p>
 <div id="enhancements" class="section level2">
 <h2 class="hasAnchor">
 <a href="#enhancements" class="anchor"></a>Enhancements</h2>
+<ul>
+<li><p>Improved documentation with community guidelines that include code of conduct and contributing guidelines</p></li>
+<li><p>Improved website (favicon, etc)</p></li>
+<li><p>Removed Travis ci/cd</p></li>
+</ul>
+</div>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<ul>
+<li>addressed issue with <code>get_data_weather</code> not working as expected. Issue was with how missing values were reported in the actual datasets (usage of character value NaN rather than NA or special value NaN)</li>
+</ul>
+</div>
+</div>
+    <div id="oxcovid19-012" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.2">
+<a href="#oxcovid19-012" class="anchor"></a>oxcovid19 0.1.2<small> 2020-10-29 </small>
+</h1>
+<p>This is the third <a href="https://cran.r-project.org">CRAN</a> release of <code>oxcovid19</code>. In this release:</p>
+<div id="enhancements-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#enhancements-1" class="anchor"></a>Enhancements</h2>
 <ul>
 <li><p>added function to get remote table metadata (party to fix CRAN NOTE on non-use of imported <code>dbplyr</code> package)</p></li>
 <li><p>added convenience wrapper functions to retrieve data from specific tables based on specified query parameters</p></li>
@@ -158,9 +189,9 @@
 <li><p>updated lifecycle to <em>maturing</em></p></li>
 </ul>
 </div>
-<div id="bug-fixes" class="section level2">
+<div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li><p>addressed CRAN NOTE regarding 2 marked UTF-8 strings</p></li>
 <li><p>addressed CRAN NOTE regarding non-use of imported <code>dbplyr</code> package</p></li>
@@ -171,19 +202,19 @@
 <h1 class="page-header" data-toc-text="0.1.1">
 <a href="#oxcovid19-011" class="anchor"></a>oxcovid19 0.1.1<small> 2020-08-14 </small>
 </h1>
-<p>This is the second CRAN release of <code>oxcovid19</code>. In this release:</p>
-<div id="enhancements-1" class="section level2">
+<p>This is the second <a href="https://cran.r-project.org">CRAN</a> release of <code>oxcovid19</code>. In this release:</p>
+<div id="enhancements-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#enhancements-1" class="anchor"></a>Enhancements</h2>
+<a href="#enhancements-2" class="anchor"></a>Enhancements</h2>
 <ul>
 <li><p>improved documentation</p></li>
 <li><p>updated test package GitHub Actions specifications</p></li>
 <li><p>updated check package GitHub Actions specifications</p></li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li><p>Edited 2 marked UTF8 strings</p></li>
 <li><p>addressed WARNING on CRAN checks</p></li>
@@ -195,7 +226,7 @@
 <h1 class="page-header" data-toc-text="0.1.0">
 <a href="#oxcovid19-010" class="anchor"></a>oxcovid19 0.1.0<small> 2020-07-16 </small>
 </h1>
-<p>This is the first CRAN release of <code>oxcovid19</code>. In this release:</p>
+<p>This is the first <a href="https://cran.r-project.org">CRAN</a> release of <code>oxcovid19</code>. In this release:</p>
 <ul>
 <li><p>Created a function to open a connection to the PostgreSQL server of the OxCOVID19 Database.</p></li>
 <li><p>Created a function to output lists of available tables in the PostgreSQL server and lists of fields in each table in the PostgreSQL server.</p></li>

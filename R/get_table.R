@@ -36,7 +36,9 @@
 get_table <- function(con, tbl_name) {
   ## Check that tbl_name is available from PostgreSQL server
   if(!tbl_name %in% list_tables()) {
-    stop(paste(tbl_name, " is not available from OxCOVID19 Database. Please try again.", sep = ""),
+    stop(paste(tbl_name,
+               " is not available from OxCOVID19 Database. Please try again.",
+               sep = ""),
          call. = TRUE)
   }
 
@@ -60,10 +62,13 @@ get_table <- function(con, tbl_name) {
 get_tables <- function(con, tbl_names) {
   ## Check that all of tbl_names are available from PostgreSQL server
   if(all(!tbl_names %in% list_tables())) {
-    stop(paste(paste(tbl_names, collapse = ", "),
-               "table/tables is/are not available from OxCOVID19 Database. Please try again.",
-               sep = ""),
-         call. = TRUE)
+    stop(
+      paste(
+        paste(tbl_names, collapse = ", "),
+        "table/tables is/are not available from OxCOVID19 Database. Please try again.",
+        sep = ""
+      ),
+      call. = TRUE)
   }
 
   ## Check that some of tbl_names are available from PostgreSQL server

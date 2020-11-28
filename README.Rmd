@@ -6,6 +6,9 @@ output: github_document
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
+  message = FALSE,
+  error = FALSE,
+  warning = FALSE,
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
@@ -23,10 +26,9 @@ knitr::opts_chunk$set(
 [![cran checks](https://cranchecks.info/badges/summary/oxcovid19)](https://cran.r-project.org/web/checks/check_results_oxcovid19.html)
 [![CRAN](http://cranlogs.r-pkg.org/badges/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
-[![dev](https://img.shields.io/badge/dev-v0.1.2.9000-orange.svg)](https://github.com/como-ph/oxcovid19)
+[![dev](https://img.shields.io/badge/dev-v0.1.3-orange.svg)](https://github.com/como-ph/oxcovid19)
 [![R build status](https://github.com/como-ph/oxcovid19/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/como-ph/oxcovid19?branch=master&svg=true)](https://ci.appveyor.com/project/como-ph/oxcovid19)
-[![Travis build status](https://travis-ci.org/como-ph/oxcovid19.svg?branch=master)](https://travis-ci.org/como-ph/oxcovid19)
 [![R build status](https://github.com/como-ph/oxcovid19/workflows/test-coverage/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![Codecov test coverage](https://codecov.io/gh/como-ph/oxcovid19/branch/master/graph/badge.svg)](https://codecov.io/gh/como-ph/oxcovid19?branch=master)
 [![CodeFactor](https://www.codefactor.io/repository/github/como-ph/oxcovid19/badge)](https://www.codefactor.io/repository/github/como-ph/oxcovid19)
@@ -220,3 +222,10 @@ gbr_epi_tab <- get_data_epidemiology(ccode = "UK")
 ## Cite sources for UK epidemiology data
 cite_sources(gbr_epi_tab)
 ```
+
+## Community guidelines
+
+Feedback, bug reports and feature requests are welcome; file issues or seek support [here](https://github.com/como-ph/oxcovid19/issues). If you would like to contribute to the package, please see our [contributing guidelines](https://como-ph.github.io/oxcovid19/CONTRIBUTING.html).
+
+This project is released with a [Contributor Code of Conduct](https://como-ph.github.io/oxcovid19/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.
+

@@ -22,7 +22,11 @@
 
 cite_sources <- function(x) {
   ## match sources to tables - epidemiology
-  if(any(unique(x[["source"]]) %in% data_sources[["epidemiology"]][["Source code"]])) {
+  if(
+    any(
+      unique(x[["source"]]) %in% data_sources[["epidemiology"]][["Source code"]]
+    )
+  ) {
     epi_sources <- data_sources$epidemiology %>%
       dplyr::filter(`Source code` %in% unique(x[["source"]])) %>%
       dplyr::mutate(Table = "Epidemiology") %>%
@@ -50,7 +54,11 @@ cite_sources <- function(x) {
   }
 
   ## match sources to tables - mobility
-  if(any(unique(x[["source"]]) %in% data_sources[["mobility"]][["Source code"]])) {
+  if(
+    any(
+      unique(x[["source"]]) %in% data_sources[["mobility"]][["Source code"]]
+    )
+  ) {
     mobility_sources <- data_sources$mobility %>%
       dplyr::filter(`Source code` %in% unique(x[["source"]])) %>%
       dplyr::mutate(Table = "Mobility") %>%
@@ -88,8 +96,8 @@ cite_sources <- function(x) {
     message(
       paste(
         strwrap("Hale, Thomas, Sam Webster, Anna Petherick, Toby Phillips, and
-                Beatriz Kira (2020). Oxford COVID-19 Government Response Tracker,
-                Blavatnik School of Government.",
+                Beatriz Kira (2020). Oxford COVID-19 Government Response
+                Tracker, Blavatnik School of Government.",
                 width = 80),
         "\n"
       )

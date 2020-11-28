@@ -16,13 +16,11 @@ status](https://www.r-pkg.org/badges/version/oxcovid19)](https://CRAN.R-project.
 checks](https://cranchecks.info/badges/summary/oxcovid19)](https://cran.r-project.org/web/checks/check_results_oxcovid19.html)
 [![CRAN](http://cranlogs.r-pkg.org/badges/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
-[![dev](https://img.shields.io/badge/dev-v0.1.2.9000-orange.svg)](https://github.com/como-ph/oxcovid19)
+[![dev](https://img.shields.io/badge/dev-v0.1.3-orange.svg)](https://github.com/como-ph/oxcovid19)
 [![R build
 status](https://github.com/como-ph/oxcovid19/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/como-ph/oxcovid19?branch=master&svg=true)](https://ci.appveyor.com/project/como-ph/oxcovid19)
-[![Travis build
-status](https://travis-ci.org/como-ph/oxcovid19.svg?branch=master)](https://travis-ci.org/como-ph/oxcovid19)
 [![R build
 status](https://github.com/como-ph/oxcovid19/workflows/test-coverage/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![Codecov test
@@ -106,24 +104,6 @@ The following code demonstrates this workflow:
 
 ``` r
 library(oxcovid19)
-#> 
-#>   ___          ____  ___ __     __ ___  ____   _   ___
-#>  / _ \ __  __ / ___|/ _ \\ \   / /|_ _||  _ \ / | / _ \
-#> | | | |\ \/ /| |   | | | |\ \ / /  | | | | | || || (_) |
-#> | |_| | >  < | |___| |_| | \ V /   | | | |_| || | \__, |
-#>  \___/ /_/\_\ \____|\___/   \_/   |___||____/ |_|   /_/
-#>     ___           _          _
-#>    |  _ \   __ _ | |_  __ _ | |__    __ _  ___   ___
-#>    | | | | / _` || __|/ _` || '_ \  / _` |/ __| / _ \
-#>    | |_| || (_| || |_| (_| || |_) || (_| |\__ \|  __/
-#>    |____/  \__,_| \__|\__,_||_.__/  \__,_||___/ \___|
-#> 
-#> The OxCOVID19 Database makes use of several datasets. If you
-#> use any of the data provided by this package, please include
-#> the appropriate citation as described at the following
-#> website:
-#> 
-#> https://covid19.eng.ox.ac.uk/data_sources.html
 
 ## Step 1: Create a connection to OxCOVID19 PostgreSQL server
 con <- connect_oxcovid19()
@@ -157,16 +137,16 @@ The output of the workflow shown above is:
     #> # Database: postgres [covid19@covid19db.org:5432/covid19]
     #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
     #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-    #>  1 GBR_P… 2020-05-23 United… GBR         England    Hampshire  <NA>           NA
-    #>  2 GBR_P… 2020-05-23 United… GBR         England    Kent       <NA>           NA
-    #>  3 GBR_P… 2020-05-23 United… GBR         England    Essex      <NA>           NA
-    #>  4 GBR_P… 2020-05-23 United… GBR         England    Hertfords… <NA>           NA
-    #>  5 GBR_P… 2020-05-23 United… GBR         England    Leicester… <NA>           NA
-    #>  6 GBR_P… 2020-05-23 United… GBR         England    Norfolk    <NA>           NA
-    #>  7 GBR_P… 2020-05-23 United… GBR         England    Glouceste… <NA>           NA
-    #>  8 GBR_P… 2020-05-23 United… GBR         England    Cambridge… <NA>           NA
-    #>  9 GBR_P… 2020-05-23 United… GBR         England    Derbyshire <NA>           NA
-    #> 10 GBR_P… 2020-05-23 United… GBR         England    Westminst… <NA>           NA
+    #>  1 GBR_P… 2020-04-30 United… GBR         <NA>       <NA>       <NA>       933455
+    #>  2 GBR_P… 2020-04-29 United… GBR         <NA>       <NA>       <NA>       849296
+    #>  3 GBR_P… 2020-03-25 United… GBR         <NA>       <NA>       <NA>           NA
+    #>  4 GBR_P… 2020-07-28 United… GBR         England    Cambridge… <NA>           NA
+    #>  5 GBR_P… 2020-07-28 United… GBR         England    Cumbria    <NA>           NA
+    #>  6 GBR_P… 2020-07-28 United… GBR         England    Derbyshire <NA>           NA
+    #>  7 GBR_P… 2020-07-28 United… GBR         England    Devon      <NA>           NA
+    #>  8 GBR_P… 2020-07-28 United… GBR         England    East Suss… <NA>           NA
+    #>  9 GBR_P… 2020-07-28 United… GBR         England    Essex      <NA>           NA
+    #> 10 GBR_P… 2020-07-28 United… GBR         England    Glouceste… <NA>           NA
     #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
     #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
     #> #   gid <chr>
@@ -221,7 +201,7 @@ get_metadata(gbr_epi_tab)
 #> WHERE ("countrycode" = 'GBR')
 #> 
 #> $`Query plan`
-#> [1] "Seq Scan on epidemiology  (cost=0.00..42709.26 rows=180167 width=121)\n  Filter: ((countrycode)::text = 'GBR'::text)"
+#> [1] "                                                             QUERY PLAN\n1 Seq Scan on epidemiology  (cost=0.00..60296.06 rows=197287 width=120)\n2                           Filter: ((countrycode)::text = 'GBR'::text)"
 ```
 
 The result is a list showing information on the remote table’s `name`,
@@ -255,16 +235,16 @@ connect_oxcovid19() %>%
 #> # Database: postgres [covid19@covid19db.org:5432/covid19]
 #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-#>  1 GBR_P… 2020-05-23 United… GBR         England    Hampshire  <NA>           NA
-#>  2 GBR_P… 2020-05-23 United… GBR         England    Kent       <NA>           NA
-#>  3 GBR_P… 2020-05-23 United… GBR         England    Essex      <NA>           NA
-#>  4 GBR_P… 2020-05-23 United… GBR         England    Hertfords… <NA>           NA
-#>  5 GBR_P… 2020-05-23 United… GBR         England    Leicester… <NA>           NA
-#>  6 GBR_P… 2020-05-23 United… GBR         England    Norfolk    <NA>           NA
-#>  7 GBR_P… 2020-05-23 United… GBR         England    Glouceste… <NA>           NA
-#>  8 GBR_P… 2020-05-23 United… GBR         England    Cambridge… <NA>           NA
-#>  9 GBR_P… 2020-05-23 United… GBR         England    Derbyshire <NA>           NA
-#> 10 GBR_P… 2020-05-23 United… GBR         England    Westminst… <NA>           NA
+#>  1 GBR_P… 2020-04-30 United… GBR         <NA>       <NA>       <NA>       933455
+#>  2 GBR_P… 2020-04-29 United… GBR         <NA>       <NA>       <NA>       849296
+#>  3 GBR_P… 2020-03-25 United… GBR         <NA>       <NA>       <NA>           NA
+#>  4 GBR_P… 2020-07-28 United… GBR         England    Cambridge… <NA>           NA
+#>  5 GBR_P… 2020-07-28 United… GBR         England    Cumbria    <NA>           NA
+#>  6 GBR_P… 2020-07-28 United… GBR         England    Derbyshire <NA>           NA
+#>  7 GBR_P… 2020-07-28 United… GBR         England    Devon      <NA>           NA
+#>  8 GBR_P… 2020-07-28 United… GBR         England    East Suss… <NA>           NA
+#>  9 GBR_P… 2020-07-28 United… GBR         England    Essex      <NA>           NA
+#> 10 GBR_P… 2020-07-28 United… GBR         England    Glouceste… <NA>           NA
 #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
 #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
 #> #   gid <chr>
@@ -279,20 +259,20 @@ data from the remote table can be retrieved into
 
 ``` r
 dplyr::collect(gbr_epi_tab)
-#> # A tibble: 177,735 x 15
+#> # A tibble: 197,508 x 15
 #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-#>  1 GBR_P… 2020-05-23 United… GBR         England    Hampshire  <NA>           NA
-#>  2 GBR_P… 2020-05-23 United… GBR         England    Kent       <NA>           NA
-#>  3 GBR_P… 2020-05-23 United… GBR         England    Essex      <NA>           NA
-#>  4 GBR_P… 2020-05-23 United… GBR         England    Hertfords… <NA>           NA
-#>  5 GBR_P… 2020-05-23 United… GBR         England    Leicester… <NA>           NA
-#>  6 GBR_P… 2020-05-23 United… GBR         England    Norfolk    <NA>           NA
-#>  7 GBR_P… 2020-05-23 United… GBR         England    Glouceste… <NA>           NA
-#>  8 GBR_P… 2020-05-23 United… GBR         England    Cambridge… <NA>           NA
-#>  9 GBR_P… 2020-05-23 United… GBR         England    Derbyshire <NA>           NA
-#> 10 GBR_P… 2020-05-23 United… GBR         England    Westminst… <NA>           NA
-#> # … with 177,725 more rows, and 7 more variables: confirmed <int>,
+#>  1 GBR_P… 2020-04-30 United… GBR         <NA>       <NA>       <NA>       933455
+#>  2 GBR_P… 2020-04-29 United… GBR         <NA>       <NA>       <NA>       849296
+#>  3 GBR_P… 2020-03-25 United… GBR         <NA>       <NA>       <NA>           NA
+#>  4 GBR_P… 2020-07-28 United… GBR         England    Cambridge… <NA>           NA
+#>  5 GBR_P… 2020-07-28 United… GBR         England    Cumbria    <NA>           NA
+#>  6 GBR_P… 2020-07-28 United… GBR         England    Derbyshire <NA>           NA
+#>  7 GBR_P… 2020-07-28 United… GBR         England    Devon      <NA>           NA
+#>  8 GBR_P… 2020-07-28 United… GBR         England    East Suss… <NA>           NA
+#>  9 GBR_P… 2020-07-28 United… GBR         England    Essex      <NA>           NA
+#> 10 GBR_P… 2020-07-28 United… GBR         England    Glouceste… <NA>           NA
+#> # … with 197,498 more rows, and 7 more variables: confirmed <int>,
 #> #   recovered <int>, dead <int>, hospitalised <int>, hospitalised_icu <int>,
 #> #   quarantined <int>, gid <pq__text>
 ```
@@ -305,7 +285,7 @@ The resulting output is a `tbl` but is now retrieved into
 
 ``` r
 nrow(dplyr::collect(gbr_epi_tab))
-#> [1] 177735
+#> [1] 197508
 ```
 
 It should be noted that the use of `collect` should be well-planned and
@@ -327,16 +307,16 @@ connect_oxcovid19() %>% get_table(tbl_name = "administrative_division")
 #> # Database: postgres [covid19@covid19db.org:5432/covid19]
 #>    country countrycode countrycode_alp… adm_level adm_area_1 adm_area_1_code
 #>    <chr>   <chr>       <chr>                <int> <chr>      <chr>          
-#>  1 South … ZAF         ZA                       3 Mpumalanga ZAF.6_1        
-#>  2 South … ZAF         ZA                       3 North West ZAF.7_1        
-#>  3 South … ZAF         ZA                       3 North West ZAF.7_1        
-#>  4 South … ZAF         ZA                       3 North West ZAF.7_1        
-#>  5 South … ZAF         ZA                       3 North West ZAF.7_1        
-#>  6 South … ZAF         ZA                       3 North West ZAF.7_1        
-#>  7 South … ZAF         ZA                       3 Northern … ZAF.8_1        
-#>  8 South … ZAF         ZA                       3 Northern … ZAF.8_1        
-#>  9 South … ZAF         ZA                       3 Northern … ZAF.8_1        
-#> 10 South … ZAF         ZA                       3 Northern … ZAF.8_1        
+#>  1 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
+#>  2 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
+#>  3 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
+#>  4 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
+#>  5 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
+#>  6 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
+#>  7 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
+#>  8 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
+#>  9 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
+#> 10 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
 #> # … with more rows, and 9 more variables: adm_area_2 <chr>,
 #> #   adm_area_2_code <chr>, adm_area_3 <chr>, adm_area_3_code <chr>, gid <chr>,
 #> #   latitude <dbl>, longitude <dbl>, properties <chr>, geometry <chr>
@@ -494,7 +474,6 @@ cite_sources(gbr_epi_tab)
 
 This results in:
 
-    #> Please cite the following source/s and follow respective Terms of Use:
     #> # A tibble: 8 x 3
     #>   Table      Source                                      `Terms of Use`         
     #>   <chr>      <chr>                                       <chr>                  
@@ -506,3 +485,14 @@ This results in:
     #> 6 Epidemiol… European Centre for Disease Prevention and… "Attribution required" 
     #> 7 Epidemiol… World Health Organization                   ""                     
     #> 8 Epidemiol… Center for Systems Science and Engineering… "CC BY 4.0"
+
+## Community guidelines
+
+Feedback, bug reports and feature requests are welcome; file issues or
+seek support [here](https://github.com/como-ph/oxcovid19/issues). If you
+would like to contribute to the package, please see our [contributing
+guidelines](https://como-ph.github.io/oxcovid19/CONTRIBUTING.html).
+
+This project is released with a [Contributor Code of
+Conduct](https://como-ph.github.io/oxcovid19/CODE_OF_CONDUCT.html). By
+participating in this project you agree to abide by its terms.

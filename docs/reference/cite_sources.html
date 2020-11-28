@@ -8,6 +8,13 @@
 
 <title>Cite data sources — cite_sources • oxcovid19</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -41,6 +48,7 @@
 
 <meta property="og:title" content="Cite data sources — cite_sources" />
 <meta property="og:description" content="Cite data sources" />
+<meta property="og:image" content="https://como-ph.github.io/oxcovid19/logo.png" />
 
 
 
@@ -82,7 +90,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -148,7 +156,7 @@
     <p>Cite data sources</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cite_sources</span>(<span class='kw'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>cite_sources</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -168,8 +176,8 @@ use.</p>
     <p>Ernest Guevarra</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>epidata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_data.html'>get_data_epidemiology</a></span>(ccode = <span class='st'>"UK"</span>, adm = <span class='fl'>0</span>)
-<span class='fu'>cite_sources</span>(x = <span class='kw'>epidata</span>)
+    <pre class="examples"><div class='input'><span class='va'>epidata</span> <span class='op'>&lt;-</span> <span class='fu'><a href='get_data.html'>get_data_epidemiology</a></span><span class='op'>(</span>ccode <span class='op'>=</span> <span class='st'>"UK"</span>, adm <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
+<span class='fu'>cite_sources</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>epidata</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Please cite the following source/s and follow respective Terms of Use: </span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5 x 3</span><span>
 #&gt;   Table      Source                                      `Terms of Use`         
 #&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                  

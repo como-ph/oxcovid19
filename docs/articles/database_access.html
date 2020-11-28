@@ -6,6 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OxCOVID19 Database Access • oxcovid19</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -13,6 +19,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="OxCOVID19 Database Access">
 <meta property="og:description" content="oxcovid19">
+<meta property="og:image" content="https://como-ph.github.io/oxcovid19/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -37,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -114,38 +121,37 @@
 <h3 class="hasAnchor">
 <a href="#list-of-available-sources" class="anchor"></a>List of available sources</h3>
 <p>The task here is to list out all the unique epidemiology table sources sorted alphabetically.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/como-ph/oxcovid19">oxcovid19</a></span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">magrittr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://como-ph.github.io/oxcovid19/">oxcovid19</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="op">%&gt;%</span>                      <span class="co">## Connect to PostgreSQL server</span>
-  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(tbl_name = <span class="st">"epidemiology"</span>) <span class="op">%&gt;%</span>   <span class="co">## Retrieve epidemiology table</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">source</span>) <span class="op">%&gt;%</span>                        <span class="co">## Sort the table by source</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="kw">source</span>) <span class="op">%&gt;%</span>                         <span class="co">## Select the source column</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span>() <span class="op">%&gt;%</span>                             <span class="co">## Get only unique sources</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span>(<span class="kw">source</span>)                                 
-<span class="co">#&gt;  [1] "AUS_C1A"    "BEL_LE"     "BEL_SCI"    "BEL_WY"     "BRA_MSHM"  </span>
-<span class="co">#&gt;  [6] "CAN_GOV"    "CHE_OPGOV"  "CHN_ICL"    "DEU_JPGG"   "ESP_MS"    </span>
-<span class="co">#&gt; [11] "ESP_MSVP"   "EU_ZH"      "FRA_SPF"    "FRA_SPFCG"  "GBR_NIDH"  </span>
-<span class="co">#&gt; [16] "GBR_PHE"    "GBR_PHS"    "GBR_PHTW"   "GBR_PHW"    "IDN_GTPPC" </span>
-<span class="co">#&gt; [21] "IND_COVIND" "IRL_HSPC"   "IRQ_GOV"    "ITA_PC"     "ITA_PCDM"  </span>
-<span class="co">#&gt; [26] "JPN_C1JACD" "KOR_DS4C"   "LAT_DSRP"   "LBN_GOV"    "MYS_MHYS"  </span>
-<span class="co">#&gt; [31] "NGA_CDC"    "NGA_SO"     "NLD_CW"     "PAK_GOV"    "POL_ROG"   </span>
-<span class="co">#&gt; [36] "POL_WIKI"   "PRT_MSDS"   "RUS_GOV"    "SAU_GOV"    "SWE_GM"    </span>
-<span class="co">#&gt; [41] "SWE_SIR"    "THA_STAT"   "TUR_MHOE"   "UAE_GOV"    "USA_CTP"   </span>
-<span class="co">#&gt; [46] "USA_NYT"    "WRD_ECDC"   "WRD_WHO"    "WRD_WHOJHU" "ZAF_DSFSI"</span>
-</pre></div>
+<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                      <span class="co">## Connect to PostgreSQL server</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span><span class="op">(</span>tbl_name <span class="op">=</span> <span class="st">"epidemiology"</span><span class="op">)</span> <span class="op">%&gt;%</span>   <span class="co">## Retrieve epidemiology table</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">source</span><span class="op">)</span> <span class="op">%&gt;%</span>                        <span class="co">## Sort the table by source</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">source</span><span class="op">)</span> <span class="op">%&gt;%</span>                         <span class="co">## Select the source column</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                             <span class="co">## Get only unique sources</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">source</span><span class="op">)</span>                                 
+<span class="co">#&gt;  [1] "NGA_SO"     "POL_ROG"    "CHE_OPGOV"  "FRA_SPFCG"  "GBR_NIDH"  </span>
+<span class="co">#&gt;  [6] "ESP_MS"     "LBN_GOV"    "TUR_MHOE"   "USA_CTP"    "BEL_SCI"   </span>
+<span class="co">#&gt; [11] "IRQ_GOV"    "CHN_ICL"    "NLD_CW"     "WRD_ECDC"   "CAN_GOV"   </span>
+<span class="co">#&gt; [16] "IDN_GTPPC"  "SWE_SIR"    "ESP_MSVP"   "GBR_PHS"    "THA_STAT"  </span>
+<span class="co">#&gt; [21] "GBR_PHTW"   "GBR_PHE"    "LAT_DSRP"   "SAU_GOV"    "AUS_C1A"   </span>
+<span class="co">#&gt; [26] "WRD_WHOJHU" "IND_COVIND" "IRL_HSPC"   "ZAF_DSFSI"  "WRD_WHO"   </span>
+<span class="co">#&gt; [31] "BRA_MSHM"   "PAK_GOV"    "MYS_MHYS"   "POL_WIKI"   "PRT_MSDS"  </span>
+<span class="co">#&gt; [36] "RUS_GOV"    "ITA_PCDM"   "NGA_CDC"    "KOR_DS4C"   "USA_NYT"   </span>
+<span class="co">#&gt; [41] "DEU_JPGG"   "FRA_SPF"    "JPN_C1JACD" "SWE_GM"     "GBR_PHW"   </span>
+<span class="co">#&gt; [46] "EU_ZH"      "UAE_GOV"    "BEL_LE"     "BEL_WY"     "ITA_PC"</span></code></pre></div>
 </div>
 <div id="data-for-single-source" class="section level3">
 <h3 class="hasAnchor">
 <a href="#data-for-single-source" class="anchor"></a>Data for single source</h3>
 <p>In this example, the task is to retrieve the epidemiology table and then get only the data from source <code>GBR_PHTW</code> and then sort resulting dataset by decreasing date.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="op">%&gt;%</span>                      <span class="co">## Connect to PostgreSQL server</span>
-  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(tbl_name = <span class="st">"epidemiology"</span>) <span class="op">%&gt;%</span>   <span class="co">## Retrieve epidemiology table</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">source</span> <span class="op">==</span> <span class="st">"GBR_PHTW"</span>) <span class="op">%&gt;%</span>           <span class="co">## Select specific source</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="kw">date</span>))                        <span class="co">## Sort by date</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                      <span class="co">## Connect to PostgreSQL server</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span><span class="op">(</span>tbl_name <span class="op">=</span> <span class="st">"epidemiology"</span><span class="op">)</span> <span class="op">%&gt;%</span>   <span class="co">## Retrieve epidemiology table</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op">==</span> <span class="st">"GBR_PHTW"</span><span class="op">)</span> <span class="op">%&gt;%</span>           <span class="co">## Select specific source</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span>                        <span class="co">## Sort by date</span>
 <span class="co">#&gt; # Source:     lazy query [?? x 15]</span>
 <span class="co">#&gt; # Database:   postgres [covid19@covid19db.org:5432/covid19]</span>
 <span class="co">#&gt; # Ordered by: desc(date)</span>
@@ -163,8 +169,7 @@
 <span class="co">#&gt; 10 GBR_P… 2020-08-01 United… GBR         Scotland   NHS Forth… &lt;NA&gt;           NA</span>
 <span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span>
 <span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span>
-<span class="co">#&gt; #   gid &lt;chr&gt;</span>
-</pre></div>
+<span class="co">#&gt; #   gid &lt;chr&gt;</span></code></pre></div>
 <p>For both tasks, the results in the example were replicated in R using the <code>oxcovid19</code> functions.</p>
 </div>
 </div>
@@ -172,32 +177,31 @@
 <h2 class="hasAnchor">
 <a href="#mobility" class="anchor"></a>Mobility</h2>
 <p>The task here was to retrieve the mobility table from the PostgreSQL server and then extract only those with <code>GOOGLE_MOBILITY</code> as the source and <code>GBR</code> as the country code. Finally, the resulting table is sorted by date.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span>() <span class="op">%&gt;%</span>                      <span class="co">## Connect to PostgreSQL server</span>
-  <span class="fu"><a href="../reference/get_table.html">get_table</a></span>(tbl_name = <span class="st">"mobility"</span>) <span class="op">%&gt;%</span>       <span class="co">## Retrieve mobility table</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">source</span> <span class="op">==</span> <span class="st">"GOOGLE_MOBILITY"</span>,        <span class="co">## Get only data from `Google`</span>
-         <span class="kw">countrycode</span> <span class="op">==</span> <span class="st">"GBR"</span>) <span class="op">%&gt;%</span>           <span class="co">## Get only data from `GBR`</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="kw">date</span>))                        <span class="co">## Sort by date</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>                      <span class="co">## Connect to PostgreSQL server</span>
+  <span class="fu"><a href="../reference/get_table.html">get_table</a></span><span class="op">(</span>tbl_name <span class="op">=</span> <span class="st">"mobility"</span><span class="op">)</span> <span class="op">%&gt;%</span>       <span class="co">## Retrieve mobility table</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op">==</span> <span class="st">"GOOGLE_MOBILITY"</span>,        <span class="co">## Get only data from `Google`</span>
+         <span class="va">countrycode</span> <span class="op">==</span> <span class="st">"GBR"</span><span class="op">)</span> <span class="op">%&gt;%</span>           <span class="co">## Get only data from `GBR`</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span>                        <span class="co">## Sort by date</span>
 <span class="co">#&gt; # Source:     lazy query [?? x 17]</span>
 <span class="co">#&gt; # Database:   postgres [covid19@covid19db.org:5432/covid19]</span>
 <span class="co">#&gt; # Ordered by: desc(date)</span>
 <span class="co">#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3</span>
 <span class="co">#&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;     </span>
-<span class="co">#&gt;  1 GOOGL… 2020-10-09 United… GBR         Wales      Wrexham    &lt;NA&gt;      </span>
-<span class="co">#&gt;  2 GOOGL… 2020-10-09 United… GBR         Wales      Vale of G… &lt;NA&gt;      </span>
-<span class="co">#&gt;  3 GOOGL… 2020-10-09 United… GBR         Wales      Torfaen    &lt;NA&gt;      </span>
-<span class="co">#&gt;  4 GOOGL… 2020-10-09 United… GBR         Wales      Swansea    &lt;NA&gt;      </span>
-<span class="co">#&gt;  5 GOOGL… 2020-10-09 United… GBR         Wales      Rhondda, … &lt;NA&gt;      </span>
-<span class="co">#&gt;  6 GOOGL… 2020-10-09 United… GBR         Wales      Powys      &lt;NA&gt;      </span>
-<span class="co">#&gt;  7 GOOGL… 2020-10-09 United… GBR         Wales      Pembrokes… &lt;NA&gt;      </span>
-<span class="co">#&gt;  8 GOOGL… 2020-10-09 United… GBR         Wales      Newport    &lt;NA&gt;      </span>
-<span class="co">#&gt;  9 GOOGL… 2020-10-09 United… GBR         Wales      Neath Por… &lt;NA&gt;      </span>
-<span class="co">#&gt; 10 GOOGL… 2020-10-09 United… GBR         Wales      Monmouths… &lt;NA&gt;      </span>
+<span class="co">#&gt;  1 GOOGL… 2020-11-24 United… GBR         Wales      Wrexham    &lt;NA&gt;      </span>
+<span class="co">#&gt;  2 GOOGL… 2020-11-24 United… GBR         Wales      Vale of G… &lt;NA&gt;      </span>
+<span class="co">#&gt;  3 GOOGL… 2020-11-24 United… GBR         Wales      Torfaen    &lt;NA&gt;      </span>
+<span class="co">#&gt;  4 GOOGL… 2020-11-24 United… GBR         Wales      Swansea    &lt;NA&gt;      </span>
+<span class="co">#&gt;  5 GOOGL… 2020-11-24 United… GBR         Wales      Rhondda, … &lt;NA&gt;      </span>
+<span class="co">#&gt;  6 GOOGL… 2020-11-24 United… GBR         Wales      Powys      &lt;NA&gt;      </span>
+<span class="co">#&gt;  7 GOOGL… 2020-11-24 United… GBR         Wales      Pembrokes… &lt;NA&gt;      </span>
+<span class="co">#&gt;  8 GOOGL… 2020-11-24 United… GBR         Wales      Newport    &lt;NA&gt;      </span>
+<span class="co">#&gt;  9 GOOGL… 2020-11-24 United… GBR         Wales      Neath Por… &lt;NA&gt;      </span>
+<span class="co">#&gt; 10 GOOGL… 2020-11-24 United… GBR         Wales      Monmouths… &lt;NA&gt;      </span>
 <span class="co">#&gt; # … with more rows, and 10 more variables: transit_stations &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   residential &lt;dbl&gt;, workplace &lt;dbl&gt;, parks &lt;dbl&gt;, retail_recreation &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   grocery_pharmacy &lt;dbl&gt;, gid &lt;chr&gt;, transit &lt;dbl&gt;, walking &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   driving &lt;dbl&gt;</span>
-</pre></div>
+<span class="co">#&gt; #   driving &lt;dbl&gt;</span></code></pre></div>
 <p>The results match the results shown in the examples.</p>
 </div>
   </div>
