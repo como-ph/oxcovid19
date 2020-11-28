@@ -8,6 +8,13 @@
 
 <title>Get specified table from OxCOVID19 Database — get_table • oxcovid19</title>
 
+<!-- favicons -->
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -41,6 +48,7 @@
 
 <meta property="og:title" content="Get specified table from OxCOVID19 Database — get_table" />
 <meta property="og:description" content="Get specified table from OxCOVID19 Database" />
+<meta property="og:image" content="https://como-ph.github.io/oxcovid19/logo.png" />
 
 
 
@@ -82,7 +90,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -148,9 +156,9 @@
     <p>Get specified table from OxCOVID19 Database</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_table</span>(<span class='kw'>con</span>, <span class='kw'>tbl_name</span>)
+    <pre class="usage"><span class='fu'>get_table</span><span class='op'>(</span><span class='va'>con</span>, <span class='va'>tbl_name</span><span class='op'>)</span>
 
-<span class='fu'>get_tables</span>(<span class='kw'>con</span>, <span class='kw'>tbl_names</span>)</pre>
+<span class='fu'>get_tables</span><span class='op'>(</span><span class='va'>con</span>, <span class='va'>tbl_names</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -184,44 +192,44 @@ containing a named list of the specified <strong>OxCOVID19 Database</strong> tab
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Create a connection to OxCOVID19 Database</span>
-<span class='kw'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='connect_oxcovid19.html'>connect_oxcovid19</a></span>()
+<span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='connect_oxcovid19.html'>connect_oxcovid19</a></span><span class='op'>(</span><span class='op'>)</span>
 
 <span class='co'>## Get epidemiology table</span>
-<span class='fu'>get_table</span>(con = <span class='kw'>con</span>, tbl_name = <span class='st'>"epidemiology"</span>)
+<span class='fu'>get_table</span><span class='op'>(</span>con <span class='op'>=</span> <span class='va'>con</span>, tbl_name <span class='op'>=</span> <span class='st'>"epidemiology"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># Source:   table&lt;epidemiology&gt; [?? x 15]</span><span>
 #&gt; </span><span style='color: #949494;'># Database: postgres [covid19@covid19db.org:5432/covid19]</span><span>
 #&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> WRD_W… 2020-03-29 Equato… GNQ         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> WRD_W… 2020-01-14 Puerto… PRI         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> WRD_W… 2020-01-16 Puerto… PRI         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> BRA_M… 2020-06-02 Brazil  BRA         Rio de Ja… </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> BRA_M… 2020-06-02 Brazil  BRA         São Paulo  </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> WRD_W… 2020-03-31 Equato… GNQ         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> USA_N… 2020-09-05 United… USA         Illinois   Douglas    </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> WRD_W… 2020-07-23 Egypt   EGY         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> USA_N… 2020-04-12 United… USA         Nebraska   Seward     </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> BRA_M… 2020-06-02 Brazil  BRA         Acre       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> JPN_C… 2020-10-11 Japan   JPN         Gifu       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='text-decoration: underline;'>24</span><span>149
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> USA_N… 2020-08-03 United… USA         Idaho      Boise      </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> USA_N… 2020-08-07 United… USA         Massachus… Plymouth   </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> USA_N… 2020-08-07 United… USA         Michigan   Alcona     </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> USA_N… 2020-08-07 United… USA         Michigan   Otsego     </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> WRD_W… 2020-06-07 Guatem… GTM         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> USA_N… 2020-08-07 United… USA         Minnesota  Kittson    </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> USA_N… 2020-08-07 United… USA         Minnesota  Koochichi… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> USA_N… 2020-08-07 United… USA         Minnesota  Lake       </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> GBR_P… 2020-04-30 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='text-decoration: underline;'>933</span><span>455
 #&gt; </span><span style='color: #949494;'># … with more rows, and 7 more variables: confirmed </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, recovered </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   dead </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, hospitalised </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, hospitalised_icu </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, quarantined </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   gid </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 <span class='co'>## Get epidemiology and weather tables</span>
-<span class='fu'>get_tables</span>(con = <span class='kw'>con</span>, tbl_names = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"epidemiology"</span>, <span class='st'>"weather"</span>))
+<span class='fu'>get_tables</span><span class='op'>(</span>con <span class='op'>=</span> <span class='va'>con</span>, tbl_names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"epidemiology"</span>, <span class='st'>"weather"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
 #&gt; </span><span style='color: #949494;'># Source:   table&lt;epidemiology&gt; [?? x 15]</span><span>
 #&gt; </span><span style='color: #949494;'># Database: postgres [covid19@covid19db.org:5432/covid19]</span><span>
 #&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> WRD_W… 2020-03-29 Equato… GNQ         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> WRD_W… 2020-01-14 Puerto… PRI         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> WRD_W… 2020-01-16 Puerto… PRI         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> BRA_M… 2020-06-02 Brazil  BRA         Rio de Ja… </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> BRA_M… 2020-06-02 Brazil  BRA         São Paulo  </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> WRD_W… 2020-03-31 Equato… GNQ         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> USA_N… 2020-09-05 United… USA         Illinois   Douglas    </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> WRD_W… 2020-07-23 Egypt   EGY         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> USA_N… 2020-04-12 United… USA         Nebraska   Seward     </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> BRA_M… 2020-06-02 Brazil  BRA         Acre       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> JPN_C… 2020-10-11 Japan   JPN         Gifu       </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>          </span><span style='text-decoration: underline;'>24</span><span>149
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> USA_N… 2020-08-03 United… USA         Idaho      Boise      </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> USA_N… 2020-08-07 United… USA         Massachus… Plymouth   </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> USA_N… 2020-08-07 United… USA         Michigan   Alcona     </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> USA_N… 2020-08-07 United… USA         Michigan   Otsego     </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> WRD_W… 2020-06-07 Guatem… GTM         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> USA_N… 2020-08-07 United… USA         Minnesota  Kittson    </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> USA_N… 2020-08-07 United… USA         Minnesota  Koochichi… </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> USA_N… 2020-08-07 United… USA         Minnesota  Lake       </span><span style='color: #BB0000;'>NA</span><span>             </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> GBR_P… 2020-04-30 United… GBR         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='color: #BB0000;'>NA</span><span>         </span><span style='text-decoration: underline;'>933</span><span>455
 #&gt; </span><span style='color: #949494;'># … with more rows, and 7 more variables: confirmed </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, recovered </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   dead </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, hospitalised </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, hospitalised_icu </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>, quarantined </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   gid </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
@@ -231,16 +239,16 @@ containing a named list of the specified <strong>OxCOVID19 Database</strong> tab
 #&gt; </span><span style='color: #949494;'># Database: postgres [covid19@covid19db.org:5432/covid19]</span><span>
 #&gt;    source date       gid   country countrycode adm_area_1 adm_area_2 adm_area_3
 #&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> MET    2020-08-27 BRA.… Brazil  BRA         Minas Ger… Leopoldina NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> MET    2020-08-27 BRA.… Brazil  BRA         Minas Ger… Cabo Verde NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> MET    2020-08-27 BRA.… Brazil  BRA         Minas Ger… Divisópol… NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> MET    2020-08-27 BRA.… Brazil  BRA         Minas Ger… Serranópo… NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> MET    2020-08-27 BRA.… Brazil  BRA         Minas Ger… Alfenas    NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> MET    2020-08-27 BRA.… Brazil  BRA         Minas Ger… Três Pont… NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> MET    2020-08-27 BRA.… Brazil  BRA         Minas Ger… Carmo da … NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> MET    2020-08-27 BRA.… Brazil  BRA         Minas Ger… Madre de … NaN       
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> MET    2020-08-27 BRA.… Brazil  BRA         Minas Ger… Piedade d… NaN       
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> MET    2020-08-27 BRA.… Brazil  BRA         Minas Ger… Ibertioga  NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> MET    2020-01-25 RUS.… Russia  RUS         Altay      Krutikhin… NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> MET    2020-01-25 RUS.… Russia  RUS         Altay      Zalesovsk… NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> MET    2020-01-25 RUS.… Russia  RUS         Kursk      Belovskiy… NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> MET    2020-01-25 RUS.… Russia  RUS         Kursk      Sudzhansk… NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> MET    2020-01-25 RUS.… Russia  RUS         Kursk      Oboyanski… NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> MET    2020-01-25 RUS.… Russia  RUS         Kursk      Pristensk… NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> MET    2020-01-25 RUS.… Russia  RUS         Kursk      Glushkovs… NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> MET    2020-01-25 RUS.… Russia  RUS         Kursk      Korenevsk… NaN       
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> MET    2020-01-25 RUS.… Russia  RUS         Kursk      Bol'sheso… NaN       
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> MET    2020-01-25 RUS.… Russia  RUS         Kursk      Solntsevs… NaN       
 #&gt; </span><span style='color: #949494;'># … with more rows, and 48 more variables: samplesize </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   precipitation_max_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, precipitation_max_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   precipitation_mean_avg </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, precipitation_mean_std </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
