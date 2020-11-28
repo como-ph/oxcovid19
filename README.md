@@ -16,13 +16,11 @@ status](https://www.r-pkg.org/badges/version/oxcovid19)](https://CRAN.R-project.
 checks](https://cranchecks.info/badges/summary/oxcovid19)](https://cran.r-project.org/web/checks/check_results_oxcovid19.html)
 [![CRAN](http://cranlogs.r-pkg.org/badges/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
-[![dev](https://img.shields.io/badge/dev-v0.1.2.9000-orange.svg)](https://github.com/como-ph/oxcovid19)
+[![dev](https://img.shields.io/badge/dev-v0.1.3-orange.svg)](https://github.com/como-ph/oxcovid19)
 [![R build
 status](https://github.com/como-ph/oxcovid19/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/como-ph/oxcovid19?branch=master&svg=true)](https://ci.appveyor.com/project/como-ph/oxcovid19)
-[![Travis build
-status](https://travis-ci.org/como-ph/oxcovid19.svg?branch=master)](https://travis-ci.org/como-ph/oxcovid19)
 [![R build
 status](https://github.com/como-ph/oxcovid19/workflows/test-coverage/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![Codecov test
@@ -203,7 +201,7 @@ get_metadata(gbr_epi_tab)
 #> WHERE ("countrycode" = 'GBR')
 #> 
 #> $`Query plan`
-#> [1] "                                                             QUERY PLAN\n1 Seq Scan on epidemiology  (cost=0.00..60270.31 rows=190820 width=121)\n2                           Filter: ((countrycode)::text = 'GBR'::text)"
+#> [1] "                                                             QUERY PLAN\n1 Seq Scan on epidemiology  (cost=0.00..60296.06 rows=197287 width=120)\n2                           Filter: ((countrycode)::text = 'GBR'::text)"
 ```
 
 The result is a list showing information on the remote table’s `name`,
