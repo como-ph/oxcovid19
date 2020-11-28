@@ -19,6 +19,7 @@ approaches in R.
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://como-ph.github.io/oxcovid19/}
   \item \url{https://github.com/como-ph/oxcovid19}
   \item Report bugs at \url{https://github.com/como-ph/oxcovid19/issues}
 }
