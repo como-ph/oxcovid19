@@ -36,6 +36,8 @@ In this release:
   
 * Improved website (favicon, etc)
 
+* Removed Travis ci/cd
+
 ## Bug fixes
 
 * addressed issue with `get_data_weather` not working as expected. Issue was
