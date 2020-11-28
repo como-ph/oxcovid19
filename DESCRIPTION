@@ -1,7 +1,7 @@
 Package: oxcovid19
 Type: Package
 Title: An R API to the Oxford COVID-19 Database
-Version: 0.1.2.9000
+Version: 0.1.3
 Authors@R: c(person(given = "Ernest", family = "Guevarra", 
                     email = "ernest@guevarra.io", role = c("aut", "cre"),
                     comment = c(ORCID = "0000-0002-4887-4415")),
@@ -15,14 +15,15 @@ Authors@R: c(person(given = "Ernest", family = "Guevarra",
                     comment = c(ORCID = "0000-0001-6647-5453")),
              person(given = "Alexander", family = "Zarebski",
                     role = "aut"))
-Description: The OxCOVID19 Project <https://covid19.eng.ox.ac.uk> aims to increase
-    our understanding of the COVID-19 pandemic and elaborate possible strategies
-    to reduce the impact on the society through the combined power of statistical,
-    mathematical modelling, and machine learning techniques. The OxCOVID19
-    Database is a large, single-centre, multimodal relational database consisting
-    of information (using acknowledged sources) related to COVID-19 pandemic.
-    This package provides an R-specific interface to the OxCOVID19 Database based
-    on widely-used data handling and manipulation approaches in R.
+Description: The OxCOVID19 Project <https://covid19.eng.ox.ac.uk> aims to 
+    increase our understanding of the COVID-19 pandemic and elaborate possible 
+    strategies to reduce the impact on the society through the combined power 
+    of statistical, mathematical modelling, and machine learning techniques. 
+    The OxCOVID19 Database is a large, single-centre, multimodal relational 
+    database consisting of information (using acknowledged sources) related to 
+    COVID-19 pandemic. This package provides an R-specific interface to the 
+    OxCOVID19 Database based on widely-used data handling and manipulation 
+    approaches in R.
 License: GPL-3
 Depends: 
     R (>= 2.10)
@@ -44,13 +45,12 @@ Suggests:
     stringr,
     RColorBrewer,
     ggplot2,
-    DiagrammeR,
     spelling
 Encoding: UTF-8
 Language: en-GB
 LazyData: true
-URL: https://github.com/como-ph/oxcovid19
-BugReports: https://github.com/como-ph/oxcovid19/issues
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
+URL: https://como-ph.github.io/oxcovid19/, https://github.com/como-ph/oxcovid19
+BugReports: https://github.com/como-ph/oxcovid19/issues
