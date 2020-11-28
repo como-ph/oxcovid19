@@ -6,6 +6,9 @@ output: github_document
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
+  message = FALSE,
+  error = FALSE,
+  warning = FALSE,
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
@@ -220,3 +223,10 @@ gbr_epi_tab <- get_data_epidemiology(ccode = "UK")
 ## Cite sources for UK epidemiology data
 cite_sources(gbr_epi_tab)
 ```
+
+## Community guidelines
+
+Feedback, bug reports and feature requests are welcome; file issues or seek support [here](https://github.com/como-ph/oxcovid19/issues). If you would like to contribute to the package, please see our [contributing guidelines](https://como-ph.github.io/oxcovid19/CONTRIBUTING.html).
+
+This project is released with a [Contributor Code of Conduct](https://como-ph.github.io/oxcovid19/CODE_OF_CONDUCT.html). By participating in this project you agree to abide by its terms.
+
