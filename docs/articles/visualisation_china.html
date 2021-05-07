@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -52,7 +52,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -84,7 +84,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/como-ph/oxcovid19/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -98,8 +98,7 @@
 
       
 
-      </header><script src="visualisation_china_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="visualisation_china_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="visualisation_china_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="visualisation_china_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Country level visualisation for Mainland China</h1>
@@ -163,18 +162,18 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; # A tibble: 31 x 7
 #&gt; # Groups:   adm_area_1 [31]
-#&gt;    adm_area_1 date       country confirmed recovered  dead gid       
-#&gt;    &lt;chr&gt;      &lt;date&gt;     &lt;chr&gt;       &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;pq__text&gt;
-#&gt;  1 Anhui      2020-03-31 China         990       984     6 {CHN.1_1} 
-#&gt;  2 Beijing    2020-04-01 China         580       418     8 {CHN.2_1} 
-#&gt;  3 Chongqing  2020-03-31 China         579       570     6 {CHN.3_1} 
-#&gt;  4 Fujian     2020-03-30 China         343       295     1 {CHN.4_1} 
-#&gt;  5 Gansu      2020-03-31 China         137       127     2 {CHN.5_1} 
-#&gt;  6 Guangdong  2020-03-31 China        1501      1357     8 {CHN.6_1} 
-#&gt;  7 Guangxi    2020-03-31 China         255       250     2 {CHN.7_1} 
-#&gt;  8 Guizhou    2020-03-31 China         147       144     2 {CHN.8_1} 
-#&gt;  9 Hainan     2020-03-30 China         168       162     6 {CHN.9_1} 
-#&gt; 10 Hebei      2020-03-30 China         321       310     6 {CHN.10_1}
+#&gt;    date       country adm_area_1 confirmed recovered  dead gid       
+#&gt;    &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;          &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;pq__text&gt;
+#&gt;  1 2020-03-31 China   Anhui            990       984     6 {CHN.1_1} 
+#&gt;  2 2020-04-01 China   Beijing          580       418     8 {CHN.2_1} 
+#&gt;  3 2020-03-31 China   Chongqing        579       570     6 {CHN.3_1} 
+#&gt;  4 2020-03-30 China   Fujian           343       295     1 {CHN.4_1} 
+#&gt;  5 2020-03-31 China   Gansu            137       127     2 {CHN.5_1} 
+#&gt;  6 2020-03-31 China   Guangdong       1501      1357     8 {CHN.6_1} 
+#&gt;  7 2020-03-31 China   Guangxi          255       250     2 {CHN.7_1} 
+#&gt;  8 2020-03-31 China   Guizhou          147       144     2 {CHN.8_1} 
+#&gt;  9 2020-03-30 China   Hainan           168       162     6 {CHN.9_1} 
+#&gt; 10 2020-03-30 China   Hebei            321       310     6 {CHN.10_1}
 #&gt; # … with 21 more rows</code></pre>
 </div>
 <div id="retrieving-administrative-division-level-1-for-single-country" class="section level2">
@@ -266,18 +265,18 @@
 #&gt; bbox:           xmin: 73.5577 ymin: 18.15931 xmax: 134.7716 ymax: 53.56004
 #&gt; geographic CRS: WGS 84
 #&gt; # A tibble: 31 x 21
-#&gt;    adm_area_1.x date       country.x confirmed recovered  dead gid   country.y
-#&gt;    &lt;chr&gt;        &lt;date&gt;     &lt;chr&gt;         &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;    
-#&gt;  1 Anhui        2020-03-31 China           990       984     6 CHN.… China    
-#&gt;  2 Beijing      2020-04-01 China           580       418     8 CHN.… China    
-#&gt;  3 Chongqing    2020-03-31 China           579       570     6 CHN.… China    
-#&gt;  4 Fujian       2020-03-30 China           343       295     1 CHN.… China    
-#&gt;  5 Gansu        2020-03-31 China           137       127     2 CHN.… China    
-#&gt;  6 Guangdong    2020-03-31 China          1501      1357     8 CHN.… China    
-#&gt;  7 Guangxi      2020-03-31 China           255       250     2 CHN.… China    
-#&gt;  8 Guizhou      2020-03-31 China           147       144     2 CHN.… China    
-#&gt;  9 Hainan       2020-03-30 China           168       162     6 CHN.… China    
-#&gt; 10 Hebei        2020-03-30 China           321       310     6 CHN.… China    
+#&gt;    date       country.x adm_area_1.x confirmed recovered  dead gid   country.y
+#&gt;    &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt;            &lt;int&gt;     &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;    
+#&gt;  1 2020-03-31 China     Anhui              990       984     6 CHN.… China    
+#&gt;  2 2020-04-01 China     Beijing            580       418     8 CHN.… China    
+#&gt;  3 2020-03-31 China     Chongqing          579       570     6 CHN.… China    
+#&gt;  4 2020-03-30 China     Fujian             343       295     1 CHN.… China    
+#&gt;  5 2020-03-31 China     Gansu              137       127     2 CHN.… China    
+#&gt;  6 2020-03-31 China     Guangdong         1501      1357     8 CHN.… China    
+#&gt;  7 2020-03-31 China     Guangxi            255       250     2 CHN.… China    
+#&gt;  8 2020-03-31 China     Guizhou            147       144     2 CHN.… China    
+#&gt;  9 2020-03-30 China     Hainan             168       162     6 CHN.… China    
+#&gt; 10 2020-03-30 China     Hebei              321       310     6 CHN.… China    
 #&gt; # … with 21 more rows, and 13 more variables: countrycode &lt;chr&gt;,
 #&gt; #   countrycode_alpha2 &lt;chr&gt;, adm_level &lt;int&gt;, adm_area_1.y &lt;chr&gt;,
 #&gt; #   adm_area_1_code &lt;chr&gt;, adm_area_2 &lt;chr&gt;, adm_area_2_code &lt;chr&gt;,
@@ -346,7 +345,7 @@
 <p>In the example from the Oxford COVID-19 Database, epidemiology data was checked for monotonicity. It is expected that epidemiology data is monotonic as these variables are expected to increase over time given that the information is cumulative. Monotonicity was checked by plotting a time series of cases and deaths with the expectation that the line plots will be on an increasing trajectory over time. Any instance of dips in the time series would indicate violation of monotonicity and an indication of issues with the data.</p>
 <p>In the Oxford COVID-19 Database example, time series line plot for each subnational unit was plotted on the same axis as shown below.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 
 <span class="fu"><a href="../reference/connect_oxcovid19.html">connect_oxcovid19</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/get_table.html">get_table</a></span><span class="op">(</span>tbl_name <span class="op">=</span> <span class="st">"epidemiology"</span><span class="op">)</span> <span class="op">%&gt;%</span>

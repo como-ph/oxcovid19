@@ -44,7 +44,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">oxcovid19</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -52,7 +52,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -84,7 +84,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/como-ph/oxcovid19/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -98,8 +98,7 @@
 
       
 
-      </header><script src="oxcovid19_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="oxcovid19_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="oxcovid19_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="oxcovid19_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>An R API to the Oxford COVID-19 Database</h1>
@@ -153,16 +152,16 @@
 #&gt; # Database: postgres [covid19@covid19db.org:5432/covid19]
 #&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;
-#&gt;  1 GBR_P… 2020-04-30 United… GBR         &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;       933455
-#&gt;  2 GBR_P… 2020-04-29 United… GBR         &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;       849296
-#&gt;  3 GBR_P… 2020-03-25 United… GBR         &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;           NA
-#&gt;  4 GBR_P… 2020-07-28 United… GBR         England    Cambridge… &lt;NA&gt;           NA
-#&gt;  5 GBR_P… 2020-07-28 United… GBR         England    Cumbria    &lt;NA&gt;           NA
-#&gt;  6 GBR_P… 2020-07-28 United… GBR         England    Derbyshire &lt;NA&gt;           NA
-#&gt;  7 GBR_P… 2020-07-28 United… GBR         England    Devon      &lt;NA&gt;           NA
-#&gt;  8 GBR_P… 2020-07-28 United… GBR         England    East Suss… &lt;NA&gt;           NA
-#&gt;  9 GBR_P… 2020-07-28 United… GBR         England    Essex      &lt;NA&gt;           NA
-#&gt; 10 GBR_P… 2020-07-28 United… GBR         England    Glouceste… &lt;NA&gt;           NA
+#&gt;  1 GBR_P… 2020-08-06 United… GBR         England    Greater L… Tower Ham…     NA
+#&gt;  2 GBR_P… 2020-06-28 United… GBR         England    Greater L… Tower Ham…     NA
+#&gt;  3 GBR_P… 2020-06-26 United… GBR         England    Greater L… Tower Ham…     NA
+#&gt;  4 GBR_P… 2020-06-07 United… GBR         England    Greater L… Tower Ham…     NA
+#&gt;  5 GBR_P… 2020-05-26 United… GBR         England    Greater L… Tower Ham…     NA
+#&gt;  6 GBR_P… 2020-06-06 United… GBR         England    Greater L… Tower Ham…     NA
+#&gt;  7 GBR_P… 2020-06-24 United… GBR         England    Greater L… Tower Ham…     NA
+#&gt;  8 GBR_P… 2020-06-04 United… GBR         England    Greater L… Tower Ham…     NA
+#&gt;  9 GBR_P… 2020-04-25 United… GBR         England    Greater L… Tower Ham…     NA
+#&gt; 10 GBR_P… 2020-04-21 United… GBR         England    Greater L… Tower Ham…     NA
 #&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,
 #&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,
 #&gt; #   gid &lt;chr&gt;</code></pre>
@@ -178,16 +177,16 @@
 <span class="co">#&gt; # Database: postgres [covid19@covid19db.org:5432/covid19]</span>
 <span class="co">#&gt;    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested</span>
 <span class="co">#&gt;    &lt;chr&gt;  &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;int&gt;</span>
-<span class="co">#&gt;  1 GBR_P… 2020-04-30 United… GBR         &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;       933455</span>
-<span class="co">#&gt;  2 GBR_P… 2020-04-29 United… GBR         &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;       849296</span>
-<span class="co">#&gt;  3 GBR_P… 2020-03-25 United… GBR         &lt;NA&gt;       &lt;NA&gt;       &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  4 GBR_P… 2020-07-28 United… GBR         England    Cambridge… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  5 GBR_P… 2020-07-28 United… GBR         England    Cumbria    &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  6 GBR_P… 2020-07-28 United… GBR         England    Derbyshire &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  7 GBR_P… 2020-07-28 United… GBR         England    Devon      &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  8 GBR_P… 2020-07-28 United… GBR         England    East Suss… &lt;NA&gt;           NA</span>
-<span class="co">#&gt;  9 GBR_P… 2020-07-28 United… GBR         England    Essex      &lt;NA&gt;           NA</span>
-<span class="co">#&gt; 10 GBR_P… 2020-07-28 United… GBR         England    Glouceste… &lt;NA&gt;           NA</span>
+<span class="co">#&gt;  1 GBR_P… 2020-08-06 United… GBR         England    Greater L… Tower Ham…     NA</span>
+<span class="co">#&gt;  2 GBR_P… 2020-06-28 United… GBR         England    Greater L… Tower Ham…     NA</span>
+<span class="co">#&gt;  3 GBR_P… 2020-06-26 United… GBR         England    Greater L… Tower Ham…     NA</span>
+<span class="co">#&gt;  4 GBR_P… 2020-06-07 United… GBR         England    Greater L… Tower Ham…     NA</span>
+<span class="co">#&gt;  5 GBR_P… 2020-05-26 United… GBR         England    Greater L… Tower Ham…     NA</span>
+<span class="co">#&gt;  6 GBR_P… 2020-06-06 United… GBR         England    Greater L… Tower Ham…     NA</span>
+<span class="co">#&gt;  7 GBR_P… 2020-06-24 United… GBR         England    Greater L… Tower Ham…     NA</span>
+<span class="co">#&gt;  8 GBR_P… 2020-06-04 United… GBR         England    Greater L… Tower Ham…     NA</span>
+<span class="co">#&gt;  9 GBR_P… 2020-04-25 United… GBR         England    Greater L… Tower Ham…     NA</span>
+<span class="co">#&gt; 10 GBR_P… 2020-04-21 United… GBR         England    Greater L… Tower Ham…     NA</span>
 <span class="co">#&gt; # … with more rows, and 7 more variables: confirmed &lt;int&gt;, recovered &lt;int&gt;,</span>
 <span class="co">#&gt; #   dead &lt;int&gt;, hospitalised &lt;int&gt;, hospitalised_icu &lt;int&gt;, quarantined &lt;int&gt;,</span>
 <span class="co">#&gt; #   gid &lt;chr&gt;</span></code></pre></div>

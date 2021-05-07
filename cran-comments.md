@@ -1,33 +1,32 @@
 ## Release summary
 
-This is the third CRAN release of `oxcovid19`. In this release:
+This is the fourth [CRAN](https://cran.r-project.org) release of `oxcovid19`. 
+This is a minor release. In this release:
 
 ## Enhancements
 
-* added function to get remote table metadata (party to fix CRAN NOTE on non-use
-of imported `dbplyr` package)
+* Added *merge_* functions to create combined tables for relational analysis
 
-* added convenience wrapper functions to retrieve data from specific tables
-based on specified query parameters
+* Added a built-in Shiny package for basic data access and basic data
+  visualisation; this was also a way to demonstrate how the package functions
+  work
+  
+* Added graceful erroring when database unavailable (in response to CRAN
+  comments and recent CRAN errors)
 
-* added utility function to help in citing appropriate data sources
-
-* improved documentation including adding markdown support
-
-* updated lifecycle to *maturing*
 
 ## Bug fixes
 
-* addressed CRAN NOTE regarding 2 marked UTF-8 strings
-
-* addressed CRAN NOTE regarding non-use of imported `dbplyr` package
+* addressed issue with `get_data_weather` not working as expected. Issue was
+  with how missing values were reported in the actual datasets (usage of
+  character value NaN rather than NA or special value NaN)
 
 ## Test environments
-* local R installation, R 4.0.3
-* ubuntu 16.04 (on travis), R 4.0.3
-* ubuntu 20.04 (on github actions), R 4.0.3
-* windows latest (on github actions), R 4.0.3
-* windows latest (on appveyor), R 4.0.3
+* local R installation, R 4.0.5
+* ubuntu 16.04 (on travis), R 4.0.5
+* ubuntu 20.04 (on github actions), R 4.0.5
+* windows latest (on github actions), R 4.0.5
+* windows latest (on appveyor), R 4.0.5
 * win-builder (devel, oldrelease, release)
 * rhub windows ubuntu, fedora (devel, release)
 
