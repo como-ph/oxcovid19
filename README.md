@@ -15,7 +15,6 @@ status](https://www.r-pkg.org/badges/version/oxcovid19)](https://CRAN.R-project.
 checks](https://cranchecks.info/badges/summary/oxcovid19)](https://cran.r-project.org/web/checks/check_results_oxcovid19.html)
 [![CRAN](http://cranlogs.r-pkg.org/badges/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
 [![CRAN](http://cranlogs.r-pkg.org/badges/grand-total/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
-[![dev](https://img.shields.io/badge/dev-v0.1.3-orange.svg)](https://github.com/como-ph/oxcovid19)
 [![R build
 status](https://github.com/como-ph/oxcovid19/workflows/R-CMD-check/badge.svg)](https://github.com/como-ph/oxcovid19/actions)
 [![AppVeyor build
@@ -200,7 +199,7 @@ get_metadata(gbr_epi_tab)
 #> WHERE ("countrycode" = 'GBR')
 #> 
 #> $`Query plan`
-#> [1] "                                                             QUERY PLAN\n1 Seq Scan on epidemiology  (cost=0.00..88143.70 rows=298751 width=121)\n2                           Filter: ((countrycode)::text = 'GBR'::text)"
+#> [1] "                                                             QUERY PLAN\n1 Seq Scan on epidemiology  (cost=0.00..88285.04 rows=299230 width=121)\n2                           Filter: ((countrycode)::text = 'GBR'::text)"
 ```
 
 The result is a list showing information on the remote table’s `name`,
