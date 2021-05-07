@@ -26,7 +26,7 @@ This is a minor release. In this release:
 
 This is a patch release of `oxcovid19` (GitHub and Zenodo release only). This
 is a development release leading up to `oxcovid19` minor 
-[CRAN](https://cran.r-rpoject.org) release v0.2.0 in December 2020.
+[CRAN](https://cran.r-project.org) release v0.2.0 in December 2020.
 
 In this release:
 

@@ -4,11 +4,10 @@
 # oxcovid19: An R API to the Oxford COVID-19 Database
 
 <!-- <img src="man/figures/oxcovid19.png" width="200px" align="right" /> -->
-
 <!-- badges: start -->
 
 [![Lifecycle:
-maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN](https://img.shields.io/cran/l/oxcovid19.svg)](https://CRAN.R-project.org/package=oxcovid19)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/oxcovid19)](https://CRAN.R-project.org/package=oxcovid19)
@@ -137,16 +136,16 @@ The output of the workflow shown above is:
     #> # Database: postgres [covid19@covid19db.org:5432/covid19]
     #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
     #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-    #>  1 GBR_P… 2020-04-30 United… GBR         <NA>       <NA>       <NA>       933455
-    #>  2 GBR_P… 2020-04-29 United… GBR         <NA>       <NA>       <NA>       849296
-    #>  3 GBR_P… 2020-03-25 United… GBR         <NA>       <NA>       <NA>           NA
-    #>  4 GBR_P… 2020-07-28 United… GBR         England    Cambridge… <NA>           NA
-    #>  5 GBR_P… 2020-07-28 United… GBR         England    Cumbria    <NA>           NA
-    #>  6 GBR_P… 2020-07-28 United… GBR         England    Derbyshire <NA>           NA
-    #>  7 GBR_P… 2020-07-28 United… GBR         England    Devon      <NA>           NA
-    #>  8 GBR_P… 2020-07-28 United… GBR         England    East Suss… <NA>           NA
-    #>  9 GBR_P… 2020-07-28 United… GBR         England    Essex      <NA>           NA
-    #> 10 GBR_P… 2020-07-28 United… GBR         England    Glouceste… <NA>           NA
+    #>  1 GBR_P… 2020-08-06 United… GBR         England    Greater L… Tower Ham…     NA
+    #>  2 GBR_P… 2020-06-28 United… GBR         England    Greater L… Tower Ham…     NA
+    #>  3 GBR_P… 2020-06-26 United… GBR         England    Greater L… Tower Ham…     NA
+    #>  4 GBR_P… 2020-06-07 United… GBR         England    Greater L… Tower Ham…     NA
+    #>  5 GBR_P… 2020-05-26 United… GBR         England    Greater L… Tower Ham…     NA
+    #>  6 GBR_P… 2020-06-06 United… GBR         England    Greater L… Tower Ham…     NA
+    #>  7 GBR_P… 2020-06-24 United… GBR         England    Greater L… Tower Ham…     NA
+    #>  8 GBR_P… 2020-06-04 United… GBR         England    Greater L… Tower Ham…     NA
+    #>  9 GBR_P… 2020-04-25 United… GBR         England    Greater L… Tower Ham…     NA
+    #> 10 GBR_P… 2020-04-21 United… GBR         England    Greater L… Tower Ham…     NA
     #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
     #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
     #> #   gid <chr>
@@ -201,7 +200,7 @@ get_metadata(gbr_epi_tab)
 #> WHERE ("countrycode" = 'GBR')
 #> 
 #> $`Query plan`
-#> [1] "                                                             QUERY PLAN\n1 Seq Scan on epidemiology  (cost=0.00..60296.06 rows=197287 width=120)\n2                           Filter: ((countrycode)::text = 'GBR'::text)"
+#> [1] "                                                             QUERY PLAN\n1 Seq Scan on epidemiology  (cost=0.00..88143.70 rows=298751 width=121)\n2                           Filter: ((countrycode)::text = 'GBR'::text)"
 ```
 
 The result is a list showing information on the remote table’s `name`,
@@ -235,16 +234,16 @@ connect_oxcovid19() %>%
 #> # Database: postgres [covid19@covid19db.org:5432/covid19]
 #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-#>  1 GBR_P… 2020-04-30 United… GBR         <NA>       <NA>       <NA>       933455
-#>  2 GBR_P… 2020-04-29 United… GBR         <NA>       <NA>       <NA>       849296
-#>  3 GBR_P… 2020-03-25 United… GBR         <NA>       <NA>       <NA>           NA
-#>  4 GBR_P… 2020-07-28 United… GBR         England    Cambridge… <NA>           NA
-#>  5 GBR_P… 2020-07-28 United… GBR         England    Cumbria    <NA>           NA
-#>  6 GBR_P… 2020-07-28 United… GBR         England    Derbyshire <NA>           NA
-#>  7 GBR_P… 2020-07-28 United… GBR         England    Devon      <NA>           NA
-#>  8 GBR_P… 2020-07-28 United… GBR         England    East Suss… <NA>           NA
-#>  9 GBR_P… 2020-07-28 United… GBR         England    Essex      <NA>           NA
-#> 10 GBR_P… 2020-07-28 United… GBR         England    Glouceste… <NA>           NA
+#>  1 GBR_P… 2020-08-06 United… GBR         England    Greater L… Tower Ham…     NA
+#>  2 GBR_P… 2020-06-28 United… GBR         England    Greater L… Tower Ham…     NA
+#>  3 GBR_P… 2020-06-26 United… GBR         England    Greater L… Tower Ham…     NA
+#>  4 GBR_P… 2020-06-07 United… GBR         England    Greater L… Tower Ham…     NA
+#>  5 GBR_P… 2020-05-26 United… GBR         England    Greater L… Tower Ham…     NA
+#>  6 GBR_P… 2020-06-06 United… GBR         England    Greater L… Tower Ham…     NA
+#>  7 GBR_P… 2020-06-24 United… GBR         England    Greater L… Tower Ham…     NA
+#>  8 GBR_P… 2020-06-04 United… GBR         England    Greater L… Tower Ham…     NA
+#>  9 GBR_P… 2020-04-25 United… GBR         England    Greater L… Tower Ham…     NA
+#> 10 GBR_P… 2020-04-21 United… GBR         England    Greater L… Tower Ham…     NA
 #> # … with more rows, and 7 more variables: confirmed <int>, recovered <int>,
 #> #   dead <int>, hospitalised <int>, hospitalised_icu <int>, quarantined <int>,
 #> #   gid <chr>
@@ -259,20 +258,20 @@ data from the remote table can be retrieved into
 
 ``` r
 dplyr::collect(gbr_epi_tab)
-#> # A tibble: 197,508 x 15
+#> # A tibble: 298,316 x 15
 #>    source date       country countrycode adm_area_1 adm_area_2 adm_area_3 tested
 #>    <chr>  <date>     <chr>   <chr>       <chr>      <chr>      <chr>       <int>
-#>  1 GBR_P… 2020-04-30 United… GBR         <NA>       <NA>       <NA>       933455
-#>  2 GBR_P… 2020-04-29 United… GBR         <NA>       <NA>       <NA>       849296
-#>  3 GBR_P… 2020-03-25 United… GBR         <NA>       <NA>       <NA>           NA
-#>  4 GBR_P… 2020-07-28 United… GBR         England    Cambridge… <NA>           NA
-#>  5 GBR_P… 2020-07-28 United… GBR         England    Cumbria    <NA>           NA
-#>  6 GBR_P… 2020-07-28 United… GBR         England    Derbyshire <NA>           NA
-#>  7 GBR_P… 2020-07-28 United… GBR         England    Devon      <NA>           NA
-#>  8 GBR_P… 2020-07-28 United… GBR         England    East Suss… <NA>           NA
-#>  9 GBR_P… 2020-07-28 United… GBR         England    Essex      <NA>           NA
-#> 10 GBR_P… 2020-07-28 United… GBR         England    Glouceste… <NA>           NA
-#> # … with 197,498 more rows, and 7 more variables: confirmed <int>,
+#>  1 GBR_P… 2020-08-06 United… GBR         England    Greater L… Tower Ham…     NA
+#>  2 GBR_P… 2020-06-28 United… GBR         England    Greater L… Tower Ham…     NA
+#>  3 GBR_P… 2020-06-26 United… GBR         England    Greater L… Tower Ham…     NA
+#>  4 GBR_P… 2020-06-07 United… GBR         England    Greater L… Tower Ham…     NA
+#>  5 GBR_P… 2020-05-26 United… GBR         England    Greater L… Tower Ham…     NA
+#>  6 GBR_P… 2020-06-06 United… GBR         England    Greater L… Tower Ham…     NA
+#>  7 GBR_P… 2020-06-24 United… GBR         England    Greater L… Tower Ham…     NA
+#>  8 GBR_P… 2020-06-04 United… GBR         England    Greater L… Tower Ham…     NA
+#>  9 GBR_P… 2020-04-25 United… GBR         England    Greater L… Tower Ham…     NA
+#> 10 GBR_P… 2020-04-21 United… GBR         England    Greater L… Tower Ham…     NA
+#> # … with 298,306 more rows, and 7 more variables: confirmed <int>,
 #> #   recovered <int>, dead <int>, hospitalised <int>, hospitalised_icu <int>,
 #> #   quarantined <int>, gid <pq__text>
 ```
@@ -285,7 +284,7 @@ The resulting output is a `tbl` but is now retrieved into
 
 ``` r
 nrow(dplyr::collect(gbr_epi_tab))
-#> [1] 197508
+#> [1] 298316
 ```
 
 It should be noted that the use of `collect` should be well-planned and
@@ -307,16 +306,16 @@ connect_oxcovid19() %>% get_table(tbl_name = "administrative_division")
 #> # Database: postgres [covid19@covid19db.org:5432/covid19]
 #>    country countrycode countrycode_alp… adm_level adm_area_1 adm_area_1_code
 #>    <chr>   <chr>       <chr>                <int> <chr>      <chr>          
-#>  1 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
-#>  2 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
-#>  3 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
-#>  4 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
-#>  5 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
-#>  6 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
-#>  7 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
-#>  8 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
-#>  9 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
-#> 10 Brazil  BRA         BR                       3 Bahia      BRA.5_1        
+#>  1 Canada  CAN         CA                       3 Nunavut    CAN.8_1        
+#>  2 Canada  CAN         CA                       3 Ontario    CAN.9_1        
+#>  3 Canada  CAN         CA                       3 Nunavut    CAN.8_1        
+#>  4 Canada  CAN         CA                       3 Nunavut    CAN.8_1        
+#>  5 Canada  CAN         CA                       3 Nunavut    CAN.8_1        
+#>  6 Canada  CAN         CA                       3 Nunavut    CAN.8_1        
+#>  7 Canada  CAN         CA                       3 Nunavut    CAN.8_1        
+#>  8 Canada  CAN         CA                       3 Nunavut    CAN.8_1        
+#>  9 Canada  CAN         CA                       3 Nunavut    CAN.8_1        
+#> 10 Canada  CAN         CA                       3 Ontario    CAN.9_1        
 #> # … with more rows, and 9 more variables: adm_area_2 <chr>,
 #> #   adm_area_2_code <chr>, adm_area_3 <chr>, adm_area_3_code <chr>, gid <chr>,
 #> #   latitude <dbl>, longitude <dbl>, properties <chr>, geometry <chr>
@@ -386,7 +385,7 @@ Database](https://covid19.eng.ox.ac.uk/) and reads the data into
 `get_data_` prefix followed by the respective table descriptor.
 
 | **Function**            | **Description**                         |
-| :---------------------- | :-------------------------------------- |
+|:------------------------|:----------------------------------------|
 | `get_data_epidemiology` | Get data from epidemiology table        |
 | `get_data_weather`      | Get data from weather table             |
 | `get_data_mobility`     | Get data from mobility table            |
@@ -396,7 +395,7 @@ Each of these `get_data_` functions can be supplied with specific query
 parameters to further refine the data to retrieve from the remote table.
 
 | **Query parameters** | **Description**                                                            |
-| :------------------- | :------------------------------------------------------------------------- |
+|:---------------------|:---------------------------------------------------------------------------|
 | `.source`            | Query the table via the `source` field                                     |
 | `ccode`              | Query the table via the `countrycode` field                                |
 | `start`, `end`       | Query the table via the `date` field                                       |
