@@ -1,6 +1,3 @@
-# oxcovid19 0.1.4
-
-<!---
 # oxcovid19 0.2.0
 
 This is the fourth [CRAN](https://cran.r-project.org) release of `oxcovid19`. 
@@ -13,15 +10,17 @@ This is a minor release. In this release:
 * Added a built-in Shiny package for basic data access and basic data
   visualisation; this was also a way to demonstrate how the package functions
   work
+  
+* Added graceful erroring when database unavailable (in response to CRAN
+  comments and recent CRAN errors)
 
-* Improved code coverage (from 53% to XX)
 
 ## Bug fixes
 
 * addressed issue with `get_data_weather` not working as expected. Issue was
   with how missing values were reported in the actual datasets (usage of
   character value NaN rather than NA or special value NaN)
---->
+
 
 # oxcovid19 0.1.3
 
