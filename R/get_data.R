@@ -79,125 +79,130 @@ get_data <- function(tbl_name,
   ## Create connection
   con <- connect_oxcovid19()
 
-  ## Retrieve table specified by tbl_name
-  x <- get_table(con = con, tbl_name = tbl_name)
+  if (class(con) == "PqConnection") {
+    ## Retrieve table specified by tbl_name
+    x <- get_table(con = con, tbl_name = tbl_name)
 
-  ## Create source query
-  if(is.null(.source)) {
-    source_query <- "!is.null(source)"
-  } else {
-    ## Check that source is valid
-    if(!.source %in% data_sources[[tbl_name]]$`Source code`) {
-      stop(paste(.source,
-                 " is not available from OxCOVID19 Database. Please try again.",
-                 sep = ""),
+    ## Create source query
+    if(is.null(.source)) {
+      source_query <- "!is.null(source)"
+    } else {
+      ## Check that source is valid
+      if(!.source %in% data_sources[[tbl_name]]$`Source code`) {
+        stop(
+          paste(
+            .source,
+            " is not available from OxCOVID19 Database. Please try again.",
+            sep = ""
+          ),
+          call. = TRUE
+        )
+      }
+      source_query <- "source %in% .source"
+    }
+
+    ## Create country query
+    if(is.null(ccode)) {
+      ccode_query <- "!is.null(countrycode)"
+    } else {
+      c1 <- countrycode::countrycode(sourcevar = ccode,
+                                     origin = "iso2c",
+                                     destination = "iso3c",
+                                     warn = FALSE)
+      country <- ifelse(is.na(c1), ccode, c1)
+      c2 <- countrycode::countryname(sourcevar = country,
+                                     destination = "iso3c",
+                                     warn = FALSE)
+      country <- ifelse(is.na(c2), country, c2)
+      ccode <- country
+      ccode_query <- "countrycode %in% ccode"
+    }
+
+    ## Create date queries
+    if(is.null(.start)) {
+      start_date <- as.Date("2019-10-01")
+    } else {
+      ## Check that dates are in appropriate format
+      if(is.na(lubridate::ymd(.start))) {
+        stop("Start date is not in appropriate format. Please try again.",
+             call. = TRUE)
+      }
+      start_date <- as.Date(.start)
+    }
+
+    if(is.na(lubridate::ymd(.end))) {
+      stop("End date is not in appropriate format. Please try again.",
            call. = TRUE)
     }
 
-    source_query <- "source %in% .source"
-  }
+    end_date <- as.Date(.end)
+    date_query <- "date >= start_date & date <= end_date"
 
-  ## Create country query
-  if(is.null(ccode)) {
-    ccode_query <- "!is.null(countrycode)"
-  } else {
-    c1 <- countrycode::countrycode(sourcevar = ccode,
-                                   origin = "iso2c",
-                                   destination = "iso3c",
-                                   warn = FALSE)
-    country <- ifelse(is.na(c1), ccode, c1)
-    c2 <- countrycode::countryname(sourcevar = country,
-                                   destination = "iso3c",
-                                   warn = FALSE)
-    country <- ifelse(is.na(c2), country, c2)
-    ccode <- country
-    ccode_query <- "countrycode %in% ccode"
-  }
-
-  ## Create date queries
-  if(is.null(.start)) {
-    start_date <- as.Date("2019-10-01")
-  } else {
-    ## Check that dates are in appropriate format
-    if(is.na(lubridate::ymd(.start))) {
-      stop("Start date is not in appropriate format. Please try again.",
-           call. = TRUE)
-    }
-
-    start_date <- as.Date(.start)
-  }
-
-  if(is.na(lubridate::ymd(.end))) {
-    stop("End date is not in appropriate format. Please try again.",
-         call. = TRUE)
-  }
-
-  end_date <- as.Date(.end)
-
-  date_query <- "date >= start_date & date <= end_date"
-
-  ## Create adm query
-  if(is.null(adm)) {
-    adm_query <- ""
-  } else {
-    if(tbl_name == "weather") {
-      ## Create adm query
-      if(is.null(adm)) {
-        adm_query <- ""
+    ## Create adm query
+    if(is.null(adm)) {
+      adm_query <- ""
+    } else {
+      if(tbl_name == "weather") {
+        ## Create adm query
+        if(is.null(adm)) {
+          adm_query <- ""
+        } else {
+        ##
+          if(adm == 0) {
+            adm_query <- "adm_area_1 == 'NaN' & adm_area_2 == 'NaN' & adm_area_3 == 'NaN'"
+          }
+          ##
+          if(adm == 1) {
+            adm_query <- "adm_area_1 != 'NaN' & adm_area_2 == 'NaN' & adm_area_3 == 'NaN'"
+          }
+          ##
+          if(adm == 2) {
+            adm_query <- "adm_area_2 != 'NaN' & adm_area_3 == 'NaN'"
+          }
+          ##
+          if(adm == 3) {
+            adm_query <- "adm_area_3 != 'NaN'"
+          }
+        }
       } else {
         ##
         if(adm == 0) {
-          adm_query <- "adm_area_1 == 'NaN' & adm_area_2 == 'NaN' & adm_area_3 == 'NaN'"
+          adm_query <- "is.na(adm_area_1) & is.na(adm_area_2) & is.na(adm_area_3)"
         }
         ##
         if(adm == 1) {
-          adm_query <- "adm_area_1 != 'NaN' & adm_area_2 == 'NaN' & adm_area_3 == 'NaN'"
+          adm_query <- "!is.na(adm_area_1) & is.na(adm_area_2) & is.na(adm_area_3)"
         }
         ##
         if(adm == 2) {
-          adm_query <- "adm_area_2 != 'NaN' & adm_area_3 == 'NaN'"
+          adm_query <- "!is.na(adm_area_2) & is.na(adm_area_3)"
         }
         ##
         if(adm == 3) {
-          adm_query <- "adm_area_3 != 'NaN'"
+          adm_query <- "!is.na(adm_area_3)"
         }
       }
-    } else {
-      ##
-      if(adm == 0) {
-        adm_query <- "is.na(adm_area_1) & is.na(adm_area_2) & is.na(adm_area_3)"
-      }
-      ##
-      if(adm == 1) {
-        adm_query <- "!is.na(adm_area_1) & is.na(adm_area_2) & is.na(adm_area_3)"
-      }
-      ##
-      if(adm == 2) {
-        adm_query <- "!is.na(adm_area_2) & is.na(adm_area_3)"
-      }
-      ##
-      if(adm == 3) {
-        adm_query <- "!is.na(adm_area_3)"
-      }
     }
+
+    ## Concatenate query
+    query <- paste("dplyr::filter(.data = x, ",
+                   source_query, ", ",
+                   ccode_query, ", ",
+                   date_query, ", ",
+                   adm_query, ")",
+                   sep = "")
+
+    ## Query epi table as per query parameters
+    tab <- eval(parse(text = query))
+
+    ## Collect
+    tab <- dplyr::collect(tab)
+
+    ## Return
+    return(tab)
+  } else {
+    return(con)
   }
-
-  ## Concatenate query
-  query <- paste("dplyr::filter(.data = x, ",
-                 source_query, ", ",
-                 ccode_query, ", ",
-                 date_query, ", ",
-                 adm_query, ")",
-                 sep = "")
-
-  ## Query epi table as per query parameters
-  tab <- eval(parse(text = query))
-
-  ## Collect
-  tab <- dplyr::collect(tab)
-
-  ## Return
-  return(tab)
 }
 
 ################################################################################

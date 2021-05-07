@@ -41,7 +41,7 @@ connect_oxcovid19 <- function(dbname = "covid19",
                                    password   = password),
              silent = TRUE)
 
-  if(class(con) == "try-error") {
+  if (class(con) == "try-error") {
     con <- try(expr = DBI::dbConnect(RPostgres::Postgres(),
                                      dbname     = dbname,
                                      host       = host,
@@ -53,5 +53,18 @@ connect_oxcovid19 <- function(dbname = "covid19",
   }
 
   ## Return connection
-  return(con)
+  if (class(con) == "try-error") {
+    return(
+      message(
+        paste0(
+          strwrap("A connection to the OxCOVID19 database cannot be established
+                  at the moment. Please try again.",
+                  width = 80),
+          "\n"
+        )
+      )
+    )
+  } else {
+    con
+  }
 }

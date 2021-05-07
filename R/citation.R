@@ -22,7 +22,7 @@
 
 cite_sources <- function(x) {
   ## match sources to tables - epidemiology
-  if(
+  if (
     any(
       unique(x[["source"]]) %in% data_sources[["epidemiology"]][["Source code"]]
     )
